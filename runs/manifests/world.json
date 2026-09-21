@@ -1,0 +1,22 @@
+[
+  {
+    "path": "data/world/payers.yaml",
+    "sha256": "9e4cb7546299a1e335d4f7f9e5b799eca34687c3c9efddeabb1cc0eb4d41f15d"
+  },
+  {
+    "path": "data/world/clinics.parquet",
+    "sha256": "b478ca26b5211db4bcc0cefa6b77b56ac9744f14ad46cf804761f579797a77ec"
+  },
+  {
+    "path": "data/world/patients.parquet",
+    "sha256": "189ea9ad83be80bcf7be61ee768b211cee6821bbdee0cced032e56d5f48a59fb"
+  },
+  {
+    "path": "data/world/coverage.parquet",
+    "sha256": "683bd3044c757468bf761c68f56d3705516bd315c6f39482ae0f180214721177"
+  },
+  {
+    "path": "data/world/studies.parquet",
+    "sha256": "e4f72f5cdf30a93999a8f459c5ce0c0906beea76019f89ba95b16b49071f3dd2"
+  }
+]

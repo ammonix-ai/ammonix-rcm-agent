@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ammonix — Case</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="masthead">
+  <a class="brand" href="inbox.html"><span class="mark">A</span>
+    <span><h1>Ammonix</h1><p class="tagline">Claims desk — demo</p></span></a>
+  <nav><a href="inbox.html">Claims</a><a href="universe.html">Universe</a><a href="learning.html">Learning</a></nav>
+</header>
+<main>
+<div class="case-head">
+  <a class="back" href="inbox.html" id="back-link">&larr; Back</a>
+  <h1>Case <span class="mono" id="cid"></span></h1>
+  <span id="status-chip"></span>
+  <span id="timeline" class="mono" style="font-size:.82rem"></span>
+  <details class="glossary"><summary>What am I looking at?</summary>
+    <dl>
+      <dt>Colours</dt><dd>Green: ready. Amber: asks. Red: human.</dd>
+      <dt>Probabilities</dt><dd>Calibrated — 80% is right ~80% of the time.</dd>
+      <dt>Similar past cases</dt><dd>What grounds the recommendation.</dd>
+      <dt>Checks</dt><dd>Rules paperwork must pass before sending.</dd>
+      <dt>Hover a value</dt><dd>Shows its source. Empty stays empty.</dd>
+      <dt>Executing</dt><dd>Happens in the claim's live run, not here.</dd>
+    </dl>
+  </details>
+</div>
+<div class="cols">
+  <section class="panel"><h2>The case</h2>
+    <table class="facts" id="facts"></table>
+    <h3>Payer letter</h3><blockquote class="letter" id="correspondence">—</blockquote>
+    <h3>Clinical indication</h3><blockquote class="letter" id="indication">—</blockquote>
+  </section>
+  <section class="panel"><h2>The system's read</h2>
+    <p class="reco" id="recommendation"></p>
+    <div id="question" class="question-card" hidden></div>
+    <div class="scorebars" id="scores"></div>
+    <h3>Grounding</h3><p id="tribe" style="font-size:.9rem"></p>
+    <h3>Similar past cases</h3>
+    <table class="grid" id="neighbours"><thead><tr><th>Case</th><th>Distance</th>
+    <th>They did</th><th>Ended</th></tr></thead><tbody></tbody></table>
+    <details class="footnote"><summary>Under the hood</summary><p id="skill"></p></details>
+  </section>
+  <section class="panel"><h2>The paperwork</h2>
+    <div id="artifact"></div>
+    <div id="m2log"></div>
+    <div class="actions">
+      <a id="play-link" hidden style="font-weight:600">&#9654; Play this claim live</a>
+    </div>
+  </section>
+</div>
+</main>
+<div id="chat-widget" class="chat-widget closed">
+  <button type="button" id="chat-head" class="chat-head">Ask Ammonix: why this move?
+    <span id="chat-min">+</span></button>
+  <div id="chat-body" class="chat-body">
+    <div id="chat-log" class="chat-log"></div>
+    <form id="chat-form" class="chat-form">
+      <input id="chat-q" type="text" maxlength="400" autocomplete="off"
+        placeholder="Why this move?&hellip;">
+      <button type="submit" class="ui">Ask</button>
+    </form>
+  </div>
+</div>
+<script src="shared.js"></script>
+<script>
+const params = new URLSearchParams(location.search);
+const id = params.get('id');
+if (!id) location.replace('inbox.html');  // opened directly with no case selected
+if (params.get('embed')) document.body.classList.add('embed');
+// back = the page you actually came from; the href is only the fallback
+document.getElementById('back-link').addEventListener('click', e => {
+  if (document.referrer && new URL(document.referrer).origin === location.origin
+      && history.length > 1) {
+    e.preventDefault();
+    history.back();
+  }
+});
+// tour spotlight: ?focus=scores,facts dims everything but the named blocks
+// guided tour: ?tour=N walks that spotlight through four stops
+const TOUR = [
+  {focus: 'facts', title: 'The claim',
+   text: 'The claim as it arrived: the facts, the payer letter, the clinical \
+note. All simulated.'},
+  {focus: 'recommendation,scores', title: 'The recommendation',
+   text: 'Each move carries its success rate among similar past cases. \
+Nearly tied moves say so; when unsure, Ammonix hands the claim to a person.'},
+  {focus: 'tribe,neighbours', title: 'The reasons',
+   text: 'The nearest past cases, what each did, how it ended. The \
+recommendation is read off these, so you can check it yourself.'},
+  {focus: 'artifact', title: 'The paperwork',
+   text: 'The form is filled from the case record. Hover a value to see its \
+source; a value with no source stays empty.'},
+];
+const tourStep = parseInt(params.get('tour') || '', 10);
+const onTour = tourStep >= 1 && tourStep <= TOUR.length;
+const focusIds = (onTour ? TOUR[tourStep - 1].focus : params.get('focus') || '')
+  .split(',').filter(Boolean);
+if (onTour) {
+  const t = TOUR[tourStep - 1];
+  const backHref = tourStep === 1 ? 'inbox.html'
+    : 'case.html?id=' + encodeURIComponent(id) + '&tour=' + (tourStep - 1);
+  const nextHref = tourStep === TOUR.length ? 'inbox.html'
+    : 'case.html?id=' + encodeURIComponent(id) + '&tour=' + (tourStep + 1);
+  const bar = document.createElement('div');
+  bar.className = 'tour-bar';
+  bar.innerHTML = '<div class="tour-text"><p class="tour-title"></p><p class="tour-body"></p></div>'
+    + '<div class="tour-nav"><span class="tour-count">' + tourStep + ' / ' + TOUR.length + '</span>'
+    + '<a class="btn" href="' + backHref + '">Back</a>'
+    + '<a class="btn primary" id="tour-next" href="' + nextHref + '">'
+    + (tourStep === TOUR.length ? 'Done' : 'Next') + '</a></div>';
+  bar.querySelector('.tour-title').textContent = t.title;
+  bar.querySelector('.tour-body').textContent = t.text;
+  document.body.appendChild(bar);
+  if (tourStep === TOUR.length) {
+    document.getElementById('tour-next').addEventListener('click', () => {
+      localStorage.setItem('ammonix_intro_seen', '1');
+    });
+  }
+}
+if (focusIds.length) {
+  document.body.classList.add('spotlight');
+  for (const fid of focusIds) {
+    const el = document.getElementById(fid);
+    if (!el) continue;
+    el.classList.add('lit');
+    const prev = el.previousElementSibling;
+    if (prev && (prev.tagName === 'H2' || prev.tagName === 'H3')) prev.classList.add('lit');
+  }
+  document.querySelectorAll('.panel').forEach(p => {
+    if (!p.querySelector('.lit')) p.classList.add('dim');
+  });
+  // bring the spotlighted block into view: on narrow layouts the panels
+  // stack and the lit one can sit below the fold, leaving the visitor
+  // staring at dimmed content. Scroll twice: the case fetch reflows the
+  // page after the first scroll and would push the target away again.
+  // instant, not smooth: a smooth scroll never runs in a background tab
+  // and this is a load-time jump, not an in-page transition
+  const focusScroll = () => {
+    const first = document.getElementById(focusIds[0]);
+    if (first) first.scrollIntoView({block: 'center', behavior: 'auto'});
+  };
+  setTimeout(focusScroll, 250);
+  setTimeout(focusScroll, 1000);
+}
+document.getElementById('cid').textContent = id;
+document.title = 'Ammonix — Case ' + id;
+
+function statusChip(c) {
+  document.getElementById('status-chip').innerHTML =
+    (Number.isInteger(c.attempt)
+      ? `<span class="pill plain">${c.attempt === 0 ? 'new claim' : 'attempt ' + (c.attempt + 1)}</span> `
+      : '') + (c.status === 'executed'
+      ? '' : `<span class="pill ${c.triage}">${esc(statusLabel(c))}</span>`);
+}
+
+/* sourceSpan + buildDocument moved to shared.js (the claim page renders
+   the LLM lane's filings with the same renderer). */
+
+fetch('/api/case/' + encodeURIComponent(id)).then(r => r.json()).then(c => {
+  statusChip(c);
+  if (c.episode_states && c.episode_states.length > 1) {
+    const moveNo = s => String(parseInt(s.split('-').pop().slice(1), 10) + 1);
+    document.getElementById('timeline').innerHTML = 'moves on this claim: ' +
+      c.episode_states.map(s => s === id
+        ? `<b>${esc(moveNo(s))}</b>`
+        : `<a href="case.html?id=${encodeURIComponent(s)}">${esc(moveNo(s))}</a>`
+      ).join(' · ');
+  }
+
+  document.getElementById('facts').innerHTML = [
+    ['Payer', `${esc(c.payer_name)} <code>${esc(c.payer_id)}</code>`],
+    ['Study (CPT)', `<code${cptAttr(c.cpt)}>${esc(c.cpt)}</code>`],
+    ['Denial code', c.carc ? `<code${carcAttr(c.carc)} style="cursor:help">${esc(c.carc)}</code>` : '—'],
+    ['Outstanding balance', money(c.balance)],
+    ...Object.entries(c.facts).map(([k, v]) => [
+      FACT_LABELS[k] || prettify(k),
+      v == null || v === '' ? '—' : esc(Array.isArray(v) ? v.join(', ') : v),
+    ]),
+  ].map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('');
+  document.getElementById('correspondence').textContent = c.correspondence || 'No letter yet.';
+  document.getElementById('indication').textContent = c.indication || '—';
+
+  const top = c.scores[0];
+  const reco = document.getElementById('recommendation');
+  // a recorded human moment: the person is the actor, Ammonix is hindsight
+  // (replay moments also carry recorded_action now, but Ammonix is their
+  // actor - taken_by distinguishes the two)
+  const retro = Boolean(c.recorded_action) && !c.taken_by;
+  const deferred = c.taken_by === 'handed to human' && c.recorded_action;
+  if (c.status === 'escalated' || c.status === 'sent_to_human') {
+    // deferred replay moments say it all in one line below; skip the echo
+    reco.innerHTML = deferred ? '' : `<span class="pill red">${retro ? 'would have handed to a human' : 'handed to a human'}</span>
+      ${esc(ESCALATION_LABELS[c.escalation_reason] || 'This case needs a person.')}`;
+  } else if (top) {
+    reco.innerHTML = `${retro ? 'Would have done: '
+        : c.taken_by === 'system' ? 'Ammonix did: ' : ''}${actionSpan(c.recommended)} —
+      <span class="mono">${pct(top.p_success)}</span>
+      ${c.ambiguous ? '<span class="pill amber">nearly tied</span>' : ''}`;
+  }
+  if (retro) {
+    const agree = c.recorded_action === c.recommended;
+    reco.closest('.panel').querySelector('h2').textContent = "Ammonix's second opinion";
+    reco.insertAdjacentHTML('beforebegin',
+      `<p class="reco">The person did: ${actionSpan(c.recorded_action)}
+       <span class="pill ${agree ? 'green' : 'amber'}">${agree ? 'Ammonix agrees' : 'Ammonix differs'}</span></p>`);
+  } else if (deferred) {
+    reco.insertAdjacentHTML('beforebegin',
+      `<p class="reco"><span class="pill red">Ammonix deferred</span>
+       <span class="pill amber">biller chose:</span>
+       <b style="color:var(--amber)"${actionAttr(c.recorded_action)}>${esc(actionLabel(c.recorded_action))}</b></p>`);
+  }
+
+  if (c.ambiguous && c.scores.length > 1) {
+    const q = document.getElementById('question');
+    q.hidden = false;
+    const [a, b] = c.scores;
+    // three distinct uncertainty stories - and past tense when this moment
+    // already carries a decision (recorded or replayed), present when live
+    let headline;
+    if (a.p_success < 0.15) {
+      headline = null;  // dead scores: the escalation status already says it all
+    } else if ((a.p_success - b.p_success) < 0.15) {
+      headline = `<b>Nearly a coin flip</b> — <span${actionAttr(a.action)}>${esc(actionLabel(a.action))}</span> ${pct(a.p_success)}
+         vs <span${actionAttr(b.action)}>${esc(actionLabel(b.action))}</span> ${pct(b.p_success)}.`;
+    } else {
+      headline = `<b>Flagged as uncertain</b> — the scores disagree with each other on
+         this unfamiliar situation, so the numbers are not trusted.`;
+    }
+    // what actually happened wins over what the desk "would" do: an executed
+    // moment must never claim it asked a human
+    const executed = c.status === 'executed' || c.status === 'adjudicated';
+    let followup;
+    if (executed && c.taken_by === 'system') {
+      followup = 'The checks cleared it, and Ammonix went ahead in this run.';
+    } else if (executed) {
+      followup = 'The checks cleared it, so it went ahead.';
+    } else if (c.recorded_action) {
+      followup = 'At a moment like this the system asks a human before acting.';
+    } else {
+      followup = 'The system asks a human here.';
+    }
+    if (!headline) { q.hidden = true; } else
+    q.innerHTML = `<p>${headline} ${followup}</p>
+      ${c.episode_id && c.episode_id.startsWith('ep-')
+        ? `<a href="claim.html?id=${encodeURIComponent(c.episode_id)}">decide it in the live run &rarr;</a>` : ''}`;
+  }
+
+  const bar = (s, i) => `
+    <div class="scorebar${i === 0 ? ' top' : ''}" title="${esc(s.action)}">
+      <div class="row"><span style="color:${actionColor(s.action)};font-weight:600"${actionAttr(s.action)}>${esc(actionLabel(s.action))}</span>
+      <span class="pct">${pct(s.p_success)}</span></div>
+      <div class="bar"><div class="fill" style="width:${Math.max(2, Math.round(s.p_success * 100))}%;background:${actionColor(s.action)}"></div></div>
+    </div>`;
+  document.getElementById('scores').innerHTML = (c.scores.slice(0, 4).map(bar).join('')
+    + (c.scores.length > 4
+      ? `<details class="footnote"><summary>${c.scores.length - 4} more</summary>${c.scores.slice(4).map(bar).join('')}</details>`
+      : ''))
+    || '<p class="hint">Nothing scored — went straight to a human.</p>';
+
+  const t = c.tribe;
+  document.getElementById('tribe').innerHTML = c.status === 'escalated' && c.escalation_reason === 'needs_outside_information'
+    ? `Nearest known case: <span class="mono">${t.out_of_tribe_distance}</span> away — too far to trust.`
+    : `${esc(t.description)} <span class="hint">· nearest at <span class="mono">${t.out_of_tribe_distance}</span></span>`;
+
+  document.querySelector('#neighbours tbody').innerHTML = c.neighbours.map((n, i) => `
+    <tr data-expand="${i}"><td class="mono">${esc(n.state_id)}</td>
+      <td class="num">${n.distance}</td>
+      <td${actionAttr(n.true_action)}>${esc(actionLabel(n.true_action))}</td>
+      <td>${n.outcome_success ? '<span class="pill green">success</span>' : '<span class="pill red">failure</span>'}</td></tr>
+    <tr class="neighbour-detail" data-detail="${i}" hidden><td colspan="4">
+      ${n.facts ? `${esc(n.facts.payer_id)} · study <code>${esc(n.facts.cpt)}</code> ·
+        ${n.facts.carc ? `denial <code>${esc(n.facts.carc)}</code> · ` : 'no denial · '}
+        balance ${money(n.facts.balance)} · attempt ${Number(n.facts.touch) + 1} ·
+        day ${n.facts.days_since_service} after the study` : 'No details on file.'}
+    </td></tr>`).join('');
+  document.querySelector('#neighbours tbody').addEventListener('click', e => {
+    const tr = e.target.closest('tr[data-expand]');
+    if (!tr) return;
+    const d = document.querySelector(`tr[data-detail="${tr.dataset.expand}"]`);
+    if (d) d.hidden = !d.hidden;
+  });
+
+  if (c.skill) {
+    document.getElementById('skill').innerHTML =
+      `Under the hood: skill <code>${esc(c.skill.skill_id)}</code> (${esc(c.skill.kind)}),
+       resolved at ${esc(c.skill.scope_level)} scope${c.skill.scope_ref ? ` (<code>${esc(c.skill.scope_ref)}</code>)` : ''}${c.skill.rules.length ? ` · rules: <code>${c.skill.rules.map(esc).join(', ')}</code>` : ''}`;
+  }
+
+  const artEl = document.getElementById('artifact');
+  if (c.artifact) {
+    artEl.innerHTML = buildDocument(c.artifact);
+  } else if (c.status === 'escalated' || c.status === 'sent_to_human') {
+    artEl.innerHTML = '<p class="empty-note">No paperwork — went to a human.</p>';
+  } else {
+    artEl.innerHTML = '<p class="empty-note">No document needed.</p>';
+  }
+
+  if (c.m2_log.length) {
+    // the verdict is a seal on the document, not a floating section
+    const last = c.m2_log[c.m2_log.length - 1];
+    const rules = (c.skill && c.skill.rules) || [];
+    document.getElementById('m2log').innerHTML = last.passed
+      ? `<div class="doc-verdict good">&#10003; This document passed ${rules.length || 'its'} automatic checks
+           <details><summary>which?</summary>
+           <p>${rules.map(r => esc(rulePlain(r))).join(' · ') || 'schema and payer rules'}</p></details></div>`
+      : `<div class="doc-verdict bad">&#10007; The paperwork failed its checks ${c.m2_log.length > 1 ? c.m2_log.length + ' times' : ''} — that is why a human got it
+           <details><summary>what failed?</summary>
+           <p>${last.failures.map(esc).join('; ')}</p></details></div>`;
+  }
+
+  if (c.episode_id && c.episode_id.startsWith('ep-')) {
+    const pl = document.getElementById('play-link');
+    pl.hidden = false;
+    pl.href = 'claim.html?id=' + encodeURIComponent(c.episode_id);
+  }
+
+// operator dialog (the paper's L): grounded in this case's record
+// no local model, no chat: a dead control is worse than none
+fetch('/api/llm_health').then(r => r.json()).then(h => {
+  if (!h.available) { document.getElementById('chat-widget').remove(); return; }
+  if (h.remote) {
+    document.getElementById('chat-log').insertAdjacentHTML('beforebegin',
+      `<p class="hint" style="margin:.3rem .5rem">Live answers come from stock
+      ${esc(h.model || 'Qwen')} via a hosted API. Recorded texts elsewhere in
+      this demo were generated by the paper's pinned local models.</p>`);
+  }
+}).catch(() => document.getElementById('chat-widget').remove());
+document.getElementById('chat-head').addEventListener('click', () => {
+  const w = document.getElementById('chat-widget');
+  w.classList.toggle('closed');
+  document.getElementById('chat-min').innerHTML =
+    w.classList.contains('closed') ? '+' : '&minus;';
+});
+const chatHistory = [];
+document.getElementById('chat-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const input = document.getElementById('chat-q');
+  const q = input.value.trim();
+  if (!q) return;
+  const log = document.getElementById('chat-log');
+  log.insertAdjacentHTML('beforeend', `<div class="msg you">${esc(q)}</div>`);
+  log.insertAdjacentHTML('beforeend', '<div class="msg them pending">&hellip;</div>');
+  log.scrollTop = log.scrollHeight;
+  input.value = ''; input.disabled = true;
+  fetch('/api/case/' + encodeURIComponent(id) + '/ask', {
+    method: 'POST', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({question: q, history: chatHistory}),
+  }).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(d => {
+      log.querySelector('.pending').outerHTML = `<div class="msg them">${esc(d.answer)}</div>`;
+      chatHistory.push({role: 'user', content: q}, {role: 'assistant', content: d.answer});
+      log.scrollTop = log.scrollHeight;
+    })
+    .catch(() => {
+      log.querySelector('.pending').outerHTML =
+        '<div class="msg them">The model is not reachable right now.</div>';
+    })
+    .finally(() => { input.disabled = false; input.focus(); });
+});
+});
+</script>
+</body></html>

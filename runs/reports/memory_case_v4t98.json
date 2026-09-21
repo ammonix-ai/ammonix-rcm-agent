@@ -1,0 +1,46 @@
+{
+ "episode_id": "ep-05103",
+ "allowed": 610.68,
+ "payer_paid_primary": 7.31,
+ "pattern": "deductible-heavy claim: primary pays $7.31, the balance is member responsibility; the member has secondary coverage that pays it",
+ "lanes": {
+  "ammonix": {
+   "actions": [
+    "submit_with_records",
+    "bill_secondary"
+   ],
+   "resolution": "paid_with_secondary",
+   "success": true,
+   "collected": 610.68
+  },
+  "llm": {
+   "actions": [
+    "submit_clean",
+    "bill_patient"
+   ],
+   "resolution": "patient_billed",
+   "success": false,
+   "collected": 7.31
+  },
+  "human": {
+   "actions": [
+    "submit_with_records",
+    "bill_patient"
+   ],
+   "resolution": "patient_billed",
+   "success": false,
+   "collected": 7.31
+  }
+ },
+ "_provenance": {
+  "date": "2026-07-22",
+  "source_files": [
+   "episodes_ammonix_v4_v4t98.json",
+   "episodes_agentic_v4t98.json",
+   "episodes_personas_v4t98.json"
+  ],
+  "source_repo": "Wavemedix/Agentic_Baseline runs/reports (tranche-98 arms, same dice)",
+  "selection": "one of 25 tranche-98 claims where Ammonix succeeded with zero escalated touches while both the human-clerk and LLM arms failed; chosen for clarity (two touches, full collection, learned secondary-routing pattern)",
+  "note": "Ammonix's winning move is produced by its swarm scores and EV close-out, i.e. patterns distilled from its remembered training claims; no human hand-off is involved in this episode"
+ }
+}

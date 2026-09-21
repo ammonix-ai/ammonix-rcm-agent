@@ -1,0 +1,110 @@
+{
+  "analysis": "agentic baseline vs ammonix system vs personas",
+  "factory_root": "<REPO>",
+  "tranche": 99,
+  "n_episodes": 300,
+  "note": "identical fresh episodes and engine randomness across arms; the 'agentic' arm runs the same pinned 27B as Ammonix M1 (architecture comparison); the 'claude' arm runs the same agent loop on claude-sonnet-5 via API (frontier-model comparison; not sampling-deterministic - the decision cache freezes the run); escalated touches fall back to the persona (human) policy in every arm",
+  "agentic": {
+    "episodes": 300,
+    "success_rate_v2": 0.36,
+    "mean_score": 0.4192,
+    "payer_collected_total": 56437.28,
+    "payer_collected_capped": 56437.28,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 17366.36,
+    "mean_touches": 2.803,
+    "episodes_with_mistakes": 53,
+    "escalated_touches": 237,
+    "resolutions": {
+      "paid": 31,
+      "patient_billed": 128,
+      "paid_with_secondary": 26,
+      "written_off": 111,
+      "paid_on_appeal": 4
+    },
+    "wall_seconds": 4005.1,
+    "policy": {
+      "decisions": 841,
+      "retries": 148,
+      "escalations_explicit": 177,
+      "escalations_forced": 60,
+      "decision_errors": 0
+    },
+    "llm": {
+      "model_id": "/models/Qwen3.6-27B-AWQ-INT4",
+      "calls_to_provider": 989,
+      "cache_hits": 0,
+      "prompt_tokens": 763908,
+      "completion_tokens": 209040
+    }
+  },
+  "personas": {
+    "episodes": 300,
+    "success_rate_v2": 0.3433,
+    "mean_score": 0.3964,
+    "payer_collected_total": 50995.7,
+    "payer_collected_capped": 50995.7,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 17433.0,
+    "mean_touches": 2.477,
+    "episodes_with_mistakes": 69,
+    "escalated_touches": 0,
+    "resolutions": {
+      "paid": 29,
+      "written_off": 103,
+      "patient_billed": 150,
+      "paid_with_secondary": 14,
+      "paid_on_appeal": 1,
+      "written_off_at_cap": 3
+    },
+    "wall_seconds": 0.2
+  },
+  "ammonix_v6": {
+    "episodes": 300,
+    "success_rate_v2": 0.5033,
+    "mean_score": 0.556,
+    "payer_collected_total": 68787.29,
+    "payer_collected_capped": 68787.29,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 24225.12,
+    "mean_touches": 2.527,
+    "episodes_with_mistakes": 7,
+    "escalated_touches": 98,
+    "resolutions": {
+      "paid": 30,
+      "patient_billed": 184,
+      "paid_with_secondary": 75,
+      "paid_on_appeal": 5,
+      "written_off_at_cap": 5,
+      "written_off": 1
+    },
+    "wall_seconds": 8.5,
+    "factory_root": "<REPO>",
+    "decision_field": "kernel"
+  },
+  "oracle_greedy": {
+    "episodes": 300,
+    "success_rate_v2": 0.5433,
+    "mean_score": 0.5932,
+    "payer_collected_total": 74039.37,
+    "payer_collected_capped": 74039.37,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 10267.53,
+    "mean_touches": 2.213,
+    "episodes_with_mistakes": 6,
+    "escalated_touches": 0,
+    "resolutions": {
+      "paid": 31,
+      "written_off": 83,
+      "paid_on_appeal": 4,
+      "paid_with_secondary": 77,
+      "patient_billed": 105
+    },
+    "wall_seconds": 0.1,
+    "note": "EVALUATION-ONLY upper-bound ESTIMATE: greedy per-touch on the engine's true resolution probabilities (action_resolution_prob + deterministic adjudication cascade), not a full sequential planner; see scripts/run_oracle_arm.py and runs/reports/oracle_v4_tranche98.json"
+  },
+  "_verdict": {
+    "pre_registered_rule": "AMMONIX WINS (success gap outside tie band)",
+    "success_gap": 0.1433
+  }
+}

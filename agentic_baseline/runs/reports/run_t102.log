@@ -1,0 +1,94 @@
+comparing ['personas', 'agentic', 'agentic_rag'] on 300 fresh episodes of tranche 102 (indices 5000..5299)
+[personas] {
+ "episodes": 300,
+ "success_rate_v2": 0.37,
+ "mean_score": 0.406,
+ "payer_collected_total": 49407.97,
+ "payer_collected_capped": 49407.97,
+ "payer_over_collection": 0.0,
+ "patient_collected_total": 18694.2,
+ "mean_touches": 2.45,
+ "episodes_with_mistakes": 66,
+ "escalated_touches": 0,
+ "resolutions": {
+  "paid": 28,
+  "written_off": 93,
+  "patient_billed": 157,
+  "paid_on_appeal": 2,
+  "paid_with_secondary": 17,
+  "written_off_at_cap": 3
+ },
+ "wall_seconds": 0.1
+}
+[agentic] {
+ "episodes": 300,
+ "success_rate_v2": 0.3933,
+ "mean_score": 0.4203,
+ "payer_collected_total": 52637.11,
+ "payer_collected_capped": 52637.11,
+ "payer_over_collection": 0.0,
+ "patient_collected_total": 17014.24,
+ "mean_touches": 2.68,
+ "episodes_with_mistakes": 55,
+ "escalated_touches": 233,
+ "resolutions": {
+  "written_off": 95,
+  "paid": 29,
+  "patient_billed": 143,
+  "paid_with_secondary": 31,
+  "paid_on_appeal": 1,
+  "written_off_at_cap": 1
+ },
+ "wall_seconds": 9438.3,
+ "policy": {
+  "decisions": 803,
+  "retries": 159,
+  "escalations_explicit": 164,
+  "escalations_forced": 69,
+  "decision_errors": 0
+ },
+ "llm": {
+  "model_id": "/models/Qwen3.6-27B-AWQ-INT4",
+  "calls_to_provider": 890,
+  "cache_hits": 72,
+  "prompt_tokens": 751922,
+  "completion_tokens": 211024
+ }
+}
+[agentic_rag] {
+ "episodes": 300,
+ "success_rate_v2": 0.44,
+ "mean_score": 0.4805,
+ "payer_collected_total": 58072.91,
+ "payer_collected_capped": 58072.91,
+ "payer_over_collection": 0.0,
+ "patient_collected_total": 19942.52,
+ "mean_touches": 2.45,
+ "episodes_with_mistakes": 22,
+ "escalated_touches": 193,
+ "resolutions": {
+  "paid": 29,
+  "written_off": 68,
+  "patient_billed": 169,
+  "paid_with_secondary": 33,
+  "paid_on_appeal": 1
+ },
+ "wall_seconds": 10809.9,
+ "policy": {
+  "decisions": 735,
+  "retries": 142,
+  "escalations_explicit": 141,
+  "escalations_forced": 52,
+  "decision_errors": 0
+ },
+ "llm": {
+  "model_id": "/models/Qwen3.6-27B-AWQ-INT4",
+  "calls_to_provider": 860,
+  "cache_hits": 17,
+  "prompt_tokens": 947836,
+  "completion_tokens": 200552
+ }
+}
+report written to <BASELINE>\runs\reports\comparison_tranche102.json
+
+report written to <BASELINE>\runs\reports\comparison_tranche102.json

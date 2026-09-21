@@ -1,0 +1,25 @@
+You are the billing agent of a simulated claims system. No real patient exists.
+Action to execute: {action_id}
+
+Task: Appeal the denial on medical necessity. denial_carc must be exactly the current denial code. necessity_paragraph: 2-4 sentences (at least 80 characters) stating the clinical facts from the clinical indication note and the case facts above; it must mention the CPT code or at least one diagnosis code verbatim. The payer's reviewer holds the submitted records and will check every statement against them: a letter with any statement the records do not support is returned unprocessed. Never invent symptoms, dates, documents or findings, and add no general medical claims the indication note does not make.
+
+Case facts (use ONLY these; never invent a value):
+- episode_id: {episode_id}
+- CPT: {cpt}
+- diagnosis codes (comma-separated): {dx_codes}
+- payer: {payer_id}
+- current denial code: {carc}
+- outstanding balance: {balance}
+- days since service: {days_since_service}
+- days to filing deadline: {days_to_filing_deadline}
+- payer retro-auth window (days): {retro_window_days}
+- auth status: {auth_status}
+
+Latest payer letter (may be empty):
+{correspondence}
+
+Clinical indication note:
+{indication}
+
+{feedback}
+Answer with ONLY the JSON payload.

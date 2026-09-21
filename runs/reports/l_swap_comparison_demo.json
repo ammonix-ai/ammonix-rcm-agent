@@ -1,0 +1,203 @@
+{
+ "decisions_identical": true,
+ "decision_mismatches": {
+  "qwen": [],
+  "ornith": [],
+  "ornith_ft": [],
+  "opus5": [],
+  "qwen38": []
+ },
+ "summaries": {
+  "qwen": {
+   "model": "qwen",
+   "n_states": 525,
+   "errors": 0,
+   "status": {
+    "executed": 350,
+    "escalated": 175
+   },
+   "escalation_reasons": {
+    "needs_outside_information": 105,
+    "unresolvable": 59,
+    "iteration_cap": 11
+   },
+   "paperwork_states": 361,
+   "paperwork_first_pass_rate": 0.9668,
+   "paperwork_retries": 12,
+   "paperwork_escalations": 11,
+   "balance_on_paperwork_escalations": 3597.68,
+   "payer_rejected": 48,
+   "balance_rejected": 27039.28,
+   "payer_reasons": {
+    "appeal letter not supported by the records": 48
+   },
+   "reader": {
+    "calls": 0,
+    "cache_hits": 68
+   },
+   "mean_seconds_per_state": 0.203,
+   "wall_seconds": 17.9,
+   "llm": {
+    "model_id": "/models/Qwen3.6-27B-AWQ-INT4",
+    "calls_to_provider": 0
+   }
+  },
+  "ornith": {
+   "model": "ornith",
+   "n_states": 525,
+   "errors": 0,
+   "status": {
+    "executed": 349,
+    "escalated": 176
+   },
+   "escalation_reasons": {
+    "needs_outside_information": 105,
+    "unresolvable": 59,
+    "iteration_cap": 12
+   },
+   "paperwork_states": 361,
+   "paperwork_first_pass_rate": 0.9668,
+   "paperwork_retries": 12,
+   "paperwork_escalations": 12,
+   "balance_on_paperwork_escalations": 3744.9,
+   "payer_rejected": 44,
+   "balance_rejected": 23932.9,
+   "payer_reasons": {
+    "appeal letter not supported by the records": 44
+   },
+   "reader": {
+    "calls": 59,
+    "cache_hits": 9
+   },
+   "mean_seconds_per_state": 1.845,
+   "wall_seconds": 193.0,
+   "llm": {
+    "m1": {
+     "model_id": "ornith-ai/Ornith-1.5-9B",
+     "served_id": "Ornith-1.5-9B",
+     "thinking": "disabled (template kwarg; <think> stripped)",
+     "calls_to_provider": 62,
+     "cache_hits": 323,
+     "prompt_tokens": 154537,
+     "completion_tokens": 22867
+    }
+   }
+  },
+  "ornith_ft": {
+   "model": "ornith_ft",
+   "n_states": 525,
+   "errors": 0,
+   "status": {
+    "executed": 349,
+    "escalated": 176
+   },
+   "escalation_reasons": {
+    "needs_outside_information": 105,
+    "unresolvable": 59,
+    "iteration_cap": 12
+   },
+   "paperwork_states": 361,
+   "paperwork_first_pass_rate": 0.9668,
+   "paperwork_retries": 12,
+   "paperwork_escalations": 12,
+   "balance_on_paperwork_escalations": 3744.9,
+   "payer_rejected": 16,
+   "balance_rejected": 7708.97,
+   "payer_reasons": {
+    "appeal letter not supported by the records": 16
+   },
+   "reader": {
+    "calls": 63,
+    "cache_hits": 5
+   },
+   "mean_seconds_per_state": 4.29,
+   "wall_seconds": 412.3,
+   "llm": {
+    "m1": {
+     "model_id": "local/Ornith-1.5-9B-rcm-r2",
+     "served_id": "Ornith-1.5-9B-rcm-r2",
+     "thinking": "disabled (template kwarg; <think> stripped)",
+     "calls_to_provider": 373,
+     "cache_hits": 12,
+     "prompt_tokens": 154529,
+     "completion_tokens": 22189
+    }
+   }
+  },
+  "opus5": {
+   "model": "opus5",
+   "n_states": 525,
+   "errors": 0,
+   "status": {
+    "executed": 350,
+    "escalated": 175
+   },
+   "escalation_reasons": {
+    "needs_outside_information": 105,
+    "unresolvable": 59,
+    "iteration_cap": 11
+   },
+   "paperwork_states": 361,
+   "paperwork_first_pass_rate": 0.9668,
+   "paperwork_retries": 12,
+   "paperwork_escalations": 11,
+   "balance_on_paperwork_escalations": 3597.68,
+   "payer_rejected": 37,
+   "balance_rejected": 21157.49,
+   "payer_reasons": {
+    "appeal letter not supported by the records": 37
+   },
+   "reader": {
+    "calls": 68,
+    "cache_hits": 0
+   },
+   "mean_seconds_per_state": 0.813,
+   "wall_seconds": 155.7,
+   "llm": {
+    "m1": {
+     "model_id": "claude-opus-5",
+     "thinking": "disabled",
+     "calls_to_provider": 68,
+     "cache_hits": 316,
+     "prompt_tokens": 337537,
+     "completion_tokens": 30020
+    }
+   }
+  },
+  "qwen38": {
+   "model": "qwen38",
+   "n_states": 525,
+   "errors": 0,
+   "status": {
+    "executed": 350,
+    "escalated": 175
+   },
+   "escalation_reasons": {
+    "needs_outside_information": 105,
+    "unresolvable": 59,
+    "iteration_cap": 11
+   },
+   "paperwork_states": 361,
+   "paperwork_first_pass_rate": 0.9668,
+   "paperwork_retries": 12,
+   "paperwork_escalations": 11,
+   "balance_on_paperwork_escalations": 3597.68,
+   "payer_rejected": 43,
+   "balance_rejected": 22276.3,
+   "payer_reasons": {
+    "appeal letter not supported by the records": 43
+   },
+   "reader": {
+    "calls": 67,
+    "cache_hits": 1
+   },
+   "mean_seconds_per_state": 6.754,
+   "wall_seconds": 636.9,
+   "llm": {
+    "model_id": "/models/Qwen3.8-27B-AWQ-INT4",
+    "calls_to_provider": 378,
+    "cache_hits": 6
+   }
+  }
+ }
+}

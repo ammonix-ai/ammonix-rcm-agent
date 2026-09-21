@@ -1,0 +1,66 @@
+{
+  "analysis": "V6-M3 in-harness kernel rollout (analysis only)",
+  "n_episodes": 300,
+  "tranche": 92,
+  "system": {
+    "episodes": 300,
+    "success_rate_v2": 0.52,
+    "mean_score": 0.5508,
+    "payer_collected_total": 65659.27,
+    "patient_collected_total": 24959.97,
+    "mean_touches": 2.563,
+    "episodes_with_mistakes": 6,
+    "resolutions": {
+      "paid": 15,
+      "paid_on_appeal": 13,
+      "paid_with_secondary": 78,
+      "patient_billed": 188,
+      "written_off": 3,
+      "written_off_at_cap": 3
+    }
+  },
+  "kernel": {
+    "episodes": 300,
+    "success_rate_v2": 0.5333,
+    "mean_score": 0.562,
+    "payer_collected_total": 66254.1,
+    "patient_collected_total": 26656.76,
+    "mean_touches": 2.617,
+    "episodes_with_mistakes": 3,
+    "resolutions": {
+      "paid": 15,
+      "paid_on_appeal": 13,
+      "paid_with_secondary": 79,
+      "patient_billed": 187,
+      "written_off": 4,
+      "written_off_at_cap": 2
+    }
+  },
+  "personas": {
+    "episodes": 300,
+    "success_rate_v2": 0.36,
+    "mean_score": 0.3925,
+    "payer_collected_total": 48344.4,
+    "patient_collected_total": 18518.26,
+    "mean_touches": 2.54,
+    "episodes_with_mistakes": 64,
+    "resolutions": {
+      "paid": 15,
+      "written_off": 99,
+      "patient_billed": 158,
+      "paid_on_appeal": 3,
+      "paid_with_secondary": 21,
+      "written_off_at_cap": 4
+    }
+  },
+  "dollars": {
+    "system": 90619.24,
+    "kernel": 92910.86,
+    "personas": 66862.66
+  },
+  "escalated_touches": {
+    "system": 98,
+    "kernel": 99
+  },
+  "divergent_episodes": 84
+}

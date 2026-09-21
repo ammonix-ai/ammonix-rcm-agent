@@ -1,0 +1,15 @@
+running P2_k10 (prompt P2, k=10)...
+{
+ "success_rate_v2": 0.37,
+ "payer_collected_capped": 37558.98,
+ "episodes_with_mistakes": 4,
+ "wall_seconds": 79.9
+}
+running P2_k50 (prompt P2, k=50)...
+{
+ "success_rate_v2": 0.39,
+ "payer_collected_capped": 40437.56,
+ "episodes_with_mistakes": 8,
+ "wall_seconds": 392.2
+}
+winner so far: {"config": "P2_k50", "prompt_variant": "P2", "retrieval_k": 50, "rule": "success_rate_v2, then payer_collected_capped, then fewer mistake episodes"}

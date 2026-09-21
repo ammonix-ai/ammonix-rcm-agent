@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\":\"Prior auth is not required for this CPT, diagnosis pairing is valid, eligibility is active, COB order is correct, and no denial exists. The claim is clean and within timely filing. Submit as-is to the primary payer.\",\"action\":\"submit_clean\"}", "usage": {"prompt_tokens": 1333, "completion_tokens": 93}}

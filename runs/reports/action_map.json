@@ -1,0 +1,35 @@
+{
+  "milestone": "P5",
+  "raw_inventory": [
+    "appeal_with_necessity",
+    "bill_patient",
+    "bill_secondary",
+    "correct_and_resubmit",
+    "provide_requested_info",
+    "request_peer_to_peer",
+    "request_retro_auth",
+    "submit_clean",
+    "submit_with_records",
+    "write_off"
+  ],
+  "unmapped": [],
+  "merges": [],
+  "coverage": {
+    "states_total": 11427,
+    "counts": {
+      "submit_clean": 3685,
+      "submit_with_records": 1821,
+      "request_retro_auth": 239,
+      "correct_and_resubmit": 194,
+      "appeal_with_necessity": 898,
+      "request_peer_to_peer": 219,
+      "provide_requested_info": 118,
+      "bill_secondary": 223,
+      "bill_patient": 2551,
+      "write_off": 1479
+    },
+    "min_states_per_action": 100,
+    "violations": []
+  },
+  "dropped_before_training": []
+}

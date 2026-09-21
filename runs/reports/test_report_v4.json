@@ -1,0 +1,122 @@
+{
+  "report_id": "cardessa-final-v4-preregistered",
+  "evaluated_at": "2026-07-21T18:50:16.022210+00:00",
+  "kept_tokenizer_round": 3,
+  "exam_states_hash": "14132733925870422918",
+  "trap_results": {
+    "P1_success_not_imitation": false,
+    "P2_no_leakage": true,
+    "P3_determinism": true,
+    "P4_calibration": true,
+    "P5_ood_honesty": true,
+    "P6_honest_near_ties": false,
+    "P7_coverage_discipline": true,
+    "P8_form_fidelity": true,
+    "NEW_no_self_mistakes": false,
+    "ROLLOUT_collections_vs_personas": true,
+    "ROLLOUT_mistakes_not_worse": true,
+    "ROLLOUT_system_oracle_regret": false,
+    "ROLLOUT_doomed_flagged_100pct": true,
+    "V4_no_payer_overpayment": true,
+    "V4_policy_never_resubmits_paid": true,
+    "V4_letters_match_money": true,
+    "V4_deductible_heavy_ev_uplift": false,
+    "V4_abandoned_share_max_10pct": true
+  },
+  "detail": {
+    "P1": {
+      "rate": 0.6310679611650486,
+      "n_moments": 103,
+      "hits": 65
+    },
+    "P4": {
+      "ece": 0.026129200470303402,
+      "n_own_states": 1014
+    },
+    "P5": {
+      "holdout": 12,
+      "silent": 0
+    },
+    "P6": {
+      "flat_states": 88,
+      "flagged": 29,
+      "agreement": 0.32954545454545453
+    },
+    "P7": {
+      "violations": []
+    },
+    "P8": {
+      "checked": 544,
+      "failures": 0
+    },
+    "self_mistakes": [
+      "ep-05011-s0: submit into open retro window",
+      "ep-05022-s0: submit into open retro window",
+      "ep-05039-s0: submit into open retro window",
+      "ep-05054-s0: submit into open retro window",
+      "ep-05055-s0: submit into open retro window",
+      "ep-05080-s0: submit into open retro window",
+      "ep-05086-s0: submit into open retro window",
+      "ep-05093-s0: submit into open retro window",
+      "ep-05098-s1: submit into open retro window",
+      "ep-05402-s0: submit into open retro window"
+    ],
+    "system_oracle_regret": 0.33455284552845527,
+    "doom": {
+      "n_doomed_episodes": 213,
+      "flag_rate": 1.0
+    },
+    "rollout": {
+      "system": {
+        "episodes": 500,
+        "success_rate_v2": 0.446,
+        "mean_score": 0.4714,
+        "payer_collected_total": 88696.88,
+        "patient_collected_total": 52976.28,
+        "mean_touches": 2.45,
+        "episodes_with_mistakes": 11,
+        "resolutions": {
+          "paid": 38,
+          "patient_billed": 336,
+          "paid_with_secondary": 105,
+          "paid_on_appeal": 7,
+          "written_off": 6,
+          "written_off_at_cap": 8
+        }
+      },
+      "personas": {
+        "episodes": 500,
+        "success_rate_v2": 0.294,
+        "mean_score": 0.3219,
+        "payer_collected_total": 60414.27,
+        "patient_collected_total": 27217.38,
+        "mean_touches": 2.362,
+        "episodes_with_mistakes": 83,
+        "resolutions": {
+          "paid": 39,
+          "written_off": 207,
+          "patient_billed": 226,
+          "paid_on_appeal": 4,
+          "paid_with_secondary": 18,
+          "written_off_at_cap": 6
+        }
+      },
+      "dollars": {
+        "system": 141673.16,
+        "personas": 87631.65
+      }
+    },
+    "v4": {
+      "overpaid": [],
+      "system_resubmits_after_paid": 0,
+      "letter_violations": [],
+      "deductible_heavy": {
+        "n_episodes": 80,
+        "system_v2_dollars": 6642.0,
+        "no_ev_baseline_v2_dollars": 5255.85,
+        "uplift": 1.264,
+        "abandoned_share_fraction": 0.0
+      }
+    }
+  }
+}

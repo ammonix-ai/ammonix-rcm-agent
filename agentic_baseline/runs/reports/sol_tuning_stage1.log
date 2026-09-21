@@ -1,0 +1,22 @@
+running P0_k25 (prompt P0, k=25)...
+{
+ "success_rate_v2": 0.38,
+ "payer_collected_capped": 39665.07,
+ "episodes_with_mistakes": 9,
+ "wall_seconds": 402.3
+}
+running P1_k25 (prompt P1, k=25)...
+{
+ "success_rate_v2": 0.37,
+ "payer_collected_capped": 38584.06,
+ "episodes_with_mistakes": 5,
+ "wall_seconds": 396.2
+}
+running P2_k25 (prompt P2, k=25)...
+{
+ "success_rate_v2": 0.38,
+ "payer_collected_capped": 39996.71,
+ "episodes_with_mistakes": 13,
+ "wall_seconds": 458.4
+}
+winner so far: {"config": "P2_k25", "prompt_variant": "P2", "retrieval_k": 25, "rule": "success_rate_v2, then payer_collected_capped, then fewer mistake episodes"}

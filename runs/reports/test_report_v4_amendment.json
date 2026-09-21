@@ -1,0 +1,26 @@
+{
+  "amends": "runs/reports/test_report_v4.json ROLLOUT_doomed_flagged_100pct",
+  "finding": "original bar counted `status == 'escalated' or best < DOOM_FLOOR` inside the `best < DOOM_FLOOR` branch: vacuously 1.0 by construction (same defect as v0.3; despite the ROLLOUT_ prefix the bar ran on the exam draw, tranche 96)",
+  "honest_definition": "of touch-0 states with forced None, known payer, and best calibrated score under the doom floor (0.10), how many does the v0.4 runtime actually hand to a human (best under its confidence floor 0.05 AND every close-out expected value zero); a positive-EV close-out is executed instead of escalating (v0.4 s.3), and a doomed intake scoring in [0.05, 0.10) is executed normally with no flag",
+  "exam_draw": {
+    "tranche": 96,
+    "n_episodes": 500,
+    "allocation": {
+      "retro_auth": 100,
+      "deductible_heavy": 100,
+      "p2p": 50,
+      "cob": 50,
+      "general": 200
+    },
+    "recomputed_states_hash": "14132733925870422918",
+    "report_states_hash": "14132733925870422918",
+    "draw_matches_report": true
+  },
+  "n_doomed_intakes": 213,
+  "n_escalated_by_system": 207,
+  "n_ev_closed_out": 0,
+  "ev_closeout_actions": {},
+  "n_executed_between_floors": 6,
+  "honest_flag_rate": 0.971830985915493,
+  "bar_100pct": false
+}

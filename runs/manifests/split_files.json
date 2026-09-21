@@ -1,0 +1,18 @@
+[
+  {
+    "path": "data/working/cardessa_sim/episodes.parquet",
+    "sha256": "330d81b10765951ef395258763958ffd6ff9410c36bd369fa5966996ef747fcd"
+  },
+  {
+    "path": "data/working/cardessa_sim/states.parquet",
+    "sha256": "8e532e7bfad3bbb540e84c96d9133e477ecf616152bb0631ce9e801bf247d7ab"
+  },
+  {
+    "path": "data/reserve/cardessa_sim/episodes.parquet",
+    "sha256": "b4682b77c9a72a0a01375a8da6287eaa4cc641e48610e2e4225b6413da5726a6"
+  },
+  {
+    "path": "data/reserve/cardessa_sim/states.parquet",
+    "sha256": "90331f2b6ebb29024255715f693b0c1f0af786b7a800a2e74fe9b46a86c7fa1c"
+  }
+]

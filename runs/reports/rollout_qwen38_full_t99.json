@@ -1,0 +1,95 @@
+{
+ "analysis": "every arm writes its paperwork through one shared writer; the payer adjudicates it",
+ "tranche": 99,
+ "n_episodes": 300,
+ "writer": "ornith_ft",
+ "reviewer": "claude-haiku-4-5-20251001",
+ "wall_seconds": 1418.1,
+ "llm": {
+  "writer": {
+   "model_id": "local/Ornith-1.5-9B-rcm-r2",
+   "served_id": "cache-only",
+   "thinking": "disabled (template kwarg; <think> stripped)",
+   "calls_to_provider": 0,
+   "cache_hits": 1830,
+   "prompt_tokens": 698204,
+   "completion_tokens": 92851
+  },
+  "reader_calls": 0,
+  "reader_cache_hits": 102
+ },
+ "policies": {
+  "agentic": {
+   "decisions": 1046,
+   "retries": 36,
+   "escalations_explicit": 224,
+   "escalations_forced": 0,
+   "decision_errors": 0,
+   "llm": {
+    "model_id": "/models/Qwen3.8-27B-AWQ-INT4",
+    "calls_to_provider": 0,
+    "cache_hits": 1082,
+    "prompt_tokens": 765300,
+    "completion_tokens": 127219
+   }
+  },
+  "agentic_rag": {
+   "decisions": 935,
+   "retries": 37,
+   "escalations_explicit": 155,
+   "escalations_forced": 6,
+   "decision_errors": 0,
+   "llm": {
+    "model_id": "/models/Qwen3.8-27B-AWQ-INT4",
+    "calls_to_provider": 0,
+    "cache_hits": 972,
+    "prompt_tokens": 989399,
+    "completion_tokens": 137285
+   }
+  }
+ },
+ "agentic": {
+  "episodes": 300,
+  "success_rate_v2": 0.33,
+  "mean_score": 0.3737,
+  "payer_collected_capped": 57952.84,
+  "patient_collected_total": 14483.52,
+  "mean_touches": 3.53,
+  "episodes_with_mistakes": 124,
+  "touches_written": 755,
+  "touches_handed_off": 291,
+  "paperwork_rejected": 13,
+  "episodes_with_rejection": 13,
+  "balance_rejected": 5191.03,
+  "resolutions": {
+   "paid": 31,
+   "written_off": 108,
+   "patient_billed": 119,
+   "paid_on_appeal": 2,
+   "paid_with_secondary": 27,
+   "written_off_at_cap": 13
+  }
+ },
+ "agentic_rag": {
+  "episodes": 300,
+  "success_rate_v2": 0.4367,
+  "mean_score": 0.4723,
+  "payer_collected_capped": 62614.24,
+  "patient_collected_total": 17190.18,
+  "mean_touches": 3.13,
+  "episodes_with_mistakes": 80,
+  "touches_written": 724,
+  "touches_handed_off": 211,
+  "paperwork_rejected": 21,
+  "episodes_with_rejection": 18,
+  "balance_rejected": 8981.93,
+  "resolutions": {
+   "paid": 30,
+   "written_off": 62,
+   "patient_billed": 152,
+   "paid_on_appeal": 4,
+   "paid_with_secondary": 48,
+   "written_off_at_cap": 4
+  }
+ }
+}

@@ -1,0 +1,1336 @@
+[
+  {
+    "tribe_id": "appeal_with_necessity::t0",
+    "action_id": "appeal_with_necessity",
+    "centroid": {
+      "appeal_with_necessity": 0.30901434967520486,
+      "bill_patient": 0.006023608505685921,
+      "correct_and_resubmit": 0.67437950140698,
+      "provide_requested_info": 0.3900554105104611,
+      "request_peer_to_peer": 0.036219799543521336,
+      "request_retro_auth": 0.5851884375612019,
+      "submit_clean": 0.3444664100470574,
+      "submit_with_records": 0.5155562963932573
+    },
+    "member_count": 220,
+    "stats": {
+      "n_states": 220,
+      "success_rate": 0.33636363636363636,
+      "top2_margin": 0.12386216044504117,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "appeal_with_necessity::t1",
+    "action_id": "appeal_with_necessity",
+    "centroid": {
+      "appeal_with_necessity": 0.045493221396562485,
+      "bill_patient": 0.01183143213425721,
+      "correct_and_resubmit": 0.034759358288770054,
+      "provide_requested_info": 0.047058823529411764,
+      "request_peer_to_peer": 0.025951557093425608,
+      "request_retro_auth": 0.5377232474150297,
+      "submit_clean": 0.02786245150377884,
+      "submit_with_records": 0.13456498602662545
+    },
+    "member_count": 17,
+    "stats": {
+      "n_states": 17,
+      "success_rate": 0.058823529411764705,
+      "top2_margin": 0.37763837710474735,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "appeal_with_necessity::t2",
+    "action_id": "appeal_with_necessity",
+    "centroid": {
+      "appeal_with_necessity": 0.004901960784313725,
+      "bill_patient": 0.005369326093010303,
+      "correct_and_resubmit": 0.030303030303030293,
+      "provide_requested_info": 0.2000000000000001,
+      "request_peer_to_peer": 0.01815861170552722,
+      "request_retro_auth": 0.01733333333333333,
+      "submit_clean": 0.005778931803285925,
+      "submit_with_records": 0.006351446718419194
+    },
+    "member_count": 30,
+    "stats": {
+      "n_states": 30,
+      "success_rate": 0.0,
+      "top2_margin": 0.15610908992253988,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "appeal_with_necessity::t3",
+    "action_id": "appeal_with_necessity",
+    "centroid": {
+      "appeal_with_necessity": 0.004010695187165776,
+      "bill_patient": 0.005137662664398033,
+      "correct_and_resubmit": 0.024968497575717875,
+      "provide_requested_info": 0.001154679388855089,
+      "request_peer_to_peer": 0.023081872055507876,
+      "request_retro_auth": 0.011295416185351218,
+      "submit_clean": 0.0029435311237462156,
+      "submit_with_records": 0.01233486458275611
+    },
+    "member_count": 88,
+    "stats": {
+      "n_states": 88,
+      "success_rate": 0.0,
+      "top2_margin": 0.01899110373767563,
+      "ambiguous": true,
+      "rival_action_id": "appeal_with_necessity"
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "bill_patient::t0",
+    "action_id": "bill_patient",
+    "centroid": {
+      "appeal_with_necessity": 0.26124390817968723,
+      "bill_patient": 0.6451650143920892,
+      "correct_and_resubmit": 0.5820205028833345,
+      "provide_requested_info": 0.24871156471549566,
+      "request_peer_to_peer": 0.30841074038359184,
+      "request_retro_auth": 0.5682046307950711,
+      "submit_clean": 0.4298337821265949,
+      "submit_with_records": 0.5283018803290024
+    },
+    "member_count": 1529,
+    "stats": {
+      "n_states": 1529,
+      "success_rate": 0.6481360366252452,
+      "top2_margin": 0.09081033404555898,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "bill_patient::t1",
+    "action_id": "bill_patient",
+    "centroid": {
+      "appeal_with_necessity": 0.10166103991441504,
+      "bill_patient": 0.0036223370927318294,
+      "correct_and_resubmit": 0.01568596473026903,
+      "provide_requested_info": 0.0380952380952381,
+      "request_peer_to_peer": 0.8590095896718013,
+      "request_retro_auth": 0.5688272278456528,
+      "submit_clean": 0.04769170850374919,
+      "submit_with_records": 0.05200731808111738
+    },
+    "member_count": 21,
+    "stats": {
+      "n_states": 21,
+      "success_rate": 0.0,
+      "top2_margin": 0.2901823618261483,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "bill_patient::t2",
+    "action_id": "bill_patient",
+    "centroid": {
+      "appeal_with_necessity": 0.27037268184161917,
+      "bill_patient": 0.00878924564813394,
+      "correct_and_resubmit": 0.5590851156433514,
+      "provide_requested_info": 0.15136925205144203,
+      "request_peer_to_peer": 0.03803339517625234,
+      "request_retro_auth": 0.5690871588701467,
+      "submit_clean": 0.26002814441024513,
+      "submit_with_records": 0.5090959980802382
+    },
+    "member_count": 49,
+    "stats": {
+      "n_states": 49,
+      "success_rate": 0.02040816326530612,
+      "top2_margin": 0.046667250982629443,
+      "ambiguous": true,
+      "rival_action_id": "submit_with_records"
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "bill_patient::t3",
+    "action_id": "bill_patient",
+    "centroid": {
+      "appeal_with_necessity": 0.3113778067268097,
+      "bill_patient": 0.0034771825396825396,
+      "correct_and_resubmit": 0.5567361111111111,
+      "provide_requested_info": 0.27227973863601895,
+      "request_peer_to_peer": 0.3134928229665071,
+      "request_retro_auth": 0.5862007391967683,
+      "submit_clean": 0.14926796561855046,
+      "submit_with_records": 0.02026541569787378
+    },
+    "member_count": 25,
+    "stats": {
+      "n_states": 25,
+      "success_rate": 0.0,
+      "top2_margin": 0.04968718906126671,
+      "ambiguous": true,
+      "rival_action_id": "correct_and_resubmit"
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "bill_patient::t4",
+    "action_id": "bill_patient",
+    "centroid": {
+      "appeal_with_necessity": 0.11407527874865668,
+      "bill_patient": 0.007537652000371298,
+      "correct_and_resubmit": 0.012626262626262626,
+      "provide_requested_info": 0.0,
+      "request_peer_to_peer": 0.24971317241055171,
+      "request_retro_auth": 0.5621661423690991,
+      "submit_clean": 0.020276822268840027,
+      "submit_with_records": 0.02863546110936177
+    },
+    "member_count": 54,
+    "stats": {
+      "n_states": 54,
+      "success_rate": 0.0,
+      "top2_margin": 0.2966469352201906,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "bill_patient::t5",
+    "action_id": "bill_patient",
+    "centroid": {
+      "appeal_with_necessity": 0.03761962794511376,
+      "bill_patient": 0.0025613349780701754,
+      "correct_and_resubmit": 0.017045454545454548,
+      "provide_requested_info": 0.0,
+      "request_peer_to_peer": 0.3322350478878266,
+      "request_retro_auth": 0.29999999999999993,
+      "submit_clean": 0.021625443234748087,
+      "submit_with_records": 0.017858044557467208
+    },
+    "member_count": 16,
+    "stats": {
+      "n_states": 16,
+      "success_rate": 0.0,
+      "top2_margin": 0.039053229706008497,
+      "ambiguous": true,
+      "rival_action_id": "request_retro_auth"
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "bill_patient::t6",
+    "action_id": "bill_patient",
+    "centroid": {
+      "appeal_with_necessity": 0.006274509803921569,
+      "bill_patient": 0.004034130465051518,
+      "correct_and_resubmit": 0.013939393939393935,
+      "provide_requested_info": 0.0,
+      "request_peer_to_peer": 0.3302549029176038,
+      "request_retro_auth": 0.013333333333333336,
+      "submit_clean": 0.005902333298157685,
+      "submit_with_records": 0.009566008809286253
+    },
+    "member_count": 75,
+    "stats": {
+      "n_states": 75,
+      "success_rate": 0.0,
+      "top2_margin": 0.3005996183603941,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "bill_patient::t7",
+    "action_id": "bill_patient",
+    "centroid": {
+      "appeal_with_necessity": 0.01050420168067227,
+      "bill_patient": 0.0067640268826828975,
+      "correct_and_resubmit": 0.02272727272727272,
+      "provide_requested_info": 0.0007293835206413931,
+      "request_peer_to_peer": 0.027827657950230796,
+      "request_retro_auth": 0.012380952380952378,
+      "submit_clean": 0.005282916382142974,
+      "submit_with_records": 0.008956947829140173
+    },
+    "member_count": 42,
+    "stats": {
+      "n_states": 42,
+      "success_rate": 0.023809523809523808,
+      "top2_margin": 0.015537550368029724,
+      "ambiguous": true,
+      "rival_action_id": "appeal_with_necessity"
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "correct_and_resubmit::t0",
+    "action_id": "correct_and_resubmit",
+    "centroid": {
+      "appeal_with_necessity": 0.06934584978618265,
+      "bill_patient": 0.017992149548253348,
+      "correct_and_resubmit": 0.027422371866816304,
+      "provide_requested_info": 0.055555555555555566,
+      "request_peer_to_peer": 0.23599173816124697,
+      "request_retro_auth": 0.3428231171342696,
+      "submit_clean": 0.025555163729234966,
+      "submit_with_records": 0.07957851011669713
+    },
+    "member_count": 54,
+    "stats": {
+      "n_states": 54,
+      "success_rate": 0.018518518518518517,
+      "top2_margin": 0.23522290913528182,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "correct_and_resubmit::t1",
+    "action_id": "correct_and_resubmit",
+    "centroid": {
+      "appeal_with_necessity": 0.3232264119922829,
+      "bill_patient": 0.029582301637628206,
+      "correct_and_resubmit": 0.6859308302391952,
+      "provide_requested_info": 0.41556981614704336,
+      "request_peer_to_peer": 0.21089301728110665,
+      "request_retro_auth": 0.6039771160122563,
+      "submit_clean": 0.6523263427908146,
+      "submit_with_records": 0.6715355674636149
+    },
+    "member_count": 83,
+    "stats": {
+      "n_states": 83,
+      "success_rate": 0.7469879518072289,
+      "top2_margin": 0.07455631445370024,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "provide_requested_info::t0",
+    "action_id": "provide_requested_info",
+    "centroid": {
+      "appeal_with_necessity": 0.3431012780635474,
+      "bill_patient": 0.04281507529657429,
+      "correct_and_resubmit": 0.7058630659778514,
+      "provide_requested_info": 0.4350601779173205,
+      "request_peer_to_peer": 0.18598267574378577,
+      "request_retro_auth": 0.6138464449540616,
+      "submit_clean": 0.6769240113112185,
+      "submit_with_records": 0.6980376016681705
+    },
+    "member_count": 63,
+    "stats": {
+      "n_states": 63,
+      "success_rate": 0.4603174603174603,
+      "top2_margin": 0.08761685579654861,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "provide_requested_info::t1",
+    "action_id": "provide_requested_info",
+    "centroid": {
+      "appeal_with_necessity": 0.044356915175273064,
+      "bill_patient": 0.01213804394491181,
+      "correct_and_resubmit": 0.032323232323232316,
+      "provide_requested_info": 0.07936507936507936,
+      "request_peer_to_peer": 0.1926759062567453,
+      "request_retro_auth": 0.17888599978392808,
+      "submit_clean": 0.030552477164365138,
+      "submit_with_records": 0.025113998942604524
+    },
+    "member_count": 36,
+    "stats": {
+      "n_states": 36,
+      "success_rate": 0.0,
+      "top2_margin": 0.15275876198701288,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "request_peer_to_peer::t0",
+    "action_id": "request_peer_to_peer",
+    "centroid": {
+      "appeal_with_necessity": 0.005756263362754236,
+      "bill_patient": 0.13758988887448498,
+      "correct_and_resubmit": 0.089272030651341,
+      "provide_requested_info": 0.09753694581280788,
+      "request_peer_to_peer": 0.12384062682984427,
+      "request_retro_auth": 0.015172413793103447,
+      "submit_clean": 0.0035251328908022044,
+      "submit_with_records": 0.024767117816022026
+    },
+    "member_count": 29,
+    "stats": {
+      "n_states": 29,
+      "success_rate": 0.13793103448275862,
+      "top2_margin": 0.19158526291818245,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "request_peer_to_peer::t1",
+    "action_id": "request_peer_to_peer",
+    "centroid": {
+      "appeal_with_necessity": 0.2758685251274241,
+      "bill_patient": 0.04239182441279474,
+      "correct_and_resubmit": 0.7257291966886034,
+      "provide_requested_info": 0.3970096439326741,
+      "request_peer_to_peer": 0.07720385264889904,
+      "request_retro_auth": 0.5734224820047767,
+      "submit_clean": 0.5478203084667439,
+      "submit_with_records": 0.4579518583269851
+    },
+    "member_count": 104,
+    "stats": {
+      "n_states": 104,
+      "success_rate": 0.07692307692307693,
+      "top2_margin": 0.13066829758390555,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "request_peer_to_peer::t2",
+    "action_id": "request_peer_to_peer",
+    "centroid": {
+      "appeal_with_necessity": 0.13814951506859902,
+      "bill_patient": 0.04477648342347096,
+      "correct_and_resubmit": 0.09071471291866026,
+      "provide_requested_info": 0.08421052631578947,
+      "request_peer_to_peer": 0.10244986939626015,
+      "request_retro_auth": 0.5635872692665221,
+      "submit_clean": 0.022332544473836494,
+      "submit_with_records": 0.1112061130909263
+    },
+    "member_count": 19,
+    "stats": {
+      "n_states": 19,
+      "success_rate": 0.05263157894736842,
+      "top2_margin": 0.3422349574463495,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "request_retro_auth::t0",
+    "action_id": "request_retro_auth",
+    "centroid": {
+      "appeal_with_necessity": 0.42215394454990884,
+      "bill_patient": 0.02110690839151894,
+      "correct_and_resubmit": 0.6827279928195739,
+      "provide_requested_info": 0.6307420882540212,
+      "request_peer_to_peer": 0.1787139641877844,
+      "request_retro_auth": 0.6060588719348712,
+      "submit_clean": 0.48922090188811224,
+      "submit_with_records": 0.2681688030363556
+    },
+    "member_count": 137,
+    "stats": {
+      "n_states": 137,
+      "success_rate": 0.6496350364963503,
+      "top2_margin": 0.12265642606431003,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "request_retro_auth::t1",
+    "action_id": "request_retro_auth",
+    "centroid": {
+      "appeal_with_necessity": 0.06096395075164212,
+      "bill_patient": 0.016817346537986763,
+      "correct_and_resubmit": 0.05707950143932852,
+      "provide_requested_info": 0.09253731343283587,
+      "request_peer_to_peer": 0.19101337758354686,
+      "request_retro_auth": 0.14155254007506618,
+      "submit_clean": 0.034800517048654264,
+      "submit_with_records": 0.022688971966548028
+    },
+    "member_count": 67,
+    "stats": {
+      "n_states": 67,
+      "success_rate": 0.13432835820895522,
+      "top2_margin": 0.1273656136172335,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t0",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.010333863275039747,
+      "bill_patient": 0.005488866919363512,
+      "correct_and_resubmit": 0.007177033492822966,
+      "provide_requested_info": 0.021052631578947368,
+      "request_peer_to_peer": 0.8233347924570871,
+      "request_retro_auth": 0.050210348647942465,
+      "submit_clean": 0.003575368930504342,
+      "submit_with_records": 0.009440140272321961
+    },
+    "member_count": 19,
+    "stats": {
+      "n_states": 19,
+      "success_rate": 0.0,
+      "top2_margin": 0.7530271085089402,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t1",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.01561917437241546,
+      "bill_patient": 0.012953151403198828,
+      "correct_and_resubmit": 0.0314183076648208,
+      "provide_requested_info": 0.1999999999999995,
+      "request_peer_to_peer": 0.2876350547378198,
+      "request_retro_auth": 0.017181208053691284,
+      "submit_clean": 0.005224358803462604,
+      "submit_with_records": 0.016687402568707644
+    },
+    "member_count": 149,
+    "stats": {
+      "n_states": 149,
+      "success_rate": 0.0,
+      "top2_margin": 0.09495343532782463,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t2",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.0054466230936819175,
+      "bill_patient": 0.023042270026919148,
+      "correct_and_resubmit": 0.03367003367003366,
+      "provide_requested_info": 0.19671962982749153,
+      "request_peer_to_peer": 0.040849673202614366,
+      "request_retro_auth": 0.014814814814814814,
+      "submit_clean": 0.0019771659469609852,
+      "submit_with_records": 0.01301314356137607
+    },
+    "member_count": 27,
+    "stats": {
+      "n_states": 27,
+      "success_rate": 0.0,
+      "top2_margin": 0.14515774057497033,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t3",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.016648168701442843,
+      "bill_patient": 0.009780987452909,
+      "correct_and_resubmit": 0.018724361515038125,
+      "provide_requested_info": 0.0,
+      "request_peer_to_peer": 0.18028808968203802,
+      "request_retro_auth": 0.010566037735849056,
+      "submit_clean": 0.00842078416948071,
+      "submit_with_records": 0.008227288401045212
+    },
+    "member_count": 53,
+    "stats": {
+      "n_states": 53,
+      "success_rate": 0.0,
+      "top2_margin": 0.1410664607138292,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t4",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.05807623646525798,
+      "bill_patient": 0.012002557637373002,
+      "correct_and_resubmit": 0.02495455309261479,
+      "provide_requested_info": 0.09201984110370294,
+      "request_peer_to_peer": 0.2861820078403517,
+      "request_retro_auth": 0.29948813750703657,
+      "submit_clean": 0.01761750474951387,
+      "submit_with_records": 0.03263631997495311
+    },
+    "member_count": 62,
+    "stats": {
+      "n_states": 62,
+      "success_rate": 0.016129032258064516,
+      "top2_margin": 0.052754129798588824,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t5",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.012195646591478876,
+      "bill_patient": 0.006729714912280702,
+      "correct_and_resubmit": 0.04545454545454543,
+      "provide_requested_info": 0.0,
+      "request_peer_to_peer": 0.04080882352941177,
+      "request_retro_auth": 0.004,
+      "submit_clean": 0.003801131228315694,
+      "submit_with_records": 0.005112032462949894
+    },
+    "member_count": 40,
+    "stats": {
+      "n_states": 40,
+      "success_rate": 0.0,
+      "top2_margin": 0.002979821189839571,
+      "ambiguous": true,
+      "rival_action_id": "request_peer_to_peer"
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t6",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.01715686274509804,
+      "bill_patient": 0.00412032755764504,
+      "correct_and_resubmit": 0.0,
+      "provide_requested_info": 0.0,
+      "request_peer_to_peer": 0.04411764705882354,
+      "request_retro_auth": 0.005555555555555556,
+      "submit_clean": 0.006693586790674166,
+      "submit_with_records": 0.006797420214851407
+    },
+    "member_count": 36,
+    "stats": {
+      "n_states": 36,
+      "success_rate": 0.027777777777777776,
+      "top2_margin": 0.019071978459447445,
+      "ambiguous": true,
+      "rival_action_id": "appeal_with_necessity"
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t7",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.0076726342710997444,
+      "bill_patient": 0.0036717263074367568,
+      "correct_and_resubmit": 0.04545454545454544,
+      "provide_requested_info": 0.0,
+      "request_peer_to_peer": 0.27272727272727254,
+      "request_retro_auth": 0.0017391304347826088,
+      "submit_clean": 0.003726816728083086,
+      "submit_with_records": 0.0032677733116504557
+    },
+    "member_count": 23,
+    "stats": {
+      "n_states": 23,
+      "success_rate": 0.0,
+      "top2_margin": 0.2272727272727273,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t8",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.010835913312693499,
+      "bill_patient": 0.0021569136657433054,
+      "correct_and_resubmit": 0.0,
+      "provide_requested_info": 0.0,
+      "request_peer_to_peer": 0.27341857884049936,
+      "request_retro_auth": 0.0,
+      "submit_clean": 0.010230998690505196,
+      "submit_with_records": 0.004967871336775248
+    },
+    "member_count": 19,
+    "stats": {
+      "n_states": 19,
+      "success_rate": 0.0,
+      "top2_margin": 0.2543445513115624,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t9",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.01011029411764706,
+      "bill_patient": 0.0017748907270949948,
+      "correct_and_resubmit": 0.0,
+      "provide_requested_info": 0.0,
+      "request_peer_to_peer": 0.34090084104817564,
+      "request_retro_auth": 0.040000000000000015,
+      "submit_clean": 0.0025775168372255755,
+      "submit_with_records": 0.008358327452364148
+    },
+    "member_count": 32,
+    "stats": {
+      "n_states": 32,
+      "success_rate": 0.0,
+      "top2_margin": 0.3009008410481755,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t10",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.00529574458469065,
+      "bill_patient": 0.0048098878099801885,
+      "correct_and_resubmit": 0.045454545454545435,
+      "provide_requested_info": 0.0033055026889801673,
+      "request_peer_to_peer": 0.3385964912280703,
+      "request_retro_auth": 0.0,
+      "submit_clean": 0.004582252155067689,
+      "submit_with_records": 0.004487179487179488
+    },
+    "member_count": 30,
+    "stats": {
+      "n_states": 30,
+      "success_rate": 0.0,
+      "top2_margin": 0.29314194577352465,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t11",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.029411764705882353,
+      "bill_patient": 0.0014086866471734892,
+      "correct_and_resubmit": 0.0,
+      "provide_requested_info": 0.0,
+      "request_peer_to_peer": 0.34015594541910327,
+      "request_retro_auth": 0.0,
+      "submit_clean": 0.0010787486515641857,
+      "submit_with_records": 0.004273504273504274
+    },
+    "member_count": 18,
+    "stats": {
+      "n_states": 18,
+      "success_rate": 0.0,
+      "top2_margin": 0.31074418071322096,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t12",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.2994766040904992,
+      "bill_patient": 0.03694323123986437,
+      "correct_and_resubmit": 0.017314845564548247,
+      "provide_requested_info": 0.0,
+      "request_peer_to_peer": 0.033737024221453284,
+      "request_retro_auth": 0.569633404244793,
+      "submit_clean": 0.02514092406644425,
+      "submit_with_records": 0.018966232977993963
+    },
+    "member_count": 17,
+    "stats": {
+      "n_states": 17,
+      "success_rate": 0.0,
+      "top2_margin": 0.27015680015429383,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t13",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.0,
+      "bill_patient": 0.0,
+      "correct_and_resubmit": 0.0,
+      "provide_requested_info": 0.0,
+      "request_peer_to_peer": 0.34210526315789475,
+      "request_retro_auth": 0.0,
+      "submit_clean": 0.003236245954692558,
+      "submit_with_records": 0.0
+    },
+    "member_count": 15,
+    "stats": {
+      "n_states": 15,
+      "success_rate": 0.0,
+      "top2_margin": 0.3388690172032022,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t14",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.0,
+      "bill_patient": 0.0,
+      "correct_and_resubmit": 0.0,
+      "provide_requested_info": 0.0,
+      "request_peer_to_peer": 0.34210526315789497,
+      "request_retro_auth": 0.0,
+      "submit_clean": 0.0,
+      "submit_with_records": 0.0
+    },
+    "member_count": 33,
+    "stats": {
+      "n_states": 33,
+      "success_rate": 0.0,
+      "top2_margin": 0.34210526315789475,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t15",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.3169404558556636,
+      "bill_patient": 0.0162515664160401,
+      "correct_and_resubmit": 0.02406417112299466,
+      "provide_requested_info": 0.20000000000000004,
+      "request_peer_to_peer": 0.3298620883760202,
+      "request_retro_auth": 0.5449995022888519,
+      "submit_clean": 0.02711562820714702,
+      "submit_with_records": 0.01928917333852481
+    },
+    "member_count": 17,
+    "stats": {
+      "n_states": 17,
+      "success_rate": 0.0,
+      "top2_margin": 0.20503273064371463,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t16",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.3015707972037373,
+      "bill_patient": 0.0015888970110461338,
+      "correct_and_resubmit": 0.0179980782203965,
+      "provide_requested_info": 0.0,
+      "request_peer_to_peer": 0.3395357079567607,
+      "request_retro_auth": 0.5981142220217806,
+      "submit_clean": 0.014698295831164764,
+      "submit_with_records": 0.019670941456124295
+    },
+    "member_count": 27,
+    "stats": {
+      "n_states": 27,
+      "success_rate": 0.0,
+      "top2_margin": 0.2575570700422147,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t17",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.05394552992119018,
+      "bill_patient": 0.009142470285562391,
+      "correct_and_resubmit": 0.028925619834710745,
+      "provide_requested_info": 0.20000000000000007,
+      "request_peer_to_peer": 0.33184717993330426,
+      "request_retro_auth": 0.5171266916430918,
+      "submit_clean": 0.026924828655744838,
+      "submit_with_records": 0.03219249905425166
+    },
+    "member_count": 22,
+    "stats": {
+      "n_states": 22,
+      "success_rate": 0.045454545454545456,
+      "top2_margin": 0.18527951170978765,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t18",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.07699913255443543,
+      "bill_patient": 0.005856080846771016,
+      "correct_and_resubmit": 0.008576329331046314,
+      "provide_requested_info": 0.003382371699386652,
+      "request_peer_to_peer": 0.32615489167011297,
+      "request_retro_auth": 0.5550968709524239,
+      "submit_clean": 0.02142676103970684,
+      "submit_with_records": 0.018055650999608312
+    },
+    "member_count": 53,
+    "stats": {
+      "n_states": 53,
+      "success_rate": 0.0,
+      "top2_margin": 0.22894197928231153,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t19",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.44863627379119236,
+      "bill_patient": 0.027520883426314625,
+      "correct_and_resubmit": 0.8482904830105013,
+      "provide_requested_info": 1.0,
+      "request_peer_to_peer": 0.2956362317807463,
+      "request_retro_auth": 0.6089200028992757,
+      "submit_clean": 0.8323613014113274,
+      "submit_with_records": 0.7624442154516597
+    },
+    "member_count": 120,
+    "stats": {
+      "n_states": 120,
+      "success_rate": 0.8333333333333334,
+      "top2_margin": 0.10955360269439975,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t20",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.44287637391085677,
+      "bill_patient": 0.01447042620583962,
+      "correct_and_resubmit": 0.5832214266583776,
+      "provide_requested_info": 1.0,
+      "request_peer_to_peer": 0.15768201333696155,
+      "request_retro_auth": 0.6102937325009214,
+      "submit_clean": 0.6787636687675065,
+      "submit_with_records": 0.62516409015797
+    },
+    "member_count": 37,
+    "stats": {
+      "n_states": 37,
+      "success_rate": 0.7837837837837838,
+      "top2_margin": 0.304777846575901,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t21",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.2825104451125471,
+      "bill_patient": 0.0056891360345307715,
+      "correct_and_resubmit": 0.5396670015926499,
+      "provide_requested_info": 0.1964912280701753,
+      "request_peer_to_peer": 0.28087320856841613,
+      "request_retro_auth": 0.572516052628371,
+      "submit_clean": 0.14433631520284843,
+      "submit_with_records": 0.031233558778139943
+    },
+    "member_count": 57,
+    "stats": {
+      "n_states": 57,
+      "success_rate": 0.08771929824561403,
+      "top2_margin": 0.07680230306824161,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t22",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.37801493528711294,
+      "bill_patient": 0.013259355775803144,
+      "correct_and_resubmit": 0.578125,
+      "provide_requested_info": 0.5117285057101579,
+      "request_peer_to_peer": 0.3037449788519316,
+      "request_retro_auth": 0.5746616713816041,
+      "submit_clean": 0.2644168860684189,
+      "submit_with_records": 0.3972995571488755
+    },
+    "member_count": 33,
+    "stats": {
+      "n_states": 33,
+      "success_rate": 0.3333333333333333,
+      "top2_margin": 0.04453713577436084,
+      "ambiguous": true,
+      "rival_action_id": "request_retro_auth"
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t23",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.3600017109891281,
+      "bill_patient": 0.024009793099392482,
+      "correct_and_resubmit": 0.571886574074074,
+      "provide_requested_info": 0.19812514102103096,
+      "request_peer_to_peer": 0.2579079100166797,
+      "request_retro_auth": 0.5711775325230907,
+      "submit_clean": 0.5854160699027153,
+      "submit_with_records": 0.6311157536389543
+    },
+    "member_count": 150,
+    "stats": {
+      "n_states": 150,
+      "success_rate": 0.5666666666666667,
+      "top2_margin": 0.07336732518239464,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t24",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.3249160251156255,
+      "bill_patient": 0.015173355495166182,
+      "correct_and_resubmit": 0.8487521557270674,
+      "provide_requested_info": 0.43234387376166755,
+      "request_peer_to_peer": 0.3297641205590192,
+      "request_retro_auth": 0.5547015441396868,
+      "submit_clean": 0.7552877390972003,
+      "submit_with_records": 0.749396654483067
+    },
+    "member_count": 62,
+    "stats": {
+      "n_states": 62,
+      "success_rate": 0.8709677419354839,
+      "top2_margin": 0.0833299301564,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t25",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.38831059433865345,
+      "bill_patient": 0.025238411010112326,
+      "correct_and_resubmit": 0.8470240145150995,
+      "provide_requested_info": 0.7673416437112852,
+      "request_peer_to_peer": 0.29197622802610157,
+      "request_retro_auth": 0.6073596608938691,
+      "submit_clean": 0.8350693677722261,
+      "submit_with_records": 0.8056276573034471
+    },
+    "member_count": 99,
+    "stats": {
+      "n_states": 99,
+      "success_rate": 0.8888888888888888,
+      "top2_margin": 0.052188854163698575,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t26",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.38953136626833335,
+      "bill_patient": 0.017733505757765628,
+      "correct_and_resubmit": 0.5781500827035223,
+      "provide_requested_info": 0.4360289119019891,
+      "request_peer_to_peer": 0.3246755850850964,
+      "request_retro_auth": 0.5923906501158804,
+      "submit_clean": 0.6819616559521587,
+      "submit_with_records": 0.7044381945654238
+    },
+    "member_count": 88,
+    "stats": {
+      "n_states": 88,
+      "success_rate": 0.6931818181818182,
+      "top2_margin": 0.08161437741398338,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t27",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.4259176328141847,
+      "bill_patient": 0.014055815042657148,
+      "correct_and_resubmit": 0.578125,
+      "provide_requested_info": 0.7692307692307697,
+      "request_peer_to_peer": 0.3163922951698359,
+      "request_retro_auth": 0.6042510895328391,
+      "submit_clean": 0.6945015136483493,
+      "submit_with_records": 0.6860329303680041
+    },
+    "member_count": 33,
+    "stats": {
+      "n_states": 33,
+      "success_rate": 0.8181818181818182,
+      "top2_margin": 0.08340020097434511,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_clean::t28",
+    "action_id": "submit_clean",
+    "centroid": {
+      "appeal_with_necessity": 0.45959906951286267,
+      "bill_patient": 0.006041307696324143,
+      "correct_and_resubmit": 0.578125,
+      "provide_requested_info": 0.76339453402418,
+      "request_peer_to_peer": 0.038937165775401066,
+      "request_retro_auth": 0.6253748125937033,
+      "submit_clean": 0.6300762776329301,
+      "submit_with_records": 0.6643362776359106
+    },
+    "member_count": 16,
+    "stats": {
+      "n_states": 16,
+      "success_rate": 0.5625,
+      "top2_margin": 0.08047734653630739,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_with_records::t0",
+    "action_id": "submit_with_records",
+    "centroid": {
+      "appeal_with_necessity": 0.3517270771440136,
+      "bill_patient": 0.020571739461964483,
+      "correct_and_resubmit": 0.6688817661895898,
+      "provide_requested_info": 0.6134465166839579,
+      "request_peer_to_peer": 0.2289345818990552,
+      "request_retro_auth": 0.5831520946080468,
+      "submit_clean": 0.6706169534123982,
+      "submit_with_records": 0.6983198977399606
+    },
+    "member_count": 577,
+    "stats": {
+      "n_states": 577,
+      "success_rate": 0.7261698440207972,
+      "top2_margin": 0.09804686126963634,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_with_records::t1",
+    "action_id": "submit_with_records",
+    "centroid": {
+      "appeal_with_necessity": 0.39188911800954285,
+      "bill_patient": 0.013623983413442668,
+      "correct_and_resubmit": 0.5748236670749634,
+      "provide_requested_info": 0.5029296405338456,
+      "request_peer_to_peer": 0.21236421181384418,
+      "request_retro_auth": 0.5908795453511433,
+      "submit_clean": 0.3151509436147363,
+      "submit_with_records": 0.044088782876350145
+    },
+    "member_count": 140,
+    "stats": {
+      "n_states": 140,
+      "success_rate": 0.014285714285714285,
+      "top2_margin": 0.08070453509125557,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_with_records::t2",
+    "action_id": "submit_with_records",
+    "centroid": {
+      "appeal_with_necessity": 0.1587154123754604,
+      "bill_patient": 0.0052119481395797185,
+      "correct_and_resubmit": 0.018881118881118875,
+      "provide_requested_info": 0.0,
+      "request_peer_to_peer": 0.3257959091104279,
+      "request_retro_auth": 0.4914121696238706,
+      "submit_clean": 0.019503580852670566,
+      "submit_with_records": 0.014680256575956575
+    },
+    "member_count": 65,
+    "stats": {
+      "n_states": 65,
+      "success_rate": 0.0,
+      "top2_margin": 0.17544256748749634,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_with_records::t3",
+    "action_id": "submit_with_records",
+    "centroid": {
+      "appeal_with_necessity": 0.17758753479040393,
+      "bill_patient": 0.012982956879904684,
+      "correct_and_resubmit": 0.02861400894187778,
+      "provide_requested_info": 0.19999999999999982,
+      "request_peer_to_peer": 0.3042663567029863,
+      "request_retro_auth": 0.5024755469772527,
+      "submit_clean": 0.05771455024104351,
+      "submit_with_records": 0.032196718901745844
+    },
+    "member_count": 61,
+    "stats": {
+      "n_states": 61,
+      "success_rate": 0.0,
+      "top2_margin": 0.1927708787852083,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_with_records::t4",
+    "action_id": "submit_with_records",
+    "centroid": {
+      "appeal_with_necessity": 0.017020480688300754,
+      "bill_patient": 0.017170211857419564,
+      "correct_and_resubmit": 0.03704843685331955,
+      "provide_requested_info": 0.19912500885292403,
+      "request_peer_to_peer": 0.25129419614182646,
+      "request_retro_auth": 0.01763582307753106,
+      "submit_clean": 0.004218376657892889,
+      "submit_with_records": 0.011810343369604214
+    },
+    "member_count": 68,
+    "stats": {
+      "n_states": 68,
+      "success_rate": 0.0,
+      "top2_margin": 0.1069744221248612,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_with_records::t5",
+    "action_id": "submit_with_records",
+    "centroid": {
+      "appeal_with_necessity": 0.01897365060335166,
+      "bill_patient": 0.014611965364230251,
+      "correct_and_resubmit": 0.023413368489139882,
+      "provide_requested_info": 8.591312615953126e-05,
+      "request_peer_to_peer": 0.03869627834638169,
+      "request_retro_auth": 0.005245901639344262,
+      "submit_clean": 0.005127079067926684,
+      "submit_with_records": 0.007428112881097773
+    },
+    "member_count": 61,
+    "stats": {
+      "n_states": 61,
+      "success_rate": 0.0,
+      "top2_margin": 0.018051809517623592,
+      "ambiguous": true,
+      "rival_action_id": "request_peer_to_peer"
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_with_records::t6",
+    "action_id": "submit_with_records",
+    "centroid": {
+      "appeal_with_necessity": 0.007988380537400145,
+      "bill_patient": 0.0028427550357374917,
+      "correct_and_resubmit": 0.008978675645342311,
+      "provide_requested_info": 0.000876300466240903,
+      "request_peer_to_peer": 0.3402216014883845,
+      "request_retro_auth": 0.009382716049382718,
+      "submit_clean": 0.00283087878872677,
+      "submit_with_records": 0.0037333263632957814
+    },
+    "member_count": 81,
+    "stats": {
+      "n_states": 81,
+      "success_rate": 0.0,
+      "top2_margin": 0.31683646971215973,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  },
+  {
+    "tribe_id": "submit_with_records::t7",
+    "action_id": "submit_with_records",
+    "centroid": {
+      "appeal_with_necessity": 0.005656108597285068,
+      "bill_patient": 0.003791714148352353,
+      "correct_and_resubmit": 0.038168525474636165,
+      "provide_requested_info": 0.00020156541137428486,
+      "request_peer_to_peer": 0.2733819046845967,
+      "request_retro_auth": 0.004615384615384615,
+      "submit_clean": 0.0014936519790888726,
+      "submit_with_records": 0.0014114326040931546
+    },
+    "member_count": 26,
+    "stats": {
+      "n_states": 26,
+      "success_rate": 0.0,
+      "top2_margin": 0.23377484251139408,
+      "ambiguous": false,
+      "rival_action_id": null
+    },
+    "skill_id": null
+  }
+]

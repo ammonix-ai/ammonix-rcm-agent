@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\": \"Fresh claim, no submission yet. Auth is on file, diagnosis pairing valid, eligibility active, COB order correct. Documentation quality is fine but no records are needed since auth is on file. The clean claim should be submitted as-is.\", \"action\": \"submit_clean\"}", "usage": {"prompt_tokens": 1345, "completion_tokens": 100}}

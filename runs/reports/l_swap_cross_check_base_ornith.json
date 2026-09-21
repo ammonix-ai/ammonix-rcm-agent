@@ -1,0 +1,409 @@
+{
+ "checker": "Ornith-1.5-9B",
+ "n_appeal_states": 68,
+ "writers": {
+  "qwen": {
+   "first_attempt_pass": 46,
+   "of": 68,
+   "missing_drafts": 0,
+   "rejections": {
+    "ep-05001-s1": [
+     "This service addresses the specific clinical need to evaluate the patient's cond"
+    ],
+    "ep-05004-s1": [
+     "This service addresses the specific clinical need to monitor for paroxysmal atri"
+    ],
+    "ep-05008-s1": [
+     "The payer is Meridian."
+    ],
+    "ep-05008-s2": [
+     "The payer is Meridian."
+    ],
+    "ep-05015-s1": [
+     "This service addresses the specific clinical need for continuous rhythm assessme"
+    ],
+    "ep-05024-s2": [
+     "Detailed instructions regarding the appeals process, including necessary documen"
+    ],
+    "ep-05027-s2": [
+     "The required precertification or prior authorization was not obtained before ser",
+     "SilverBridge Advantage requires all non-emergency diagnostic monitoring services",
+     "The provider may submit a formal appeal within ninety days of this notice."
+    ],
+    "ep-05035-s1": [
+     "The monitoring is essential for evaluating the clinical indication of R55",
+     "The monitoring is essential for evaluating the clinical indication of G45.9",
+     "The monitoring is essential for evaluating the clinical indication of I48.0"
+    ],
+    "ep-05045-s1": [
+     "This service addresses the specific clinical need to evaluate the patient's cond"
+    ],
+    "ep-05050-s1": [
+     "This service is essential to address the specific clinical indication of capturi"
+    ],
+    "ep-05054-s1": [
+     "This service is medically necessary to address the specific clinical indication "
+    ],
+    "ep-05058-s2": [
+     "The patient has a personal history of transient ischemic attack and cerebral inf"
+    ],
+    "ep-05070-s2": [
+     "CPT 93271 is medically necessary.",
+     "CPT 93271 is distinct from other bundled procedures."
+    ],
+    "ep-05074-s2": [
+     "The reported symptoms of palpitations and dizziness are linked to potential card"
+    ],
+    "ep-05079-s2": [
+     "The requested service is bundled into another covered procedure and is not separ",
+     "No reimbursement will be issued for this specific line item.",
+     "The patient has the right to appeal this determination."
+    ],
+    "ep-05089-s2": [
+     "This service addresses the clinical need to evaluate the patient's condition as "
+    ],
+    "ep-05110-s1": [
+     "The patient has a personal history of transient ischemic attack and cerebral inf"
+    ],
+    "ep-05110-s2": [
+     "The patient has a personal history of transient ischemic attack and cerebral inf"
+    ],
+    "ep-05122-s1": [
+     "The clinical indication explicitly supports the need to evaluate these specific "
+    ],
+    "ep-05147-s1": [
+     "This service is medically necessary to address the specific clinical indication "
+    ],
+    "ep-05192-s1": [
+     "The service addresses the specific clinical need to monitor for arrhythmias link"
+    ],
+    "ep-05197-s1": [
+     "This service addresses the specific clinical need to link the reported symptoms "
+    ]
+   }
+  },
+  "ornith": {
+   "first_attempt_pass": 41,
+   "of": 68,
+   "missing_drafts": 0,
+   "rejections": {
+    "ep-05001-s1": [
+     "The denial is contested because the service directly addresses the patient's doc"
+    ],
+    "ep-05001-s2": [
+     "The patient presents with recurrent episodes of palpitations and intermittent li"
+    ],
+    "ep-05002-s1": [
+     "addresses the symptomatic events that require correlation with potential arrhyth"
+    ],
+    "ep-05004-s1": [
+     "These are intermittent events, so precertification cannot be obtained in advance",
+     "The service is medically necessary to document the arrhythmia and support the pa"
+    ],
+    "ep-05008-s2": [
+     "The appeal requests that the missing prior authorization be reviewed against the"
+    ],
+    "ep-05013-s1": [
+     "This service addresses the intermittent nature of the symptoms that require exte"
+    ],
+    "ep-05015-s1": [
+     "The balance owed is 498.33."
+    ],
+    "ep-05021-s1": [
+     "The Explanation of Benefits is attached"
+    ],
+    "ep-05025-s2": [
+     "in a patient with a documented history of supraventricular tachycardia",
+     "and coronary artery disease",
+     "CO-197"
+    ],
+    "ep-05026-s1": [
+     "The balance is 549.76."
+    ],
+    "ep-05031-s1": [
+     "The service is medically necessary to monitor the patient's cardiac rhythm given"
+    ],
+    "ep-05038-s1": [
+     "The patient has sick sinus syndrome.",
+     "The patient has atherosclerotic heart disease."
+    ],
+    "ep-05045-s1": [
+     "The diagnosis code G42.4 is asserted.",
+     "The appeal requests reconsideration of the medical necessity determination for t"
+    ],
+    "ep-05054-s1": [
+     "Continuous rhythm correlation cannot be achieved with in-office monitoring."
+    ],
+    "ep-05056-s1": [
+     "The diagnosis codes I49.9, I48.91, and R55 are associated with the patient's con"
+    ],
+    "ep-05057-s1": [
+     "The diagnosis code I25.10 is asserted for atherosclerotic heart disease of the n",
+     "The balance amount of 702.81 is asserted"
+    ],
+    "ep-05058-s1": [
+     "The procedure was medically necessary to evaluate the patient's clinical present"
+    ],
+    "ep-05074-s2": [
+     "The service is medically necessary to evaluate the patient's symptoms of palpita"
+    ],
+    "ep-05084-s2": [
+     "The service directly addresses the indication's stated goal of identifying arrhy"
+    ],
+    "ep-05089-s1": [
+     "The patient has the right to appeal this determination."
+    ],
+    "ep-05096-s1": [
+     "The service is medically necessary to evaluate the patient's symptomatic present"
+    ],
+    "ep-05122-s1": [
+     "The patient has established coronary artery disease"
+    ],
+    "ep-05147-s1": [
+     "The service is medically necessary to evaluate the relationship between the pati"
+    ],
+    "ep-05159-s2": [
+     "The service is clinically necessary to document the rhythm disturbances associat"
+    ],
+    "ep-05160-s1": [
+     "The service is for the member."
+    ],
+    "ep-05161-s1": [
+     "The service directly addresses the clinical need to link the patient's palpitati",
+     "The service is documented in the indication note"
+    ],
+    "ep-05163-s1": [
+     "The service is medically necessary to evaluate the symptomatic arrhythmia underl"
+    ]
+   }
+  },
+  "ornith_ft": {
+   "first_attempt_pass": 46,
+   "of": 68,
+   "missing_drafts": 0,
+   "rejections": {
+    "ep-05001-s2": [
+     "The diagnosis code I48.0 is assigned for paroxysmal atrial fibrillation",
+     "The diagnosis code I25.10 is assigned for atherosclerotic heart disease"
+    ],
+    "ep-05004-s1": [
+     "This service is medically necessary to evaluate the recurrent palpitations and l"
+    ],
+    "ep-05010-s1": [
+     "Atherosclerotic heart disease is coded I25.10",
+     "Unspecified atrial fibrillation is coded I48.91"
+    ],
+    "ep-05013-s1": [
+     "This service is medically necessary to evaluate the intermittent symptoms descri"
+    ],
+    "ep-05025-s2": [
+     "The service is medically necessary to evaluate the recurrent palpitations and li"
+    ],
+    "ep-05027-s1": [
+     "The service directly supports the documented clinical indication for monitoring "
+    ],
+    "ep-05035-s1": [
+     "The required precertification or authorization was not obtained prior to the ser"
+    ],
+    "ep-05045-s1": [
+     "The service is medically necessary to evaluate the patient's recurrent dizziness"
+    ],
+    "ep-05049-s2": [
+     "The diagnosis is sick sinus syndrome"
+    ],
+    "ep-05054-s1": [
+     "The service is medically necessary to correlate the patient's intermittent sympt"
+    ],
+    "ep-05057-s1": [
+     "This diagnostic monitoring is medically necessary to evaluate the recurrent palp"
+    ],
+    "ep-05070-s2": [
+     "The service is medically necessary to detect intermittent arrhythmias responsibl"
+    ],
+    "ep-05074-s2": [
+     "R00.2 supports the clinical picture of palpitations.",
+     "R42 supports the clinical picture of dizziness."
+    ],
+    "ep-05080-s1": [
+     "The balance is 357.79"
+    ],
+    "ep-05084-s4": [
+     "The diagnosis code Z86.73 reflects the patient's history of cerebral infarction.",
+     "The diagnosis code G45.9 reflects transient cerebral ischemia.",
+     "The diagnosis code I48.0 reflects atrial fibrillation."
+    ],
+    "ep-05084-s5": [
+     "The diagnosis code Z86.73 reflects the patient's history of cerebral infarction.",
+     "The diagnosis code G45.9 reflects transient cerebral ischemia.",
+     "The diagnosis code I48.0 reflects atrial fibrillation."
+    ],
+    "ep-05084-s6": [
+     "The diagnosis code Z86.73 documents the patient's history of cerebral infarction",
+     "The diagnosis code G45.9 documents transient cerebral ischemia.",
+     "The diagnosis code I48.0 documents atrial fibrillation."
+    ],
+    "ep-05089-s2": [
+     "The service is medically necessary to evaluate the patient's symptomatic episode"
+    ],
+    "ep-05146-s2": [
+     "Atherosclerotic heart disease of the native coronary artery is coded I25.10",
+     "The service addresses the documented symptom of palpitations coded R00.2"
+    ],
+    "ep-05159-s1": [
+     "The service is medically necessary to evaluate the suspected cardiac arrhythmia "
+    ],
+    "ep-05159-s2": [
+     "The service is medically necessary to evaluate the suspected cardiac arrhythmia "
+    ],
+    "ep-05197-s1": [
+     "The service is medically necessary to establish the requirement for continuous a"
+    ]
+   }
+  },
+  "opus5": {
+   "first_attempt_pass": 30,
+   "of": 68,
+   "missing_drafts": 0,
+   "rejections": {
+    "ep-05001-s1": [
+     "The episode identifier is ep-05001."
+    ],
+    "ep-05001-s2": [
+     "The service supports the medical necessity of the service billed"
+    ],
+    "ep-05002-s1": [
+     "The denial is on the basis of medical necessity as documented in the ordering in"
+    ],
+    "ep-05010-s1": [
+     "The appeal references the ordering note",
+     "The appeal requests reconsideration of the precertification determination on the"
+    ],
+    "ep-05013-s1": [
+     "CPT 93229 is mobile cardiac telemetry monitoring",
+     "The service should be reviewed and covered as medically necessary"
+    ],
+    "ep-05015-s1": [
+     "The episode is ep-05015"
+    ],
+    "ep-05019-s1": [
+     "The appeal requests reconsideration on the basis of documented medical necessity"
+    ],
+    "ep-05024-s1": [
+     "The episode is ep-05024"
+    ],
+    "ep-05024-s2": [
+     "The appeal is for episode ep-05024",
+     "The service was rendered 58 days ago",
+     "The appeal is submitted within the 122 days remaining to the filing deadline"
+    ],
+    "ep-05025-s2": [
+     "The diagnosis code I47.1 corresponds to supraventricular tachycardia",
+     "The diagnosis code I25.10 corresponds to atherosclerotic heart disease of the na",
+     "The ordering note states the above"
+    ],
+    "ep-05027-s2": [
+     "The ordering note states the rationale for the mobile cardiac telemetry order."
+    ],
+    "ep-05031-s2": [
+     "CPT 93229 is mobile cardiac telemetry monitoring"
+    ],
+    "ep-05038-s1": [
+     "The diagnosis code I49.5 corresponds to sick sinus syndrome",
+     "The diagnosis code I25.10 corresponds to atherosclerotic heart disease",
+     "The diagnosis code G45.9 corresponds to transient cerebral ischemic attack"
+    ],
+    "ep-05038-s2": [
+     "Appeal is for episode ep-05038",
+     "Sick sinus syndrome is coded I49.5",
+     "Atherosclerotic heart disease is coded I25.10"
+    ],
+    "ep-05045-s1": [
+     "The ordering note states the purpose of the mobile cardiac telemetry order",
+     "The indication establishes the medical necessity of the service"
+    ],
+    "ep-05050-s1": [
+     "The appeal is for episode ep-05050"
+    ],
+    "ep-05054-s1": [
+     "The episode is ep-05054"
+    ],
+    "ep-05056-s1": [
+     "The appeal is for episode ep-05056",
+     "The service was medically necessary for this patient"
+    ],
+    "ep-05057-s1": [
+     "The ordering note states the above",
+     "The appeal requests reconsideration of the authorization requirement"
+    ],
+    "ep-05058-s1": [
+     "The appeal is for episode ep-05058"
+    ],
+    "ep-05058-s2": [
+     "The appeal requests retrospective authorization.",
+     "The appeal requests reprocessing of the outstanding balance.",
+     "The appeal is based on supporting clinical documentation."
+    ],
+    "ep-05070-s2": [
+     "CPT 93271 was a distinct, medically necessary service"
+    ],
+    "ep-05073-s1": [
+     "The appeal is on medical necessity"
+    ],
+    "ep-05074-s2": [
+     "The episode is ep-05074"
+    ],
+    "ep-05079-s2": [
+     "The service is distinct and separately indicated"
+    ],
+    "ep-05084-s3": [
+     "The study was ordered for this episode",
+     "CPT 93271 is medically necessary"
+    ],
+    "ep-05084-s5": [
+     "CPT 93271 is medically necessary for this episode"
+    ],
+    "ep-05084-s6": [
+     "CPT 93271 is separately billable rather than denied under CO-97"
+    ],
+    "ep-05089-s1": [
+     "CPT 93229 is mobile cardiac telemetry monitoring",
+     "The diagnosis code for palpitations is R00.2",
+     "The diagnosis code for dizziness is R42"
+    ],
+    "ep-05099-s1": [
+     "The payer is silverbridge"
+    ],
+    "ep-05110-s2": [
+     "The appeal is for episode ep-05110",
+     "The balance is 903.86"
+    ],
+    "ep-05117-s1": [
+     "CPT 93229 is mobile cardiac telemetry monitoring."
+    ],
+    "ep-05125-s1": [
+     "Syncope and presyncope are coded R55",
+     "Nonrheumatic mitral valve insufficiency is coded I34.0",
+     "Unspecified cardiac arrhythmia is coded I49.9"
+    ],
+    "ep-05146-s1": [
+     "The appeal is for lack of medical necessity",
+     "The documented indications meet the clinical criteria for this diagnostic modali"
+    ],
+    "ep-05159-s2": [
+     "service is medically necessary"
+    ],
+    "ep-05161-s1": [
+     "for episode ep-05161"
+    ],
+    "ep-05161-s2": [
+     "CPT 93229 is mobile cardiac telemetry monitoring"
+    ],
+    "ep-05192-s1": [
+     "The ordered service directly addresses the documented indication",
+     "The claim should be reprocessed",
+     "The balance is 436.44"
+    ]
+   }
+  }
+ }
+}

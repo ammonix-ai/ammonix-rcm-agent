@@ -1,0 +1,38 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Ammonix v0.3 — Results</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:52rem;margin:3rem auto;padding:0 1.5rem;color:#1a1a1a}
+h1{font-size:1.6rem;margin-bottom:.2rem}
+.sub{color:#666;font-size:.95rem;margin-bottom:2.2rem}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0 2.5rem}
+.card{border-radius:.8rem;padding:1.4rem 1rem;text-align:center;background:#f0f6ff}
+.card b{display:block;font-size:2.4rem;color:#1565c0;margin-bottom:.3rem}
+.card span{font-size:.95rem;color:#333}
+.line{display:flex;align-items:baseline;gap:.8rem;margin:.9rem 0;font-size:1.05rem}
+.dot{font-size:1.2rem}
+.limit{background:#fff8f0;border-radius:.8rem;padding:1rem 1.3rem;margin-top:2.5rem}
+.limit b{color:#c62828}
+.foot{color:#999;font-size:.8rem;margin-top:2.5rem}
+</style></head><body>
+
+<h1>Ammonix vs. human admins</h1>
+<div class="sub">500 identical insurance claims, worked by each. Simulated world, evaluation fixed before the build.</div>
+
+<div class="grid">
+<div class="card"><b>+52%</b><span>money collected<br>$167k vs $109k</span></div>
+<div class="card"><b>−62%</b><span>mistakes<br>32 vs 84 claims</span></div>
+<div class="card"><b>0</b><span>invented form values,<br>ever — in 3 versions</span></div>
+</div>
+
+<div class="line"><span class="dot">✅</span> Its confidence numbers are honest — a stated 60% happens 60% of the time.</div>
+<div class="line"><span class="dot">✅</span> Faced with an insurer it never saw, it <b>always</b> asks a human instead of guessing.</div>
+<div class="line"><span class="dot">✅</span> New: fair scorecards for admins (decision quality, not luck) and for clinics (claims lost before billing even started).</div>
+
+<div class="limit">
+<b>The one real limit:</b> on the hardest judgment calls — <i>which</i> rescue path fits <i>this</i> insurer —
+it agrees with ground truth 55% of the time, not the 85% we aimed for.
+Three build cycles say the simulator can't teach the rest. <b>Real claims data is the next step.</b>
+</div>
+
+<p class="foot">Ammonix v0.3, shipped 2026-07-15 · full numbers: test_report_v3.json · history: runs/PROGRESS.md</p>
+</body></html>

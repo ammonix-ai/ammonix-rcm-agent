@@ -1,0 +1,77 @@
+{
+  "analysis": "agentic baseline vs ammonix system vs personas",
+  "factory_root": "<REPO>",
+  "tranche": 100,
+  "n_episodes": 300,
+  "note": "identical fresh episodes and engine randomness across arms; the 'agentic' arm runs the same pinned 27B as Ammonix M1 (architecture comparison); the 'claude' arm runs the same agent loop on claude-sonnet-5 via API (frontier-model comparison; not sampling-deterministic - the decision cache freezes the run); escalated touches fall back to the persona (human) policy in every arm",
+  "sol": {
+    "episodes": 300,
+    "success_rate_v2": 0.4,
+    "mean_score": 0.4279,
+    "payer_collected_total": 52448.47,
+    "payer_collected_capped": 52448.47,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 18099.33,
+    "mean_touches": 2.417,
+    "episodes_with_mistakes": 7,
+    "escalated_touches": 178,
+    "resolutions": {
+      "paid": 29,
+      "patient_billed": 131,
+      "written_off": 89,
+      "paid_with_secondary": 46,
+      "paid_on_appeal": 2,
+      "written_off_at_cap": 3
+    },
+    "wall_seconds": 787.3,
+    "policy": {
+      "decisions": 722,
+      "retries": 0,
+      "escalations_explicit": 178,
+      "escalations_forced": 0,
+      "decision_errors": 0
+    },
+    "llm": {
+      "model_id": "gpt-5.6-sol",
+      "calls_to_provider": 722,
+      "cache_hits": 0,
+      "prompt_tokens": 520836,
+      "completion_tokens": 133952
+    }
+  },
+  "sol_rag": {
+    "episodes": 300,
+    "success_rate_v2": 0.45,
+    "mean_score": 0.4705,
+    "payer_collected_total": 57382.41,
+    "payer_collected_capped": 57382.41,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 18674.33,
+    "mean_touches": 2.407,
+    "episodes_with_mistakes": 8,
+    "escalated_touches": 154,
+    "resolutions": {
+      "paid": 29,
+      "patient_billed": 126,
+      "written_off": 84,
+      "paid_on_appeal": 5,
+      "paid_with_secondary": 54,
+      "written_off_at_cap": 2
+    },
+    "wall_seconds": 939.6,
+    "policy": {
+      "decisions": 720,
+      "retries": 0,
+      "escalations_explicit": 153,
+      "escalations_forced": 0,
+      "decision_errors": 1
+    },
+    "llm": {
+      "model_id": "gpt-5.6-sol",
+      "calls_to_provider": 719,
+      "cache_hits": 0,
+      "prompt_tokens": 733661,
+      "completion_tokens": 139301
+    }
+  }
+}

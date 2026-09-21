@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\":\"Authorization is already ON_FILE, diagnoses pairing is valid, eligibility is active, and COB order is correct. There is no denial on the table, so this is a clean first submission. The claim can be submitted as-is without needing records.\",\"action\":\"submit_clean\"}", "usage": {"prompt_tokens": 1314, "completion_tokens": 95}}

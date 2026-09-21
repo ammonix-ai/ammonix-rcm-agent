@@ -1,0 +1,461 @@
+- allowed_multiplier: 1.0
+  appeal_delay_days:
+  - 20
+  - 45
+  appeal_grant_prob_strong_doc: 0.45
+  appeal_grant_prob_weak_doc: 0.1
+  archetype: national_commercial
+  auth_required_cpts: []
+  bundling_co97: false
+  bundling_window_days: 30
+  carc_pathways:
+  - CO-50
+  - CO-29
+  - CO-22
+  - PR-204
+  - CO-16
+  holdout: false
+  info_resolution_prob: 0.9
+  mct_palpitations_only_denial: true
+  missing_info_rate: 0.05
+  name: Atlas Mutual
+  p2p_available: false
+  p2p_reversal_prob: 0.0
+  pairing_denial_carc: null
+  payer_id: atlas
+  plan_exclusions: {}
+  plan_variants:
+  - standard
+  - plus
+  requires_ordering_medicaid_enrollment: false
+  response_delay_days:
+  - 10
+  - 25
+  retro_auth_grant_prob: 0.0
+  retro_auth_window_days: 0
+  secondary_to_medicare: false
+  strict_code_pairing: false
+  timely_filing_days: 180
+- allowed_multiplier: 1.15
+  appeal_delay_days:
+  - 20
+  - 45
+  appeal_grant_prob_strong_doc: 0.6
+  appeal_grant_prob_weak_doc: 0.15
+  archetype: regional_blues
+  auth_required_cpts: []
+  bundling_co97: false
+  bundling_window_days: 30
+  carc_pathways:
+  - CO-29
+  - CO-22
+  - PR-204
+  - CO-16
+  holdout: false
+  info_resolution_prob: 0.9
+  mct_palpitations_only_denial: false
+  missing_info_rate: 0.05
+  name: Blue Summit Plan
+  p2p_available: false
+  p2p_reversal_prob: 0.0
+  pairing_denial_carc: CO-16
+  payer_id: bluesummit
+  plan_exclusions: {}
+  plan_variants:
+  - standard
+  - plus
+  requires_ordering_medicaid_enrollment: false
+  response_delay_days:
+  - 10
+  - 25
+  retro_auth_grant_prob: 0.0
+  retro_auth_window_days: 0
+  secondary_to_medicare: false
+  strict_code_pairing: true
+  timely_filing_days: 180
+- allowed_multiplier: 1.0
+  appeal_delay_days:
+  - 20
+  - 45
+  appeal_grant_prob_strong_doc: 0.67
+  appeal_grant_prob_weak_doc: 0.15
+  archetype: national_commercial
+  auth_required_cpts: []
+  bundling_co97: true
+  bundling_window_days: 30
+  carc_pathways:
+  - CO-97
+  - CO-29
+  - CO-22
+  - PR-204
+  - CO-16
+  holdout: false
+  info_resolution_prob: 0.9
+  mct_palpitations_only_denial: false
+  missing_info_rate: 0.05
+  name: Cornerstone United
+  p2p_available: true
+  p2p_reversal_prob: 0.7
+  pairing_denial_carc: null
+  payer_id: cornerstone
+  plan_exclusions: {}
+  plan_variants:
+  - standard
+  - plus
+  requires_ordering_medicaid_enrollment: false
+  response_delay_days:
+  - 10
+  - 25
+  retro_auth_grant_prob: 0.0
+  retro_auth_window_days: 0
+  secondary_to_medicare: false
+  strict_code_pairing: false
+  timely_filing_days: 180
+- allowed_multiplier: 1.0
+  appeal_delay_days:
+  - 20
+  - 45
+  appeal_grant_prob_strong_doc: 0.5
+  appeal_grant_prob_weak_doc: 0.15
+  archetype: regional_commercial
+  auth_required_cpts:
+  - '93229'
+  - '93271'
+  bundling_co97: false
+  bundling_window_days: 30
+  carc_pathways:
+  - CO-197
+  - CO-50
+  - CO-29
+  - CO-22
+  - PR-204
+  - CO-16
+  holdout: true
+  info_resolution_prob: 0.9
+  mct_palpitations_only_denial: true
+  missing_info_rate: 0.05
+  name: Granite Shield
+  p2p_available: false
+  p2p_reversal_prob: 0.0
+  pairing_denial_carc: null
+  payer_id: granite
+  plan_exclusions: {}
+  plan_variants:
+  - standard
+  - plus
+  requires_ordering_medicaid_enrollment: false
+  response_delay_days:
+  - 10
+  - 25
+  retro_auth_grant_prob: 0.5
+  retro_auth_window_days: 10
+  secondary_to_medicare: false
+  strict_code_pairing: false
+  timely_filing_days: 180
+- allowed_multiplier: 0.55
+  appeal_delay_days:
+  - 20
+  - 45
+  appeal_grant_prob_strong_doc: 0.5
+  appeal_grant_prob_weak_doc: 0.15
+  archetype: medicaid_mco
+  auth_required_cpts: []
+  bundling_co97: false
+  bundling_window_days: 30
+  carc_pathways:
+  - CO-29
+  - CO-22
+  - PR-204
+  - CO-16
+  holdout: false
+  info_resolution_prob: 0.9
+  mct_palpitations_only_denial: false
+  missing_info_rate: 0.05
+  name: Harborview Medicaid
+  p2p_available: false
+  p2p_reversal_prob: 0.0
+  pairing_denial_carc: null
+  payer_id: harborview
+  plan_exclusions: {}
+  plan_variants:
+  - standard
+  - plus
+  requires_ordering_medicaid_enrollment: true
+  response_delay_days:
+  - 10
+  - 25
+  retro_auth_grant_prob: 0.0
+  retro_auth_window_days: 0
+  secondary_to_medicare: false
+  strict_code_pairing: false
+  timely_filing_days: 90
+- allowed_multiplier: 1.0
+  appeal_delay_days:
+  - 20
+  - 45
+  appeal_grant_prob_strong_doc: 0.55
+  appeal_grant_prob_weak_doc: 0.15
+  archetype: self_funded_tpa
+  auth_required_cpts: []
+  bundling_co97: false
+  bundling_window_days: 30
+  carc_pathways:
+  - CO-29
+  - CO-22
+  - PR-204
+  - CO-16
+  holdout: false
+  info_resolution_prob: 0.9
+  mct_palpitations_only_denial: false
+  missing_info_rate: 0.05
+  name: Keystone TPA
+  p2p_available: false
+  p2p_reversal_prob: 0.0
+  pairing_denial_carc: null
+  payer_id: keystone
+  plan_exclusions:
+    standard:
+    - '93247'
+  plan_variants:
+  - standard
+  - plus
+  requires_ordering_medicaid_enrollment: false
+  response_delay_days:
+  - 10
+  - 25
+  retro_auth_grant_prob: 0.0
+  retro_auth_window_days: 0
+  secondary_to_medicare: false
+  strict_code_pairing: false
+  timely_filing_days: 180
+- allowed_multiplier: 0.9
+  appeal_delay_days:
+  - 20
+  - 45
+  appeal_grant_prob_strong_doc: 0.5
+  appeal_grant_prob_weak_doc: 0.15
+  archetype: medicare_advantage
+  auth_required_cpts:
+  - '93229'
+  - '93247'
+  bundling_co97: false
+  bundling_window_days: 30
+  carc_pathways:
+  - CO-197
+  - CO-29
+  - CO-22
+  - PR-204
+  - CO-16
+  holdout: false
+  info_resolution_prob: 0.9
+  mct_palpitations_only_denial: false
+  missing_info_rate: 0.3
+  name: Lakeshore Advantage
+  p2p_available: false
+  p2p_reversal_prob: 0.0
+  pairing_denial_carc: null
+  payer_id: lakeshore
+  plan_exclusions: {}
+  plan_variants:
+  - standard
+  - plus
+  requires_ordering_medicaid_enrollment: false
+  response_delay_days:
+  - 10
+  - 25
+  retro_auth_grant_prob: 0.4
+  retro_auth_window_days: 14
+  secondary_to_medicare: false
+  strict_code_pairing: false
+  timely_filing_days: 180
+- allowed_multiplier: 0.85
+  appeal_delay_days:
+  - 20
+  - 45
+  appeal_grant_prob_strong_doc: 0.6
+  appeal_grant_prob_weak_doc: 0.25
+  archetype: medicare
+  auth_required_cpts: []
+  bundling_co97: false
+  bundling_window_days: 30
+  carc_pathways:
+  - CO-50
+  - CO-29
+  - CO-22
+  - PR-204
+  - CO-16
+  holdout: false
+  info_resolution_prob: 0.9
+  mct_palpitations_only_denial: false
+  missing_info_rate: 0.05
+  name: Federal Medicare (sim)
+  p2p_available: false
+  p2p_reversal_prob: 0.0
+  pairing_denial_carc: CO-50
+  payer_id: medicare
+  plan_exclusions: {}
+  plan_variants:
+  - standard
+  - plus
+  requires_ordering_medicaid_enrollment: false
+  response_delay_days:
+  - 10
+  - 25
+  retro_auth_grant_prob: 0.0
+  retro_auth_window_days: 0
+  secondary_to_medicare: false
+  strict_code_pairing: true
+  timely_filing_days: 365
+- allowed_multiplier: 1.0
+  appeal_delay_days:
+  - 20
+  - 45
+  appeal_grant_prob_strong_doc: 0.75
+  appeal_grant_prob_weak_doc: 0.2
+  archetype: national_commercial
+  auth_required_cpts:
+  - '93229'
+  bundling_co97: false
+  bundling_window_days: 30
+  carc_pathways:
+  - CO-197
+  - CO-29
+  - CO-22
+  - PR-204
+  - CO-16
+  holdout: false
+  info_resolution_prob: 0.9
+  mct_palpitations_only_denial: false
+  missing_info_rate: 0.05
+  name: Meridian Health
+  p2p_available: false
+  p2p_reversal_prob: 0.0
+  pairing_denial_carc: null
+  payer_id: meridian
+  plan_exclusions: {}
+  plan_variants:
+  - standard
+  - plus
+  requires_ordering_medicaid_enrollment: false
+  response_delay_days:
+  - 10
+  - 25
+  retro_auth_grant_prob: 0.85
+  retro_auth_window_days: 30
+  secondary_to_medicare: false
+  strict_code_pairing: false
+  timely_filing_days: 180
+- allowed_multiplier: 0.5
+  appeal_delay_days:
+  - 20
+  - 45
+  appeal_grant_prob_strong_doc: 0.5
+  appeal_grant_prob_weak_doc: 0.15
+  archetype: medicaid_mco
+  auth_required_cpts: []
+  bundling_co97: false
+  bundling_window_days: 30
+  carc_pathways:
+  - CO-29
+  - CO-22
+  - PR-204
+  - CO-16
+  holdout: true
+  info_resolution_prob: 0.9
+  mct_palpitations_only_denial: false
+  missing_info_rate: 0.05
+  name: Pelican Care
+  p2p_available: false
+  p2p_reversal_prob: 0.0
+  pairing_denial_carc: null
+  payer_id: pelican
+  plan_exclusions: {}
+  plan_variants:
+  - standard
+  - plus
+  requires_ordering_medicaid_enrollment: true
+  response_delay_days:
+  - 10
+  - 25
+  retro_auth_grant_prob: 0.0
+  retro_auth_window_days: 0
+  secondary_to_medicare: false
+  strict_code_pairing: false
+  timely_filing_days: 90
+- allowed_multiplier: 0.55
+  appeal_delay_days:
+  - 20
+  - 45
+  appeal_grant_prob_strong_doc: 0.5
+  appeal_grant_prob_weak_doc: 0.15
+  archetype: medicaid_mco
+  auth_required_cpts: []
+  bundling_co97: false
+  bundling_window_days: 30
+  carc_pathways:
+  - CO-29
+  - CO-22
+  - PR-204
+  - CO-16
+  holdout: false
+  info_resolution_prob: 0.9
+  mct_palpitations_only_denial: false
+  missing_info_rate: 0.05
+  name: Prairie State Medicaid
+  p2p_available: false
+  p2p_reversal_prob: 0.0
+  pairing_denial_carc: null
+  payer_id: prairie
+  plan_exclusions: {}
+  plan_variants:
+  - standard
+  - plus
+  requires_ordering_medicaid_enrollment: false
+  response_delay_days:
+  - 10
+  - 25
+  retro_auth_grant_prob: 0.0
+  retro_auth_window_days: 0
+  secondary_to_medicare: true
+  strict_code_pairing: false
+  timely_filing_days: 90
+- allowed_multiplier: 0.9
+  appeal_delay_days:
+  - 45
+  - 90
+  appeal_grant_prob_strong_doc: 0.65
+  appeal_grant_prob_weak_doc: 0.3
+  archetype: medicare_advantage
+  auth_required_cpts:
+  - '93229'
+  - '93247'
+  bundling_co97: false
+  bundling_window_days: 30
+  carc_pathways:
+  - CO-197
+  - CO-29
+  - CO-22
+  - PR-204
+  - CO-16
+  holdout: false
+  info_resolution_prob: 0.9
+  mct_palpitations_only_denial: false
+  missing_info_rate: 0.05
+  name: SilverBridge Advantage
+  p2p_available: false
+  p2p_reversal_prob: 0.0
+  pairing_denial_carc: null
+  payer_id: silverbridge
+  plan_exclusions: {}
+  plan_variants:
+  - standard
+  - plus
+  requires_ordering_medicaid_enrollment: false
+  response_delay_days:
+  - 10
+  - 25
+  retro_auth_grant_prob: 0.0
+  retro_auth_window_days: 0
+  secondary_to_medicare: false
+  strict_code_pairing: false
+  timely_filing_days: 180

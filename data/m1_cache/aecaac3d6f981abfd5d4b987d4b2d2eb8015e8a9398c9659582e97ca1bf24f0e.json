@@ -1,0 +1,11 @@
+{
+  "episode_id": "ep-05151",
+  "cpt": "93247",
+  "dx_codes": [
+    "I48.0",
+    "I47.1",
+    "I49.5"
+  ],
+  "correction": "claim_fields",
+  "addresses_carc": "CO-22"
+}

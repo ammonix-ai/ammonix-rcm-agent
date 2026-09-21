@@ -1,0 +1,98 @@
+{
+  "test_report": {
+    "report_id": "cardessa-final-v2-reserveB",
+    "evaluated_at": "2026-07-13T19:57:34.228491Z",
+    "basis_manifest_sha256": "3f1a8dc0defac64e381474e2640aead04f47c4085c0ee7b75d4f4275554ddbe3",
+    "quarantine_manifest_sha256": "6acf76e7d32b376af05290d4ddab6ed3a6cf60725bf43e20c370bf399eb0705d",
+    "per_action_metrics": {
+      "appeal_with_necessity": {
+        "auroc": 0.8392857142857143,
+        "auprc": 0.375,
+        "n_pos": 2,
+        "n_neg": 14
+      },
+      "bill_patient": {
+        "auroc": 0.7542857142857143,
+        "auprc": 0.4983661031731873,
+        "n_pos": 15,
+        "n_neg": 35
+      },
+      "correct_and_resubmit": {
+        "auroc": 1.0,
+        "auprc": 1.0,
+        "n_pos": 1,
+        "n_neg": 2
+      },
+      "submit_clean": {
+        "auroc": 0.9027255639097744,
+        "auprc": 0.7747144814498046,
+        "n_pos": 19,
+        "n_neg": 56
+      },
+      "submit_with_records": {
+        "auroc": 0.9213286713286714,
+        "auprc": 0.7898249411407307,
+        "n_pos": 11,
+        "n_neg": 26
+      }
+    },
+    "calibration_ece": 0.10251927234760139,
+    "recommendation_accuracy": 0.24,
+    "harness_stats": {
+      "n_reserve_states": 226,
+      "status_counts": {
+        "executed": 168,
+        "escalated": 58
+      },
+      "m1_calls": 317
+    },
+    "trap_results": {
+      "P1_success_not_imitation": false,
+      "P2_no_leakage": true,
+      "P3_determinism": true,
+      "P4_calibration": false,
+      "P5_ood_honesty": true,
+      "P6_honest_near_ties": false,
+      "P7_coverage_discipline": true,
+      "P8_form_fidelity": true,
+      "NEW_no_self_mistakes": false
+    },
+    "tainted": false
+  },
+  "detail": {
+    "eval_side": "reserve_b (quarantine A spent by v0.1)",
+    "hard_gate_tranche_hash_matched_pin": true,
+    "world_content_sha256": "3b7c0c62023ec59f086a78896809c3e3c4c047ead414350c90f5b8a0730e351e",
+    "corpus_tranche0_sha256": "08cab6a7c6149a6931f7222018c6c5ddf6213f6214f4c0fe4a1d8b05a88e23c1",
+    "P1": {
+      "rate": 0.5714285714285714,
+      "n_moments": 7,
+      "hits": 4,
+      "imitation_rate": 0.42857142857142855
+    },
+    "P4": {
+      "ece": 0.10251927234760139
+    },
+    "P5": {
+      "fresh_holdout_states": 12,
+      "silent_errors": 0
+    },
+    "P6": {
+      "pool": 83,
+      "flat_states": 83,
+      "flagged_ambiguous": 26,
+      "agreement": 0.3132530120481928
+    },
+    "P7": {
+      "violations": []
+    },
+    "P8": {
+      "artifacts_checked": 130,
+      "failures": 0
+    },
+    "self_mistakes": [
+      "ep-00595-s0: submitted into open retro window"
+    ],
+    "recommendation_accuracy_n": 50
+  }
+}

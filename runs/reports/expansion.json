@@ -1,0 +1,106 @@
+{
+  "milestone": "P5",
+  "tranches": [
+    {
+      "tranche": 1,
+      "n_episodes": 500,
+      "n_states": 1401,
+      "allocation": {
+        "retro_auth": 214,
+        "p2p": 48,
+        "cob": 237,
+        "None": 1
+      },
+      "content_sha256": "e432db6c5740a11f26d40b40701338af7ce8690b21a9fc1c692da7811e72e9f9",
+      "double_generation_equal": true
+    },
+    {
+      "tranche": 2,
+      "n_episodes": 500,
+      "n_states": 1324,
+      "allocation": {
+        "retro_auth": 184,
+        "p2p": 34,
+        "cob": 64,
+        "None": 218
+      },
+      "content_sha256": "aaf9b068137fa996ad2531d1ffc26d984c605e1f4b93263985ba44a99e8af9f7",
+      "double_generation_equal": true
+    },
+    {
+      "tranche": 3,
+      "n_episodes": 500,
+      "n_states": 1071,
+      "allocation": {
+        "p2p": 10,
+        "None": 490
+      },
+      "content_sha256": "40e76be8616503ab5181ebbac2efa36f15ea3ab8947a88af7b4fd831f9b8bdfe",
+      "double_generation_equal": true
+    },
+    {
+      "tranche": 4,
+      "n_episodes": 500,
+      "n_states": 1030,
+      "allocation": {
+        "None": 500
+      },
+      "content_sha256": "a550df9626611cb5c0eb45ced2d76d9aa5f9bee73e4771b748481ff4cdd1307a",
+      "double_generation_equal": true
+    },
+    {
+      "tranche": 5,
+      "n_episodes": 500,
+      "n_states": 1042,
+      "allocation": {
+        "None": 500
+      },
+      "content_sha256": "d82dc374257cfaa6cfd61c2d08ba8edf514e652ac9291abaf6e099f78de5fb51",
+      "double_generation_equal": true
+    },
+    {
+      "tranche": 6,
+      "n_episodes": 500,
+      "n_states": 1052,
+      "allocation": {
+        "None": 500
+      },
+      "content_sha256": "7477f9d2b70b832bbf68d9d1bee1c9d425637a6cc97bc0f6dc86adf6ef2c6e44",
+      "double_generation_equal": true
+    },
+    {
+      "tranche": 7,
+      "n_episodes": 500,
+      "n_states": 1384,
+      "allocation": {
+        "retro_auth": 240,
+        "p2p": 60,
+        "None": 200
+      },
+      "content_sha256": "720b7da3b913dc4b1d66dc6d2f9ff065c1dc33134ba9293a749373aebc27c805",
+      "double_generation_equal": true
+    },
+    {
+      "tranche": 8,
+      "n_episodes": 500,
+      "n_states": 1373,
+      "allocation": {
+        "retro_auth": 240,
+        "p2p": 60,
+        "None": 200
+      },
+      "content_sha256": "8b91aa33deea283607345faed11a92d5dadffac8bd7b4bf987455ea579c13e1c",
+      "double_generation_equal": true
+    }
+  ],
+  "total_episodes": 5000,
+  "total_states": 12007,
+  "working_episodes": 4750,
+  "working_states": 11427,
+  "cap": 8000,
+  "final_violations": [],
+  "dropped_before_training": [],
+  "llm_calls": 6920,
+  "llm_model": "/models/Qwen3.6-27B-AWQ-INT4",
+  "note": "expansion targets working-side patients only; quarantine A and reserve B are untouched"
+}

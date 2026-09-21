@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ammonix — Claim story</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="masthead">
+  <a class="brand" href="inbox.html"><span class="mark">A</span>
+    <span><h1>Ammonix</h1><p class="tagline">Claims desk — demo</p></span></a>
+  <nav><a href="inbox.html" class="active">Claims</a><a href="universe.html">Universe</a><a href="learning.html">Learning</a></nav>
+</header>
+<main>
+<div class="case-head">
+  <a class="back" href="inbox.html" id="back-link">&larr; Back</a>
+  <h1>Claim <span class="mono" id="cid"></span></h1>
+  <span id="meta" class="hint"></span>
+</div>
+<div class="cols three">
+  <section class="panel lane" id="human-lane">
+    <h2>Simulated biller</h2>
+    <div id="human-outcome"></div>
+    <div id="human-steps"></div>
+  </section>
+  <section class="panel lane" id="llm-lane" hidden>
+    <h2 id="llm-lane-title">LLM agent</h2>
+    <div id="llm-outcome"></div>
+    <div id="llm-steps"></div>
+  </section>
+  <section class="panel lane ammonix-lane" id="ammonix-lane">
+    <h2>Ammonix</h2>
+    <div id="ammonix-outcome"></div>
+    <div id="ammonix-steps"></div>
+  </section>
+  <section class="panel lane live-lane" id="play">
+    <h2>Your live run</h2>
+    <p class="sub">Same claim, fresh start: Ammonix recommends each move,
+      you execute it or override it. Every move is real.</p>
+    <div id="live-outcome"></div>
+    <button class="ui primary" id="play-start">Start live run</button>
+    <div id="play-run" hidden>
+      <div id="play-steps"></div>
+      <p id="play-situation" class="reco"></p>
+      <div id="play-reco"></div>
+      <details style="margin-top:.5rem"><summary class="hint" style="cursor:pointer">scores</summary>
+        <div class="scorebars" id="play-scores" style="margin-top:.4rem"></div></details>
+    </div>
+  </section>
+</div>
+</main>
+<script src="shared.js"></script>
+<script>
+const id = new URLSearchParams(location.search).get('id');
+if (!id) location.replace('inbox.html');  // opened directly with no claim selected
+// back = the page you actually came from; the href is only the fallback
+document.getElementById('back-link').addEventListener('click', e => {
+  if (document.referrer && new URL(document.referrer).origin === location.origin
+      && history.length > 1) {
+    e.preventDefault();
+    history.back();
+  }
+});
+document.getElementById('cid').textContent = id;
+document.title = 'Ammonix — Claim ' + id;
+
+const GOOD_NOTE = /^(payer paid|patient paid|authorization granted|denial cleared|paid)/;
+const BAD_NOTE = /^(denied|authorization denied|appeal denied|denial upheld|info still missing|written off|patient didn't pay)/;
+const noteClass = n => GOOD_NOTE.test(n) ? 'green' : BAD_NOTE.test(n) ? 'red' : 'plain';
+
+function laneStep(st, link, extra) {
+  const human = st.by === 'handed to human';
+  const name = human
+    ? `<span class="pill amber">biller chose:</span> <b style="color:var(--amber)"${actionAttr(st.action)}>${esc(actionLabel(st.action))}</b>`
+    : `<b${actionAttr(st.action)}>${esc(actionLabel(st.action))}</b>`;
+  const inner = `<div class="sent">Move ${st.touch + 1} — ${name}</div>
+    <p class="verdict-line"><span class="pill ${noteClass(st.note)}"${carcAttr(st.note)}>${esc(st.note)}</span></p>`;
+  return `<div class="exchange">${link
+    ? `<a class="steplink" href="${link}">${inner}</a>` : inner}${extra || ''}</div>`;
+}
+
+// Mirrors llmWhy: the filing first, then why the move was chosen. Facts
+// are the record given to the system; scores are the harness's own read.
+function whyThisMove(st) {
+  const d = st.detail;
+  if (!d && !st.paperwork && !st.filed_payload && !st.checks) return '';
+  const f = (d && d.facts) || {};
+  const factLine = d ? [
+    f.carc ? `denial standing: <code>${esc(f.carc)}</code>` : 'no denial standing',
+    `day ${f.days_since_service}`,
+    `${f.days_to_filing_deadline} days to filing deadline`,
+    `auth ${esc(f.auth_status)}`,
+  ].join(' · ') : '';
+  const bars = d ? Object.entries(d.scores || {}).map(([a, v]) => `
+    <div class="scorebar${a === st.action ? ' top' : ''}">
+      <div class="row"><span${actionAttr(a)}>${esc(actionLabel(a))}${a === st.action ? ' — chosen' : ''}</span>
+      <span class="pct">${pct(v)}</span></div>
+      <div class="bar"><div class="fill" style="width:${Math.max(2, Math.round(v * 100))}%"></div></div>
+    </div>`).join('') : '';
+  const decide = [
+    factLine ? `<p class="hint" style="margin:.3rem 0">${factLine}</p>` : '',
+    d && d.forced ? '<p class="hint">forced by a rule, not scored</p>' : '',
+    st.by === 'handed to human' ? '<p class="hint">not confident enough — the biller made this move</p>' : '',
+    bars ? `<div class="scorebars" style="margin-top:.3rem">${bars}</div>` : '',
+  ].join('');
+  const write = paperworkBlock(st);
+  return `<details class="play-letter"><summary class="hint">details</summary>
+    ${decide ? `<p class="stephead">1 · it decided — no model call</p>${decide}` : ''}
+    ${write ? `<p class="stephead">2 · it filed</p>${write}` : ''}
+  </details>`;
+}
+
+function outcomeCard(l, cls, tokensLine) {
+  const gaveUp = String(l.resolution).startsWith('written_off');
+  return `<div class="score-card ${cls}" style="margin-bottom:.6rem">
+    <p class="amt">${money(l.collected)}</p>
+    <p class="sub"><span${laneOutcomeAttr(l)}>${esc(laneOutcomeLabel(l))}</span>${gaveUp ? ' <span class="pill red">abandoned</span>' : ''} · ${l.touches} moves</p>
+    ${tokensLine ? `<p class="sub tokline">${tokensLine}</p>` : ''}</div>`;
+}
+
+const fmtInt = n => Number(n || 0).toLocaleString('en-US');
+const tokSum = t => t ? (t.prompt_tokens || 0) + (t.completion_tokens || 0) : 0;
+
+// the like-for-like line under each lane's dollars: what working this
+// claim cost that lane in tokens (deciding + writing where metered)
+function laneTokensLine(tok, opts) {
+  if (!tok) return '';
+  const d = tokSum(tok.decide), w = tokSum(tok.write);
+  const parts = [];
+  if (d) parts.push(`${fmtInt(d)} deciding`);
+  if (w) parts.push(`${fmtInt(w)} writing`);
+  if (!parts.length) return '';
+  return `<span class="mono">${fmtInt(d + w)}</span> ${esc(opts.model)} tokens
+    <span class="hint">(${parts.join(' · ')})</span>`;
+}
+
+function tokenLine(t, verb) {
+  if (!t) return '';
+  // reading counts: the model reads the whole case before it can write a
+  // field, and providers bill both directions - same accounting as t103
+  return `<p class="hint" style="margin:.3rem 0">${verb} · <span class="mono">${fmtInt(tokSum(t))}</span> tokens
+    (${fmtInt(t.prompt_tokens)} read · ${fmtInt(t.completion_tokens)} written)</p>`;
+}
+
+function checksLine(st) {
+  if (!st.checks || !st.checks.length) return '';
+  const last = st.checks[st.checks.length - 1];
+  const tries = st.checks.length;
+  if (st.write_status === 'executed' && last.passed) {
+    return `<p class="hint" style="margin:.3rem 0">✓ passed its checks${tries > 1 ? ` (${tries} tries)` : ''}</p>`;
+  }
+  return `<p class="hint" style="margin:.3rem 0">✗ failed its checks — a human would file this move</p>`;
+}
+
+/* Moves without a printable form still file fields; give them their
+   document's name so every metered move shows what went to the payer. */
+const PAYLOAD_DOCS = {
+  request_peer_to_peer: 'Peer-to-Peer Review Request',
+  provide_requested_info: 'Information Response',
+  bill_patient: 'Patient Statement',
+  write_off: 'Write-Off Memo',
+};
+
+function payloadTable(payload, action) {
+  const rows = Object.entries(payload || {})
+    .map(([k, v]) => `<tr><td class="lbl">${esc(prettify(k))}</td>
+      <td class="val"><span class="modelfield">${esc(Array.isArray(v) ? v.join(', ') : String(v))}</span></td></tr>`);
+  return `<div class="doc"><p class="doc-title">${esc(PAYLOAD_DOCS[action] || 'Filed fields')}</p>
+    <p class="doc-sub">simulated</p>
+    ${rows.length ? `<table>${rows.join('')}</table>` : ''}</div>`;
+}
+
+/* The filing: the document, its verdict, its bill. No headers, no prose. */
+function paperworkBlock(st) {
+  if (!st.paperwork && !st.filed_payload && !st.checks && !st.write_tokens) return '';
+  const doc = st.paperwork ? buildDocument(st.paperwork)
+    : st.write_status === 'executed' ? payloadTable(st.filed_payload, st.action) : '';
+  return `${doc}${checksLine(st)}${tokenLine(st.write_tokens, 'writing')}`;
+}
+
+/* In the order it happened: the model DECIDES (reads the case, states
+   its reasoning, picks the action), then WRITES the filing. Each step
+   carries its own bill. */
+function llmWhy(st, label) {
+  if (!st.reasoning && !st.tokens && !st.paperwork && !st.filed_payload && !st.checks) return '';
+  const decide = [
+    st.by === 'handed to human'
+      ? `<p class="hint" style="margin:.3rem 0">${esc(label)} escalated; the biller made this move</p>` : '',
+    st.reasoning ? `<p class="hint" style="margin:.3rem 0 .1rem">${esc(label)} wrote:</p>
+      <blockquote class="letter">${esc(st.reasoning)}</blockquote>` : '',
+    tokenLine(st.tokens, 'deciding'),
+  ].join('');
+  const write = paperworkBlock(st);
+  return `<details class="play-letter"><summary class="hint">details</summary>
+    ${decide ? `<p class="stephead">1 · it decided</p>${decide}` : ''}
+    ${write ? `<p class="stephead">2 · it filed</p>${write}` : ''}
+  </details>`;
+}
+
+
+fetch('/api/claim/' + encodeURIComponent(id)).then(r => r.json()).then(c => {
+  document.getElementById('meta').innerHTML =
+    `<span class="meta-chip payer">${esc(c.payer_name)}</span>
+     <span class="meta-chip mono money">${money(c.balance)}</span>
+     <span class="meta-chip worker" style="cursor:help"
+       title="${esc(personaNote(c.persona))}">biller: ${esc(c.persona)}</span>`;
+  // the token contrast only renders when the LLM lane actually metered its
+  // moves - a lone number with nothing to compare against says nothing
+  const metered = c.llm_detail && c.llm_detail.tokens;
+  const label = (c.llm_detail && c.llm_model_label) || 'LLM';
+  const sysTok = c.system_detail.tokens;
+
+  // ---- outcome cards -------------------------------------------------
+  document.getElementById('human-outcome').innerHTML = outcomeCard(c.human_detail, '');
+  document.getElementById('ammonix-outcome').innerHTML = outcomeCard(
+    c.system_detail, 'ammonix',
+    metered
+      ? (sysTok && tokSum(sysTok.write)
+        ? `<span class="mono">${fmtInt(tokSum(sysTok.write))}</span> local tokens · deciding is free`
+        : `<span class="mono">0</span> tokens · deciding is free`)
+      : '');
+  if (c.llm_detail) {
+    document.getElementById('llm-lane').hidden = false;
+    document.getElementById('llm-lane-title').textContent = label + ' agent';
+    document.getElementById('llm-outcome').innerHTML = outcomeCard(
+      c.llm_detail, '', laneTokensLine(c.llm_detail.tokens, {model: label}));
+  }
+
+  // ---- the three columns, each its own move list ---------------------
+  document.getElementById('human-steps').innerHTML =
+    c.human_steps.map(st => laneStep(st, null)).join('');
+  if (c.llm_detail) {
+    document.querySelector('.cols').classList.add('four');
+    document.getElementById('llm-steps').innerHTML =
+      (c.llm_steps || []).map(st => laneStep(st, null, llmWhy(st, label))).join('');
+  }
+  document.getElementById('ammonix-steps').innerHTML =
+    c.system_steps.map(st => {
+      const sid = `${id}-r${st.touch}`;
+      const link = (c.system_moments || []).includes(sid)
+        ? `case.html?id=${encodeURIComponent(sid)}` : null;
+      return laneStep(st, link, whyThisMove(st));
+    }).join('');
+});
+
+// ---- live play ----
+function unavailableHtml(d) {
+  if (!d.unavailable || !d.unavailable.length) return '';
+  return `<details class="play-letter" style="margin-top:.5rem"><summary class="hint">not possible now (${d.unavailable.length})</summary>
+    <p class="hint" style="margin:.35rem 0">${d.unavailable.map(u =>
+      `<span${actionAttr(u.action)}>${esc(actionLabel(u.action))}</span> — ${esc(u.reason)}`).join('<br>')}</p></details>`;
+}
+
+function playRender(d) {
+  document.getElementById('play-run').hidden = false;
+  const steps = document.getElementById('play-steps');
+  const last = d.steps.length - 1;
+  steps.innerHTML = d.steps.map((st, i) => {
+    const r = st.response || {};
+    const money_ = [];
+    if (r.paid > 0) money_.push(`payer <span class="mono">${money(r.paid)}</span>`);
+    if (r.patient_paid > 0) money_.push(`patient <span class="mono">${money(r.patient_paid)}</span>`);
+    const letter = r.letter
+      ? (i === last
+        ? `<blockquote class="letter">${esc(r.letter)}</blockquote>`
+        : `<details class="play-letter"><summary class="hint">letter</summary>
+           <blockquote class="letter">${esc(r.letter)}</blockquote></details>`)
+      : '';
+    return `<div class="play-step exchange">
+      <div class="sent">Move ${st.touch + 1} — <b${actionAttr(st.action)}>${esc(actionLabel(st.action))}</b>
+        <span class="pill ${st.by === 'ammonix' ? 'plain' : 'amber'}">${st.by}</span></div>
+      ${letter}
+      <p class="verdict-line"><span class="pill big ${noteClass(st.note)}"${carcAttr(st.note)}>${esc(st.note)}</span>
+        ${money_.join(' · ')}</p>
+    </div>`;
+  }).join('');
+  const sit = document.getElementById('play-situation');
+  const reco = document.getElementById('play-reco');
+  const scores = document.getElementById('play-scores');
+  if (d.done) {
+    sit.textContent = '';
+    reco.innerHTML = '';
+    scores.innerHTML = '';
+    const o = d.outcome;
+    const box = document.getElementById('live-outcome');
+    box.innerHTML = `<div class="score-card live ${o.success ? 'good' : 'bad'}" style="margin-bottom:.6rem">
+      <p class="amt">${money(o.collected)}</p>
+      <p class="sub"><span${resolutionAttr(o.resolution)}>${esc(resolutionLabel(o.resolution))}</span>${String(o.resolution).startsWith('written_off') ? ' <span class="pill red">abandoned</span>' : ''} · ${o.touches} moves · ${o.days} days${
+        !o.success && o.days > 120 && o.collected > 0 ? ' · past the 120-day clock' : ''}</p></div>`;
+    box.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+    return;
+  }
+  const s = d.situation;
+  sit.innerHTML = `<span class="pill ${s.carc ? 'red' : 'green'}">${s.carc ? 'denial standing: ' + esc(s.carc) : 'no denial standing'}</span>
+    collected <span class="mono">${money(s.collected)}</span>
+    of <span class="mono">${money(s.collected + s.outstanding)}</span>
+    · day ${s.days_since_service} · move ${s.move}`;
+  const lastStep = steps.querySelector('.exchange:last-child');
+  if (lastStep) lastStep.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+  if (d.handed_to_human) {
+    reco.innerHTML = `<div class="question-card"><p><b>Ammonix hands this to you</b> —
+      ${d.known_payer ? 'not confident enough' : 'unknown payer'}. Pick a move:</p>
+      <div class="choices">${(d.applicable || (d.human_policy ? [d.human_policy] : [])).map(a =>
+        `<button type="button" class="ui choice" data-action="${esc(a)}"${actionAttr(a)}>${esc(actionLabel(a))}${a === d.human_policy ? ' · human policy pick' : ''}</button>`).join('')}</div>
+      ${unavailableHtml(d)}</div>`;
+  } else {
+    reco.innerHTML = `<p class="reco">Ammonix: <b${actionAttr(d.recommended)}>${esc(actionLabel(d.recommended))}</b></p>
+      <div class="actions" style="margin-top:.2rem">
+        <button type="button" class="ui primary" id="play-exec">Execute this move</button>
+        <details style="align-self:center"><summary class="hint" style="cursor:pointer">override</summary>
+        <div class="choices" style="margin-top:.4rem">${(d.applicable || [])
+          .filter(a => a !== d.recommended).map(a =>
+          `<button type="button" class="ui choice" data-action="${esc(a)}"${actionAttr(a)}>${esc(actionLabel(a))}</button>`).join('')}</div>
+        ${unavailableHtml(d)}</details>
+      </div>`;
+  }
+  scores.innerHTML = (d.scores || []).map((sc, i) => `
+    <div class="scorebar${i === 0 ? ' top' : ''}">
+      <div class="row"><span${actionAttr(sc.action)}>${esc(actionLabel(sc.action))}</span>
+      <span class="pct">${pct(sc.p_success)}</span></div>
+      <div class="bar"><div class="fill" style="width:${Math.max(2, Math.round(sc.p_success * 100))}%"></div></div>
+    </div>`).join('');
+}
+
+function playCall(path, body) {
+  return fetch('/api/claim/' + encodeURIComponent(id) + path, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(body || {}),
+  }).then(r => { if (!r.ok) throw new Error('play failed'); return r.json(); });
+}
+
+document.getElementById('play-start').addEventListener('click', e => {
+  e.target.textContent = 'Restart live run';
+  document.getElementById('live-outcome').innerHTML = '';
+  playCall('/play/start').then(playRender).catch(() => {
+    document.getElementById('live-outcome').innerHTML =
+      '<p class="hint">The live run could not start (server error). Replay above still works.</p>';
+  });
+});
+document.getElementById('play').addEventListener('click', e => {
+  const exec = e.target.closest('#play-exec');
+  const choice = e.target.closest('.choice');
+  if (!exec && !choice) return;
+  const body = choice ? {action: choice.dataset.action} : {};
+  e.target.disabled = true;
+  playCall('/play/step', body).then(playRender).catch(() => { e.target.disabled = false; });
+});
+</script>
+</body></html>

@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\":\"Prior auth is required for CPT 93229 and is missing; submitting now would draw an auth denial. The retro-auth window (30 days post-service) is still open at day 25, so the correct next touch is to obtain retroactive authorization before billing.\",\"action\":\"request_retro_auth\"}", "usage": {"prompt_tokens": 1314, "completion_tokens": 102}}

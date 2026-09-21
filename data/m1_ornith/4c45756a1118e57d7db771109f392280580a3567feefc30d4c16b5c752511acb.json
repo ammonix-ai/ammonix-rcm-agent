@@ -1,0 +1,1 @@
+{"content": "{\n  \"episode_id\": \"ep-05049\",\n  \"cpt\": \"93229\",\n  \"justification_code\": \"auth_not_obtained_before_service\"\n}", "usage": {"prompt_tokens": 314, "completion_tokens": 47}}

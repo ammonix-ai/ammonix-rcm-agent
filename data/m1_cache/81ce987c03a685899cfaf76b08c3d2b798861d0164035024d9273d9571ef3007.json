@@ -1,0 +1,6 @@
+{
+  "episode_id": "ep-05122",
+  "cpt": "93271",
+  "denial_carc": "CO-97",
+  "necessity_paragraph": "The denial code CO-97 states that CPT 93271 is bundled, but the clinical indication note specifies that prolonged cardiac event monitoring is indicated to correlate symptoms with arrhythmic events. The patient has diagnosis codes I48.0 and I47.1, representing paroxysmal atrial fibrillation and supraventricular tachycardia, which require this specific monitoring. The note confirms that standard electrocardiography fails to capture these intermittent episodes of palpitations and lightheadedness, making CPT 93271 medically necessary."
+}

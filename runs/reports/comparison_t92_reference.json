@@ -1,0 +1,111 @@
+{
+  "_provenance": {
+    "copied_from": "<AGENTIC_BASELINE>\\runs\\reports\\comparison.json",
+    "run_date": "2026-07-15",
+    "tranche": 92,
+    "note": "reference result surfaced for honesty: BEFORE the briefing information-parity fixes and before v0.4, the LLM agent (0.4567) was statistically tied with Ammonix v0.3 ('system_v3', 0.4667) and beat v0.2 ('system', 0.4133) on success rate"
+  },
+  "analysis": "agentic baseline vs ammonix system vs personas",
+  "factory_root": "<WORKTREE:\>",
+  "n_episodes": 300,
+  "note": "identical fresh episodes and engine randomness across arms; the 'agentic' arm runs the same pinned 27B as Ammonix M1 (architecture comparison); the 'claude' arm runs the same agent loop on claude-sonnet-5 via API (frontier-model comparison; not sampling-deterministic - the decision cache freezes the run); escalated touches fall back to the persona (human) policy in every arm",
+  "agentic": {
+    "episodes": 300,
+    "success_rate_v2": 0.4567,
+    "mean_score": 0.4671,
+    "payer_collected_total": 71893.05,
+    "payer_collected_capped": 63855.46,
+    "payer_over_collection": 8037.59,
+    "patient_collected_total": 11141.86,
+    "mean_touches": 3.35,
+    "episodes_with_mistakes": 11,
+    "escalated_touches": 204,
+    "resolutions": {
+      "paid": 15,
+      "written_off": 132,
+      "paid_with_secondary": 38,
+      "paid_on_appeal": 13,
+      "patient_billed": 91,
+      "written_off_at_cap": 11
+    },
+    "wall_seconds": 1.8,
+    "policy": {
+      "decisions": 994,
+      "retries": 150,
+      "escalations_explicit": 132,
+      "escalations_forced": 72,
+      "decision_errors": 0
+    },
+    "llm": {
+      "model_id": "/models/Qwen3.6-27B-AWQ-INT4",
+      "calls_to_provider": 0,
+      "cache_hits": 1144,
+      "prompt_tokens": 811268,
+      "completion_tokens": 230240
+    }
+  },
+  "system": {
+    "episodes": 300,
+    "success_rate_v2": 0.4133,
+    "mean_score": 0.467,
+    "payer_collected_total": 95010.43,
+    "payer_collected_capped": 61555.87,
+    "payer_over_collection": 33454.56,
+    "patient_collected_total": 18639.06,
+    "mean_touches": 3.57,
+    "episodes_with_mistakes": 52,
+    "escalated_touches": 230,
+    "resolutions": {
+      "paid": 15,
+      "patient_billed": 120,
+      "written_off": 50,
+      "paid_with_secondary": 65,
+      "paid_on_appeal": 8,
+      "written_off_at_cap": 42
+    },
+    "wall_seconds": 25.3
+  },
+  "personas": {
+    "episodes": 300,
+    "success_rate_v2": 0.3867,
+    "mean_score": 0.4232,
+    "payer_collected_total": 50578.89,
+    "payer_collected_capped": 50578.89,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 19203.3,
+    "mean_touches": 2.487,
+    "episodes_with_mistakes": 68,
+    "escalated_touches": 0,
+    "resolutions": {
+      "paid": 15,
+      "written_off": 106,
+      "patient_billed": 146,
+      "paid_with_secondary": 23,
+      "paid_on_appeal": 7,
+      "written_off_at_cap": 3
+    },
+    "wall_seconds": 0.6
+  },
+  "system_v3": {
+    "episodes": 300,
+    "success_rate_v2": 0.4667,
+    "mean_score": 0.5075,
+    "payer_collected_total": 79364.59,
+    "payer_collected_capped": 64743.52,
+    "payer_over_collection": 14621.07,
+    "patient_collected_total": 15440.88,
+    "mean_touches": 3.497,
+    "episodes_with_mistakes": 35,
+    "escalated_touches": 226,
+    "resolutions": {
+      "paid": 15,
+      "paid_with_secondary": 71,
+      "paid_on_appeal": 10,
+      "written_off": 63,
+      "patient_billed": 106,
+      "written_off_at_cap": 35
+    },
+    "wall_seconds": 9.6,
+    "factory_root": "<WORKTREE:\>"
+  }
+}

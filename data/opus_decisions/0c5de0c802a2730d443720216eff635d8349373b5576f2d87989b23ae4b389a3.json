@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\":\"Auth is not required for this CPT, diagnoses are valid, eligibility active, COB order correct, and no payer response is on the table. The claim was corrected in touch 1 but never actually submitted. The clean next step is to submit the claim as-is.\",\"action\":\"submit_clean\"}", "usage": {"prompt_tokens": 1347, "completion_tokens": 100}}

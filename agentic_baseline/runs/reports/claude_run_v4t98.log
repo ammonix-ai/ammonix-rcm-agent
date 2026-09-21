@@ -1,0 +1,37 @@
+comparing ['claude'] on 300 fresh episodes of tranche 98 (indices 5000..5299)
+[claude] {
+ "episodes": 300,
+ "success_rate_v2": 0.4233,
+ "mean_score": 0.4495,
+ "payer_collected_total": 57766.09,
+ "payer_collected_capped": 57766.09,
+ "payer_over_collection": 0.0,
+ "patient_collected_total": 21504.13,
+ "mean_touches": 2.817,
+ "episodes_with_mistakes": 54,
+ "escalated_touches": 308,
+ "resolutions": {
+  "paid": 32,
+  "written_off": 76,
+  "paid_on_appeal": 3,
+  "patient_billed": 155,
+  "paid_with_secondary": 27,
+  "written_off_at_cap": 7
+ },
+ "wall_seconds": 855.6,
+ "policy": {
+  "decisions": 838,
+  "retries": 1,
+  "escalations_explicit": 308,
+  "escalations_forced": 0,
+  "decision_errors": 0
+ },
+ "llm": {
+  "model_id": "claude-sonnet-5",
+  "calls_to_provider": 824,
+  "cache_hits": 15,
+  "prompt_tokens": 1119702,
+  "completion_tokens": 164664
+ }
+}
+report written to <BASELINE>\runs\reports\comparison_posthoc_v4t98.json

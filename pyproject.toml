@@ -1,0 +1,36 @@
+[project]
+name = "ammonix-rcm"
+version = "1.0.0"
+description = "Ammonix RCM agent factory: synthetic claims world (Cardessa), harness, UI, and the pre-registered agentic baseline"
+requires-python = ">=3.12"
+dependencies = [
+    # pinned to the environment the shipped artifacts were built/verified in
+    "fastapi==0.141.1",
+    "uvicorn==0.52.4",
+    "numpy==2.5.2",
+    "polars==1.43.2",
+    "pydantic==2.13.4",
+    "pyyaml==6.0.3",
+    "scikit-learn==1.9.0",
+    "scipy==1.18.0",
+    "joblib==1.5.3",
+    "umap-learn>=0.5",   # universe projection (ui startup)
+    # local package: schema/contracts (also installable standalone)
+    # install with: pip install -e ./ammonix_core
+]
+
+[project.optional-dependencies]
+figures = ["matplotlib>=3.9", "pandas>=2.2", "pyarrow>=17"]  # paper figure pipeline (paper/make_figures.py, make_pipeline.py)
+llm-arms = ["anthropic>=0.40"]         # baseline LLM comparison arms (agentic_baseline/scripts); OpenAI/Kimi lanes use stdlib urllib
+baseline = ["pandas>=2.2"]             # some baseline analysis scripts
+test = ["pytest==9.1.1", "playwright==1.62.0"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["cardessa"]  # ui/ and scripts/ run from the repo root (uvicorn ui.server:app)
+
+[tool.pytest.ini_options]
+testpaths = ["ammonix_core", "agentic_baseline/tests"]

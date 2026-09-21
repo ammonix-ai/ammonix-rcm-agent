@@ -1,0 +1,63 @@
+{
+ "analysis": "registered GPT-6 harness comparison, tranche 103 (preregistration/comparison_gpt6_tranche103.json)",
+ "date": "2026-09-08",
+ "reports": [
+  "rollout_gpt6_tuned_t103.json",
+  "rollout_gpt6_rag_tuned_t103.json",
+  "rollout_ammonix_gpt6_t103.json"
+ ],
+ "success_rate_v2": {
+  "ammonix_gpt6": 0.4733,
+  "gpt6_rag_tuned": 0.4467,
+  "gpt6_tuned": 0.4067,
+  "personas": 0.3633
+ },
+ "payer_collected_capped": {
+  "ammonix_gpt6": 59689.29,
+  "gpt6_rag_tuned": 57645.58,
+  "gpt6_tuned": 53939.93,
+  "personas": 48491.47
+ },
+ "episodes_with_mistakes": {
+  "ammonix_gpt6": 23,
+  "gpt6_rag_tuned": 30,
+  "gpt6_tuned": 25,
+  "personas": 68
+ },
+ "gpt6_tokens": {
+  "ammonix_gpt6": {"decisions_prompt": 0, "decisions_completion": 0, "writer_prompt": 231077, "writer_completion": 30302, "total": 261379},
+  "gpt6_tuned": {"decisions_prompt": 553376, "decisions_completion": 81288, "writer_prompt": 263257, "writer_completion": 37912, "total": 935833},
+  "gpt6_rag_tuned": {"decisions_prompt": 807492, "decisions_completion": 95653, "writer_prompt": 286199, "writer_completion": 34222, "total": 1223566}
+ },
+ "list_price_usd": {
+  "prices_per_million": {"prompt": 10.0, "completion": 50.0, "source": "GPT-6 published list prices on the run date"},
+  "ammonix_gpt6": 3.83,
+  "gpt6_tuned": 14.1,
+  "gpt6_rag_tuned": 17.42
+ },
+ "descriptive_addition_not_registered": {
+  "arm": "ammonix_ornith: the shipped system (Ammonix decides, fine-tuned Ornith 9B writes), run on the same draw after the registered arms at the user's request",
+  "success_rate_v2": 0.4633,
+  "payer_collected_capped": 59184.95,
+  "episodes_with_mistakes": 24,
+  "paperwork_rejected": 17,
+  "gpt6_tokens": 0,
+  "local_writer_tokens": {"prompt": 226172, "completion": 29888, "model": "local/Ornith-1.5-9B-rcm-r2"},
+  "api_cost_usd": 0.0,
+  "note": "decisions are identical to ammonix_gpt6 by construction (the decision path never sees the writer); the 1.0-point success difference comes from payer paperwork rejections (17 vs 13) on a handful of claims. Report: rollout_ammonix_ornith_t103.json. The run crashed twice on infrastructure (a text-cache miss with the text server down, then a container-swap timeout, commit 94666284) and was rerun; all model calls replay from the prompt-hash caches, token counts preserved."
+ },
+ "registered_decision_rule": "ammonix_gpt6 wins or ties both GPT-6 arms on success_rate_v2 under the tranche-99 band (5.64 points), AND spends fewer total GPT-6 tokens than each GPT-6 arm",
+ "verdict": {
+  "success_vs_gpt6_tuned": "WIN (+6.66 points, outside the 5.64 band)",
+  "success_vs_gpt6_rag_tuned": "TIE (+2.66 points, inside the 5.64 band)",
+  "tokens_vs_gpt6_tuned": "FEWER (261,379 vs 935,833; 3.6x)",
+  "tokens_vs_gpt6_rag_tuned": "FEWER (261,379 vs 1,223,566; 4.7x)",
+  "registered_claim": "HOLDS: ammonix_gpt6 wins or ties both GPT-6 arms on success and spends fewer GPT-6 tokens than each"
+ },
+ "honest_notes": [
+  "single draw: against the strongest GPT-6 configuration (tuned prompt + k=25 retrieval over the agent's own records) the success margin is a tie under the registered band, so the defensible claim is parity-or-better at roughly a quarter of the token cost, not an accuracy win; against GPT-6 without retrieval the accuracy win is outside the band",
+  "GPT-6 spent zero reasoning tokens under strict json_schema decoding; a chattier GPT-6 deployment would cost more than measured here",
+  "the ammonix arm's rerun replayed entirely from caches (writer calls_to_provider 0, cache_hits 565), so the crash recovery changed no model output and no token count",
+  "shared world machinery (Qwen state texts, Haiku payer reviewer) is identical across arms and excluded from per-arm cost, as registered"
+ ]
+}

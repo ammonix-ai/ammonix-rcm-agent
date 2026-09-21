@@ -1,0 +1,131 @@
+{
+ "preregistration": "comparison_tranches101_102",
+ "registered": "2026-08-19",
+ "ordering_proof": "this file is committed to the Agentic_Baseline git and pushed to the factory's public GitHub repository (wavemedix/Ammonix_insurance_claims) before any tranche-101 or tranche-102 episode, study row or LLM decision exists anywhere; the pushed commit is the public timestamp",
+ "question": "The RCM paper's Limitations name single-draw noise as an open concern: tranche 99 (same-model comparison) and tranche 100 (retrieval comparison) are one draw each. This registration adds two more sealed 300-claim draws with ALL arms, so every headline margin rests on three independent draws.",
+ "world": {
+  "factory_root": "..\\Ammonix_Generic\\Cardessa_Admin_factory at main 93296cd (v0.6 shipped default; EV-constants override added, default shipped) - READ ONLY for this evaluation",
+  "world_version": "v0.4 world unchanged; v0.6 runtime (kernel decision field) as shipped default",
+  "master_seed": 20260709,
+  "training_lineage_episodes": 5000,
+  "tranches": [
+   101,
+   102
+  ],
+  "start_index": 5000,
+  "n_episodes_per_tranche": 300,
+  "allocation": {
+   "retro_auth": 60,
+   "p2p": 30,
+   "cob": 40,
+   "None": 170
+  },
+  "allocation_provenance": "identical to tranches 98, 99 and 100",
+  "generation_path": "cardessa.expansion.expansion_studies(world_ext, MASTER_SEED, tranche, allocation, 5000) after cardessa.livecases.training_world replay; episodes played by CardessaEnvironment; no sealed or quarantined data touched",
+  "why_tranches_101_102": "90 (demo), 92, 96, 97 (v0.4 analyses), 98 (v0.4 comparison), 99 (v0.6 comparison), 100 (retrieval comparison) are spent; 101 and 102 are the first draws no arm and no development step has ever seen"
+ },
+ "environment_note": "the original evaluation venv was destroyed in a folder rename (2026-08-19) and rebuilt (Python 3.12, current scikit-learn); the rebuilt environment reproduces the stored tranche-100 system arm bit-for-bit and differs from the stored tranche-99 system arm in 9 of 300 episodes (knife-edge calibrated-score flips). All tranche-101/102 arms run in the rebuilt environment, so all margins are internally consistent; the 9-episode drift is disclosed in runs/reports/evconst_experiment_summary.json",
+ "arms": {
+  "personas": "scripted human persona baseline (identity canary)",
+  "agentic": "the LLM agent loop on the pinned local Qwen 27B, v0.4 parity briefing, prompt unchanged from the tranche-99 registration",
+  "agentic_rag": "agentic + the SIMILAR PAST CLAIMS retrieval block, k=25, unchanged from the tranche-100 registration",
+  "sol_tuned": "GPT-5.6 Sol on the TUNED configuration named below (plain: tuned prompt, no retrieval block)",
+  "sol_rag_tuned": "GPT-5.6 Sol, tuned prompt AND tuned retrieval size, the strongest frontier baseline this paper fields",
+  "imitation_bc": "behavior-cloning baseline as in comparison_posthoc_v6t99, replayed on the new tranches",
+  "ammonix_v6": "BasisRuntime.load with the shipped v0.6 default (kernel decision field, shipped EV constants), identical to the tranche-99 registration",
+  "oracle_greedy": "evaluation-only upper bound (engine truth per touch); not a competitor"
+ },
+ "sol_tuning": {
+  "how": "prompt variants P0 (registered t99/t100 prompt), P1 (corrected 90% success threshold + close-out guidance), P2 (P1 + payer-specific retrieval weighting) were compared at k=25 on the 200-claim demo scoreboard (tranche 90) ONLY; the stage-1 winner was then compared at k in {10, 25, 50}. No evaluation tranche was touched during tuning. Full grid: runs/reports/sol_tuning_demo90.json (committed alongside this registration)",
+  "winner_config": "P2_k25",
+  "winner_prompt_variant": "P2",
+  "winner_retrieval_k": 25,
+  "winner_demo_numbers": {
+   "success_rate_v2": 0.38,
+   "payer_collected_capped": 39996.71,
+   "episodes_with_mistakes": 13,
+   "escalated_touches": 61
+  },
+  "full_grid": {
+   "P0_k25": {
+    "success_rate_v2": 0.38,
+    "payer_collected_capped": 39665.07,
+    "episodes_with_mistakes": 9,
+    "escalated_touches": 126
+   },
+   "P1_k25": {
+    "success_rate_v2": 0.37,
+    "payer_collected_capped": 38584.06,
+    "episodes_with_mistakes": 5,
+    "escalated_touches": 84
+   },
+   "P2_k25": {
+    "success_rate_v2": 0.38,
+    "payer_collected_capped": 39996.71,
+    "episodes_with_mistakes": 13,
+    "escalated_touches": 61
+   },
+   "P2_k10": {
+    "success_rate_v2": 0.35,
+    "payer_collected_capped": 36160.99,
+    "episodes_with_mistakes": 8,
+    "escalated_touches": 129
+   },
+   "P2_k50": {
+    "success_rate_v2": 0.305,
+    "payer_collected_capped": 29358.7,
+    "episodes_with_mistakes": 47,
+    "escalated_touches": 454
+   }
+  },
+  "note": "AMENDED 2026-08-20: k=25 stands as the registered default; the 10/50 size stage was contaminated by failed API calls (see amendments). sol_tuned and sol_rag_tuned use prompt P2; sol_rag_tuned uses k=25."
+ },
+ "model_pins": {
+  "local": {
+   "model_id": "/models/Qwen3.6-27B-AWQ-INT4",
+   "endpoint": "http://127.0.0.1:8000/v1 (vLLM)",
+   "temperature": 0.0,
+   "seed": 0
+  },
+  "sol": {
+   "model_id": "gpt-5.6-sol",
+   "response_format": "json_schema strict",
+   "reasoning_effort": "default (medium)",
+   "note": "not sampling-deterministic; the decision cache freezes each run"
+  },
+  "max_attempts_per_touch": 2
+ },
+ "metrics": {
+  "primary": "success_rate_v2 per tranche, and the mean margin over the three draws (99, 101, 102) for the same-model comparison; (100, 101, 102) for the retrieval comparison",
+  "secondary": [
+   "payer_collected_capped (v2-cap-total-4)",
+   "mean_score",
+   "episodes_with_mistakes",
+   "mean_touches",
+   "escalated_touches",
+   "LLM cost per arm"
+  ]
+ },
+ "noise_model": {
+  "per_draw": "binomial 95% CI half-width 0.0564 at p~0.46, n=300, as registered for tranche 99",
+  "three_draws": "the mean margin over three independent draws carries SE = sd(margins)/sqrt(3); reported with a paired per-tranche breakdown. No new tie band is invented: the per-draw 5.6-point band applies to each draw, and the three-draw mean is reported with its own CI"
+ },
+ "decision_rule": {
+  "main": "the paper reports, per comparison, the three-draw mean margin and each draw's verdict under the tranche-99 rule (win/tie/loss per draw). The pre-registered claim to test: ammonix_v6 wins or ties every draw against every non-oracle arm, and the three-draw mean success margin over the strongest LLM arm exceeds zero",
+  "no_post_hoc_metric_switching": "verdicts are read off this rule only; all other numbers are descriptive"
+ },
+ "procedure": [
+  "1. (this commit) registration + the complete tuning grid, before any tranche-101/102 data exists",
+  "2. smoke: first 5 episodes of tranche 101, personas + system arms only, mechanics check",
+  "3. full runs per tranche: run_comparison.py --arms personas,agentic,agentic_rag,sol_tuned,sol_rag_tuned --tranche T --episodes 300; run_v4_arm.py (AMMONIX_SYSTEM_ARM=ammonix_v6); run_imitation_arm.py; run_oracle_arm.py",
+  "4. one run per arm per tranche, no reruns, no episode exclusions; decision caches freeze the LLM arms"
+ ],
+ "registered_before_any_tranche101_or_102_generation": true,
+ "amendments": [
+  {
+   "date": "2026-08-20",
+   "before_any_tranche101_or_102_sol_decision": true,
+   "what": "the tuning grid's P2_k10 and P2_k50 rows are contaminated: API calls began failing partway through tuning stage 2 (431 and 70 completed calls of ~500 expected; every failed call fell back to the persona policy), discovered after registration from the stage-2 log. The stage-1 prompt comparison ran clean and the prompt choice P2 stands. The retrieval size k=25 stands as the registered default rather than as a sweep winner. The size sweep will be completed descriptively alongside the Sol arms; the registered arms are unchanged (prompt P2, k=25)."
+  }
+ ]
+}

@@ -1,0 +1,75 @@
+{
+ "preregistration": "comparison_gpt6_tranche103",
+ "registered": "2026-09-07",
+ "ordering_proof": "this file is committed and pushed to the factory's public GitHub repository (wavemedix/Ammonix_insurance_claims) before any tranche-103 episode, study row, GPT-6 decision or GPT-6 paperwork exists anywhere; the pushed commit is the public timestamp",
+ "question": "Does the Ammonix harness make a frontier model better AND cheaper at the same job? Two conditions on the same fresh 300-claim draw, both through the payer-adjudicated paperwork rollout: (1) GPT-6 does the whole job, deciding every touch through the agent loop and writing its own paperwork; (2) the Ammonix agent decides and GPT-6 sits only in the L seat, writing the paperwork for the actions the agent executes. Compared on outcome quality and on GPT-6 tokens spent.",
+ "world": {
+  "factory_root": "Cardessa_Admin_factory at main (v0.7 payer-adjudicated paperwork rollout as shipped) - READ ONLY for this evaluation",
+  "world_version": "v0.4 world unchanged; v0.6 runtime (kernel decision field, shipped EV constants); v0.7 paperwork loop (scrubber cap 2, hand-off to the simulated biller) and payer reader as shipped",
+  "master_seed": 20260709,
+  "training_lineage_episodes": 5000,
+  "tranches": [103],
+  "start_index": 5000,
+  "n_episodes_per_tranche": 300,
+  "allocation": {"retro_auth": 60, "p2p": 30, "cob": 40, "None": 170},
+  "allocation_provenance": "identical to tranches 98 through 102",
+  "generation_path": "cardessa.expansion.expansion_studies(world_ext, MASTER_SEED, 103, allocation, 5000) after cardessa.livecases.training_world replay; episodes played by the v0.7 paperwork rollout (scripts/rollout_paperwork.py); no sealed or quarantined data touched",
+  "why_tranche_103": "90 (demo/tuning), 92, 96, 97, 98, 99, 100, 101, 102 are spent; 103 is the first draw no arm and no development step has ever seen"
+ },
+ "arms": {
+  "personas": "scripted simulated-biller baseline (identity canary; makes no LLM calls)",
+  "gpt6_tuned": "GPT-6 (gpt-6-astra) on the agent loop with the TUNED configuration registered for the Sol arms (prompt P2, no retrieval block); GPT-6 also writes its own paperwork (writer gpt6)",
+  "gpt6_rag_tuned": "GPT-6 (gpt-6-astra), tuned prompt AND the k=25 SIMILAR PAST CLAIMS retrieval block; GPT-6 also writes its own paperwork (writer gpt6). The strongest GPT-6 configuration this comparison fields",
+  "ammonix_gpt6": "the shipped Ammonix v0.6 decision path (arm 'ammonix'), with GPT-6 (gpt-6-astra) in the L seat as the paperwork writer (writer gpt6). The decision path makes zero LLM calls by construction; every GPT-6 token in this arm is paperwork"
+ },
+ "tuning_disclosure": "no tuning of any kind was run for GPT-6. The tuned prompt P2 and retrieval size k=25 are carried over verbatim from the Sol registration (comparison_tranches101_102), where they were tuned for GPT-5.6 Sol on the spent demo tranche 90. This favors neither side by design; it is simply the strongest registered frontier configuration available without new tuning.",
+ "model_pins": {
+  "gpt6": {
+   "model_id": "gpt-6-astra",
+   "endpoint": "https://api.openai.com/v1 (chat completions)",
+   "response_format": "json_schema strict",
+   "max_completion_tokens": 8000,
+   "reasoning_effort": "default",
+   "note": "not sampling-deterministic; the prompt-hash decision and paperwork caches freeze each run, preserving token usage for cost accounting"
+  },
+  "writer_seat": "writer 'gpt6' in scripts/rollout_paperwork.py for ALL non-persona arms in both conditions: identical writer, identical scrubber loop (cap 2, third failure hands the touch to the simulated biller)",
+  "payer_reviewer": "claude-haiku-4-5-20251001 (cardessa.payer_reader), pinned, shared world machinery identical across arms",
+  "state_texts": "pinned local Qwen 27B, shared world machinery identical across arms",
+  "max_attempts_per_touch": 2
+ },
+ "cost_accounting": {
+  "counted_per_arm": "prompt_tokens + completion_tokens of (a) the arm's decision calls and (b) the arm's writer calls, read from the client counters that survive the caches; reported also in list-price dollars at GPT-6 published per-token prices on the run date",
+  "excluded_and_disclosed": "the Qwen state-text generation and the Haiku payer reviewer are world machinery, identical across arms, and are excluded from per-arm cost; their totals are reported once for the run",
+  "ammonix_decision_cost": "0 tokens by construction; reported as such, with the arm's writer tokens as its whole cost"
+ },
+ "metrics": {
+  "primary": "success_rate_v2 per arm, and GPT-6 total tokens (decisions + writer) per arm",
+  "secondary": [
+   "payer_collected_capped",
+   "mean_score",
+   "episodes_with_mistakes",
+   "paperwork_rejected and episodes_with_rejection",
+   "touches_written and touches_handed_off",
+   "mean_touches",
+   "list-price dollar cost per arm and per settled claim"
+  ]
+ },
+ "noise_model": "binomial 95% CI half-width 0.0564 at p~0.46, n=300, the registered per-draw band of the tranche-99 rule; margins inside the band are ties",
+ "decision_rule": {
+  "main": "the pre-registered claim to test: ammonix_gpt6 wins or ties both GPT-6 arms on success_rate_v2 under the tranche-99 band, AND spends fewer total GPT-6 tokens than each GPT-6 arm. Both halves are reported as measured, whatever they show; a loss on either half is a loss and is published as one",
+  "no_post_hoc_metric_switching": "verdicts are read off this rule only; all other numbers are descriptive"
+ },
+ "procedure": [
+  "1. (this commit) registration pushed before any tranche-103 data exists",
+  "2. client mechanics were verified on one throwaway dummy call (no world data); smoke: first 5 episodes of the SPENT demo tranche 90, arms personas + ammonix_gpt6 + gpt6_tuned, to check mechanics and estimate per-episode cost before the full spend",
+  "3. full runs on tranche 103, one invocation per LLM arm so writer token counters attribute cleanly: (a) --arms gpt6_tuned --writer gpt6, (b) --arms gpt6_rag_tuned --writer gpt6, (c) --arms personas,ammonix --writer gpt6",
+  "4. one run per arm, no reruns, no episode exclusions; the caches freeze every model call"
+ ],
+ "registered_before_any_tranche103_generation": true,
+ "amendments": [
+  {
+   "date": "2026-09-08",
+   "what": "procedure step 3c (personas + ammonix invocation) crashed with an infrastructure error at step 6 of the episode loop: the ammonix arm had settled all its claims before the personas arm and the decider was handed an empty snapshot list, building a zero-column frame that failed the concat (bug fixed in scripts/rollout_paperwork.py, commit 99932716). The invocation was rerun once after the fix; every model call replayed from the prompt-hash caches (writer calls_to_provider 0, cache_hits 565 in the rerun report), so no model output, decision, or token count differs from the crashed run. No episode was excluded, no arm was rerun with fresh model calls."
+  }
+ ]
+}

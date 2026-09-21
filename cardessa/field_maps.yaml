@@ -1,0 +1,48 @@
+# Field-source mapping table (agent-UI spec Section 2). Every artifact field
+# is filled from exactly the source fixed here; a field whose source is empty
+# on a given case stays EMPTY and is reported as a gap. Tools never invent.
+cms1500:
+  patient_name:        {table: patients,  column: [first_name, last_name]}
+  patient_dob:         {table: patients,  column: dob}
+  patient_sex:         {table: patients,  column: sex}
+  patient_address:     {table: patients,  column: [address_street, address_city, address_state, address_zip]}
+  insured_member_id:   {table: coverage,  column: member_id}
+  subscriber_name:     {table: coverage,  column: subscriber_name}
+  subscriber_relationship: {table: coverage, column: subscriber_relationship}
+  payer_name:          {table: payers,    column: name}
+  diagnosis_codes:     {table: state,     column: dx_codes}
+  service_cpt:         {table: state,     column: cpt}
+  service_charge:      {table: state,     column: allowed_amount}
+  date_of_service_start: {table: studies, column: service_start}
+  date_of_service_end:   {table: studies, column: service_end}
+  ordering_provider_npi: {table: clinics, column: npi}
+  ordering_clinic_name:  {table: clinics, column: name}
+  prior_auth_reference:  {table: state,   column: auth_status}
+  cob_other_coverage:    {table: coverage, column: secondary_payer_id}
+  assignment_of_benefits: {table: coverage, column: aob_on_file}
+
+prior_auth_request:
+  member_id:           {table: coverage,  column: member_id}
+  member_name:         {table: patients,  column: [first_name, last_name]}
+  payer_name:          {table: payers,    column: name}
+  provider_npi:        {table: clinics,   column: npi}
+  provider_name:       {table: clinics,   column: name}
+  study_cpt:           {table: state,     column: cpt}
+  diagnosis_codes:     {table: state,     column: dx_codes}
+  date_of_service_start: {table: studies, column: service_start}
+  clinical_indication: {table: state,     column: clinical_indication_text}  # quoted verbatim
+  retro_justification_code: {table: action_object, column: justification_code}  # enum, chosen by M1
+
+appeal_letter_facts:
+  member_id:           {table: coverage,  column: member_id}
+  patient_name:        {table: patients,  column: [first_name, last_name]}
+  payer_name:          {table: payers,    column: name}
+  study_cpt:           {table: state,     column: cpt}
+  diagnosis_codes:     {table: state,     column: dx_codes}
+  denial_carc:         {table: state,     column: carc}
+  balance:             {table: state,     column: balance}
+  clinical_indication: {table: state,     column: clinical_indication_text}
+  denial_letter:       {table: state,     column: payer_correspondence_text}
+  # the necessity paragraph is the ONE generated-prose field (M1, checked by
+  # the claim-extraction M2 pass)
+  necessity_paragraph: {table: action_object, column: necessity_paragraph}

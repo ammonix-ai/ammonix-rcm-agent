@@ -1,0 +1,9 @@
+{
+  "amends": "runs/reports/test_report_v3.json ROLLOUT_doomed_flagged_100pct",
+  "verifier_finding": "original bar was vacuously true by construction",
+  "honest_definition": "of touch-0 states whose best calibrated score is under the doom floor (0.10), how many does the runtime actually escalate (its own confidence floor is 0.05)",
+  "n_doomed_intakes": 152,
+  "n_escalated_by_system": 139,
+  "honest_flag_rate": 0.9144736842105263,
+  "bar_100pct": false
+}

@@ -1,0 +1,44 @@
+{
+ "analysis": "every arm writes its paperwork through one shared writer; the payer adjudicates it",
+ "tranche": 99,
+ "n_episodes": 300,
+ "writer": "ornith_ft",
+ "reviewer": "claude-haiku-4-5-20251001",
+ "wall_seconds": 3876.2,
+ "llm": {
+  "writer": {
+   "model_id": "local/Ornith-1.5-9B-rcm-r2",
+   "served_id": "Ornith-1.5-9B-rcm-r2",
+   "thinking": "disabled (template kwarg; <think> stripped)",
+   "calls_to_provider": 324,
+   "cache_hits": 576,
+   "prompt_tokens": 334806,
+   "completion_tokens": 46082
+  },
+  "reader_calls": 14,
+  "reader_cache_hits": 54
+ },
+ "policies": {},
+ "ammonix_ablated": {
+  "episodes": 300,
+  "success_rate_v2": 0.4733,
+  "mean_score": 0.5118,
+  "payer_collected_capped": 61064.32,
+  "patient_collected_total": 23950.1,
+  "mean_touches": 2.897,
+  "episodes_with_mistakes": 21,
+  "touches_written": 825,
+  "touches_handed_off": 33,
+  "paperwork_rejected": 17,
+  "episodes_with_rejection": 17,
+  "balance_rejected": 5095.61,
+  "resolutions": {
+   "written_off": 23,
+   "paid": 29,
+   "patient_billed": 160,
+   "paid_with_secondary": 73,
+   "paid_on_appeal": 4,
+   "written_off_at_cap": 11
+  }
+ }
+}

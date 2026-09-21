@@ -1,0 +1,38 @@
+[project]
+name = "ammonix-core"
+version = "0.2.0"
+description = "Ammonix generic engine: schema v0.1 entities plus v0.2 platform entities (pinned at M0)"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.7",
+    "numpy>=1.26",
+    "scikit-learn>=1.5",
+    "polars>=1.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.5",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["ammonix_core*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+# All tests are functions; prevents collection of the TestReport schema entity
+python_classes = []
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]

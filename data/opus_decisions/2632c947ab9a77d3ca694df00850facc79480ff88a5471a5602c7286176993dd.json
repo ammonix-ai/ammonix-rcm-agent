@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\":\"Prior auth is not required for this CPT, diagnosis pairing is valid, eligibility active, COB order correct, and no denial exists yet. The claim is clean and ready for first submission. No records needed since documentation is adequate and auth isn't required.\",\"action\":\"submit_clean\"}", "usage": {"prompt_tokens": 1309, "completion_tokens": 101}}

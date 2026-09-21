@@ -1,0 +1,91 @@
+{
+  "dataset_id": "cardessa_sim_v1",
+  "n_examples": 1000,
+  "n_states": 2330,
+  "scope_conditions": {
+    "volume": true,
+    "states_consecutive_per_example": true,
+    "data_and_action_per_state": true,
+    "one_outcome_per_example": true
+  },
+  "raw_action_inventory": {
+    "bill_secondary": 30,
+    "correct_and_resubmit": 41,
+    "write_off": 305,
+    "request_retro_auth": 20,
+    "submit_clean": 787,
+    "appeal_with_necessity": 156,
+    "bill_patient": 564,
+    "provide_requested_info": 30,
+    "request_peer_to_peer": 46,
+    "submit_with_records": 351
+  },
+  "missing_value_profile": {},
+  "leakage_audit": {
+    "denylisted": [
+      "days_to_payment"
+    ],
+    "statistically_flagged": {
+      "days_to_payment": 0.0
+    },
+    "excluded_from_data": [
+      "days_to_payment"
+    ]
+  },
+  "data_columns_by_modality": {
+    "tabular": [
+      "allowed_amount",
+      "aob_on_file",
+      "auth_required",
+      "auth_status",
+      "balance",
+      "carc",
+      "clinic_doc_quality",
+      "cob_position_ok",
+      "coinsurance_pct",
+      "cpt",
+      "cumulative_delay_days",
+      "days_since_service",
+      "days_to_filing_deadline",
+      "deductible_remaining",
+      "dx_codes",
+      "eligibility_status",
+      "has_secondary",
+      "p2p_available",
+      "pairing_valid",
+      "payer_archetype",
+      "payer_id",
+      "persona_id",
+      "prior_actions",
+      "prior_carcs",
+      "retro_window_days",
+      "subscriber_relationship",
+      "timely_filing_days",
+      "touches_so_far"
+    ],
+    "text": [
+      "clinical_indication_text",
+      "payer_correspondence_text"
+    ]
+  },
+  "example_meta_columns": [
+    "clinic_id",
+    "days_to_payment",
+    "engine_truth_allowed",
+    "family_id",
+    "mistake_fabrication",
+    "mistake_resubmitted_unchanged",
+    "mistake_submitted_into_missing_auth",
+    "mistake_window_expired_unused",
+    "mistake_wrong_cob_order_submitted",
+    "n_process_mistakes",
+    "n_states",
+    "paid_amount_final",
+    "patient_id",
+    "payer_id",
+    "persona_id",
+    "resolution",
+    "split",
+    "total_touches"
+  ]
+}

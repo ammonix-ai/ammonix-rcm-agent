@@ -1,0 +1,208 @@
+{
+  "cl-000": {
+    "n_doomed_intakes": 12,
+    "dollars_at_risk": 3297.53,
+    "causes": {
+      "missing_auth_no_retro": 1,
+      "ineligible_pairing": 2,
+      "lapsed_coverage": 1,
+      "other_low_value_intake": 8
+    }
+  },
+  "cl-001": {
+    "n_doomed_intakes": 15,
+    "dollars_at_risk": 5440.85,
+    "causes": {
+      "other_low_value_intake": 15
+    }
+  },
+  "cl-002": {
+    "n_doomed_intakes": 12,
+    "dollars_at_risk": 4864.6,
+    "causes": {
+      "other_low_value_intake": 12
+    }
+  },
+  "cl-003": {
+    "n_doomed_intakes": 9,
+    "dollars_at_risk": 2773.27,
+    "causes": {
+      "ineligible_pairing": 1,
+      "other_low_value_intake": 6,
+      "lapsed_coverage": 2
+    }
+  },
+  "cl-004": {
+    "n_doomed_intakes": 9,
+    "dollars_at_risk": 3225.99,
+    "causes": {
+      "other_low_value_intake": 9
+    }
+  },
+  "cl-005": {
+    "n_doomed_intakes": 9,
+    "dollars_at_risk": 4758.9,
+    "causes": {
+      "missing_auth_no_retro": 3,
+      "other_low_value_intake": 5,
+      "ineligible_pairing": 1
+    }
+  },
+  "cl-006": {
+    "n_doomed_intakes": 8,
+    "dollars_at_risk": 3681.9,
+    "causes": {
+      "other_low_value_intake": 7,
+      "ineligible_pairing": 1
+    }
+  },
+  "cl-007": {
+    "n_doomed_intakes": 4,
+    "dollars_at_risk": 2798.16,
+    "causes": {
+      "ineligible_pairing": 2,
+      "missing_auth_no_retro": 1,
+      "other_low_value_intake": 1
+    }
+  },
+  "cl-008": {
+    "n_doomed_intakes": 11,
+    "dollars_at_risk": 4103.47,
+    "causes": {
+      "other_low_value_intake": 9,
+      "missing_auth_no_retro": 1,
+      "ineligible_pairing": 1
+    }
+  },
+  "cl-009": {
+    "n_doomed_intakes": 8,
+    "dollars_at_risk": 2359.19,
+    "causes": {
+      "other_low_value_intake": 7,
+      "lapsed_coverage": 1
+    }
+  },
+  "cl-010": {
+    "n_doomed_intakes": 3,
+    "dollars_at_risk": 1521.3,
+    "causes": {
+      "missing_auth_no_retro": 1,
+      "ineligible_pairing": 1,
+      "other_low_value_intake": 1
+    }
+  },
+  "cl-011": {
+    "n_doomed_intakes": 8,
+    "dollars_at_risk": 3431.7,
+    "causes": {
+      "missing_auth_no_retro": 1,
+      "other_low_value_intake": 6,
+      "ineligible_pairing": 1
+    }
+  },
+  "cl-012": {
+    "n_doomed_intakes": 4,
+    "dollars_at_risk": 1243.54,
+    "causes": {
+      "other_low_value_intake": 4
+    }
+  },
+  "cl-013": {
+    "n_doomed_intakes": 8,
+    "dollars_at_risk": 3671.03,
+    "causes": {
+      "missing_auth_no_retro": 1,
+      "other_low_value_intake": 6,
+      "lapsed_coverage": 1
+    }
+  },
+  "cl-014": {
+    "n_doomed_intakes": 11,
+    "dollars_at_risk": 4057.24,
+    "causes": {
+      "other_low_value_intake": 11
+    }
+  },
+  "cl-015": {
+    "n_doomed_intakes": 6,
+    "dollars_at_risk": 2309.58,
+    "causes": {
+      "missing_auth_no_retro": 2,
+      "other_low_value_intake": 4
+    }
+  },
+  "cl-016": {
+    "n_doomed_intakes": 9,
+    "dollars_at_risk": 2806.32,
+    "causes": {
+      "other_low_value_intake": 8,
+      "ineligible_pairing": 1
+    }
+  },
+  "cl-017": {
+    "n_doomed_intakes": 7,
+    "dollars_at_risk": 3422.71,
+    "causes": {
+      "other_low_value_intake": 6,
+      "ineligible_pairing": 1
+    }
+  },
+  "cl-018": {
+    "n_doomed_intakes": 13,
+    "dollars_at_risk": 5914.81,
+    "causes": {
+      "other_low_value_intake": 11,
+      "lapsed_coverage": 1,
+      "ineligible_pairing": 1
+    }
+  },
+  "cl-019": {
+    "n_doomed_intakes": 14,
+    "dollars_at_risk": 4821.28,
+    "causes": {
+      "missing_auth_no_retro": 1,
+      "other_low_value_intake": 11,
+      "lapsed_coverage": 2
+    }
+  },
+  "cl-020": {
+    "n_doomed_intakes": 4,
+    "dollars_at_risk": 1773.27,
+    "causes": {
+      "other_low_value_intake": 3,
+      "ineligible_pairing": 1
+    }
+  },
+  "cl-021": {
+    "n_doomed_intakes": 10,
+    "dollars_at_risk": 3203.16,
+    "causes": {
+      "missing_auth_no_retro": 2,
+      "other_low_value_intake": 6,
+      "lapsed_coverage": 1,
+      "ineligible_pairing": 1
+    }
+  },
+  "cl-022": {
+    "n_doomed_intakes": 7,
+    "dollars_at_risk": 2217.91,
+    "causes": {
+      "other_low_value_intake": 6,
+      "lapsed_coverage": 1
+    }
+  },
+  "cl-023": {
+    "n_doomed_intakes": 8,
+    "dollars_at_risk": 2394.93,
+    "causes": {
+      "other_low_value_intake": 8
+    }
+  },
+  "cl-024": {
+    "n_doomed_intakes": 4,
+    "dollars_at_risk": 1138.22,
+    "causes": {
+      "other_low_value_intake": 4
+    }
+  }
+}

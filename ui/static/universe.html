@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ammonix — Knowledge universe</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.uni-wrap{max-width:84rem;margin:1.2rem auto;padding:0 1.2rem}
+.uni-head{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin:.6rem 0 .9rem}
+.uni-head h2{font-family:var(--serif);font-size:1.5rem;margin:0}
+.uni-head .glossary>summary{display:inline-block;cursor:pointer;font-size:1rem;
+  font-weight:600;color:var(--brand);background:var(--brand-soft);
+  border:1px solid var(--brand);border-radius:2rem;padding:.4rem 1.1rem;
+  list-style:none}
+.uni-head .glossary>summary::-webkit-details-marker{display:none}
+.uni-head .hint{color:var(--ink-soft);font-size:.9rem}
+.uni-filters{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;margin-bottom:.7rem}
+.uni-filters .sep{width:1px;height:1.4rem;background:var(--line);margin:0 .4rem}
+.uni-filters details.adv{display:contents}
+.uni-filters details.adv summary{list-style:none;cursor:pointer;color:var(--ink-soft)}
+.uni-filters details.adv summary::-webkit-details-marker{display:none}
+.uni-filters details.adv[open] summary{border-color:var(--brand);color:var(--brand)}
+.uni-filters .adv-row{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;
+  flex-basis:100%;margin-top:.5rem;padding-top:.5rem;border-top:1px dashed var(--line)}
+select.chip{appearance:none;background:var(--surface);border:1px solid var(--line);
+  border-radius:2rem;padding:.32rem .85rem;font:inherit;font-size:.85rem;
+  font-weight:600;color:var(--ink-soft);cursor:pointer}
+select.chip:not([value="all"]){border-color:var(--brand)}
+.uni-stage{position:relative;background:radial-gradient(ellipse at 50% 40%,#FFFFFF 0%,#F6F8FA 100%);
+  border:1px solid var(--line);border-radius:.7rem;overflow:hidden}
+#map{display:block;width:100%;height:76vh;min-height:28rem;cursor:grab}
+.uni-loading{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;background:rgba(255,255,255,.72);color:var(--ink-soft);font-size:.95rem;text-align:center;padding:1rem}
+.uni-loading .ring{width:30px;height:30px;border:3px solid var(--line);border-top-color:var(--brand);border-radius:50%;animation:uni-spin .9s linear infinite}
+@keyframes uni-spin{to{transform:rotate(360deg)}}
+.uni-zoom{position:absolute;top:.8rem;right:.8rem;display:flex;flex-direction:column;
+  gap:.3rem;z-index:4}
+.uni-zoom button{width:2rem;height:2rem;border-radius:.45rem;border:1px solid var(--line);
+  background:var(--surface);font-size:1rem;line-height:1;cursor:pointer;color:var(--ink);
+  box-shadow:0 1px 3px rgba(28,43,58,.08)}
+.uni-zoom button:hover{background:var(--brand-soft);border-color:var(--brand);color:var(--brand)}
+.uni-legend{display:flex;gap:1.2rem;flex-wrap:wrap;align-items:center;
+  padding:.55rem .9rem;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-soft);
+  background:var(--surface)}
+.uni-legend .key{display:inline-flex;align-items:center;gap:.35rem}
+.uni-legend .swatch{width:10px;height:10px;border-radius:50%;display:inline-block}
+.uni-legend .swatch.hollow{background:transparent!important;border:2px solid var(--ink-soft)}
+.uni-legend .swatch.livekey{background:var(--brand);border:2px solid #fff;width:10px;height:10px}
+.uni-legend .nav-hint{margin-left:auto}
+#tip{position:absolute;pointer-events:none;background:var(--ink);color:#fff;
+  border-radius:.4rem;padding:.4rem .6rem;font-size:.78rem;line-height:1.45;
+  opacity:0;transition:opacity .1s;max-width:16rem;z-index:5}
+#tip .mono{font-family:var(--mono)}
+#claim-banner{position:absolute;left:.8rem;bottom:3.2rem;z-index:6;max-width:24rem;
+  background:var(--surface);border:1px solid var(--brand);border-radius:.6rem;
+  box-shadow:var(--shadow);padding:.7rem .9rem;font-size:.86rem}
+#claim-banner .row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin-top:.5rem}
+#claim-banner a.go{font-weight:700;text-decoration:none;border:1px solid var(--brand);
+  color:var(--brand);border-radius:.4rem;padding:.3rem .8rem}
+#claim-banner a.go:hover{background:var(--brand-soft)}
+#claim-banner button{border:1px solid var(--line);background:var(--surface);
+  border-radius:.4rem;padding:.3rem .6rem;cursor:pointer;color:var(--ink-soft)}
+#tip b{font-weight:600}
+.epi-row{font-size:.84rem;margin-top:.3rem}
+.epi-row.here{font-weight:700}
+</style></head>
+<body>
+<header class="masthead">
+  <a class="brand" href="inbox.html"><span class="mark">A</span>
+    <span><h1>Ammonix</h1><p class="tagline">Claims desk — demo</p></span></a>
+  <nav><a href="inbox.html">Claims</a><a href="universe.html" class="active">Universe</a><a href="learning.html">Learning</a></nav>
+</header>
+<main class="uni-wrap">
+<div class="uni-head">
+  <h2>Knowledge universe</h2>
+  <details class="glossary"><summary>What am I looking at?</summary>
+    <dl>
+      <dt>One dot</dt><dd>One past case: a move on a claim, and how it ended. <span id="dot-count"></span></dd>
+      <dt>Train and test</dt><dd>The galaxy is the training cases, the claims the system learned from. The rimmed dots are moves on the 200 test claims it was scored on, which it had never seen. The training cases are never thrown away: they stay, as the memory every new decision consults.</dd>
+      <dt>Color</dt><dd>The kind of move. Bright means the claim ended paid, faint means it did not.</dd>
+      <dt>Position</dt><dd>Similar cases sit close together.</dd>
+      <dt>Labels</dt><dd>A neighborhood's shared move, and how often it worked there. The same move succeeds in one neighborhood and fails in another; that difference is what the system learns.</dd>
+      <dt>Following</dt><dd>Click any dot, or use Follow one claim, to draw that claim's path move by move.</dd>
+      <dt>Deciding</dt><dd>A new claim lands on this map and is decided by how its nearest neighbors ended.</dd>
+    </dl>
+  </details>
+</div>
+<div class="uni-filters" id="filters"></div>
+<div class="uni-stage">
+  <canvas id="map"></canvas>
+  <div class="uni-loading" id="loading" role="status" aria-live="polite">
+    <div class="ring"></div>
+    <div id="loading-text">Loading the knowledge universe&hellip;</div>
+  </div>
+  <div class="uni-zoom">
+    <button type="button" id="zin" title="Zoom in" aria-label="Zoom in">+</button>
+    <button type="button" id="zout" title="Zoom out" aria-label="Zoom out">&minus;</button>
+    <button type="button" id="zfit" title="Reset view" aria-label="Reset view">&#8634;</button>
+  </div>
+  <div id="tip"></div>
+  <div id="claim-banner" hidden></div>
+  <div class="uni-legend" id="legend"></div>
+</div>
+</main>
+<script src="shared.js"></script>
+<script>
+const FAMILY_COLOR = {submit: '#2a78d6', contest: '#008300', close: '#e87ba4'};
+const FAMILY_LABEL = {submit: 'Submitting claims', contest: 'Fighting denials', close: 'Closing out'};
+// point layout from /api/universe: [x, y, z, action, success, payer, carc, tribe]
+const PX = 0, PY = 1, PZ = 2, PA = 3, PS = 4, PP = 5, PC = 6, PT = 7;
+
+let U = null;
+const state = {actions: null, outcome: 'all',    // actions Set filled on load
+               tribes: true, live: true, mode: '3d', show: 'both',
+               selected: null, adv: false, family: null, hoverTribe: null,
+               pinnedTribe: null};
+const SHORT_ACTION = {
+  submit_clean: 'submit clean', submit_with_records: 'submit w/ records',
+  correct_and_resubmit: 'correct + resubmit', bill_secondary: 'bill secondary',
+  request_retro_auth: 'retro auth', appeal_with_necessity: 'appeal',
+  request_peer_to_peer: 'peer-to-peer', provide_requested_info: 'send info',
+  bill_patient: 'bill patient', write_off: 'write off'};
+let hover = null, raf = 0, idle = true;
+let labelBoxes = [];               // screen boxes of the drawn tribe labels
+
+// a neighborhood's dots, exact: the server assigns every record to the
+// nearest tribe centroid of its own move, shipped as the point's 8th field
+function tribeSet(t) {
+  if (!U.tribeSets) U.tribeSets = {};
+  if (U.tribeSets[t.tribe_id]) return U.tribeSets[t.tribe_id];
+  const ti = U.tribes.findIndex(x => x.tribe_id === t.tribe_id);
+  const s = new Set();
+  for (let i = 0; i < N; i++) {
+    if (U.points[i][PT] === ti) s.add(i);
+  }
+  U.tribeSets[t.tribe_id] = s;
+  return s;
+}
+
+// camera: orbit around a target point in data space
+const cam = {yaw: 0.6, pitch: 0.35, dist: 0, base: 0, tx: 0, ty: 0, tz: 0};
+let W = 0, H = 0, DPR = 1, R = 0;                 // canvas size, data radius
+let N = 0, xs, ys, zs;                            // centered data coords
+let proj = null;                                  // per-point screen coords + depth
+let order = null;                                 // draw order (far -> near)
+
+const canvas = document.getElementById('map');
+const ctx = canvas.getContext('2d');
+const tip = document.getElementById('tip');
+
+const familyOf = i => U.families[U.actions[U.points[i][PA]]];
+function visible(i) {
+  const p = U.points[i];
+  if (state.actions && !state.actions.has(U.actions[p[PA]])) return false;
+  if (state.outcome === 'success' && !p[PS]) return false;
+  if (state.outcome === 'failure' && p[PS]) return false;
+  return true;
+}
+
+function prepare() {
+  N = U.points.length;
+  xs = new Float32Array(N); ys = new Float32Array(N); zs = new Float32Array(N);
+  let mx = 0, my = 0, mz = 0;
+  for (let i = 0; i < N; i++) { mx += U.points[i][PX]; my += U.points[i][PY]; mz += U.points[i][PZ]; }
+  mx /= N; my /= N; mz /= N;
+  R = 0;
+  for (let i = 0; i < N; i++) {
+    // PCA1 -> X (across), PCA2 -> Z (depth of the ground plane), PCA3 -> Y (up)
+    xs[i] = U.points[i][PX] - mx;
+    zs[i] = U.points[i][PY] - my;
+    ys[i] = U.points[i][PZ] - mz;
+    const d = Math.hypot(xs[i], ys[i], zs[i]);
+    if (d > R) R = d;
+  }
+  U.center = {mx, my, mz};
+  proj = {sx: new Float32Array(N), sy: new Float32Array(N),
+          k: new Float32Array(N), depth: new Float32Array(N)};
+  order = new Int32Array(N);
+  cam.base = R * 2.6;
+  resetView();
+}
+
+function resetView() {
+  cam.yaw = 0.6; cam.pitch = state.mode === '2d' ? 1.5707 : 0.35;
+  cam.dist = cam.base; cam.tx = 0; cam.ty = 0; cam.tz = 0;
+  idle = state.mode === '3d' && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function size() {
+  DPR = window.devicePixelRatio || 1;
+  W = canvas.clientWidth; H = canvas.clientHeight;
+  canvas.width = W * DPR; canvas.height = H * DPR;
+}
+
+function mapPoint(x, y, z, out) {
+  // orbit rotation: yaw about Y (up), then pitch about X
+  const cy = Math.cos(cam.yaw), sy = Math.sin(cam.yaw);
+  const cp = Math.cos(cam.pitch), sp = Math.sin(cam.pitch);
+  const x1 = (x - cam.tx) * cy + (z - cam.tz) * sy;
+  const z1 = -(x - cam.tx) * sy + (z - cam.tz) * cy;
+  const y1 = (y - cam.ty) * cp - z1 * sp;
+  const z2 = (y - cam.ty) * sp + z1 * cp;
+  const persp = state.mode === '2d' ? 1 : cam.base / (cam.dist + z2);
+  const S = (Math.min(W, H) * 0.42 / R) * (state.mode === '2d' ? cam.base / cam.dist : 1);
+  out.x = W / 2 + x1 * persp * S;
+  out.y = H / 2 - y1 * persp * S;
+  out.k = persp * (state.mode === '2d' ? 1 : 1);
+  out.depth = z2;
+  return out;
+}
+const tmp = {};
+
+function project() {
+  const cy = Math.cos(cam.yaw), sy = Math.sin(cam.yaw);
+  const cp = Math.cos(cam.pitch), sp = Math.sin(cam.pitch);
+  const two = state.mode === '2d';
+  const S = (Math.min(W, H) * 0.42 / R) * (two ? cam.base / cam.dist : 1);
+  for (let i = 0; i < N; i++) {
+    const x1 = (xs[i] - cam.tx) * cy + (zs[i] - cam.tz) * sy;
+    const z1 = -(xs[i] - cam.tx) * sy + (zs[i] - cam.tz) * cy;
+    const y1 = (ys[i] - cam.ty) * cp - z1 * sp;
+    const z2 = (ys[i] - cam.ty) * sp + z1 * cp;
+    const persp = two ? 1 : cam.base / (cam.dist + z2);
+    proj.sx[i] = W / 2 + x1 * persp * S;
+    proj.sy[i] = H / 2 - y1 * persp * S;
+    proj.k[i] = persp;
+    proj.depth[i] = z2;
+    order[i] = i;
+  }
+  if (!two) {
+    const d = proj.depth;
+    Array.prototype.sort.call(order, (a, b) => d[b] - d[a]);   // far first
+  }
+}
+
+function selectClaim(ep) {
+  const path = (U.live_paths || []).find(pp => pp.episode === ep);
+  if (!path) return;
+  state.epi = null; U.epiSet = null;      // one spotlight at a time
+  state.pinnedTribe = null;
+  state.selected = ep;
+  if (!U.idIdx) {
+    U.idIdx = {};
+    U.ids.forEach((sid, i) => { U.idIdx[sid] = i; });
+  }
+  U.nnSet = new Set();
+  for (const pt of path.points) {
+    for (const n of (pt.nn || [])) {
+      const i = U.idIdx[n];
+      if (i !== undefined) U.nnSet.add(i);
+    }
+  }
+  const su = path.summary || {};
+  const verdict = su.verdict === 'same'
+    ? '<span class="pill plain">same</span>'
+    : `<span class="pill ${su.verdict === 'ammonix' ? 'green' : 'red'}">${su.verdict === 'ammonix' ? 'Ammonix' : 'Human'}${Math.abs(su.delta) > 0.005 ? ' +' + money(Math.abs(su.delta)) : ' · fewer mistakes'}</span>`;
+  const b = document.getElementById('claim-banner');
+  b.innerHTML = `<b class="mono">${esc(ep)}</b> · ${esc(su.payer_name || '')} ·
+    <span class="mono">${esc(su.cpt || '')}</span> · ${money(su.value || 0)} ${verdict}<br>
+    <span class="hint"><span${resolutionAttr(su.resolution || '')}>${esc(resolutionLabel(su.resolution || ''))}</span> ·
+    collected ${money(su.collected || 0)} · ${su.moves} moves ·
+    showing this claim's path + its grounding neighbours</span>
+    <div class="row">
+      <a class="go" href="claim.html?id=${encodeURIComponent(ep)}">Details &rarr;</a>
+      <button type="button" onclick="clearClaim()">&#10005; clear</button>
+    </div>`;
+  b.hidden = false;
+  idle = false;
+  request();
+}
+function clearClaim() {
+  state.selected = null;
+  U.nnSet = null;
+  document.getElementById('claim-banner').hidden = true;
+  request();
+}
+
+// ---- clicking a knowledge dot traces its claim's other iterations ----
+function siblingsOf(epId) {
+  if (!U.epIdx) {
+    U.epIdx = new Map();
+    U.ids.forEach((sid, j) => {
+      const ep = sid.slice(0, sid.lastIndexOf('-'));
+      if (!U.epIdx.has(ep)) U.epIdx.set(ep, []);
+      U.epIdx.get(ep).push(j);
+    });
+    for (const arr of U.epIdx.values()) {
+      arr.sort((a, b) =>
+        parseInt(U.ids[a].slice(U.ids[a].lastIndexOf('-s') + 2), 10) -
+        parseInt(U.ids[b].slice(U.ids[b].lastIndexOf('-s') + 2), 10));
+    }
+  }
+  return U.epIdx.get(epId) || [];
+}
+
+function selectCase(i) {
+  state.selected = null; U.nnSet = null;   // one spotlight at a time
+  state.pinnedTribe = null;
+  const sid = U.ids[i];
+  const epId = sid.slice(0, sid.lastIndexOf('-'));
+  const idxs = siblingsOf(epId);
+  state.epi = {ep: epId, idxs, cur: i};
+  U.epiSet = new Set(idxs);
+  const p = U.points[i];
+  const story = idxs.map((j, k) => {
+    const q = U.points[j];
+    const denial = U.carcs[q[PC]]
+      ? ` <span class="hint">(a denial stood: ${esc(CARC_PLAIN[U.carcs[q[PC]]] || U.carcs[q[PC]])})</span>` : '';
+    return `<div class="epi-row${j === i ? ' here' : ''}">${k + 1}. ${esc(actionLabel(U.actions[q[PA]]))}${denial}</div>`;
+  }).join('');
+  const b = document.getElementById('claim-banner');
+  b.innerHTML = `<b class="mono">${esc(epId)}</b> · payer: ${esc(prettify(U.payers[p[PP]]))} ·
+    <span class="pill ${p[PS] ? 'green' : 'red'}">${p[PS] ? 'ended paid' : 'ended unpaid'}</span><br>
+    <span class="hint">a past claim in the system's memory, move by move:</span>
+    ${story}
+    <div class="row"><button type="button" onclick="clearCase()">&#10005; clear</button></div>`;
+  b.hidden = false;
+  idle = false;
+  request();
+}
+function clearCase() {
+  state.epi = null;
+  U.epiSet = null;
+  document.getElementById('claim-banner').hidden = true;
+  request();
+}
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { state.pinnedTribe = null; clearClaim(); clearCase(); }
+});
+// clicking outside the map (and its filter chips) resets every spotlight
+document.addEventListener('click', e => {
+  if (e.target.closest('.uni-stage') || e.target.closest('.uni-filters')) return;
+  if (state.pinnedTribe || state.selected || state.epi) {
+    state.pinnedTribe = null;
+    clearClaim();
+    clearCase();
+  }
+});
+
+function draw() {
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  ctx.clearRect(0, 0, W, H);
+  project();
+
+  const zoom = cam.base / cam.dist;
+  const r0 = Math.min(1.4 * Math.pow(zoom, 0.45), 8);
+  const baseAlpha = Math.min(0.55 + 0.1 * Math.log2(Math.max(zoom, 1)), 0.9);
+  // a pinned neighborhood owns the stage; hover only matters unpinned
+  const hlTribe = state.pinnedTribe || state.hoverTribe;
+  const hovSet = hlTribe && !state.selected && !state.epi
+    ? tribeSet(hlTribe) : null;
+
+  for (let oi = 0; oi < N; oi++) {
+    const i = order[oi];
+    const x = proj.sx[i], y = proj.sy[i];
+    if (x < -8 || x > W + 8 || y < -8 || y > H + 8) continue;
+    const k = proj.k[i];
+    if (k <= 0) continue;                       // behind the camera
+    let on = visible(i);
+    if (state.show === 'live'
+        && !(state.selected && U.nnSet && U.nnSet.has(i))) on = false;
+    // depth fog: nearer points brighter and bigger
+    const fog = state.mode === '2d' ? 1 : Math.max(0.35, Math.min(1.15, k));
+    const c = FAMILY_COLOR[familyOf(i)];
+    const r = Math.max(0.7, r0 * (state.mode === '2d' ? 1 : k));
+    const success = U.points[i][PS];
+    // every case is a filled dot; failures are fainter, never hollow
+    let a = on ? baseAlpha * fog * (success ? 1 : 0.35) : 0.03;
+    if (state.selected) a = (U.nnSet && U.nnSet.has(i)) ? Math.max(a, 0.95) : a * 0.1;
+    else if (state.epi) a = U.epiSet.has(i) ? Math.max(a, 0.95) : a * 0.08;
+    else if (hovSet) a = hovSet.has(i) ? Math.max(a, 0.95) : a * 0.15;
+    ctx.globalAlpha = a;
+    ctx.fillStyle = c;
+    if (r < 2.6) {
+      const s = Math.max(1.4, r * 1.5);
+      ctx.fillRect(x - s / 2, y - s / 2, s, s);
+    } else {
+      ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill();
+    }
+  }
+  ctx.globalAlpha = 1;
+
+  if (state.epi) {
+    U.liveProj = [];   // the traced claim owns the stage: no demo-claim lines
+  } else if (state.show !== 'knowledge' && U.live_paths) {
+    const zoomr = Math.min(4 * Math.pow(zoom, 0.2), 7);
+    U.liveProj = [];
+    for (const path of U.live_paths) {
+      if (state.selected && path.episode !== state.selected) continue;
+      let prev = null;
+      for (const c of path.points) {
+        mapPoint(c.x - U.center.mx, c.z - U.center.mz, c.y - U.center.my, tmp);
+        if (tmp.k <= 0) { prev = null; continue; }
+        const cur = {id: c.id, x: tmp.x, y: tmp.y, action: c.action,
+                     move: c.move, episode: path.episode};
+        U.liveProj.push(cur);
+        // a claim's connecting line draws only when that claim is followed:
+        // 200 permanent threads read as noise on first open
+        if (prev && state.selected) {
+          ctx.strokeStyle = 'rgba(28,43,58,.8)';
+          ctx.lineWidth = 1.8;
+          ctx.beginPath(); ctx.moveTo(prev.x, prev.y);
+          ctx.lineTo(cur.x, cur.y); ctx.stroke();
+        }
+        prev = cur;
+      }
+    }
+    for (const c of U.liveProj) {
+      if (c.x < -10 || c.x > W + 10 || c.y < -10 || c.y > H + 10) continue;
+      // FILLED marker (matches the point language) with a white rim
+      ctx.fillStyle = FAMILY_COLOR[U.families[c.action]] || '#1C2B3A';
+      ctx.strokeStyle = 'rgba(255,255,255,.95)';
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(c.x, c.y, zoomr, 0, 7);
+      ctx.fill(); ctx.stroke();
+      // when a claim is spotlighted, number its moves so overlapping
+      // markers stay distinguishable at any zoom
+      if (state.selected) {
+        ctx.font = '700 10px Consolas,monospace';
+        ctx.textAlign = 'left';
+        ctx.strokeStyle = 'rgba(255,255,255,.9)';
+        ctx.lineWidth = 3;
+        ctx.strokeText(String(c.move), c.x + zoomr + 3, c.y + 3.5);
+        ctx.fillStyle = '#1C2B3A';
+        ctx.fillText(String(c.move), c.x + zoomr + 3, c.y + 3.5);
+      }
+    }
+  }
+
+  if (state.epi) {
+    const pts = state.epi.idxs.map(j => ({x: proj.sx[j], y: proj.sy[j], j}));
+    ctx.strokeStyle = 'rgba(28,43,58,.8)'; ctx.lineWidth = 1.8;
+    ctx.beginPath();
+    pts.forEach((p, k) => k ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y));
+    ctx.stroke();
+    ctx.font = '700 10px Consolas,monospace';
+    ctx.textAlign = 'left';
+    pts.forEach((p, k) => {
+      ctx.fillStyle = FAMILY_COLOR[familyOf(p.j)];
+      ctx.strokeStyle = 'rgba(255,255,255,.95)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(p.x, p.y, 6, 0, 7); ctx.fill(); ctx.stroke();
+      ctx.strokeStyle = 'rgba(255,255,255,.9)'; ctx.lineWidth = 3;
+      ctx.strokeText(String(k + 1), p.x + 9, p.y + 3.5);
+      ctx.fillStyle = '#1C2B3A';
+      ctx.fillText(String(k + 1), p.x + 9, p.y + 3.5);
+    });
+  }
+
+  // labels paint last so the text sits above every dot and line; they
+  // follow the filters: none in test-claims-only view (the memory they
+  // describe is hidden), none while a claim or case is spotlighted
+  labelBoxes = [];
+  if (state.tribes && state.show !== 'live' && !state.selected && !state.epi) {
+    ctx.font = '600 11px system-ui,sans-serif';
+    ctx.textAlign = 'center';
+    const taken = [];
+    // largest neighborhoods first, and only the largest get labels at all:
+    // a wall of colliding small labels reads as noise, not structure
+    const tribes = [...U.tribes].sort((a, b) => b.members - a.members)
+      .slice(0, 14);
+    for (const t of tribes) {
+      if (state.actions && !state.actions.has(t.action)) continue;
+      mapPoint(t.x - U.center.mx, t.z - U.center.mz, t.y - U.center.my, tmp);
+      if (tmp.k <= 0 || tmp.x < 0 || tmp.x > W || tmp.y < 0 || tmp.y > H) continue;
+      const label = actionLabel(t.action) + ' worked ' + Math.round(t.success_rate * 100) + '% here';
+      const bw = ctx.measureText(label).width + 10;
+      const box = {x1: tmp.x - bw / 2, x2: tmp.x + bw / 2, y1: tmp.y - 22, y2: tmp.y - 2};
+      if (taken.some(b => b.x1 < box.x2 && box.x1 < b.x2 && b.y1 < box.y2 && box.y1 < b.y2)) continue;
+      taken.push(box);
+      labelBoxes.push({...box, t});
+      // hovering (or click-pinning) one label spotlights it: the other
+      // labels fade with their dots, and the spotlighted one darkens
+      const hl = state.pinnedTribe || state.hoverTribe;
+      const hovered = hl && hl.tribe_id === t.tribe_id;
+      ctx.globalAlpha = hl && !hovered ? 0.15 : 1;
+      ctx.lineWidth = 3.5; ctx.strokeStyle = 'rgba(255,255,255,.9)';
+      ctx.strokeText(label, tmp.x, tmp.y - 8);
+      ctx.fillStyle = hovered ? '#1C2B3A' : '#51606F';
+      ctx.fillText(label, tmp.x, tmp.y - 8);
+      ctx.fillStyle = '#1C2B3A';
+      ctx.beginPath(); ctx.arc(tmp.x, tmp.y, 2.5, 0, 7); ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  if (hover) {
+    ctx.strokeStyle = '#1C2B3A'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(hover.x, hover.y, 8, 0, 7); ctx.stroke();
+  }
+}
+
+function request() { if (!raf) raf = requestAnimationFrame(() => { raf = 0; draw(); }); }
+
+function spin() {
+  if (!idle || !U) return;
+  cam.yaw += 0.0016;
+  request();
+  requestAnimationFrame(spin);
+}
+
+function nearest(mx, my) {
+  let best = null, bd = 120;
+  if (state.show !== 'knowledge' && U.liveProj) {
+    for (const c of U.liveProj) {
+      const d = (c.x - mx) ** 2 + (c.y - my) ** 2;
+      if (d < bd) { bd = d; best = {live: c, x: c.x, y: c.y}; }
+    }
+    if (best) return best;
+  }
+  for (let i = 0; i < N; i++) {
+    if (!visible(i)) continue;
+    if (state.show === 'live'
+        && !(state.selected && U.nnSet && U.nnSet.has(i))) continue;
+    const d = (proj.sx[i] - mx) ** 2 + (proj.sy[i] - my) ** 2;
+    if (d < bd) { bd = d; best = {i, x: proj.sx[i], y: proj.sy[i]}; }
+  }
+  return best;
+}
+
+// --- navigation: drag orbits (3d) or pans (2d); shift-drag pans; wheel zooms ---
+let drag = null;
+canvas.addEventListener('mousedown', e => {
+  idle = false;
+  drag = {sx: e.clientX, sy: e.clientY, yaw: cam.yaw, pitch: cam.pitch,
+          tx: cam.tx, ty: cam.ty, tz: cam.tz, pan: e.shiftKey || state.mode === '2d',
+          moved: false};
+});
+window.addEventListener('mousemove', e => {
+  if (!drag) return;
+  const dx = e.clientX - drag.sx, dy = e.clientY - drag.sy;
+  if (Math.abs(dx) + Math.abs(dy) > 3) drag.moved = true;
+  if (!drag.moved) return;
+  hover = null; tip.style.opacity = 0;
+  if (drag.pan) {
+    const S = (Math.min(W, H) * 0.42 / R) * (state.mode === '2d' ? cam.base / cam.dist : 1);
+    const cy = Math.cos(drag.yaw), sy = Math.sin(drag.yaw);
+    const cp = Math.cos(drag.pitch), sp = Math.sin(drag.pitch);
+    const ux = dx / S, uy = dy / S;               // screen right and up, in data units
+    cam.tx = drag.tx - ux * cy + uy * sp * -sy;
+    cam.tz = drag.tz - ux * sy + uy * sp * cy;
+    cam.ty = drag.ty + uy * cp;
+    canvas.style.cursor = 'grabbing';
+  } else {
+    cam.yaw = drag.yaw + dx * 0.005;
+    cam.pitch = Math.max(-1.45, Math.min(1.45, drag.pitch + dy * 0.005));
+    canvas.style.cursor = 'grabbing';
+  }
+  request();
+});
+window.addEventListener('mouseup', () => {
+  if (drag) canvas.style.cursor = 'grab';
+  if (drag && drag.moved) setTimeout(() => { drag = null; }, 0);
+  else drag = null;
+});
+canvas.addEventListener('wheel', e => {
+  e.preventDefault();
+  idle = false;
+  cam.dist = Math.max(cam.base * 0.05, Math.min(cam.base * 3, cam.dist * Math.exp(e.deltaY * 0.0014)));
+  request();
+}, {passive: false});
+document.getElementById('zin').addEventListener('click', () => { idle = false; cam.dist = Math.max(cam.base * 0.05, cam.dist / 1.5); request(); });
+document.getElementById('zout').addEventListener('click', () => { idle = false; cam.dist = Math.min(cam.base * 3, cam.dist * 1.5); request(); });
+document.getElementById('zfit').addEventListener('click', () => {
+  state.pinnedTribe = null;   // reset view clears every spotlight too
+  clearClaim();
+  clearCase();
+  resetView();
+  request();
+  if (idle) spin();
+});
+
+canvas.addEventListener('mousemove', e => {
+  if (!U || (drag && drag.moved)) return;
+  const r = canvas.getBoundingClientRect();
+  const mx = e.clientX - r.left, my = e.clientY - r.top;
+  // hovering a neighborhood label brightens its dots and fades the rest
+  const lb = labelBoxes.find(b =>
+    b.x1 <= mx && mx <= b.x2 && b.y1 - 2 <= my && my <= b.y2 + 6);
+  // while a neighborhood is pinned, hovering other labels changes nothing;
+  // clicking one still switches the pin
+  const newTribe = state.pinnedTribe ? null : (lb ? lb.t : null);
+  if ((newTribe && newTribe.tribe_id) !== (state.hoverTribe && state.hoverTribe.tribe_id)) {
+    state.hoverTribe = newTribe;
+    idle = false;
+    request();
+  }
+  if (lb) {
+    hover = null;
+    tip.style.opacity = 0;
+    canvas.style.cursor = 'pointer';
+    return;
+  }
+  hover = nearest(mx, my);
+  if (hover) {
+    let html;
+    if (hover.live) {
+      html = `<b>Ammonix move ${hover.live.move}</b> <span class="mono">${esc(hover.live.episode)}</span><br>
+        ${esc(actionLabel(hover.live.action))}<br>
+        <span style="opacity:.75">click to highlight this claim</span>`;
+    } else {
+      const p = U.points[hover.i];
+      html = `<b>${esc(actionLabel(U.actions[p[PA]]))}</b> — ${p[PS] ? 'succeeded' : 'failed'}<br>
+        ${esc(U.payers[p[PP]])}${U.carcs[p[PC]] ? ` · denial <span class="mono">${esc(U.carcs[p[PC]])}</span>` : ''}<br>
+        <span class="mono">${esc(U.ids[hover.i])}</span><br>
+        <span style="opacity:.75">click to trace this claim's other moves</span>`;
+    }
+    tip.innerHTML = html;
+    tip.style.left = Math.min(hover.x + 14, W - 240) + 'px';
+    tip.style.top = (hover.y - 10) + 'px';
+    tip.style.opacity = 1;
+    canvas.style.cursor = 'pointer';
+  } else {
+    tip.style.opacity = 0;
+    canvas.style.cursor = 'grab';
+  }
+  request();
+});
+canvas.addEventListener('mouseleave', () => {
+  hover = null; state.hoverTribe = null; tip.style.opacity = 0; request();
+});
+canvas.addEventListener('click', e => {
+  // a drag that ends over the canvas is not a click
+  if (drag && drag.moved) return;
+  // clicking a label pins its neighborhood highlight, so the mouse can
+  // wander into the dots and inspect them; clicking it again releases
+  const r = canvas.getBoundingClientRect();
+  const mx = e.clientX - r.left, my = e.clientY - r.top;
+  const lb = labelBoxes.find(b =>
+    b.x1 <= mx && mx <= b.x2 && b.y1 - 2 <= my && my <= b.y2 + 6);
+  if (lb) {
+    state.pinnedTribe = state.pinnedTribe
+      && state.pinnedTribe.tribe_id === lb.t.tribe_id ? null : lb.t;
+    idle = false;
+    request();
+    return;
+  }
+  if (hover && hover.live) { selectClaim(hover.live.episode); return; }
+  if (hover && hover.i !== undefined) { selectCase(hover.i); return; }
+  // spotlight is sticky: only the banner's clear button, Escape, or
+  // picking another claim changes it - stray clicks keep the view
+});
+
+function chips() {
+  const allOn = state.actions.size === U.actions.length;
+  const act = `<button type="button" class="chip ${allOn ? 'on' : ''}" data-action="__all">All moves</button>` +
+    U.actions.map(a => {
+      const n = U.points.filter(pt => U.actions[pt[PA]] === a).length;
+      return `<button type="button" class="chip ${!allOn && state.actions.has(a) ? 'on' : ''}" data-action="${a}">
+        <span class="dot" style="background:${FAMILY_COLOR[U.families[a]]}"></span>${SHORT_ACTION[a] || a} · ${n.toLocaleString()}</button>`;
+    }).join('');
+  // the primary toggles are the three colored move families: whole regions
+  // of the map appear and vanish, which is how the colors explain themselves
+  const fams = `<button type="button" class="chip ${allOn && !state.family ? 'on' : ''}" data-family="__all">Everything</button>` +
+    ['submit', 'contest', 'close'].map(f =>
+      `<button type="button" class="chip ${state.family === f ? 'on' : ''}" data-family="${f}">
+        <span class="dot" style="background:${FAMILY_COLOR[f]}"></span>${FAMILY_LABEL[f]}</button>`).join('');
+  const oc = [['all', 'Any outcome'], ['success', 'Got the money'], ['failure', 'Lost the money']].map(([v, l]) =>
+    `<button type="button" class="chip ${state.outcome === v ? 'on' : ''}" data-outcome="${v}">${l}</button>`).join('');
+  const follow = `<button type="button" class="chip" id="follow-claim">Follow one claim</button>`;
+
+  const sh = [['both', 'Train + test'], ['knowledge', 'Training cases'], ['live', 'Test claims']].map(([v, l]) =>
+    `<button type="button" class="chip ${state.show === v ? 'on' : ''}" data-show="${v}">${l}</button>`).join('');
+  const tg = `<button type="button" class="chip ${state.tribes ? 'on' : ''}" data-toggle="tribes">Neighborhood labels</button>`;
+  document.getElementById('filters').innerHTML =
+    fams + '<span class="sep"></span>' + sh + '<span class="sep"></span>' + follow +
+    `<details class="adv"${state.adv ? ' open' : ''} ontoggle="state.adv=this.open">
+      <summary class="chip">More filters</summary>
+      <div class="adv-row">${act}<span class="sep"></span>${oc}<span class="sep"></span>${tg}</div>
+    </details>`;
+}
+
+document.getElementById('filters').addEventListener('click', e => {
+  const fol = e.target.closest('#follow-claim');
+  if (fol) {
+    const paths = U && U.live_paths || [];
+    // prefer a claim where the outcome differences are worth looking at
+    const vivid = paths.filter(p => p.summary
+      && p.summary.verdict !== 'same' && Math.abs(p.summary.delta || 0) > 100);
+    const pool = vivid.length ? vivid : paths;
+    if (pool.length) {
+      const pick = pool[Math.floor(Math.random() * pool.length)];
+      selectClaim(pick.episode);
+    }
+    return;
+  }
+  // "More filters" is a native <details> toggle: leave it to the browser -
+  // re-rendering the bar here would replace the panel before it opens
+  if (e.target.closest('details.adv > summary')) return;
+  const shBtn = e.target.closest('[data-show]');
+  if (shBtn) {
+    state.show = shBtn.dataset.show;
+    chips(); request();
+    return;
+  }
+  const b = e.target.closest('.chip');
+  if (!b) return;
+  if (b.dataset.family) {
+    if (b.dataset.family === '__all') {
+      state.family = null;
+      state.actions = new Set(U.actions);
+    } else {
+      state.family = b.dataset.family;
+      state.actions = new Set(U.actions.filter(a => U.families[a] === b.dataset.family));
+    }
+    chips(); request();
+    return;
+  }
+  if (b.dataset.action) {
+    state.family = null;
+    const a = b.dataset.action;
+    const allOn = state.actions.size === U.actions.length;
+    if (a === '__all') {
+      state.actions = new Set(U.actions);
+    } else if (allOn) {
+      state.actions = new Set([a]);        // first click isolates one action
+    } else if (state.actions.has(a) && state.actions.size > 1) {
+      state.actions.delete(a);
+    } else {
+      state.actions.add(a);
+    }
+  } else if (b.dataset.outcome) {
+    state.outcome = b.dataset.outcome;
+  } else if (b.dataset.mode) {
+    state.mode = b.dataset.mode;
+    resetView();
+    if (idle) spin();
+  } else if (b.dataset.toggle) {
+    state[b.dataset.toggle] = !state[b.dataset.toggle];
+  }
+  chips(); request();
+});
+
+function loadingText(t) {
+  const el = document.getElementById('loading-text');
+  if (el) el.textContent = t;
+}
+function loadUniverse(attempt) {
+  fetch('/api/universe', {cache: 'no-store'}).then(r => {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+  }).then(data => {
+    loadingText(`Placing ${data.points.length.toLocaleString()} past cases…`);
+    // let the message paint before the projection work starts
+    requestAnimationFrame(() => requestAnimationFrame(() => showUniverse(data)));
+  }).catch(() => {
+    // the server is still building the map (or the network hiccupped): retry
+    loadingText(attempt < 3 ? 'Loading the knowledge universe…'
+      : 'Still building the map on the server… this can take a minute on first start.');
+    setTimeout(() => loadUniverse(attempt + 1), 3000);
+  });
+}
+function showUniverse(data) {
+  U = data;
+  state.actions = new Set(U.actions);
+  document.getElementById('dot-count').textContent =
+    `The system holds ${U.points.length.toLocaleString()} so far.`;
+  document.getElementById('legend').innerHTML =
+    Object.entries(FAMILY_LABEL).map(([f, l]) =>
+      `<span class="key"><span class="swatch" style="background:${FAMILY_COLOR[f]}"></span>${l}</span>`).join('') +
+    `<span class="key"><span class="swatch" style="background:var(--ink-soft)"></span>bright = the claim ended paid</span>
+     <span class="key"><span class="swatch" style="background:var(--ink-soft);opacity:.35"></span>faint = it did not</span>
+     <span class="key"><span class="swatch livekey"></span>rimmed dot = an Ammonix move on a test claim · click to draw its claim's path</span>
+     <span class="key nav-hint">drag to orbit · shift-drag to move · scroll to zoom</span>`;
+  size(); prepare(); chips(); draw(); spin();
+  const ld = document.getElementById('loading');
+  if (ld) ld.remove();
+}
+loadUniverse(0);
+window.addEventListener('resize', () => { if (U) { size(); request(); } });
+</script>
+</body></html>

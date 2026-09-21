@@ -1,0 +1,60 @@
+{
+ "ep-05001": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 561.81,
+  "allowed": 561.81,
+  "resolution": "patient_billed",
+  "handed_off": 0,
+  "written": 2,
+  "paperwork_rejected": 0,
+  "rejection_log": [],
+  "actions": [
+   "request_retro_auth",
+   "bill_patient"
+  ]
+ },
+ "ep-05002": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "allowed": 561.81,
+  "resolution": "patient_billed",
+  "handed_off": 0,
+  "written": 2,
+  "paperwork_rejected": 0,
+  "rejection_log": [],
+  "actions": [
+   "request_retro_auth",
+   "bill_patient"
+  ]
+ },
+ "ep-05000": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "allowed": 718.16,
+  "resolution": "patient_billed",
+  "handed_off": 1,
+  "written": 3,
+  "paperwork_rejected": 1,
+  "rejection_log": [
+   "t3:appeal letter not supported by the records"
+  ],
+  "actions": [
+   "submit_clean",
+   "submit_with_records",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ }
+}

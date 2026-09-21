@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\":\"Prior authorization is not required for this CPT, the diagnosis pairing is valid, eligibility is active, COB order is correct, and no payer response is pending. The cleanest first touch is to submit the claim as-is to start the collection clock.\",\"action\":\"submit_clean\"}", "usage": {"prompt_tokens": 1335, "completion_tokens": 131}}

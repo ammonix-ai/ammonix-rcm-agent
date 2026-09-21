@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ammonix — Episodic memory</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.lc-wrap{max-width:56rem;margin:1.6rem auto;padding:0 1.2rem}
+.lc-head{margin:0 0 1.2rem}
+.lc-head h2{font-family:var(--serif);font-size:1.6rem;margin:0}
+.lc-head p{color:var(--ink-soft);font-size:.95rem;margin:.35rem 0 0}
+.lc-story{display:flex;gap:.6rem;align-items:stretch;flex-wrap:wrap;margin:0 0 1.4rem}
+.lc-step{background:var(--surface);border:1px solid var(--line);border-radius:.7rem;
+  box-shadow:var(--shadow);padding:.75rem 1.1rem;flex:1;min-width:12rem}
+.lc-step .n{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft);margin:0}
+.lc-step .amt{font-family:var(--serif);font-size:1.45rem;margin:.05rem 0 .1rem}
+.lc-step .say{font-size:.82rem;margin:0;color:var(--ink-soft)}
+.lc-step.win{border-color:var(--green);background:var(--green-soft)}
+.lc-step.win .say{color:var(--green);font-weight:600}
+.lc-arrow{align-self:center;color:var(--ink-soft);font-size:1.2rem}
+.chart-box{background:var(--surface);border:1px solid var(--line);border-radius:.7rem;
+  box-shadow:var(--shadow);padding:1.1rem 1.4rem 1rem;margin-bottom:1.1rem;position:relative}
+.chart-box h3{font-family:var(--serif);font-size:1.06rem;margin:0 0 .1rem}
+.chart-box .sub{color:var(--ink-soft);font-size:.84rem;margin:0 0 .8rem}
+.chart-box svg{width:100%;height:auto;display:block}
+.lc-tip{position:absolute;pointer-events:none;background:var(--ink);color:#fff;
+  font-size:.78rem;padding:.35rem .55rem;border-radius:.35rem;white-space:nowrap;
+  transform:translate(-50%,-130%);display:none;z-index:5}
+.axis{font-size:11px;fill:var(--ink-soft);font-family:var(--mono)}
+.gridline{stroke:var(--line);stroke-width:1}
+.ref-label{font-size:11px;fill:var(--ink-soft)}
+.series-label{font-size:12px;fill:var(--brand);font-weight:700}
+.mark-label{font-size:11px;fill:var(--green);font-weight:600}
+details.hint{margin:.2rem 0 1rem}
+table.lc-table{border-collapse:collapse;font-size:.82rem;margin-top:.5rem}
+.lc-table th,.lc-table td{border:1px solid var(--line);padding:.25rem .6rem;text-align:right}
+.lc-table th{background:var(--bg);font-weight:600}
+</style></head>
+<body>
+<header class="masthead">
+  <a class="brand" href="inbox.html"><span class="mark">A</span>
+    <span><h1>Ammonix</h1><p class="tagline">Claims desk — demo</p></span></a>
+  <nav><a href="inbox.html">Claims</a><a href="universe.html">Universe</a><a href="learning.html" class="active">Learning</a></nav>
+</header>
+<main class="lc-wrap">
+<div class="lc-head">
+  <h2>Episodic memory</h2>
+  <p id="intro"></p>
+</div>
+<div class="lc-story" id="story"></div>
+
+<section class="chart-box" id="money-box">
+  <h3>Money collected</h3>
+  <div id="money"></div>
+  <div class="lc-tip" id="tip"></div>
+</section>
+
+<details class="hint"><summary>how this was measured</summary>
+  <p style="margin:.4rem 0 0;max-width:42rem">Each point: Ammonix retrained on a
+  random subset of its 4,750 training claims (shaded band = 3 draws), then plays
+  the same 200 demo claims with identical payer randomness. Money counts only up
+  to the contractual share. The simulated-billers and LLM-agent lines are flat because they
+  have no memory of past claims. The full-memory point equals the claims-page
+  scoreboard to the cent.</p>
+  <div id="pointtable"></div>
+</details>
+
+</main>
+<script src="shared.js"></script>
+<script>
+const BRAND = '#14506E', GRAY = '#51606F', AMBER = '#B45309', GREEN = '#2E7D32';
+const W = 720, H = 330, M = {l: 58, r: 130, t: 16, b: 34};
+
+function agg(points) {
+  const by = new Map();
+  for (const p of points) {
+    if (!by.has(p.n)) by.set(p.n, []);
+    by.get(p.n).push(p);
+  }
+  return [...by.entries()].sort((a, b) => a[0] - b[0]).map(([n, ps]) => ({
+    n, k: ps.length,
+    collected: ps.reduce((s, p) => s + p.collected, 0) / ps.length,
+    cmin: Math.min(...ps.map(p => p.collected)),
+    cmax: Math.max(...ps.map(p => p.collected)),
+    mistakes: ps.reduce((s, p) => s + p.mistake_claims, 0) / ps.length,
+    mmin: Math.min(...ps.map(p => p.mistake_claims)),
+    mmax: Math.max(...ps.map(p => p.mistake_claims)),
+    wins: Math.round(ps.reduce((s, p) => s + p.wins, 0) / ps.length),
+    seeds: ps,
+  }));
+}
+
+function chart(el, tipEl, rows, opts) {
+  const x = n => M.l + (Math.log10(n) - Math.log10(50)) /
+    (Math.log10(4750) - Math.log10(50)) * (W - M.l - M.r);
+  const y = v => M.t + (1 - v / opts.ymax) * (H - M.t - M.b);
+  const fmt = opts.fmt;
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${opts.label}">`;
+  for (const v of opts.yticks) {
+    s += `<line class="gridline" x1="${M.l}" x2="${W - M.r}" y1="${y(v)}" y2="${y(v)}"/>` +
+      `<text class="axis" x="${M.l - 8}" y="${y(v) + 4}" text-anchor="end">${fmt(v)}</text>`;
+  }
+  for (const r of rows) {
+    s += `<text class="axis" x="${x(r.n)}" y="${H - M.b + 16}" text-anchor="middle">${r.n}</text>`;
+  }
+  s += `<text class="axis" x="${(M.l + W - M.r) / 2}" y="${H - 4}" text-anchor="middle">${esc(opts.xlabel)}</text>`;
+  for (const ref of opts.refs) {
+    s += `<line x1="${M.l}" x2="${W - M.r}" y1="${y(ref.v)}" y2="${y(ref.v)}"
+      stroke="${ref.color}" stroke-width="2" stroke-dasharray="${ref.dash}"/>` +
+      `<text class="ref-label" x="${W - M.r + 6}" y="${y(ref.v) + 4}" fill="${ref.color}">${ref.label}</text>`;
+  }
+  if (opts.crossAt) {
+    const cx = x(opts.crossAt);
+    s += `<line x1="${cx}" x2="${cx}" y1="${M.t}" y2="${H - M.b}"
+      stroke="${GREEN}" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.7"/>` +
+      `<text class="mark-label" x="${cx + 6}" y="${M.t + 12}">${esc(opts.crossLabel)}</text>`;
+  }
+  const band = rows.map(r => `${x(r.n)},${y(r[opts.hi])}`).join(' ') + ' ' +
+    [...rows].reverse().map(r => `${x(r.n)},${y(r[opts.lo])}`).join(' ');
+  s += `<polygon points="${band}" fill="${BRAND}" opacity="0.10"/>`;
+  s += `<polyline fill="none" stroke="${BRAND}" stroke-width="2.5" points="${
+    rows.map(r => `${x(r.n)},${y(r[opts.key])}`).join(' ')}"/>`;
+  for (const r of rows) {
+    s += `<circle cx="${x(r.n)}" cy="${y(r[opts.key])}" r="4" fill="${BRAND}" stroke="#fff" stroke-width="2"/>`;
+  }
+  const last = rows[rows.length - 1];
+  s += `<text class="series-label" x="${x(last.n) + 8}" y="${y(last[opts.key]) + 4}">Ammonix</text>`;
+  for (const r of rows) {
+    s += `<circle cx="${x(r.n)}" cy="${y(r[opts.key])}" r="14" fill="transparent"
+      data-tip="${esc(opts.tip(r))}" data-cx="${x(r.n)}" data-cy="${y(r[opts.key])}"/>`;
+  }
+  s += '</svg>';
+  el.innerHTML = s;
+  const svg = el.querySelector('svg');
+  svg.addEventListener('mousemove', e => {
+    const t = e.target.closest('[data-tip]');
+    if (!t) { tipEl.style.display = 'none'; return; }
+    const box = el.closest('.chart-box').getBoundingClientRect();
+    const pt = svg.getBoundingClientRect();
+    const sx = pt.width / W;
+    tipEl.textContent = t.dataset.tip;
+    tipEl.style.left = (pt.left - box.left + t.dataset.cx * sx) + 'px';
+    tipEl.style.top = (pt.top - box.top + t.dataset.cy * sx) + 'px';
+    tipEl.style.display = 'block';
+  });
+  svg.addEventListener('mouseleave', () => { tipEl.style.display = 'none'; });
+}
+
+function money(v) { return '$' + (v >= 1000 ? (v / 1000).toFixed(0) + 'k' : v.toFixed(0)); }
+
+function render(doc) {
+  const rows = agg(doc.points);
+  if (!rows.length) return;
+  const full = rows[rows.length - 1];
+  const first = rows[0];
+  // crossing against BOTH reference lines; "beats both" uses the later one
+  const hasLlm = doc.llm_collected != null;
+  const cross = hasLlm
+    ? rows.find(r => r.collected > doc.human_collected &&
+                     r.collected > doc.llm_collected)
+    : rows.find(r => r.collected > doc.human_collected);
+  const llmName = doc.llm_model_label || 'the LLM agent';
+  const beatsWho = hasLlm ? `the simulated billers and ${llmName}` : 'the simulated billers';
+
+  document.getElementById('intro').innerHTML =
+    'Ammonix keeps an episodic memory: every past claim is stored with what '
+    + 'was done and how it ended, and new claims are decided next to the most '
+    + 'similar stored ones, no retraining needed. Each point below is the '
+    + 'same system with a bigger memory. '
+    + (cross
+    ? `After only <b>${cross.n}</b> claims it already collects more than ${beatsWho}.`
+    : 'The curve shows how quickly it improves.');
+  document.getElementById('story').innerHTML = `
+    <div class="lc-step"><p class="n">${first.n} claims</p>
+      <p class="amt">${money(first.collected)}</p>
+      <p class="say">below biller</p></div>
+    <span class="lc-arrow">&rarr;</span>
+    ${cross ? `<div class="lc-step win"><p class="n">${cross.n} claims</p>
+      <p class="amt">${money(cross.collected)}</p>
+      <p class="say">${hasLlm ? `beats biller + ${llmName}` : 'beats biller'}</p></div>
+    <span class="lc-arrow">&rarr;</span>` : ''}
+    <div class="lc-step"><p class="n">all ${full.n}</p>
+      <p class="amt">${money(full.collected)}</p>
+      <p class="say">full memory</p></div>`;
+
+  const ymax = Math.max(full.cmax, doc.human_collected,
+    doc.llm_collected || 0) * 1.12;
+  const step = ymax > 40000 ? 15000 : 10000;
+  const refs = [{v: doc.human_collected, color: GRAY, dash: '6 4',
+    label: `simulated billers ${money(doc.human_collected)}`}];
+  if (doc.llm_collected != null) {
+    refs.push({v: doc.llm_collected, color: AMBER, dash: '2 4',
+      label: `${llmName} ${money(doc.llm_collected)}`});
+  }
+  chart(document.getElementById('money'), document.getElementById('tip'), rows, {
+    ymax, key: 'collected', lo: 'cmin', hi: 'cmax',
+    yticks: Array.from({length: Math.floor(ymax / step) + 1}, (_, i) => i * step),
+    fmt: money, refs, label: 'dollars collected versus claims remembered',
+    xlabel: 'experience — past claims seen',
+    crossAt: cross ? cross.n : null,
+    crossLabel: cross
+      ? `beats ${hasLlm ? 'both' : 'the biller'} at ${cross.n}` : '',
+    tip: r => `remembers ${r.n} - collects ${money(r.collected)} - wins ${r.wins} of 200 claims`,
+  });
+
+  document.getElementById('pointtable').innerHTML = `
+    <table class="lc-table"><tr><th>remembered</th><th>draws</th>
+      <th>collected (mean)</th><th>wins</th><th>mistake claims</th></tr>
+    ${rows.map(r => `<tr><td>${r.n}</td><td>${r.k}</td>
+      <td>${money(r.collected)}</td><td>${r.wins}</td>
+      <td>${r.mistakes.toFixed(1)}</td></tr>`).join('')}</table>`;
+}
+
+function pct(v) { return (v * 100).toFixed(1) + '%'; }
+function usd(v) { return '$' + v.toLocaleString('en-US', {maximumFractionDigits: 0}); }
+
+function load() {
+  fetch('/api/curve').then(r => r.status === 425 ? null : r.json()).then(doc => {
+    if (!doc || !doc.points || !doc.points.length) { setTimeout(load, 8000); return; }
+    render(doc);
+    if (!doc.complete) setTimeout(load, 15000);
+  }).catch(() => setTimeout(load, 8000));
+}
+load();
+</script>
+</body></html>

@@ -1,0 +1,878 @@
+{
+ "activation": "APPROVED GATE-P8 2026-08-24 (runs/APPROVALS.md)",
+ "active": true,
+ "ask_before_deciding_proposals": [
+  "skill-ask-appeal_with_necessity::t3",
+  "skill-ask-bill_patient::t2",
+  "skill-ask-bill_patient::t3",
+  "skill-ask-bill_patient::t5",
+  "skill-ask-bill_patient::t7",
+  "skill-ask-submit_clean::t5",
+  "skill-ask-submit_clean::t6",
+  "skill-ask-submit_clean::t22",
+  "skill-ask-submit_with_records::t5"
+ ],
+ "skills": [
+  {
+   "skill_id": "default-escalate",
+   "version": "v1",
+   "scope": {
+    "level": "default",
+    "ref": null
+   },
+   "kind": "escalate",
+   "context_schema": {},
+   "context_sources": [],
+   "m1_prompt_ref": "",
+   "expected_result": {
+    "kind": "schema",
+    "payload_schema": null,
+    "rules": null,
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  },
+  {
+   "skill_id": "skill-submit_clean",
+   "version": "v1",
+   "scope": {
+    "level": "cluster",
+    "ref": "submit_clean"
+   },
+   "kind": "execute",
+   "context_schema": {
+    "type": "object",
+    "properties": {
+     "episode_id": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "episode_id"
+    ]
+   },
+   "context_sources": [
+    {
+     "field": "episode_id",
+     "source": "case_record",
+     "locator": "episode_id"
+    }
+   ],
+   "m1_prompt_ref": "harness/prompts/m1_submit_clean.txt",
+   "expected_result": {
+    "kind": "composite",
+    "payload_schema": {
+     "type": "object",
+     "properties": {
+      "episode_id": {
+       "type": "string",
+       "maxLength": 12
+      },
+      "cpt": {
+       "type": "string",
+       "pattern": "^[0-9]{5}$"
+      },
+      "dx_codes": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "pattern": "^[A-Z][0-9]{2}(\\.[0-9A-Z]{1,4})?$",
+        "maxLength": 8
+       },
+       "maxItems": 8
+      }
+     },
+     "required": [
+      "episode_id",
+      "cpt",
+      "dx_codes"
+     ],
+     "additionalProperties": false
+    },
+    "rules": [
+     "cpt_matches_case",
+     "pairing_legal",
+     "filing_window_open"
+    ],
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  },
+  {
+   "skill_id": "skill-submit_with_records",
+   "version": "v1",
+   "scope": {
+    "level": "cluster",
+    "ref": "submit_with_records"
+   },
+   "kind": "execute",
+   "context_schema": {
+    "type": "object",
+    "properties": {
+     "episode_id": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "episode_id"
+    ]
+   },
+   "context_sources": [
+    {
+     "field": "episode_id",
+     "source": "case_record",
+     "locator": "episode_id"
+    }
+   ],
+   "m1_prompt_ref": "harness/prompts/m1_submit_with_records.txt",
+   "expected_result": {
+    "kind": "composite",
+    "payload_schema": {
+     "type": "object",
+     "properties": {
+      "episode_id": {
+       "type": "string",
+       "maxLength": 12
+      },
+      "cpt": {
+       "type": "string",
+       "pattern": "^[0-9]{5}$"
+      },
+      "dx_codes": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "pattern": "^[A-Z][0-9]{2}(\\.[0-9A-Z]{1,4})?$",
+        "maxLength": 8
+       },
+       "maxItems": 8
+      },
+      "attachments": {
+       "type": "array",
+       "items": {
+        "enum": [
+         "clinical_notes"
+        ]
+       },
+       "minItems": 1
+      }
+     },
+     "required": [
+      "episode_id",
+      "cpt",
+      "dx_codes",
+      "attachments"
+     ],
+     "additionalProperties": false
+    },
+    "rules": [
+     "cpt_matches_case",
+     "pairing_legal",
+     "filing_window_open"
+    ],
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  },
+  {
+   "skill_id": "skill-request_retro_auth",
+   "version": "v1",
+   "scope": {
+    "level": "cluster",
+    "ref": "request_retro_auth"
+   },
+   "kind": "execute",
+   "context_schema": {
+    "type": "object",
+    "properties": {
+     "episode_id": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "episode_id"
+    ]
+   },
+   "context_sources": [
+    {
+     "field": "episode_id",
+     "source": "case_record",
+     "locator": "episode_id"
+    }
+   ],
+   "m1_prompt_ref": "harness/prompts/m1_request_retro_auth.txt",
+   "expected_result": {
+    "kind": "composite",
+    "payload_schema": {
+     "type": "object",
+     "properties": {
+      "episode_id": {
+       "type": "string",
+       "maxLength": 12
+      },
+      "cpt": {
+       "type": "string",
+       "pattern": "^[0-9]{5}$"
+      },
+      "justification_code": {
+       "enum": [
+        "auth_not_obtained_before_service",
+        "urgent_service_no_time_for_auth",
+        "payer_error_auth_on_file"
+       ]
+      }
+     },
+     "required": [
+      "episode_id",
+      "cpt",
+      "justification_code"
+     ],
+     "additionalProperties": false
+    },
+    "rules": [
+     "cpt_matches_case",
+     "retro_window_open",
+     "auth_actually_missing"
+    ],
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  },
+  {
+   "skill_id": "skill-correct_and_resubmit",
+   "version": "v1",
+   "scope": {
+    "level": "cluster",
+    "ref": "correct_and_resubmit"
+   },
+   "kind": "execute",
+   "context_schema": {
+    "type": "object",
+    "properties": {
+     "episode_id": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "episode_id"
+    ]
+   },
+   "context_sources": [
+    {
+     "field": "episode_id",
+     "source": "case_record",
+     "locator": "episode_id"
+    }
+   ],
+   "m1_prompt_ref": "harness/prompts/m1_correct_and_resubmit.txt",
+   "expected_result": {
+    "kind": "composite",
+    "payload_schema": {
+     "type": "object",
+     "properties": {
+      "episode_id": {
+       "type": "string",
+       "maxLength": 12
+      },
+      "cpt": {
+       "type": "string",
+       "pattern": "^[0-9]{5}$"
+      },
+      "dx_codes": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "pattern": "^[A-Z][0-9]{2}(\\.[0-9A-Z]{1,4})?$",
+        "maxLength": 8
+       },
+       "maxItems": 8
+      },
+      "correction": {
+       "enum": [
+        "cob_order",
+        "claim_fields"
+       ]
+      },
+      "addresses_carc": {
+       "type": "string",
+       "pattern": "^(CO|PR)-[0-9]{1,3}$",
+       "maxLength": 6
+      }
+     },
+     "required": [
+      "episode_id",
+      "cpt",
+      "dx_codes",
+      "correction",
+      "addresses_carc"
+     ],
+     "additionalProperties": false
+    },
+    "rules": [
+     "cpt_matches_case",
+     "filing_window_open",
+     "addresses_current_carc"
+    ],
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  },
+  {
+   "skill_id": "skill-appeal_with_necessity",
+   "version": "v1",
+   "scope": {
+    "level": "cluster",
+    "ref": "appeal_with_necessity"
+   },
+   "kind": "execute",
+   "context_schema": {
+    "type": "object",
+    "properties": {
+     "episode_id": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "episode_id"
+    ]
+   },
+   "context_sources": [
+    {
+     "field": "episode_id",
+     "source": "case_record",
+     "locator": "episode_id"
+    }
+   ],
+   "m1_prompt_ref": "harness/prompts/m1_appeal_with_necessity.txt",
+   "expected_result": {
+    "kind": "composite",
+    "payload_schema": {
+     "type": "object",
+     "properties": {
+      "episode_id": {
+       "type": "string",
+       "maxLength": 12
+      },
+      "cpt": {
+       "type": "string",
+       "pattern": "^[0-9]{5}$"
+      },
+      "denial_carc": {
+       "type": "string",
+       "pattern": "^(CO|PR)-[0-9]{1,3}$",
+       "maxLength": 6
+      },
+      "necessity_paragraph": {
+       "type": "string",
+       "minLength": 80,
+       "maxLength": 1200
+      }
+     },
+     "required": [
+      "episode_id",
+      "cpt",
+      "denial_carc",
+      "necessity_paragraph"
+     ],
+     "additionalProperties": false
+    },
+    "rules": [
+     "cpt_matches_case",
+     "cites_denial_carc",
+     "paragraph_grounded_in_case"
+    ],
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  },
+  {
+   "skill_id": "skill-request_peer_to_peer",
+   "version": "v1",
+   "scope": {
+    "level": "cluster",
+    "ref": "request_peer_to_peer"
+   },
+   "kind": "execute",
+   "context_schema": {
+    "type": "object",
+    "properties": {
+     "episode_id": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "episode_id"
+    ]
+   },
+   "context_sources": [
+    {
+     "field": "episode_id",
+     "source": "case_record",
+     "locator": "episode_id"
+    }
+   ],
+   "m1_prompt_ref": "harness/prompts/m1_request_peer_to_peer.txt",
+   "expected_result": {
+    "kind": "composite",
+    "payload_schema": {
+     "type": "object",
+     "properties": {
+      "episode_id": {
+       "type": "string",
+       "maxLength": 12
+      },
+      "cpt": {
+       "type": "string",
+       "pattern": "^[0-9]{5}$"
+      },
+      "denial_carc": {
+       "type": "string",
+       "pattern": "^(CO|PR)-[0-9]{1,3}$",
+       "maxLength": 6
+      }
+     },
+     "required": [
+      "episode_id",
+      "cpt",
+      "denial_carc"
+     ],
+     "additionalProperties": false
+    },
+    "rules": [
+     "cpt_matches_case",
+     "cites_denial_carc",
+     "p2p_offered"
+    ],
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  },
+  {
+   "skill_id": "skill-provide_requested_info",
+   "version": "v1",
+   "scope": {
+    "level": "cluster",
+    "ref": "provide_requested_info"
+   },
+   "kind": "execute",
+   "context_schema": {
+    "type": "object",
+    "properties": {
+     "episode_id": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "episode_id"
+    ]
+   },
+   "context_sources": [
+    {
+     "field": "episode_id",
+     "source": "case_record",
+     "locator": "episode_id"
+    }
+   ],
+   "m1_prompt_ref": "harness/prompts/m1_provide_requested_info.txt",
+   "expected_result": {
+    "kind": "composite",
+    "payload_schema": {
+     "type": "object",
+     "properties": {
+      "episode_id": {
+       "type": "string",
+       "maxLength": 12
+      },
+      "cpt": {
+       "type": "string",
+       "pattern": "^[0-9]{5}$"
+      },
+      "requested_item": {
+       "type": "string",
+       "maxLength": 80
+      }
+     },
+     "required": [
+      "episode_id",
+      "cpt",
+      "requested_item"
+     ],
+     "additionalProperties": false
+    },
+    "rules": [
+     "cpt_matches_case",
+     "requested_item_in_record",
+     "letter_names_requested_item"
+    ],
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  },
+  {
+   "skill_id": "skill-bill_secondary",
+   "version": "v1",
+   "scope": {
+    "level": "cluster",
+    "ref": "bill_secondary"
+   },
+   "kind": "execute",
+   "context_schema": {
+    "type": "object",
+    "properties": {
+     "episode_id": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "episode_id"
+    ]
+   },
+   "context_sources": [
+    {
+     "field": "episode_id",
+     "source": "case_record",
+     "locator": "episode_id"
+    }
+   ],
+   "m1_prompt_ref": "harness/prompts/m1_bill_secondary.txt",
+   "expected_result": {
+    "kind": "composite",
+    "payload_schema": {
+     "type": "object",
+     "properties": {
+      "episode_id": {
+       "type": "string",
+       "maxLength": 12
+      },
+      "cpt": {
+       "type": "string",
+       "pattern": "^[0-9]{5}$"
+      }
+     },
+     "required": [
+      "episode_id",
+      "cpt"
+     ],
+     "additionalProperties": false
+    },
+    "rules": [
+     "cpt_matches_case",
+     "secondary_exists"
+    ],
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  },
+  {
+   "skill_id": "skill-bill_patient",
+   "version": "v1",
+   "scope": {
+    "level": "cluster",
+    "ref": "bill_patient"
+   },
+   "kind": "execute",
+   "context_schema": {
+    "type": "object",
+    "properties": {
+     "episode_id": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "episode_id"
+    ]
+   },
+   "context_sources": [
+    {
+     "field": "episode_id",
+     "source": "case_record",
+     "locator": "episode_id"
+    }
+   ],
+   "m1_prompt_ref": "harness/prompts/m1_bill_patient.txt",
+   "expected_result": {
+    "kind": "composite",
+    "payload_schema": {
+     "type": "object",
+     "properties": {
+      "episode_id": {
+       "type": "string",
+       "maxLength": 12
+      },
+      "cpt": {
+       "type": "string",
+       "pattern": "^[0-9]{5}$"
+      },
+      "amount": {
+       "type": "number",
+       "minimum": 0
+      }
+     },
+     "required": [
+      "episode_id",
+      "cpt",
+      "amount"
+     ],
+     "additionalProperties": false
+    },
+    "rules": [
+     "cpt_matches_case",
+     "amount_within_balance"
+    ],
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  },
+  {
+   "skill_id": "skill-write_off",
+   "version": "v1",
+   "scope": {
+    "level": "cluster",
+    "ref": "write_off"
+   },
+   "kind": "execute",
+   "context_schema": {
+    "type": "object",
+    "properties": {
+     "episode_id": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "episode_id"
+    ]
+   },
+   "context_sources": [
+    {
+     "field": "episode_id",
+     "source": "case_record",
+     "locator": "episode_id"
+    }
+   ],
+   "m1_prompt_ref": "harness/prompts/m1_write_off.txt",
+   "expected_result": {
+    "kind": "composite",
+    "payload_schema": {
+     "type": "object",
+     "properties": {
+      "episode_id": {
+       "type": "string",
+       "maxLength": 12
+      },
+      "cpt": {
+       "type": "string",
+       "pattern": "^[0-9]{5}$"
+      }
+     },
+     "required": [
+      "episode_id",
+      "cpt"
+     ],
+     "additionalProperties": false
+    },
+    "rules": [
+     "cpt_matches_case"
+    ],
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  },
+  {
+   "skill_id": "skill-ask-appeal_with_necessity::t3",
+   "version": "v1",
+   "scope": {
+    "level": "tribe",
+    "ref": "appeal_with_necessity::t3"
+   },
+   "kind": "ask_before_deciding",
+   "context_schema": {},
+   "context_sources": [],
+   "m1_prompt_ref": "",
+   "expected_result": {
+    "kind": "schema",
+    "payload_schema": null,
+    "rules": null,
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  },
+  {
+   "skill_id": "skill-ask-bill_patient::t2",
+   "version": "v1",
+   "scope": {
+    "level": "tribe",
+    "ref": "bill_patient::t2"
+   },
+   "kind": "ask_before_deciding",
+   "context_schema": {},
+   "context_sources": [],
+   "m1_prompt_ref": "",
+   "expected_result": {
+    "kind": "schema",
+    "payload_schema": null,
+    "rules": null,
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  },
+  {
+   "skill_id": "skill-ask-bill_patient::t3",
+   "version": "v1",
+   "scope": {
+    "level": "tribe",
+    "ref": "bill_patient::t3"
+   },
+   "kind": "ask_before_deciding",
+   "context_schema": {},
+   "context_sources": [],
+   "m1_prompt_ref": "",
+   "expected_result": {
+    "kind": "schema",
+    "payload_schema": null,
+    "rules": null,
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  },
+  {
+   "skill_id": "skill-ask-bill_patient::t5",
+   "version": "v1",
+   "scope": {
+    "level": "tribe",
+    "ref": "bill_patient::t5"
+   },
+   "kind": "ask_before_deciding",
+   "context_schema": {},
+   "context_sources": [],
+   "m1_prompt_ref": "",
+   "expected_result": {
+    "kind": "schema",
+    "payload_schema": null,
+    "rules": null,
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  },
+  {
+   "skill_id": "skill-ask-bill_patient::t7",
+   "version": "v1",
+   "scope": {
+    "level": "tribe",
+    "ref": "bill_patient::t7"
+   },
+   "kind": "ask_before_deciding",
+   "context_schema": {},
+   "context_sources": [],
+   "m1_prompt_ref": "",
+   "expected_result": {
+    "kind": "schema",
+    "payload_schema": null,
+    "rules": null,
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  },
+  {
+   "skill_id": "skill-ask-submit_clean::t5",
+   "version": "v1",
+   "scope": {
+    "level": "tribe",
+    "ref": "submit_clean::t5"
+   },
+   "kind": "ask_before_deciding",
+   "context_schema": {},
+   "context_sources": [],
+   "m1_prompt_ref": "",
+   "expected_result": {
+    "kind": "schema",
+    "payload_schema": null,
+    "rules": null,
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  },
+  {
+   "skill_id": "skill-ask-submit_clean::t6",
+   "version": "v1",
+   "scope": {
+    "level": "tribe",
+    "ref": "submit_clean::t6"
+   },
+   "kind": "ask_before_deciding",
+   "context_schema": {},
+   "context_sources": [],
+   "m1_prompt_ref": "",
+   "expected_result": {
+    "kind": "schema",
+    "payload_schema": null,
+    "rules": null,
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  },
+  {
+   "skill_id": "skill-ask-submit_clean::t22",
+   "version": "v1",
+   "scope": {
+    "level": "tribe",
+    "ref": "submit_clean::t22"
+   },
+   "kind": "ask_before_deciding",
+   "context_schema": {},
+   "context_sources": [],
+   "m1_prompt_ref": "",
+   "expected_result": {
+    "kind": "schema",
+    "payload_schema": null,
+    "rules": null,
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  },
+  {
+   "skill_id": "skill-ask-submit_with_records::t5",
+   "version": "v1",
+   "scope": {
+    "level": "tribe",
+    "ref": "submit_with_records::t5"
+   },
+   "kind": "ask_before_deciding",
+   "context_schema": {},
+   "context_sources": [],
+   "m1_prompt_ref": "",
+   "expected_result": {
+    "kind": "schema",
+    "payload_schema": null,
+    "rules": null,
+    "exemplar_from_neighbours": false,
+    "tolerance": {}
+   },
+   "question": null
+  }
+ ],
+ "weights_shards": {
+  "model-00001-of-00004.safetensors": "01c4b57fae6db15daf177e5a96b3e30cd687fc60d178cdc8a31661b4fc0c917d",
+  "model-00002-of-00004.safetensors": "b2dda3fdb3865495e28e119fabc1d9962667732939dd35364379ffc89b6edff9",
+  "model-00003-of-00004.safetensors": "a209a59e2c98d2e34979dbdc8a481b7b9a143b246979cbd62a9ff7cc0ec7b8ef",
+  "model-00004-of-00004.safetensors": "5332e9bc4f3770771304197e7adf225b2979ce884bcd93d28099b8b47b3d0b06"
+ }
+}

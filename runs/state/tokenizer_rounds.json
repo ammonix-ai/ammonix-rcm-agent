@@ -1,0 +1,38 @@
+[
+  {
+    "round": 1,
+    "proposal": "deterministic tabular features per build package Section 3 round 1",
+    "mean_oof_auroc": 0.828836135497058,
+    "previous_auroc": 0.5,
+    "gain": 0.32883613549705804,
+    "kept": true,
+    "n_features": 75
+  },
+  {
+    "round": 2,
+    "proposal": "round 1 + LLM text extractor booleans (pinned model, guided JSON)",
+    "mean_oof_auroc": 0.8255336225419564,
+    "previous_auroc": 0.828836135497058,
+    "gain": -0.003302512955101644,
+    "kept": false,
+    "n_features": 85
+  },
+  {
+    "round": 3,
+    "proposal": "kept blocks + derived pressure/ratio numerics (block: derived)",
+    "mean_oof_auroc": 0.8319144779376291,
+    "previous_auroc": 0.8255336225419564,
+    "gain": 0.00638085539567268,
+    "kept": true,
+    "n_features": 81
+  },
+  {
+    "round": 4,
+    "proposal": "kept blocks + last prior action/CARC one-hots (block: last_event)",
+    "mean_oof_auroc": 0.8302842642181095,
+    "previous_auroc": 0.8319144779376291,
+    "gain": -0.0016302137195195465,
+    "kept": false,
+    "n_features": 99
+  }
+]

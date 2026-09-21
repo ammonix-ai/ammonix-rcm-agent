@@ -1,0 +1,77 @@
+{
+  "preregistration": "comparison_v4_tranche98",
+  "registered": "2026-07-22",
+  "registered_before_any_tranche98_generation": true,
+  "ordering_proof": "this file is committed to git before any tranche-98 episode, study row or LLM decision exists anywhere in this repo; the commit history is the timestamp",
+  "question": "Does the shipped Ammonix v0.4 runtime beat a fair (parity-fixed) LLM agent loop on fresh episodes untouched by any Ammonix development?",
+  "world": {
+    "factory_root": "..\\Ammonix_Generic\\Cardessa_worktrees\\v4-build (READ ONLY; green v0.4 snapshot, signed off 2026-07-21)",
+    "world_version": "v0.4 (CO-18 duplicate-claim mechanic, label-space universe, EV close-out)",
+    "master_seed": 20260709,
+    "training_lineage_episodes": 5000,
+    "tranche_no": 98,
+    "start_index": 5000,
+    "n_episodes": 300,
+    "allocation": {
+      "retro_auth": 60,
+      "p2p": 30,
+      "cob": 40,
+      "None": 170
+    },
+    "allocation_provenance": "identical to the factory's scripts/policy_rollout.py and this repo's tranche-92 comparison (run_comparison.py ALLOCATION)",
+    "generation_path": "cardessa.expansion.expansion_studies(world_ext, MASTER_SEED, 98, allocation, 5000) after cardessa.livecases.training_world replay of v4-build's recorded expansion.json (tranches 1-8); episodes played by CardessaEnvironment under the v0.4 code; no sealed or quarantined data touched",
+    "why_tranche_98": "90 (demo, informed v0.4 EV design), 92 (tranche-92 comparison + factory rollout), 96 and 97 (spent by v0.4 close-out analyses) are all touched; 98 is the first draw no arm and no development step has ever seen"
+  },
+  "arms": {
+    "personas": "scripted human persona baseline (also the bit-exact identity canary replayed by run_v4_arm.py)",
+    "agentic": "this repo's LLM agent loop on the pinned local model, with the v0.4 briefing-parity fixes (CO-18 legend + duplicate rule, persona_id, subscriber_relationship rendered)",
+    "ammonix_v4": "shipped v0.4 BasisRuntime from v4-build: route_case (forced CO-16 action honoured) + confidence floor 0.05 + EV close-out; zero LLM calls at decision time; escalations fall back to the persona policy (as in every arm)"
+  },
+  "model_pin": {
+    "model_id": "/models/Qwen3.6-27B-AWQ-INT4",
+    "endpoint": "http://127.0.0.1:8000/v1 (vLLM)",
+    "temperature": 0.0,
+    "seed": 0,
+    "response_format": "json_schema strict",
+    "max_attempts_per_touch": 2,
+    "note": "1 initial attempt + 1 applicability-feedback retry; second violation or explicit escalate hands the touch to the persona"
+  },
+  "metrics": {
+    "primary": "success_rate_v2 (outcome v2: >=98% of allowed collected within 120 days, per cardessa.corpus)",
+    "secondary": [
+      "payer_collected_capped, formula version v2-cap-total-4: sum over episodes of min(collected_payer, allowed) - identical to the tranche-92 comparison.json summaries",
+      "mean_score: outcome-v2 score minus 0.10 per process mistake (MISTAKE_PENALTY)",
+      "episodes_with_mistakes: factory cardessa.corpus.compute_mistakes, v0.4 ledger including mistake_resubmitted_paid_claim",
+      "mean_touches",
+      "escalated_touches",
+      "LLM cost per arm (calls, tokens) - reported, not a win condition"
+    ]
+  },
+  "noise_model": {
+    "framing": "single-draw noise, same framing as the tranche-92 dashboard (which called a 1-pt success gap within noise)",
+    "binomial_se_success_rate": "sqrt(p*(1-p)/300) = 0.0288 at p=0.46",
+    "ci95_half_width": 0.0564,
+    "statement": "one draw of 300 episodes: a success-rate difference within +/-5.6 percentage points (95% binomial CI half-width at p~0.46, n=300) is inside single-draw noise; the dashboard's informal ~4 pts corresponded to ~1.4 SE, the pre-registered tie band uses the full 5.6-pt 95% half-width"
+  },
+  "hypothesis": "With the briefing handicaps removed, the agentic arm improves over its tranche-92 showing (0.4567 success), but the shipped Ammonix v0.4 runtime still matches or beats it on success rate and collects more capped dollars with fewer mistake episodes, at zero decision-time LLM cost.",
+  "decision_rule": {
+    "ammonix_wins": "success_rate_v2(ammonix_v4) - success_rate_v2(agentic) > +0.0564, OR the success gap is within the tie band AND ammonix_v4 leads payer_collected_capped by more than 5% with episodes_with_mistakes <= agentic's",
+    "tie": "success gap within +/-0.0564 and neither capped-dollars condition met in either direction",
+    "ammonix_loses": "success_rate_v2(agentic) - success_rate_v2(ammonix_v4) > +0.0564, OR the success gap is within the tie band AND agentic leads payer_collected_capped by more than 5% with episodes_with_mistakes <= ammonix_v4's",
+    "no_post_hoc_metric_switching": "the verdict is read off this rule only; all other numbers are descriptive"
+  },
+  "procedure": [
+    "1. (this commit) pre-registration, before any tranche-98 data exists",
+    "2. smoke test: first 5 episodes of tranche 98, all three arms end-to-end, canary verified - not interpreted beyond mechanics",
+    "3. full run after review: run_comparison.py --arms personas,agentic --tranche 98 --report comparison_v4_tranche98.json --tag _v4t98 (AMMONIX_FACTORY_ROOT=v4-build), then run_v4_arm.py --report comparison_v4_tranche98.json --tag _v4t98",
+    "4. one run, no reruns, no episode exclusions; the decision cache freezes the agentic arm"
+  ],
+  "amendments": [
+    {
+      "date": "2026-07-22",
+      "kind": "harness defect fix; pre-registered criteria unchanged",
+      "reason": "The first full run crashed mid-agentic-arm: the factory's scripted personas predate CO-18 (a clerk never resubmits a paid claim), so an escalated touch on a CO-18 state - reachable only after an LLM arm resubmitted an already-paid claim - hit the ValueError('no persona response for CARC') raise in personas.py _denial_response. Fixed in this repo only (agentic/fallback.py): the persona hand-off catches exactly that ValueError and plays the objectively determined clerical close-out for a duplicate-denied claim - bill_patient when member responsibility remains and billing the patient is legal in that state, else write_off (the same close-out split the persona scripts use on their own exhausted paths). The wrapper is arm-agnostic and wired into every arm's persona hand-off.",
+      "cannot_affect_personas_arm": "the personas arm completed all 300 episodes before the crash without ever entering this path (clerks never create CO-18 states) and its output is identical on rerun by determinism, so episodes_personas_v4t98.json stands; the Ammonix arm is likewise structurally unable to reach the path (the v0.4 mask blocks resubmitting a paid claim). Tranche, allocation, arms, metrics, model pin and the win/tie/lose rule are untouched."
+    }
+  ]
+}

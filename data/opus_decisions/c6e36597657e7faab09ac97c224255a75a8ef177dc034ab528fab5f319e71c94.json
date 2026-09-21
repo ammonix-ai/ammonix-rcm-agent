@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\": \"Fresh claim never submitted, no payer response on the table. Auth is not required for this CPT, and diagnosis pairing is valid, eligibility active, COB order correct. This is a clean claim ready for first submission.\", \"action\": \"submit_clean\"}", "usage": {"prompt_tokens": 1301, "completion_tokens": 91}}

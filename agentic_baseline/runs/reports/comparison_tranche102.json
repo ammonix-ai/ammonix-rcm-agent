@@ -1,0 +1,210 @@
+{
+  "analysis": "agentic baseline vs ammonix system vs personas",
+  "factory_root": "<REPO>",
+  "tranche": 102,
+  "n_episodes": 300,
+  "note": "identical fresh episodes and engine randomness across arms; the 'agentic' arm runs the same pinned 27B as Ammonix M1 (architecture comparison); the 'claude' arm runs the same agent loop on claude-sonnet-5 via API (frontier-model comparison; not sampling-deterministic - the decision cache freezes the run); escalated touches fall back to the persona (human) policy in every arm",
+  "personas": {
+    "episodes": 300,
+    "success_rate_v2": 0.37,
+    "mean_score": 0.406,
+    "payer_collected_total": 49407.97,
+    "payer_collected_capped": 49407.97,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 18694.2,
+    "mean_touches": 2.45,
+    "episodes_with_mistakes": 66,
+    "escalated_touches": 0,
+    "resolutions": {
+      "paid": 28,
+      "written_off": 93,
+      "patient_billed": 157,
+      "paid_on_appeal": 2,
+      "paid_with_secondary": 17,
+      "written_off_at_cap": 3
+    },
+    "wall_seconds": 0.1
+  },
+  "agentic": {
+    "episodes": 300,
+    "success_rate_v2": 0.3933,
+    "mean_score": 0.4203,
+    "payer_collected_total": 52637.11,
+    "payer_collected_capped": 52637.11,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 17014.24,
+    "mean_touches": 2.68,
+    "episodes_with_mistakes": 55,
+    "escalated_touches": 233,
+    "resolutions": {
+      "written_off": 95,
+      "paid": 29,
+      "patient_billed": 143,
+      "paid_with_secondary": 31,
+      "paid_on_appeal": 1,
+      "written_off_at_cap": 1
+    },
+    "wall_seconds": 9438.3,
+    "policy": {
+      "decisions": 803,
+      "retries": 159,
+      "escalations_explicit": 164,
+      "escalations_forced": 69,
+      "decision_errors": 0
+    },
+    "llm": {
+      "model_id": "/models/Qwen3.6-27B-AWQ-INT4",
+      "calls_to_provider": 890,
+      "cache_hits": 72,
+      "prompt_tokens": 751922,
+      "completion_tokens": 211024
+    }
+  },
+  "agentic_rag": {
+    "episodes": 300,
+    "success_rate_v2": 0.44,
+    "mean_score": 0.4805,
+    "payer_collected_total": 58072.91,
+    "payer_collected_capped": 58072.91,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 19942.52,
+    "mean_touches": 2.45,
+    "episodes_with_mistakes": 22,
+    "escalated_touches": 193,
+    "resolutions": {
+      "paid": 29,
+      "written_off": 68,
+      "patient_billed": 169,
+      "paid_with_secondary": 33,
+      "paid_on_appeal": 1
+    },
+    "wall_seconds": 10809.9,
+    "policy": {
+      "decisions": 735,
+      "retries": 142,
+      "escalations_explicit": 141,
+      "escalations_forced": 52,
+      "decision_errors": 0
+    },
+    "llm": {
+      "model_id": "/models/Qwen3.6-27B-AWQ-INT4",
+      "calls_to_provider": 860,
+      "cache_hits": 17,
+      "prompt_tokens": 947836,
+      "completion_tokens": 200552
+    }
+  },
+  "ammonix_v6": {
+    "episodes": 300,
+    "success_rate_v2": 0.5333,
+    "mean_score": 0.5662,
+    "payer_collected_total": 63854.81,
+    "payer_collected_capped": 63854.81,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 27512.53,
+    "mean_touches": 2.587,
+    "episodes_with_mistakes": 7,
+    "escalated_touches": 92,
+    "resolutions": {
+      "paid": 27,
+      "paid_with_secondary": 69,
+      "patient_billed": 193,
+      "paid_on_appeal": 1,
+      "written_off_at_cap": 6,
+      "written_off": 4
+    },
+    "wall_seconds": 4.3,
+    "factory_root": "<REPO>",
+    "decision_field": "kernel"
+  },
+  "oracle_greedy": {
+    "episodes": 300,
+    "success_rate_v2": 0.5967,
+    "mean_score": 0.6243,
+    "payer_collected_total": 72707.45,
+    "payer_collected_capped": 72707.45,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 16140.12,
+    "mean_touches": 2.21,
+    "episodes_with_mistakes": 1,
+    "escalated_touches": 0,
+    "resolutions": {
+      "paid": 29,
+      "written_off": 69,
+      "paid_on_appeal": 1,
+      "paid_with_secondary": 74,
+      "patient_billed": 127
+    },
+    "wall_seconds": 0.1,
+    "note": "EVALUATION-ONLY upper-bound ESTIMATE: greedy per-touch on the engine's true resolution probabilities (action_resolution_prob + deterministic adjudication cascade), not a full sequential planner; see scripts/run_oracle_arm.py and runs/reports/oracle_v4_tranche98.json"
+  },
+  "sol_tuned": {
+    "episodes": 300,
+    "success_rate_v2": 0.4433,
+    "mean_score": 0.4663,
+    "payer_collected_total": 59094.85,
+    "payer_collected_capped": 59094.85,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 17570.35,
+    "mean_touches": 2.38,
+    "episodes_with_mistakes": 8,
+    "escalated_touches": 149,
+    "resolutions": {
+      "paid": 29,
+      "patient_billed": 134,
+      "paid_with_secondary": 50,
+      "written_off": 85,
+      "paid_on_appeal": 1,
+      "written_off_at_cap": 1
+    },
+    "wall_seconds": 604.7,
+    "policy": {
+      "decisions": 713,
+      "retries": 0,
+      "escalations_explicit": 149,
+      "escalations_forced": 0,
+      "decision_errors": 0
+    },
+    "llm": {
+      "model_id": "gpt-5.6-sol",
+      "calls_to_provider": 713,
+      "cache_hits": 0,
+      "prompt_tokens": 569486,
+      "completion_tokens": 137060
+    }
+  },
+  "sol_rag_tuned": {
+    "episodes": 300,
+    "success_rate_v2": 0.4533,
+    "mean_score": 0.476,
+    "payer_collected_total": 61440.38,
+    "payer_collected_capped": 61440.38,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 16597.42,
+    "mean_touches": 2.52,
+    "episodes_with_mistakes": 19,
+    "escalated_touches": 98,
+    "resolutions": {
+      "paid": 29,
+      "patient_billed": 139,
+      "written_off": 77,
+      "paid_on_appeal": 1,
+      "paid_with_secondary": 54
+    },
+    "wall_seconds": 652.1,
+    "policy": {
+      "decisions": 756,
+      "retries": 0,
+      "escalations_explicit": 98,
+      "escalations_forced": 0,
+      "decision_errors": 0
+    },
+    "llm": {
+      "model_id": "gpt-5.6-sol",
+      "calls_to_provider": 756,
+      "cache_hits": 0,
+      "prompt_tokens": 829586,
+      "completion_tokens": 155328
+    }
+  }
+}

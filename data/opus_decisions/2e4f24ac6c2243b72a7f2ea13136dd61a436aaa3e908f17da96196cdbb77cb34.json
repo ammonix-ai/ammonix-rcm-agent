@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\":\"Prior authorization is not required for CPT 93229, so the missing auth is irrelevant. The diagnosis pairing is valid, eligibility is active, COB order is correct, and no payer response is pending. The cleanest first touch is to submit the claim as-is.\",\"action\":\"submit_clean\"}", "usage": {"prompt_tokens": 1331, "completion_tokens": 161}}

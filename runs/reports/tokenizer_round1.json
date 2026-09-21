@@ -1,0 +1,27 @@
+{
+  "milestone": "P4",
+  "round": 1,
+  "proposal": "deterministic tabular features per build package Section 3 round 1",
+  "n_features": 75,
+  "llm_calls_this_run": 0,
+  "mean_oof_auroc": 0.828836135497058,
+  "previous_auroc": 0.5,
+  "gain": 0.32883613549705804,
+  "kept": true,
+  "per_action_auroc": {
+    "appeal_with_necessity": 0.7765,
+    "bill_patient": 0.7952,
+    "correct_and_resubmit": 0.851,
+    "provide_requested_info": 0.8212,
+    "request_peer_to_peer": 0.878,
+    "request_retro_auth": 0.7206,
+    "submit_clean": 0.8839,
+    "submit_with_records": 0.9043
+  },
+  "actions_excluded": {
+    "bill_secondary": "fold 1 training partition single-class",
+    "write_off": "single outcome class"
+  },
+  "n_states_scored": 9725,
+  "double_build_hash_equal": true
+}

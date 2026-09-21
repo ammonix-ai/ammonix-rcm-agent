@@ -1,0 +1,21 @@
+{
+  "milestone": "P3",
+  "manifest_sha256": "6acf76e7d32b376af05290d4ddab6ed3a6cf60725bf43e20c370bf399eb0705d",
+  "counts": {
+    "working": {
+      "examples": 4750,
+      "states": 11427
+    },
+    "reserve_b": {
+      "examples": 100,
+      "states": 226
+    },
+    "quarantine_a": {
+      "examples": 150,
+      "states": 354
+    }
+  },
+  "n_working_folds": 5,
+  "dev_slice_states": 501,
+  "post_expansion": true
+}

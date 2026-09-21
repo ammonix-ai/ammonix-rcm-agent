@@ -1,0 +1,261 @@
+{
+  "analysis": "pre-registered retrieval-augmented baseline comparison, tranche 100 (preregistration/comparison_rag_tranche100.json + amendment)",
+  "tranche": 100,
+  "n_episodes": 300,
+  "ammonix_v6": {
+    "episodes": 300,
+    "success_rate_v2": 0.5267,
+    "mean_score": 0.5545,
+    "payer_collected_total": 63515.38,
+    "payer_collected_capped": 63515.38,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 25715.49,
+    "mean_touches": 2.66,
+    "episodes_with_mistakes": 5,
+    "escalated_touches": 78,
+    "resolutions": {
+      "paid": 29,
+      "paid_with_secondary": 68,
+      "patient_billed": 187,
+      "paid_on_appeal": 5,
+      "written_off": 3,
+      "written_off_at_cap": 8
+    },
+    "wall_seconds": 11.1,
+    "factory_root": "<REPO>",
+    "decision_field": "kernel"
+  },
+  "oracle_greedy": {
+    "episodes": 300,
+    "success_rate_v2": 0.56,
+    "mean_score": 0.5901,
+    "payer_collected_total": 68692.67,
+    "payer_collected_capped": 68692.67,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 12216.2,
+    "mean_touches": 2.19,
+    "episodes_with_mistakes": 4,
+    "escalated_touches": 0,
+    "resolutions": {
+      "paid": 29,
+      "written_off": 87,
+      "paid_on_appeal": 6,
+      "paid_with_secondary": 68,
+      "patient_billed": 110
+    },
+    "wall_seconds": 0.1,
+    "note": "EVALUATION-ONLY upper-bound ESTIMATE: greedy per-touch on the engine's true resolution probabilities (action_resolution_prob + deterministic adjudication cascade), not a full sequential planner; see scripts/run_oracle_arm.py and runs/reports/oracle_v4_tranche98.json"
+  },
+  "personas": {
+    "episodes": 300,
+    "success_rate_v2": 0.3967,
+    "mean_score": 0.4055,
+    "payer_collected_total": 46931.59,
+    "payer_collected_capped": 46931.59,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 20433.6,
+    "mean_touches": 2.533,
+    "episodes_with_mistakes": 74,
+    "escalated_touches": 0,
+    "resolutions": {
+      "paid": 29,
+      "written_off": 105,
+      "patient_billed": 145,
+      "paid_with_secondary": 17,
+      "written_off_at_cap": 4
+    },
+    "wall_seconds": 0.1
+  },
+  "agentic": {
+    "episodes": 300,
+    "success_rate_v2": 0.4,
+    "mean_score": 0.4197,
+    "payer_collected_total": 49773.19,
+    "payer_collected_capped": 49773.19,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 18045.71,
+    "mean_touches": 2.703,
+    "episodes_with_mistakes": 45,
+    "escalated_touches": 244,
+    "resolutions": {
+      "paid": 29,
+      "patient_billed": 122,
+      "written_off": 110,
+      "paid_on_appeal": 5,
+      "paid_with_secondary": 30,
+      "written_off_at_cap": 4
+    },
+    "wall_seconds": 4327.0,
+    "policy": {
+      "decisions": 807,
+      "retries": 158,
+      "escalations_explicit": 179,
+      "escalations_forced": 65,
+      "decision_errors": 0
+    },
+    "llm": {
+      "model_id": "/models/Qwen3.6-27B-AWQ-INT4",
+      "calls_to_provider": 965,
+      "cache_hits": 0,
+      "prompt_tokens": 752044,
+      "completion_tokens": 212366
+    }
+  },
+  "agentic_rag": {
+    "episodes": 300,
+    "success_rate_v2": 0.4533,
+    "mean_score": 0.481,
+    "payer_collected_total": 54217.41,
+    "payer_collected_capped": 54217.41,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 23871.82,
+    "mean_touches": 2.503,
+    "episodes_with_mistakes": 24,
+    "escalated_touches": 196,
+    "resolutions": {
+      "paid": 29,
+      "patient_billed": 158,
+      "written_off": 72,
+      "paid_with_secondary": 37,
+      "paid_on_appeal": 4
+    },
+    "wall_seconds": 3945.9,
+    "policy": {
+      "decisions": 751,
+      "retries": 131,
+      "escalations_explicit": 152,
+      "escalations_forced": 44,
+      "decision_errors": 0
+    },
+    "llm": {
+      "model_id": "/models/Qwen3.6-27B-AWQ-INT4",
+      "calls_to_provider": 882,
+      "cache_hits": 0,
+      "prompt_tokens": 948863,
+      "completion_tokens": 193507
+    }
+  },
+  "sol": {
+    "episodes": 300,
+    "success_rate_v2": 0.4,
+    "mean_score": 0.4279,
+    "payer_collected_total": 52448.47,
+    "payer_collected_capped": 52448.47,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 18099.33,
+    "mean_touches": 2.417,
+    "episodes_with_mistakes": 7,
+    "escalated_touches": 178,
+    "resolutions": {
+      "paid": 29,
+      "patient_billed": 131,
+      "written_off": 89,
+      "paid_with_secondary": 46,
+      "paid_on_appeal": 2,
+      "written_off_at_cap": 3
+    },
+    "wall_seconds": 787.3,
+    "policy": {
+      "decisions": 722,
+      "retries": 0,
+      "escalations_explicit": 178,
+      "escalations_forced": 0,
+      "decision_errors": 0
+    },
+    "llm": {
+      "model_id": "gpt-5.6-sol",
+      "calls_to_provider": 722,
+      "cache_hits": 0,
+      "prompt_tokens": 520836,
+      "completion_tokens": 133952
+    }
+  },
+  "sol_rag": {
+    "episodes": 300,
+    "success_rate_v2": 0.45,
+    "mean_score": 0.4705,
+    "payer_collected_total": 57382.41,
+    "payer_collected_capped": 57382.41,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 18674.33,
+    "mean_touches": 2.407,
+    "episodes_with_mistakes": 8,
+    "escalated_touches": 154,
+    "resolutions": {
+      "paid": 29,
+      "patient_billed": 126,
+      "written_off": 84,
+      "paid_on_appeal": 5,
+      "paid_with_secondary": 54,
+      "written_off_at_cap": 2
+    },
+    "wall_seconds": 939.6,
+    "policy": {
+      "decisions": 720,
+      "retries": 0,
+      "escalations_explicit": 153,
+      "escalations_forced": 0,
+      "decision_errors": 1
+    },
+    "llm": {
+      "model_id": "gpt-5.6-sol",
+      "calls_to_provider": 719,
+      "cache_hits": 0,
+      "prompt_tokens": 733661,
+      "completion_tokens": 139301
+    }
+  },
+  "_verdicts": {
+    "retrieval_helps_27B": "+5.3 pts, paired 95% CI [+1.0,+9.7]: YES",
+    "retrieval_helps_sol": "+5.0 pts, paired 95% CI [+2.7,+7.7]: YES",
+    "gap_survives_27B_rag": "+7.3 pts [+3.0,+12.0] > 5.64: SURVIVES",
+    "gap_survives_sol_rag": "+7.7 pts [+3.3,+12.0] > 5.64: SURVIVES",
+    "note": "personas canary identical across the three runs (39.67%, $46,931.59); every LLM decision was live (0 cache hits)"
+  },
+  "ammonix_v6_shippedcheck": {
+    "episodes": 300,
+    "success_rate_v2": 0.5267,
+    "mean_score": 0.5545,
+    "payer_collected_total": 63515.38,
+    "payer_collected_capped": 63515.38,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 25715.49,
+    "mean_touches": 2.66,
+    "episodes_with_mistakes": 5,
+    "escalated_touches": 78,
+    "resolutions": {
+      "paid": 29,
+      "paid_with_secondary": 68,
+      "patient_billed": 187,
+      "paid_on_appeal": 5,
+      "written_off": 3,
+      "written_off_at_cap": 8
+    },
+    "wall_seconds": 6.5,
+    "factory_root": "<REPO>",
+    "decision_field": "kernel"
+  },
+  "ammonix_v6_evconst": {
+    "episodes": 300,
+    "success_rate_v2": 0.5267,
+    "mean_score": 0.5545,
+    "payer_collected_total": 63515.38,
+    "payer_collected_capped": 63515.38,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 26519.03,
+    "mean_touches": 2.663,
+    "episodes_with_mistakes": 5,
+    "escalated_touches": 78,
+    "resolutions": {
+      "paid": 29,
+      "paid_with_secondary": 68,
+      "patient_billed": 187,
+      "paid_on_appeal": 5,
+      "written_off": 3,
+      "written_off_at_cap": 8
+    },
+    "wall_seconds": 6.6,
+    "factory_root": "<REPO>",
+    "decision_field": "kernel"
+  }
+}

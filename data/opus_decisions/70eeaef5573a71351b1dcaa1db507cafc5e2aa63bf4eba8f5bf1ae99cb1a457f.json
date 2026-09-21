@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\": \"Fresh claim, never submitted. Diagnosis pairing is valid, prior auth not required for this CPT, eligibility active, and COB order correct. There is no denial or info request to respond to. The cleanest first touch is to submit the claim as-is.\", \"action\": \"submit_clean\"}", "usage": {"prompt_tokens": 1301, "completion_tokens": 103}}

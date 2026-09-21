@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\":\"CPT 93229 requires prior authorization, which is currently MISSING. Submitting now would trigger an auth denial. The retroactive authorization window is still open, so the correct next step is to secure retro-auth before submitting the claim.\",\"action\":\"request_retro_auth\"}", "usage": {"prompt_tokens": 1305, "completion_tokens": 143}}

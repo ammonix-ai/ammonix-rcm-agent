@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\": \"Auth is on file, diagnosis pairing valid, eligibility active, COB order correct, and no denial exists. The claim is clean and ready for first submission. Nothing needs correcting or attaching.\", \"action\": \"submit_clean\"}", "usage": {"prompt_tokens": 1348, "completion_tokens": 86}}

@@ -1,0 +1,18 @@
+[
+  {
+    "path": "basis/manifest.json",
+    "sha256": "cbe0070e9cc8f77ad6ac41ee7b68b46bf22078fbc59539be14939c9910bc7691"
+  },
+  {
+    "path": "basis/qpsi.parquet",
+    "sha256": "bc5f0ac8869fb902a2d2a9831ff8bd840f439a00daf1e748e40c942a6dd5ded0"
+  },
+  {
+    "path": "basis/universe.parquet",
+    "sha256": "f782a6027bda8c69ab1f2938e76d953cd3bad5fb6bf730e178470b5f2a2adf6c"
+  },
+  {
+    "path": "basis/tribes.json",
+    "sha256": "1c0b4a687e5223151b1295ec51204eb6e03ccca996fb6daf01c2fd79094413af"
+  }
+]

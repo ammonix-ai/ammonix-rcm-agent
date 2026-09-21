@@ -1,0 +1,46 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Ammonix v0.2 — sealed-set AUROC</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:56rem;margin:2rem auto;padding:0 1rem;color:#1a1a1a}
+h1{font-size:1.4rem}.note{color:#666;font-size:.85rem}
+.bar-row{display:grid;grid-template-columns:13rem 1fr 1fr;gap:.6rem;align-items:center;margin:.45rem 0;font-size:.9rem}
+.bar-head{display:grid;grid-template-columns:13rem 1fr 1fr;gap:.6rem;font-weight:600;font-size:.85rem;color:#555}
+.track{background:#eee;border-radius:.3rem;height:1.35rem;position:relative}
+.fill{height:100%;border-radius:.3rem;display:flex;align-items:center;padding-left:.4rem;color:#fff;font-size:.78rem;white-space:nowrap}
+.v1{background:#9e9e9e}.v2{background:#2e7d32}.small{background:#cfcfcf;color:#555}
+.chance{position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:#c62828;opacity:.6}
+.kpi{display:inline-block;border:1px solid #ccc;border-radius:.5rem;padding:.6rem 1rem;margin:.3rem .4rem .3rem 0;text-align:center}
+.kpi b{display:block;font-size:1.35rem}
+</style></head><body>
+<h1>Sealed-set AUROC — shipped system (v0.2, reserve B) vs v0.1 (quarantine A)</h1>
+<p class="note">One classifier per action, so one AUROC per action. Red line = 0.5 (coin flip).
+Sources: runs/reports/test_report_v2.json and test_report.json.</p>
+
+<span class="kpi"><b>0.854</b>macro-mean, readable<br>actions (v0.2 sealed)</span>
+<span class="kpi"><b>0.8185</b>training mean pooled<br>OOF (v0.2)</span>
+<span class="kpi"><b>0.24</b>recommendation accuracy<br>vs oracle (22× v0.1)</span>
+
+<div class="bar-head"><span></span><span>v0.1 sealed</span><span>v0.2 sealed (shipped)</span></div>
+<div class="bar-row"><span>submit_with_records</span>
+ <div class="track"><div class="chance"></div><div class="fill v1" style="width:81.0%">0.810 (n=40)</div></div>
+ <div class="track"><div class="chance"></div><div class="fill v2" style="width:92.1%">0.921 (n=37)</div></div></div>
+<div class="bar-row"><span>submit_clean</span>
+ <div class="track"><div class="chance"></div><div class="fill v1" style="width:80.1%">0.801 (n=135)</div></div>
+ <div class="track"><div class="chance"></div><div class="fill v2" style="width:90.3%">0.903 (n=75)</div></div></div>
+<div class="bar-row"><span>appeal_with_necessity</span>
+ <div class="track"><div class="chance"></div><div class="fill v1" style="width:69.1%">0.691 (n=26)</div></div>
+ <div class="track"><div class="chance"></div><div class="fill v2" style="width:83.9%">0.839 (n=16)</div></div></div>
+<div class="bar-row"><span>bill_patient</span>
+ <div class="track"><div class="chance"></div><div class="fill v1" style="width:57.6%">0.576 (n=82)</div></div>
+ <div class="track"><div class="chance"></div><div class="fill v2" style="width:75.4%">0.754 (n=50)</div></div></div>
+<div class="bar-row"><span>correct_and_resubmit</span>
+ <div class="track"><div class="chance"></div><div class="fill small" style="width:30%">n=4: unreadable</div></div>
+ <div class="track"><div class="chance"></div><div class="fill small" style="width:30%">n=3: unreadable</div></div></div>
+<div class="bar-row"><span>request_retro_auth / p2p / PRI</span>
+ <div class="track"><div class="chance"></div><div class="fill small" style="width:34%">n≤2: unreadable</div></div>
+ <div class="track"><div class="chance"></div><div class="fill small" style="width:40%">no reserve states</div></div></div>
+
+<p class="note">Every readable action improved by 9–18 points. The rare rework actions have too few
+sealed states to score — the small-reserve limitation recorded in the v0.2 sign-off. Their
+training-side (out-of-fold) numbers: retro 0.588, p2p 0.827, provide_requested_info 0.890.</p>
+</body></html>

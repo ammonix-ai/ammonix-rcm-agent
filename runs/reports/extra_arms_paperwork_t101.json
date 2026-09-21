@@ -1,0 +1,66 @@
+{
+ "analysis": "every arm writes its paperwork through one shared writer; the payer adjudicates it",
+ "tranche": 101,
+ "n_episodes": 300,
+ "writer": "ornith_ft",
+ "reviewer": "claude-haiku-4-5-20251001",
+ "wall_seconds": 2773.8,
+ "llm": {
+  "writer": {
+   "model_id": "local/Ornith-1.5-9B-rcm-r2",
+   "served_id": "Ornith-1.5-9B-rcm-r2",
+   "thinking": "disabled (template kwarg; <think> stripped)",
+   "calls_to_provider": 646,
+   "cache_hits": 1001,
+   "prompt_tokens": 605549,
+   "completion_tokens": 86959
+  },
+  "reader_calls": 58,
+  "reader_cache_hits": 142
+ },
+ "policies": {},
+ "imitation": {
+  "episodes": 300,
+  "success_rate_v2": 0.3467,
+  "mean_score": 0.3887,
+  "payer_collected_capped": 47989.12,
+  "patient_collected_total": 16129.26,
+  "mean_touches": 2.59,
+  "episodes_with_mistakes": 78,
+  "touches_written": 731,
+  "touches_handed_off": 41,
+  "paperwork_rejected": 15,
+  "episodes_with_rejection": 15,
+  "balance_rejected": 8029.75,
+  "resolutions": {
+   "paid": 30,
+   "written_off": 109,
+   "patient_billed": 140,
+   "paid_on_appeal": 4,
+   "paid_with_secondary": 12,
+   "written_off_at_cap": 5
+  }
+ },
+ "oracle": {
+  "episodes": 300,
+  "success_rate_v2": 0.5267,
+  "mean_score": 0.5645,
+  "payer_collected_capped": 69146.38,
+  "patient_collected_total": 13071.96,
+  "mean_touches": 2.433,
+  "episodes_with_mistakes": 19,
+  "touches_written": 688,
+  "touches_handed_off": 35,
+  "paperwork_rejected": 56,
+  "episodes_with_rejection": 18,
+  "balance_rejected": 5905.37,
+  "resolutions": {
+   "paid": 30,
+   "written_off": 80,
+   "paid_on_appeal": 10,
+   "paid_with_secondary": 56,
+   "patient_billed": 117,
+   "written_off_at_cap": 7
+  }
+ }
+}

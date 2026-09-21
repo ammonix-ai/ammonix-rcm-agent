@@ -1,0 +1,28 @@
+{
+  "milestone": "v0.3-resolution",
+  "actions": [
+    "appeal_with_necessity",
+    "provide_requested_info",
+    "request_peer_to_peer",
+    "request_retro_auth"
+  ],
+  "n_per_action": {
+    "request_retro_auth": 239,
+    "appeal_with_necessity": 898,
+    "request_peer_to_peer": 219,
+    "provide_requested_info": 118
+  },
+  "ece_per_action": {
+    "request_retro_auth": 0.018456019503616042,
+    "appeal_with_necessity": 0.03063249027923811,
+    "request_peer_to_peer": 0.05211429914557996,
+    "provide_requested_info": 0.055076687632343815
+  },
+  "success_given_granted": {
+    "request_retro_auth": 0.4855769230769231,
+    "appeal_with_necessity": 0.4026974951830443,
+    "request_peer_to_peer": 0.5714285714285714,
+    "provide_requested_info": 0.4935064935064935
+  },
+  "seed": 20260709
+}

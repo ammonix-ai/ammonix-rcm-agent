@@ -1,0 +1,277 @@
+{
+ "tuning_data": "demo scoreboard draw only (tranche 90, 200 episodes); no evaluation tranche touched",
+ "prompts": {
+  "P0": "You are an autonomous revenue-cycle agent for a cardiac monitoring provider. You work ONE claim touch at a time: given the case briefing, decide the single next action.\nPublished objective: an episode succeeds when at least 98% of the allowed amount is collected within 120 days of first submission. Every extra touch costs score, and actions that violate the payer's published rules at decision time are penalised as process mistakes. Patient money beyond the contractual patient share does not count.\nEscalation hands the touch to a scarce human specialist: use it only when no available action can properly progress the claim.\nReason step by step about the payer's published rules and the case facts, in 2-4 sentences, then commit to exactly one action. Respond with JSON only.",
+  "P1": "You are an autonomous revenue-cycle agent for a cardiac monitoring provider. You work ONE claim touch at a time: given the case briefing, decide the single next action.\nPublished objective: an episode succeeds when at least 90% of the allowed amount is collected within 120 days of first submission. Every extra touch costs score, and actions that violate the payer's published rules at decision time are penalised as process mistakes. Patient money beyond the contractual patient share does not count.\nEscalation hands the touch to a scarce human specialist: use it only when no available action can properly progress the claim.\nReason step by step about the payer's published rules and the case facts, in 2-4 sentences, then commit to exactly one action. Respond with JSON only.\nWhen the payer path is exhausted, money the patient or a secondary plan properly owes should be billed, not written off: write off only when nothing is owed or nothing is collectible.",
+  "P2": "You are an autonomous revenue-cycle agent for a cardiac monitoring provider. You work ONE claim touch at a time: given the case briefing, decide the single next action.\nPublished objective: an episode succeeds when at least 90% of the allowed amount is collected within 120 days of first submission. Every extra touch costs score, and actions that violate the payer's published rules at decision time are penalised as process mistakes. Patient money beyond the contractual patient share does not count.\nEscalation hands the touch to a scarce human specialist: use it only when no available action can properly progress the claim.\nReason step by step about the payer's published rules and the case facts, in 2-4 sentences, then commit to exactly one action. Respond with JSON only.\nWhen the payer path is exhausted, money the patient or a secondary plan properly owes should be billed, not written off: write off only when nothing is owed or nothing is collectible.\nPayers differ in which rework succeeds. When several rework actions are applicable, weight the SIMILAR PAST CLAIMS tally heavily: prefer the action that actually got similar claims paid at this payer."
+ },
+ "configs": {
+  "P0_k25": {
+   "episodes": 200,
+   "success_rate_v2": 0.38,
+   "mean_score": 0.4457,
+   "payer_collected_total": 39665.07,
+   "payer_collected_capped": 39665.07,
+   "payer_over_collection": 0.0,
+   "patient_collected_total": 11652.51,
+   "mean_touches": 2.505,
+   "episodes_with_mistakes": 9,
+   "escalated_touches": 126,
+   "resolutions": {
+    "paid": 18,
+    "written_off": 53,
+    "paid_on_appeal": 4,
+    "patient_billed": 89,
+    "paid_with_secondary": 35,
+    "written_off_at_cap": 1
+   },
+   "wall_seconds": 402.3,
+   "prompt_variant": "P0",
+   "retrieval_k": 25,
+   "policy": {
+    "decisions": 500,
+    "retries": 0,
+    "escalations_explicit": 126,
+    "escalations_forced": 0,
+    "decision_errors": 0
+   },
+   "llm": {
+    "model_id": "gpt-5.6-sol",
+    "calls_to_provider": 500,
+    "cache_hits": 0,
+    "prompt_tokens": 512112,
+    "completion_tokens": 100990
+   }
+  },
+  "P1_k25": {
+   "episodes": 200,
+   "success_rate_v2": 0.37,
+   "mean_score": 0.4419,
+   "payer_collected_total": 38584.06,
+   "payer_collected_capped": 38584.06,
+   "payer_over_collection": 0.0,
+   "patient_collected_total": 10502.04,
+   "mean_touches": 2.49,
+   "episodes_with_mistakes": 5,
+   "escalated_touches": 84,
+   "resolutions": {
+    "patient_billed": 87,
+    "paid": 18,
+    "paid_with_secondary": 35,
+    "written_off": 57,
+    "paid_on_appeal": 3
+   },
+   "wall_seconds": 396.2,
+   "prompt_variant": "P1",
+   "retrieval_k": 25,
+   "policy": {
+    "decisions": 498,
+    "retries": 0,
+    "escalations_explicit": 84,
+    "escalations_forced": 0,
+    "decision_errors": 0
+   },
+   "llm": {
+    "model_id": "gpt-5.6-sol",
+    "calls_to_provider": 498,
+    "cache_hits": 0,
+    "prompt_tokens": 527715,
+    "completion_tokens": 97340
+   }
+  },
+  "P2_k25": {
+   "episodes": 200,
+   "success_rate_v2": 0.38,
+   "mean_score": 0.4486,
+   "payer_collected_total": 39996.71,
+   "payer_collected_capped": 39996.71,
+   "payer_over_collection": 0.0,
+   "patient_collected_total": 10354.25,
+   "mean_touches": 2.62,
+   "episodes_with_mistakes": 13,
+   "escalated_touches": 61,
+   "resolutions": {
+    "patient_billed": 86,
+    "paid": 18,
+    "paid_with_secondary": 38,
+    "written_off": 54,
+    "paid_on_appeal": 4
+   },
+   "wall_seconds": 458.4,
+   "prompt_variant": "P2",
+   "retrieval_k": 25,
+   "policy": {
+    "decisions": 524,
+    "retries": 0,
+    "escalations_explicit": 61,
+    "escalations_forced": 0,
+    "decision_errors": 0
+   },
+   "llm": {
+    "model_id": "gpt-5.6-sol",
+    "calls_to_provider": 524,
+    "cache_hits": 0,
+    "prompt_tokens": 577074,
+    "completion_tokens": 108609
+   }
+  },
+  "P2_k10": {
+   "episodes": 200,
+   "success_rate_v2": 0.37,
+   "mean_score": 0.4333,
+   "payer_collected_total": 37558.98,
+   "payer_collected_capped": 37558.98,
+   "payer_over_collection": 0.0,
+   "patient_collected_total": 12213.69,
+   "mean_touches": 2.465,
+   "episodes_with_mistakes": 4,
+   "escalated_touches": 69,
+   "resolutions": {
+    "paid": 18,
+    "written_off": 58,
+    "paid_with_secondary": 37,
+    "paid_on_appeal": 4,
+    "patient_billed": 83
+   },
+   "wall_seconds": 79.9,
+   "prompt_variant": "P2",
+   "retrieval_k": 10,
+   "policy": {
+    "decisions": 493,
+    "retries": 0,
+    "escalations_explicit": 69,
+    "escalations_forced": 0,
+    "decision_errors": 0
+   },
+   "llm": {
+    "model_id": "gpt-5.6-sol",
+    "calls_to_provider": 66,
+    "cache_hits": 427,
+    "prompt_tokens": 471447,
+    "completion_tokens": 98800
+   }
+  },
+  "P2_k50": {
+   "episodes": 200,
+   "success_rate_v2": 0.39,
+   "mean_score": 0.4593,
+   "payer_collected_total": 40437.56,
+   "payer_collected_capped": 40437.56,
+   "payer_over_collection": 0.0,
+   "patient_collected_total": 10822.14,
+   "mean_touches": 2.575,
+   "episodes_with_mistakes": 8,
+   "escalated_touches": 63,
+   "resolutions": {
+    "patient_billed": 89,
+    "paid": 18,
+    "paid_with_secondary": 36,
+    "written_off": 53,
+    "paid_on_appeal": 4
+   },
+   "wall_seconds": 392.2,
+   "prompt_variant": "P2",
+   "retrieval_k": 50,
+   "policy": {
+    "decisions": 515,
+    "retries": 0,
+    "escalations_explicit": 63,
+    "escalations_forced": 0,
+    "decision_errors": 0
+   },
+   "llm": {
+    "model_id": "gpt-5.6-sol",
+    "calls_to_provider": 445,
+    "cache_hits": 70,
+    "prompt_tokens": 687609,
+    "completion_tokens": 106032
+   }
+  }
+ },
+ "winner": {
+  "registered_config": "P2_k25",
+  "prompt_variant": "P2",
+  "retrieval_k": 25,
+  "rule": "success_rate_v2, then payer_collected_capped, then fewer mistake episodes",
+  "note": "the prompt was chosen from the clean stage-1 comparison (P0/P1/P2 at k=25). The size stage completed after the registration amendment froze k=25 for the sealed arms; its clean rerun scores 0.37/0.38/0.39 at k=10/25/50, a one-point spread inside demonstration-scoreboard noise, reported descriptively.",
+  "completed_sweep_best_descriptive": "P2_k50"
+ },
+ "contaminated_first_pass": {
+  "P2_k10": {
+   "episodes": 200,
+   "success_rate_v2": 0.35,
+   "mean_score": 0.4125,
+   "payer_collected_total": 36160.99,
+   "payer_collected_capped": 36160.99,
+   "payer_over_collection": 0.0,
+   "patient_collected_total": 12228.7,
+   "mean_touches": 2.53,
+   "episodes_with_mistakes": 8,
+   "escalated_touches": 129,
+   "resolutions": {
+    "paid": 18,
+    "written_off": 61,
+    "paid_with_secondary": 32,
+    "paid_on_appeal": 3,
+    "patient_billed": 83,
+    "written_off_at_cap": 3
+   },
+   "wall_seconds": 350.7,
+   "prompt_variant": "P2",
+   "retrieval_k": 10,
+   "policy": {
+    "decisions": 503,
+    "retries": 0,
+    "escalations_explicit": 57,
+    "escalations_forced": 0,
+    "decision_errors": 72
+   },
+   "llm": {
+    "model_id": "gpt-5.6-sol",
+    "calls_to_provider": 431,
+    "cache_hits": 0,
+    "prompt_tokens": 411584,
+    "completion_tokens": 82299
+   },
+   "CONTAMINATED": "CONTAMINATED: API calls failed partway through this run; failed calls fell back to the persona policy, so these numbers are not a Sol result (P2_k10: 431 real calls of ~500 expected; P2_k50: 70). Discovered 2026-08-20 from the stage-2 log (523 failed decisions). Stage 1 (P0/P1/P2 at k=25) ran clean: 0 failed decisions."
+  },
+  "P2_k50": {
+   "episodes": 200,
+   "success_rate_v2": 0.305,
+   "mean_score": 0.3478,
+   "payer_collected_total": 29358.7,
+   "payer_collected_capped": 29358.7,
+   "payer_over_collection": 0.0,
+   "patient_collected_total": 12215.54,
+   "mean_touches": 2.625,
+   "episodes_with_mistakes": 47,
+   "escalated_touches": 454,
+   "resolutions": {
+    "paid": 17,
+    "written_off": 69,
+    "patient_billed": 96,
+    "paid_on_appeal": 1,
+    "paid_with_secondary": 13,
+    "written_off_at_cap": 4
+   },
+   "wall_seconds": 97.9,
+   "prompt_variant": "P2",
+   "retrieval_k": 50,
+   "policy": {
+    "decisions": 521,
+    "retries": 0,
+    "escalations_explicit": 3,
+    "escalations_forced": 0,
+    "decision_errors": 451
+   },
+   "llm": {
+    "model_id": "gpt-5.6-sol",
+    "calls_to_provider": 70,
+    "cache_hits": 0,
+    "prompt_tokens": 92249,
+    "completion_tokens": 10005
+   },
+   "CONTAMINATED": "CONTAMINATED: API calls failed partway through this run; failed calls fell back to the persona policy, so these numbers are not a Sol result (P2_k10: 431 real calls of ~500 expected; P2_k50: 70). Discovered 2026-08-20 from the stage-2 log (523 failed decisions). Stage 1 (P0/P1/P2 at k=25) ran clean: 0 failed decisions."
+  }
+ }
+}

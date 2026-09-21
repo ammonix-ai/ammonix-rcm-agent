@@ -1,0 +1,369 @@
+<title>Ammonix vs Agentic — 300-claim comparison</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f9f9f7; --surface: #fcfcfb;
+    --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+    --grid: #e1e0d9; --baseline: #c3c2b7;
+    --border: rgba(11,11,11,0.10);
+    --c-v3: #2a78d6; --c-ag: #1baf7a; --c-v2: #eda100; --c-per: #a3a29b;
+    --c-dup: #d5d4cc;
+    --r1: #0d366b; --r2: #1c5cab; --r3: #2a78d6; --r4: #5598e7; --r5: #86b6ef;
+    --good: #006300; --critical: #d03b3b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --page: #0d0d0d; --surface: #1a1a19;
+      --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+      --grid: #2c2c2a; --baseline: #383835;
+      --border: rgba(255,255,255,0.10);
+      --c-v3: #3987e5; --c-ag: #199e70; --c-v2: #c98500; --c-per: #6f6e68;
+      --c-dup: #45443f;
+      --r1: #184f95; --r2: #256abf; --r3: #3987e5; --r4: #6da7ec; --r5: #9ec5f4;
+      --good: #0ca30c; --critical: #e66767;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19;
+    --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --baseline: #383835;
+    --border: rgba(255,255,255,0.10);
+    --c-v3: #3987e5; --c-ag: #199e70; --c-v2: #c98500; --c-per: #6f6e68;
+    --c-dup: #45443f;
+    --r1: #184f95; --r2: #256abf; --r3: #3987e5; --r4: #6da7ec; --r5: #9ec5f4;
+    --good: #0ca30c; --critical: #e66767;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--page); color: var(--ink);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+    padding: 32px 20px 56px;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; display: grid; gap: 20px; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600;
+  }
+  h1 { font-size: 26px; line-height: 1.2; text-wrap: balance; margin-top: 6px; }
+  .verdict { color: var(--ink-2); max-width: 62ch; margin-top: 8px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 14px; }
+  .chip { display: inline-flex; align-items: center; gap: 7px; font-size: 13px;
+          color: var(--ink-2); }
+  .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+           gap: 14px; }
+  .tile { background: var(--surface); border: 1px solid var(--border);
+          border-radius: 10px; padding: 16px 18px; }
+  .tile .tl { font-size: 13px; color: var(--ink-2); }
+  .tile .tv { font-size: 30px; font-weight: 600; margin-top: 4px; }
+  .tile .td { font-size: 13px; margin-top: 4px; color: var(--ink-2); }
+  .tile .td.good { color: var(--good); }
+  .tile .td.bad  { color: var(--critical); font-weight: 600; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+           gap: 14px; }
+  @media (max-width: 520px) { .cards { grid-template-columns: 1fr; } }
+  .card { background: var(--surface); border: 1px solid var(--border);
+          border-radius: 10px; padding: 18px 20px 16px; min-width: 0; }
+  .card h2 { font-size: 15px; font-weight: 600; }
+  .card .sub { font-size: 13px; color: var(--muted); margin: 2px 0 14px; }
+  .row { display: grid; grid-template-columns: 108px 1fr 76px; align-items: center;
+         gap: 10px; margin: 9px 0; }
+  .rlabel { font-size: 13px; color: var(--ink-2); text-align: right; }
+  .rval { font-size: 13px; font-variant-numeric: tabular-nums; }
+  .rval b { font-weight: 700; }
+  .track { position: relative; height: 20px; }
+  .track.gridded {
+    background: repeating-linear-gradient(to right,
+      var(--grid) 0, var(--grid) 1px, transparent 1px, transparent 25%);
+  }
+  .bar { position: absolute; inset: 0 auto 0 0; border-radius: 0 4px 4px 0;
+         min-width: 2px; }
+  .bar:focus-visible, .seg:focus-visible {
+    outline: 2px solid var(--ink); outline-offset: 2px; }
+  .stack { display: flex; height: 20px; gap: 2px; }
+  .seg { border-radius: 0; min-width: 1px; }
+  .seg:first-child { border-radius: 0; }
+  .seg:last-child { border-radius: 0 4px 4px 0; }
+  .axis { display: flex; justify-content: space-between; font-size: 11px;
+          color: var(--muted); margin: 6px 0 0 118px; padding-right: 86px;
+          font-variant-numeric: tabular-nums; }
+  .axis-note { font-size: 12px; color: var(--muted); margin-top: 10px; }
+  .rlegend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 12px; }
+  .rlegend .chip { font-size: 12px; }
+  .rlegend .dot { border-radius: 2px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th, td { text-align: right; padding: 7px 10px; border-bottom: 1px solid var(--grid);
+           font-variant-numeric: tabular-nums; white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; white-space: normal; }
+  thead th { color: var(--ink-2); font-weight: 600; border-bottom: 1px solid var(--baseline); }
+  td b { font-weight: 700; }
+  .tblwrap { overflow-x: auto; }
+  .foot { font-size: 13px; color: var(--ink-2); max-width: 82ch; }
+  .foot li { margin: 4px 0 4px 18px; }
+  #tip { position: fixed; z-index: 9; pointer-events: none; background: var(--ink);
+         color: var(--page); font-size: 12.5px; padding: 6px 10px; border-radius: 6px;
+         max-width: 280px; opacity: 0; transition: opacity 120ms; }
+  @media (prefers-reduced-motion: reduce) { #tip { transition: none; } }
+  .colhead { display: grid; grid-template-columns: 108px 1fr 76px; gap: 10px;
+             font-size: 11px; color: var(--muted); margin-bottom: 2px; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Agentic baseline · 300 fresh claims · identical draw across all arms · 2026-07-15</div>
+    <h1>Ammonix vs the agentic approach</h1>
+    <p class="verdict">Four decision systems worked the same 300 simulated reimbursement
+    claims with identical payer randomness. <strong>Ammonix v0.3 wins on quality and real
+    collections at zero decision-time LLM cost.</strong> The LLM agent is the cleanest
+    rule-follower but surrenders the most claims; v0.2&rsquo;s raw-dollar lead was duplicate
+    payments, not real money.</p>
+    <div class="legend" aria-label="Arm colors, used in every chart">
+      <span class="chip"><span class="dot" style="background:var(--c-v3)"></span>Ammonix v0.3 (learned platform, path-value routing)</span>
+      <span class="chip"><span class="dot" style="background:var(--c-ag)"></span>Agentic (LLM loop, Qwen 27B)</span>
+      <span class="chip"><span class="dot" style="background:var(--c-v2)"></span>Ammonix v0.2 (shipped)</span>
+      <span class="chip"><span class="dot" style="background:var(--c-per)"></span>Personas (human baseline)</span>
+    </div>
+  </header>
+
+  <section class="tiles" aria-label="Headline results">
+    <div class="tile">
+      <div class="tl">Best mean episode score</div>
+      <div class="tv">0.5075</div>
+      <div class="td good">Ammonix v0.3 · +20% vs humans</div>
+    </div>
+    <div class="tile">
+      <div class="tl">Most real payer collections</div>
+      <div class="tv">$64,744</div>
+      <div class="td good">Ammonix v0.3 · capped at claim value</div>
+    </div>
+    <div class="tile">
+      <div class="tl">Fewest rule violations</div>
+      <div class="tv">11<span style="font-size:16px;font-weight:400;color:var(--ink-2)"> episodes</span></div>
+      <div class="td">Agentic · v0.3: 35 · humans: 68</div>
+    </div>
+    <div class="tile">
+      <div class="tl">Duplicate payments in v0.2&rsquo;s total</div>
+      <div class="tv">$33,455</div>
+      <div class="td bad">⚠ clawback risk — worth zero score</div>
+    </div>
+  </section>
+
+  <section class="cards">
+    <div class="card">
+      <h2>Mean episode score</h2>
+      <div class="sub">Money collected − touch penalties − mistake penalties, per claim (0–1)</div>
+      <div class="row"><span class="rlabel">Ammonix v0.3</span>
+        <div class="track"><div class="bar" tabindex="0" style="width:84.6%;background:var(--c-v3)"
+          data-tip="Ammonix v0.3 — mean score 0.5075, success rate 46.7%"></div></div>
+        <span class="rval"><b>0.5075</b></span></div>
+      <div class="row"><span class="rlabel">Agentic</span>
+        <div class="track"><div class="bar" tabindex="0" style="width:77.9%;background:var(--c-ag)"
+          data-tip="Agentic — mean score 0.4671, success rate 45.7%"></div></div>
+        <span class="rval">0.4671</span></div>
+      <div class="row"><span class="rlabel">Ammonix v0.2</span>
+        <div class="track"><div class="bar" tabindex="0" style="width:77.8%;background:var(--c-v2)"
+          data-tip="Ammonix v0.2 — mean score 0.4670, success rate 41.3%"></div></div>
+        <span class="rval">0.4670</span></div>
+      <div class="row"><span class="rlabel">Personas</span>
+        <div class="track"><div class="bar" tabindex="0" style="width:70.5%;background:var(--c-per)"
+          data-tip="Personas — mean score 0.4232, success rate 38.7%"></div></div>
+        <span class="rval">0.4232</span></div>
+      <div class="axis-note">Bars scaled to a 0–0.6 domain.</div>
+    </div>
+
+    <div class="card">
+      <h2>Payer collections — real vs duplicate</h2>
+      <div class="sub">Saturated = capped at each claim&rsquo;s allowed amount · pale = collected above it (duplicate payments)</div>
+      <div class="row"><span class="rlabel">Ammonix v0.3</span>
+        <div class="track gridded"><div class="stack">
+          <div class="seg" tabindex="0" style="width:64.7%;background:var(--c-v3)" data-tip="v0.3 real collections: $64,744 (best)"></div>
+          <div class="seg" tabindex="0" style="width:14.6%;background:var(--c-dup)" data-tip="v0.3 duplicate over-collection: $14,621"></div>
+        </div></div><span class="rval"><b>$64.7k</b></span></div>
+      <div class="row"><span class="rlabel">Agentic</span>
+        <div class="track gridded"><div class="stack">
+          <div class="seg" tabindex="0" style="width:63.9%;background:var(--c-ag)" data-tip="Agentic real collections: $63,855"></div>
+          <div class="seg" tabindex="0" style="width:8.0%;background:var(--c-dup)" data-tip="Agentic duplicate over-collection: $8,038"></div>
+        </div></div><span class="rval">$63.9k</span></div>
+      <div class="row"><span class="rlabel">Ammonix v0.2</span>
+        <div class="track gridded"><div class="stack">
+          <div class="seg" tabindex="0" style="width:61.6%;background:var(--c-v2)" data-tip="v0.2 real collections: $61,556"></div>
+          <div class="seg" tabindex="0" style="width:33.5%;background:var(--c-dup)" data-tip="v0.2 duplicate over-collection: $33,455 — 35% of its raw total"></div>
+        </div></div><span class="rval">$61.6k</span></div>
+      <div class="row"><span class="rlabel">Personas</span>
+        <div class="track gridded"><div class="stack">
+          <div class="seg" tabindex="0" style="width:50.6%;background:var(--c-per)" data-tip="Personas real collections: $50,579 — zero duplicates"></div>
+        </div></div><span class="rval">$50.6k</span></div>
+      <div class="axis">$0<span>$25k</span><span>$50k</span><span>$75k</span>$100k</div>
+      <div class="rlegend">
+        <span class="chip"><span class="dot" style="background:var(--c-dup)"></span>duplicate payments (pale segment) — payer likely claws these back</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Success rate</h2>
+      <div class="sub">Claims with ≥98% of value collected within 120 days</div>
+      <div class="row"><span class="rlabel">Ammonix v0.3</span>
+        <div class="track"><div class="bar" tabindex="0" style="width:93.3%;background:var(--c-v3)"
+          data-tip="v0.3: 140 of 300 claims succeeded"></div></div>
+        <span class="rval"><b>46.7%</b></span></div>
+      <div class="row"><span class="rlabel">Agentic</span>
+        <div class="track"><div class="bar" tabindex="0" style="width:91.3%;background:var(--c-ag)"
+          data-tip="Agentic: 137 of 300 claims succeeded"></div></div>
+        <span class="rval">45.7%</span></div>
+      <div class="row"><span class="rlabel">Ammonix v0.2</span>
+        <div class="track"><div class="bar" tabindex="0" style="width:82.7%;background:var(--c-v2)"
+          data-tip="v0.2: 124 of 300 claims succeeded"></div></div>
+        <span class="rval">41.3%</span></div>
+      <div class="row"><span class="rlabel">Personas</span>
+        <div class="track"><div class="bar" tabindex="0" style="width:77.3%;background:var(--c-per)"
+          data-tip="Personas: 116 of 300 claims succeeded"></div></div>
+        <span class="rval">38.7%</span></div>
+      <div class="axis-note">Bars scaled to a 0–50% domain. The 1-point v0.3 vs agentic gap is within single-draw noise; the score gap is not.</div>
+    </div>
+
+    <div class="card">
+      <h2>Episodes with process mistakes</h2>
+      <div class="sub">Claims where a published payer rule was violated — lower is better</div>
+      <div class="row"><span class="rlabel">Ammonix v0.3</span>
+        <div class="track"><div class="bar" tabindex="0" style="width:50%;background:var(--c-v3)"
+          data-tip="v0.3: 35 episodes — residual is submit-into-open-retro (known v0.3 exam finding)"></div></div>
+        <span class="rval">35</span></div>
+      <div class="row"><span class="rlabel">Agentic</span>
+        <div class="track"><div class="bar" tabindex="0" style="width:15.7%;background:var(--c-ag)"
+          data-tip="Agentic: 11 episodes — the guardrail + rule-reading pays off"></div></div>
+        <span class="rval"><b>11</b></span></div>
+      <div class="row"><span class="rlabel">Ammonix v0.2</span>
+        <div class="track"><div class="bar" tabindex="0" style="width:74.3%;background:var(--c-v2)"
+          data-tip="v0.2: 52 episodes — repeat-submission pounding is the main offender"></div></div>
+        <span class="rval">52</span></div>
+      <div class="row"><span class="rlabel">Personas</span>
+        <div class="track"><div class="bar" tabindex="0" style="width:97.1%;background:var(--c-per)"
+          data-tip="Personas: 68 episodes — the planted human habits"></div></div>
+        <span class="rval">68</span></div>
+      <div class="axis-note">Bars scaled to a 0–70 domain.</div>
+    </div>
+
+    <div class="card">
+      <h2>How the 300 claims ended</h2>
+      <div class="sub">Darker = more of the claim&rsquo;s value recovered from the payer</div>
+      <div class="row"><span class="rlabel">Ammonix v0.3</span>
+        <div class="track"><div class="stack">
+          <div class="seg" tabindex="0" style="width:5%;background:var(--r1)" data-tip="v0.3 — paid first pass: 15"></div>
+          <div class="seg" tabindex="0" style="width:23.7%;background:var(--r2)" data-tip="v0.3 — paid via secondary insurer: 71 (most of any arm)"></div>
+          <div class="seg" tabindex="0" style="width:3.3%;background:var(--r3)" data-tip="v0.3 — paid on appeal: 10"></div>
+          <div class="seg" tabindex="0" style="width:35.3%;background:var(--r4)" data-tip="v0.3 — balance billed to patient: 106"></div>
+          <div class="seg" tabindex="0" style="width:32.7%;background:var(--r5)" data-tip="v0.3 — written off: 98 (35 at the 8-touch cap)"></div>
+        </div></div><span class="rval">300</span></div>
+      <div class="row"><span class="rlabel">Agentic</span>
+        <div class="track"><div class="stack">
+          <div class="seg" tabindex="0" style="width:5%;background:var(--r1)" data-tip="Agentic — paid first pass: 15"></div>
+          <div class="seg" tabindex="0" style="width:12.7%;background:var(--r2)" data-tip="Agentic — paid via secondary insurer: 38"></div>
+          <div class="seg" tabindex="0" style="width:4.3%;background:var(--r3)" data-tip="Agentic — paid on appeal: 13 (most of any arm)"></div>
+          <div class="seg" tabindex="0" style="width:30.3%;background:var(--r4)" data-tip="Agentic — balance billed to patient: 91"></div>
+          <div class="seg" tabindex="0" style="width:47.7%;background:var(--r5)" data-tip="Agentic — written off: 143 (11 at cap) — gives up the most"></div>
+        </div></div><span class="rval">300</span></div>
+      <div class="row"><span class="rlabel">Ammonix v0.2</span>
+        <div class="track"><div class="stack">
+          <div class="seg" tabindex="0" style="width:5%;background:var(--r1)" data-tip="v0.2 — paid first pass: 15"></div>
+          <div class="seg" tabindex="0" style="width:21.7%;background:var(--r2)" data-tip="v0.2 — paid via secondary insurer: 65"></div>
+          <div class="seg" tabindex="0" style="width:2.7%;background:var(--r3)" data-tip="v0.2 — paid on appeal: 8"></div>
+          <div class="seg" tabindex="0" style="width:40%;background:var(--r4)" data-tip="v0.2 — balance billed to patient: 120"></div>
+          <div class="seg" tabindex="0" style="width:30.7%;background:var(--r5)" data-tip="v0.2 — written off: 92 (42 at the 8-touch cap)"></div>
+        </div></div><span class="rval">300</span></div>
+      <div class="row"><span class="rlabel">Personas</span>
+        <div class="track"><div class="stack">
+          <div class="seg" tabindex="0" style="width:5%;background:var(--r1)" data-tip="Personas — paid first pass: 15"></div>
+          <div class="seg" tabindex="0" style="width:7.7%;background:var(--r2)" data-tip="Personas — paid via secondary insurer: 23"></div>
+          <div class="seg" tabindex="0" style="width:2.3%;background:var(--r3)" data-tip="Personas — paid on appeal: 7"></div>
+          <div class="seg" tabindex="0" style="width:48.7%;background:var(--r4)" data-tip="Personas — balance billed to patient: 146"></div>
+          <div class="seg" tabindex="0" style="width:36.3%;background:var(--r5)" data-tip="Personas — written off: 109 (3 at cap)"></div>
+        </div></div><span class="rval">300</span></div>
+      <div class="rlegend">
+        <span class="chip"><span class="dot" style="background:var(--r1)"></span>paid first pass</span>
+        <span class="chip"><span class="dot" style="background:var(--r2)"></span>paid via secondary</span>
+        <span class="chip"><span class="dot" style="background:var(--r3)"></span>paid on appeal</span>
+        <span class="chip"><span class="dot" style="background:var(--r4)"></span>patient billed</span>
+        <span class="chip"><span class="dot" style="background:var(--r5)"></span>written off</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Decision cost &amp; autonomy</h2>
+      <div class="sub">What it takes to run each system on 300 claims</div>
+      <div class="tblwrap"><table>
+        <thead><tr><th></th><th>v0.3</th><th>Agentic</th><th>v0.2</th><th>Personas</th></tr></thead>
+        <tbody>
+          <tr><td>LLM calls at decision time</td><td><b>0</b></td><td>994 + 150 retries</td><td><b>0</b></td><td>—</td></tr>
+          <tr><td>LLM tokens</td><td><b>0</b></td><td>~1.04M</td><td><b>0</b></td><td>—</td></tr>
+          <tr><td>Wall time</td><td><b>~10 s</b></td><td>~29 min live¹</td><td>~25 s</td><td>—</td></tr>
+          <tr><td>Touches handed to a human</td><td>226</td><td><b>204</b></td><td>230</td><td>all</td></tr>
+          <tr><td>Mean touches per claim</td><td>3.50</td><td>3.35</td><td>3.57</td><td><b>2.49</b></td></tr>
+          <tr><td>Claims dragged to the 8-touch cap</td><td>35</td><td><b>11</b></td><td>42</td><td>3</td></tr>
+        </tbody>
+      </table></div>
+      <div class="axis-note">¹ First run on the local 27B (laptop GPU, 6-way concurrency); repeat runs replay free from the decision cache.</div>
+    </div>
+
+    <div class="card" style="grid-column: 1 / -1">
+      <h2>All measurements</h2>
+      <div class="sub">The full table behind every chart above (best per row in bold)</div>
+      <div class="tblwrap"><table>
+        <thead><tr><th></th><th>v0.3</th><th>Agentic</th><th>v0.2</th><th>Personas</th></tr></thead>
+        <tbody>
+          <tr><td>Mean episode score</td><td><b>0.5075</b></td><td>0.4671</td><td>0.4670</td><td>0.4232</td></tr>
+          <tr><td>Success rate</td><td><b>46.7%</b></td><td>45.7%</td><td>41.3%</td><td>38.7%</td></tr>
+          <tr><td>Payer collections (capped)</td><td><b>$64,744</b></td><td>$63,855</td><td>$61,556</td><td>$50,579</td></tr>
+          <tr><td>Duplicate over-collection</td><td>$14,621</td><td>$8,038</td><td>$33,455</td><td><b>$0</b></td></tr>
+          <tr><td>Raw payer total</td><td>$79,365</td><td>$71,893</td><td>$95,010</td><td>$50,579</td></tr>
+          <tr><td>Patient collections</td><td>$15,441</td><td>$11,142</td><td>$18,639</td><td>$19,203</td></tr>
+          <tr><td>Episodes with mistakes</td><td>35</td><td><b>11</b></td><td>52</td><td>68</td></tr>
+          <tr><td>Paid via secondary insurer</td><td><b>71</b></td><td>38</td><td>65</td><td>23</td></tr>
+          <tr><td>Paid on appeal</td><td>10</td><td><b>13</b></td><td>8</td><td>7</td></tr>
+          <tr><td>Written off (incl. at cap)</td><td>98</td><td>143</td><td><b>92</b></td><td>109</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <strong>How to read this honestly</strong>
+    <ul>
+      <li>All four arms played the <em>same</em> 300 fresh claims (tranche 92, indices
+      4000–4299, never seen in any training data) with identical payer randomness —
+      the v0.3 arm proved episode identity with a bit-exact personas-replay canary.</li>
+      <li>&ldquo;Capped&rdquo; collections count at most each claim&rsquo;s allowed amount; anything above
+      is a duplicate payment the scoring ignores and a real payer would claw back.</li>
+      <li>Escalated touches fall back to the same human (persona) policy in every arm.
+      The agentic arm runs the same pinned Qwen 27B that powers Ammonix&rsquo;s writing layer,
+      so the comparison measures architecture, not model quality.</li>
+      <li>One draw of 300 episodes: the v0.3 vs agentic success-rate gap (1 pt) is within
+      noise; the score gap, mistake gaps, and the duplicate-payment decomposition are solid.</li>
+      <li>Ammonix v0.3 is built and green but awaiting its release sign-off (GATE-P10);
+      v0.2 is the shipped state. Source: Agentic_Baseline/runs/reports/comparison.json.</li>
+    </ul>
+  </footer>
+</div>
+
+<div id="tip" role="status"></div>
+<script>
+  const tip = document.getElementById("tip");
+  function show(el) {
+    tip.textContent = el.dataset.tip;
+    const r = el.getBoundingClientRect();
+    tip.style.opacity = "1";
+    let x = r.left + r.width / 2 - tip.offsetWidth / 2;
+    x = Math.max(8, Math.min(x, innerWidth - tip.offsetWidth - 8));
+    let y = r.top - tip.offsetHeight - 8;
+    if (y < 8) y = r.bottom + 8;
+    tip.style.left = x + "px"; tip.style.top = y + "px";
+  }
+  function hide() { tip.style.opacity = "0"; }
+  document.querySelectorAll("[data-tip]").forEach((el) => {
+    el.addEventListener("mouseenter", () => show(el));
+    el.addEventListener("mouseleave", hide);
+    el.addEventListener("focus", () => show(el));
+    el.addEventListener("blur", hide);
+  });
+</script>

@@ -1,0 +1,19 @@
+{
+  "milestone": "P9-toolset",
+  "n_demo_episodes": 200,
+  "n_demo_states": 516,
+  "n_artifacts": 337,
+  "artifacts_by_kind": {
+    "cms1500": 274,
+    "prior_auth_request": 14,
+    "appeal_letter": 49
+  },
+  "provenance_failures": [],
+  "invented_values": [],
+  "prevalidation_failures": [],
+  "n_appeal_letters": 77,
+  "appeal_failures": [],
+  "m1_calls": 0,
+  "claim_check_calls": 0,
+  "text_calls": 0
+}

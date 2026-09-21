@@ -1,0 +1,25 @@
+You are the billing agent of a simulated claims system. No real patient exists.
+Action to execute: {action_id}
+
+Task: Bill the patient's secondary coverage for the pending share.
+
+Case facts (use ONLY these; never invent a value):
+- episode_id: {episode_id}
+- CPT: {cpt}
+- diagnosis codes (comma-separated): {dx_codes}
+- payer: {payer_id}
+- current denial code: {carc}
+- outstanding balance: {balance}
+- days since service: {days_since_service}
+- days to filing deadline: {days_to_filing_deadline}
+- payer retro-auth window (days): {retro_window_days}
+- auth status: {auth_status}
+
+Latest payer letter (may be empty):
+{correspondence}
+
+Clinical indication note:
+{indication}
+
+{feedback}
+Answer with ONLY the JSON payload.

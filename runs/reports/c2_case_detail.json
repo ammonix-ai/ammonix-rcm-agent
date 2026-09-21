@@ -1,0 +1,175 @@
+{
+ "state_id": "ep-05035-s1",
+ "payer": "meridian",
+ "cpt": "93229",
+ "carc": null,
+ "balance": 738.3,
+ "scores": {
+  "submit_clean": 0.0424,
+  "submit_with_records": 0.0192,
+  "bill_patient": 0.0078,
+  "write_off": 0.0
+ },
+ "floor": 0.05,
+ "c2_action": "submit_with_records",
+ "detail": {
+  "a_star": "submit_with_records",
+  "w": 0.462,
+  "support": 24,
+  "succ": 12,
+  "ev": 14.2
+ },
+ "neighbour_share_on_action": 0.96,
+ "neighbours": [
+  {
+   "state_id": "ep-04232-s2",
+   "distance": 4.765,
+   "action": "write_off",
+   "success": false
+  },
+  {
+   "state_id": "ep-04232-s1",
+   "distance": 5.226,
+   "action": "submit_with_records",
+   "success": false
+  },
+  {
+   "state_id": "ep-04224-s1",
+   "distance": 5.345,
+   "action": "submit_with_records",
+   "success": true
+  },
+  {
+   "state_id": "ep-01201-s1",
+   "distance": 5.518,
+   "action": "submit_with_records",
+   "success": false
+  },
+  {
+   "state_id": "ep-01660-s1",
+   "distance": 5.726,
+   "action": "submit_with_records",
+   "success": true
+  },
+  {
+   "state_id": "ep-04714-s1",
+   "distance": 5.946,
+   "action": "submit_with_records",
+   "success": true
+  },
+  {
+   "state_id": "ep-04712-s1",
+   "distance": 6.006,
+   "action": "submit_with_records",
+   "success": true
+  },
+  {
+   "state_id": "ep-04206-s1",
+   "distance": 6.046,
+   "action": "submit_with_records",
+   "success": true
+  },
+  {
+   "state_id": "ep-04112-s1",
+   "distance": 6.085,
+   "action": "submit_with_records",
+   "success": true
+  },
+  {
+   "state_id": "ep-01061-s1",
+   "distance": 6.12,
+   "action": "submit_with_records",
+   "success": false
+  },
+  {
+   "state_id": "ep-04127-s1",
+   "distance": 6.186,
+   "action": "submit_with_records",
+   "success": false
+  },
+  {
+   "state_id": "ep-04693-s1",
+   "distance": 6.216,
+   "action": "submit_with_records",
+   "success": false
+  },
+  {
+   "state_id": "ep-01561-s1",
+   "distance": 6.264,
+   "action": "submit_with_records",
+   "success": true
+  },
+  {
+   "state_id": "ep-04726-s1",
+   "distance": 6.297,
+   "action": "submit_with_records",
+   "success": true
+  },
+  {
+   "state_id": "ep-00532-s1",
+   "distance": 6.319,
+   "action": "submit_with_records",
+   "success": true
+  },
+  {
+   "state_id": "ep-03108-s1",
+   "distance": 6.343,
+   "action": "submit_with_records",
+   "success": false
+  },
+  {
+   "state_id": "ep-04129-s1",
+   "distance": 6.353,
+   "action": "submit_with_records",
+   "success": false
+  },
+  {
+   "state_id": "ep-04619-s1",
+   "distance": 6.354,
+   "action": "submit_with_records",
+   "success": true
+  },
+  {
+   "state_id": "ep-04701-s1",
+   "distance": 6.376,
+   "action": "submit_with_records",
+   "success": true
+  },
+  {
+   "state_id": "ep-03997-s1",
+   "distance": 6.403,
+   "action": "submit_with_records",
+   "success": false
+  },
+  {
+   "state_id": "ep-01512-s1",
+   "distance": 6.431,
+   "action": "submit_with_records",
+   "success": true
+  },
+  {
+   "state_id": "ep-01119-s1",
+   "distance": 6.439,
+   "action": "submit_with_records",
+   "success": false
+  },
+  {
+   "state_id": "ep-01629-s1",
+   "distance": 6.453,
+   "action": "submit_with_records",
+   "success": false
+  },
+  {
+   "state_id": "ep-01992-s1",
+   "distance": 6.464,
+   "action": "submit_with_records",
+   "success": false
+  },
+  {
+   "state_id": "ep-04503-s1",
+   "distance": 6.465,
+   "action": "submit_with_records",
+   "success": false
+  }
+ ]
+}

@@ -1,0 +1,140 @@
+[
+  {
+    "round": 1,
+    "pass_rate": 0.9589371980676329,
+    "pass_rate_all_states": 0.7924151696606786,
+    "n_attempted": 414,
+    "mean_iterations": 1.1328502415458936,
+    "impossible_all_escalated": true,
+    "n_dev": 501,
+    "n_impossible": 20,
+    "prompt_hashes": {
+      "m1_appeal_with_necessity.txt": "fbcc89979478b5ad85ecb5cf612fea7f24c20b3e82c642b4d6398e30a3686830",
+      "m1_bill_patient.txt": "f34f40d93121c65a15df4433725d0f425488ba3138501fc72052c724f8811d99",
+      "m1_bill_secondary.txt": "7c82920d17df85b17312610ade173b91b1556b2252774c0eed3d760333ae73ba",
+      "m1_correct_and_resubmit.txt": "8ad72d4cefcde6860480e9baa06f4bdda53125b3243609429b77b57423372e7c",
+      "m1_provide_requested_info.txt": "96a409c06140a97cb9c5857fde3a698c24ea718113c75fe31e7f97ae4ced09e9",
+      "m1_request_peer_to_peer.txt": "3f296b785bb8857b5f53a232be8cfed527e85e0d3d88e69245ae580c50289dc3",
+      "m1_request_retro_auth.txt": "ddb52112f93b904c71750660ad09beaf3b6f357283eb180410160b6037157518",
+      "m1_submit_clean.txt": "088af28a768d449c2fcb29d96b60a8efec77b400fc86985170bd8d96de743411",
+      "m1_submit_with_records.txt": "6514d528c9cb883ae99418a513be5a863b44f414549d246fcc1bed6e4bb5157f",
+      "m1_write_off.txt": "03f58613aa70f17cdd655719763b97555cdb6f21340180f451421bb6b5ef2db8",
+      "m2_feedback.txt": "fe2abaa67d1fa8c5641b78fcd0b75e10ccab814c5b97f5bd12efca57cdfc8ddf"
+    }
+  },
+  {
+    "round": 2,
+    "pass_rate": 0.8879310344827587,
+    "pass_rate_all_states": 0.2055888223552894,
+    "n_attempted": 116,
+    "mean_iterations": 1.2413793103448276,
+    "impossible_all_escalated": true,
+    "n_dev": 501,
+    "n_impossible": 20,
+    "prompt_hashes": {
+      "m1_appeal_with_necessity.txt": "fbcc89979478b5ad85ecb5cf612fea7f24c20b3e82c642b4d6398e30a3686830",
+      "m1_bill_patient.txt": "f34f40d93121c65a15df4433725d0f425488ba3138501fc72052c724f8811d99",
+      "m1_bill_secondary.txt": "7c82920d17df85b17312610ade173b91b1556b2252774c0eed3d760333ae73ba",
+      "m1_correct_and_resubmit.txt": "8ad72d4cefcde6860480e9baa06f4bdda53125b3243609429b77b57423372e7c",
+      "m1_provide_requested_info.txt": "96a409c06140a97cb9c5857fde3a698c24ea718113c75fe31e7f97ae4ced09e9",
+      "m1_request_peer_to_peer.txt": "3f296b785bb8857b5f53a232be8cfed527e85e0d3d88e69245ae580c50289dc3",
+      "m1_request_retro_auth.txt": "ddb52112f93b904c71750660ad09beaf3b6f357283eb180410160b6037157518",
+      "m1_submit_clean.txt": "088af28a768d449c2fcb29d96b60a8efec77b400fc86985170bd8d96de743411",
+      "m1_submit_with_records.txt": "6514d528c9cb883ae99418a513be5a863b44f414549d246fcc1bed6e4bb5157f",
+      "m1_write_off.txt": "03f58613aa70f17cdd655719763b97555cdb6f21340180f451421bb6b5ef2db8",
+      "m2_feedback.txt": "fe2abaa67d1fa8c5641b78fcd0b75e10ccab814c5b97f5bd12efca57cdfc8ddf"
+    }
+  },
+  {
+    "round": 3,
+    "pass_rate": 0.896,
+    "pass_rate_all_states": 0.22355289421157684,
+    "n_attempted": 125,
+    "mean_iterations": 1.24,
+    "impossible_all_escalated": true,
+    "n_dev": 501,
+    "n_impossible": 20,
+    "prompt_hashes": {
+      "m1_appeal_with_necessity.txt": "fbcc89979478b5ad85ecb5cf612fea7f24c20b3e82c642b4d6398e30a3686830",
+      "m1_bill_patient.txt": "f34f40d93121c65a15df4433725d0f425488ba3138501fc72052c724f8811d99",
+      "m1_bill_secondary.txt": "7c82920d17df85b17312610ade173b91b1556b2252774c0eed3d760333ae73ba",
+      "m1_correct_and_resubmit.txt": "8ad72d4cefcde6860480e9baa06f4bdda53125b3243609429b77b57423372e7c",
+      "m1_provide_requested_info.txt": "96a409c06140a97cb9c5857fde3a698c24ea718113c75fe31e7f97ae4ced09e9",
+      "m1_request_peer_to_peer.txt": "3f296b785bb8857b5f53a232be8cfed527e85e0d3d88e69245ae580c50289dc3",
+      "m1_request_retro_auth.txt": "ddb52112f93b904c71750660ad09beaf3b6f357283eb180410160b6037157518",
+      "m1_submit_clean.txt": "088af28a768d449c2fcb29d96b60a8efec77b400fc86985170bd8d96de743411",
+      "m1_submit_with_records.txt": "6514d528c9cb883ae99418a513be5a863b44f414549d246fcc1bed6e4bb5157f",
+      "m1_write_off.txt": "03f58613aa70f17cdd655719763b97555cdb6f21340180f451421bb6b5ef2db8",
+      "m2_feedback.txt": "fe2abaa67d1fa8c5641b78fcd0b75e10ccab814c5b97f5bd12efca57cdfc8ddf"
+    }
+  },
+  {
+    "round": 4,
+    "pass_rate": 0.896,
+    "pass_rate_all_states": 0.22355289421157684,
+    "n_attempted": 125,
+    "mean_iterations": 1.24,
+    "impossible_all_escalated": true,
+    "n_dev": 501,
+    "n_impossible": 20,
+    "prompt_hashes": {
+      "m1_appeal_with_necessity.txt": "fbcc89979478b5ad85ecb5cf612fea7f24c20b3e82c642b4d6398e30a3686830",
+      "m1_bill_patient.txt": "f34f40d93121c65a15df4433725d0f425488ba3138501fc72052c724f8811d99",
+      "m1_bill_secondary.txt": "7c82920d17df85b17312610ade173b91b1556b2252774c0eed3d760333ae73ba",
+      "m1_correct_and_resubmit.txt": "8ad72d4cefcde6860480e9baa06f4bdda53125b3243609429b77b57423372e7c",
+      "m1_provide_requested_info.txt": "96a409c06140a97cb9c5857fde3a698c24ea718113c75fe31e7f97ae4ced09e9",
+      "m1_request_peer_to_peer.txt": "3f296b785bb8857b5f53a232be8cfed527e85e0d3d88e69245ae580c50289dc3",
+      "m1_request_retro_auth.txt": "ddb52112f93b904c71750660ad09beaf3b6f357283eb180410160b6037157518",
+      "m1_submit_clean.txt": "088af28a768d449c2fcb29d96b60a8efec77b400fc86985170bd8d96de743411",
+      "m1_submit_with_records.txt": "6514d528c9cb883ae99418a513be5a863b44f414549d246fcc1bed6e4bb5157f",
+      "m1_write_off.txt": "03f58613aa70f17cdd655719763b97555cdb6f21340180f451421bb6b5ef2db8",
+      "m2_feedback.txt": "fe2abaa67d1fa8c5641b78fcd0b75e10ccab814c5b97f5bd12efca57cdfc8ddf"
+    }
+  },
+  {
+    "round": 5,
+    "pass_rate": 0.9594202898550724,
+    "pass_rate_all_states": 0.6606786427145709,
+    "n_attempted": 345,
+    "mean_iterations": 1.127536231884058,
+    "impossible_all_escalated": true,
+    "n_dev": 501,
+    "n_impossible": 20,
+    "prompt_hashes": {
+      "m1_appeal_with_necessity.txt": "fbcc89979478b5ad85ecb5cf612fea7f24c20b3e82c642b4d6398e30a3686830",
+      "m1_bill_patient.txt": "f34f40d93121c65a15df4433725d0f425488ba3138501fc72052c724f8811d99",
+      "m1_bill_secondary.txt": "7c82920d17df85b17312610ade173b91b1556b2252774c0eed3d760333ae73ba",
+      "m1_correct_and_resubmit.txt": "8ad72d4cefcde6860480e9baa06f4bdda53125b3243609429b77b57423372e7c",
+      "m1_provide_requested_info.txt": "96a409c06140a97cb9c5857fde3a698c24ea718113c75fe31e7f97ae4ced09e9",
+      "m1_request_peer_to_peer.txt": "3f296b785bb8857b5f53a232be8cfed527e85e0d3d88e69245ae580c50289dc3",
+      "m1_request_retro_auth.txt": "ddb52112f93b904c71750660ad09beaf3b6f357283eb180410160b6037157518",
+      "m1_submit_clean.txt": "088af28a768d449c2fcb29d96b60a8efec77b400fc86985170bd8d96de743411",
+      "m1_submit_with_records.txt": "6514d528c9cb883ae99418a513be5a863b44f414549d246fcc1bed6e4bb5157f",
+      "m1_write_off.txt": "03f58613aa70f17cdd655719763b97555cdb6f21340180f451421bb6b5ef2db8",
+      "m2_feedback.txt": "fe2abaa67d1fa8c5641b78fcd0b75e10ccab814c5b97f5bd12efca57cdfc8ddf"
+    }
+  },
+  {
+    "round": 6,
+    "pass_rate": 0.9634464751958225,
+    "pass_rate_all_states": 0.7365269461077845,
+    "n_attempted": 383,
+    "mean_iterations": 1.114882506527415,
+    "impossible_all_escalated": true,
+    "n_dev": 501,
+    "n_impossible": 20,
+    "prompt_hashes": {
+      "m1_appeal_with_necessity.txt": "fbcc89979478b5ad85ecb5cf612fea7f24c20b3e82c642b4d6398e30a3686830",
+      "m1_bill_patient.txt": "f34f40d93121c65a15df4433725d0f425488ba3138501fc72052c724f8811d99",
+      "m1_bill_secondary.txt": "7c82920d17df85b17312610ade173b91b1556b2252774c0eed3d760333ae73ba",
+      "m1_correct_and_resubmit.txt": "8ad72d4cefcde6860480e9baa06f4bdda53125b3243609429b77b57423372e7c",
+      "m1_provide_requested_info.txt": "96a409c06140a97cb9c5857fde3a698c24ea718113c75fe31e7f97ae4ced09e9",
+      "m1_request_peer_to_peer.txt": "3f296b785bb8857b5f53a232be8cfed527e85e0d3d88e69245ae580c50289dc3",
+      "m1_request_retro_auth.txt": "ddb52112f93b904c71750660ad09beaf3b6f357283eb180410160b6037157518",
+      "m1_submit_clean.txt": "088af28a768d449c2fcb29d96b60a8efec77b400fc86985170bd8d96de743411",
+      "m1_submit_with_records.txt": "6514d528c9cb883ae99418a513be5a863b44f414549d246fcc1bed6e4bb5157f",
+      "m1_write_off.txt": "03f58613aa70f17cdd655719763b97555cdb6f21340180f451421bb6b5ef2db8",
+      "m2_feedback.txt": "fe2abaa67d1fa8c5641b78fcd0b75e10ccab814c5b97f5bd12efca57cdfc8ddf"
+    }
+  }
+]

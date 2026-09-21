@@ -1,0 +1,79 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Ammonix v0.2 — System vs Human Admins</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:60rem;margin:2rem auto;padding:0 1rem;color:#1a1a1a}
+h1{font-size:1.45rem}h2{font-size:1.1rem;margin-top:2rem;border-bottom:1px solid #ddd;padding-bottom:.3rem}
+.note{color:#666;font-size:.85rem}
+.duel{display:grid;grid-template-columns:16rem 1fr;gap:.5rem 1rem;align-items:center;margin:.5rem 0}
+.duel .label{font-size:.92rem}
+.pair{display:flex;flex-direction:column;gap:.25rem}
+.track{background:#eee;border-radius:.3rem;height:1.3rem;position:relative}
+.fill{height:100%;border-radius:.3rem;display:flex;align-items:center;padding-left:.5rem;color:#fff;font-size:.78rem;white-space:nowrap}
+.sys{background:#1565c0}.hum{background:#9e9e9e}
+.kpi{display:inline-block;border:2px solid #1565c0;border-radius:.6rem;padding:.7rem 1.2rem;margin:.3rem .4rem .3rem 0;text-align:center}
+.kpi b{display:block;font-size:1.6rem;color:#1565c0}
+.kpi.warn{border-color:#ef6c00}.kpi.warn b{color:#ef6c00}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin-top:.6rem}
+td,th{border:1px solid #ccc;padding:.35rem .6rem;text-align:left}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.legend{font-size:.8rem;color:#555;margin:.2rem 0 1rem}
+.legend span{display:inline-block;width:.9rem;height:.9rem;border-radius:.2rem;vertical-align:-2px;margin:0 .3rem 0 .8rem}
+</style></head><body>
+<h1>The system as the admin — 300 fresh claims, head to head</h1>
+<p class="note">Identical episodes, identical payer randomness per case. Blue = the v0.2 system deciding
+every touch (its escalations answered by a human); grey = the simulated human admins.
+Source: runs/reports/policy_rollout.json.</p>
+
+<span class="kpi"><b>+63%</b>total dollars collected</span>
+<span class="kpi"><b>+88%</b>collected from payers</span>
+<span class="kpi"><b>−24%</b>episodes with mistakes</span>
+<span class="kpi warn"><b>+43%</b>touches per claim (cost)</span>
+<span class="kpi warn"><b>21%</b>of touches ask a human</span>
+
+<div class="legend">Legend:<span class="sys" style="background:#1565c0"></span>system<span style="background:#9e9e9e"></span>human admins</div>
+
+<h2>Dollars collected (300 claims, ~$244k billed)</h2>
+<div class="duel"><div class="label">From insurance payers</div><div class="pair">
+  <div class="track"><div class="fill sys" style="width:95%">$95,010</div></div>
+  <div class="track"><div class="fill hum" style="width:50.6%">$50,579</div></div></div></div>
+<div class="duel"><div class="label">From patients</div><div class="pair">
+  <div class="track"><div class="fill sys" style="width:18.6%">$18,639</div></div>
+  <div class="track"><div class="fill hum" style="width:19.2%">$19,203</div></div></div></div>
+<div class="duel"><div class="label"><b>Total</b></div><div class="pair">
+  <div class="track"><div class="fill sys" style="width:100%">$113,649</div></div>
+  <div class="track"><div class="fill hum" style="width:61.4%">$69,782</div></div></div></div>
+
+<h2>Quality &amp; cost</h2>
+<div class="duel"><div class="label">Success rate (outcome v2)</div><div class="pair">
+  <div class="track"><div class="fill sys" style="width:41.3%">41.3%</div></div>
+  <div class="track"><div class="fill hum" style="width:38.7%">38.7%</div></div></div></div>
+<div class="duel"><div class="label">Episodes with process mistakes</div><div class="pair">
+  <div class="track"><div class="fill sys" style="width:17.3%">52</div></div>
+  <div class="track"><div class="fill hum" style="width:22.7%">68</div></div></div></div>
+<div class="duel"><div class="label">Claims written off (given up)</div><div class="pair">
+  <div class="track"><div class="fill sys" style="width:30.7%">92</div></div>
+  <div class="track"><div class="fill hum" style="width:36.3%">109</div></div></div></div>
+<div class="duel"><div class="label">Mean touches per claim (labor)</div><div class="pair">
+  <div class="track"><div class="fill sys" style="width:51%">3.57</div></div>
+  <div class="track"><div class="fill hum" style="width:35.5%">2.49</div></div></div></div>
+
+<h2>Where the extra money comes from — how each worker resolved the same 300 claims</h2>
+<table>
+<tr><th>Resolution</th><th class="n">System</th><th class="n">Humans</th><th>Reading</th></tr>
+<tr><td>Paid by secondary insurance</td><td class="n"><b>65</b></td><td class="n">23</td>
+<td><b>The big lever:</b> the system never forgets to bill the second insurer; humans usually do.</td></tr>
+<tr><td>Written off</td><td class="n">50</td><td class="n"><b>106</b></td>
+<td>Humans give up twice as often.</td></tr>
+<tr><td>Billed to patient</td><td class="n">120</td><td class="n">146</td>
+<td>Fewer patients reached for their wallet.</td></tr>
+<tr><td>Paid on appeal</td><td class="n">8</td><td class="n">7</td><td>Similar.</td></tr>
+<tr><td>Paid clean first pass</td><td class="n">15</td><td class="n">15</td><td>Identical — same claims, same rules.</td></tr>
+<tr><td>Written off at the 7-touch cap</td><td class="n"><b>42</b></td><td class="n">3</td>
+<td>The cost of persistence: the system sometimes grinds a dead claim to the limit.</td></tr>
+</table>
+
+<p class="note">Caveats on the record: simulated world; the human baseline is personas designed with
+realistic bad habits; the secondary-insurance win is largely a simple learned constant (real money,
+simple mechanism); 230 of the system's ~1,070 touches (21%) required human input, answered here by
+the persona policy — as in deployment.</p>
+</body></html>

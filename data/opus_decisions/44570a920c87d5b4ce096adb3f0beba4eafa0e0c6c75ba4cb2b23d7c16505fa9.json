@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\": \"Prior auth is not required for this CPT, so the missing authorization is irrelevant. The diagnosis pairing is valid, eligibility is active, COB order is correct, and we're within timely filing. This is a clean first submission with no denial on the table.\", \"action\": \"submit_clean\"}", "usage": {"prompt_tokens": 1300, "completion_tokens": 101}}

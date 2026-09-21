@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\": \"Prior auth is not required for this CPT, so the missing authorization is irrelevant. Diagnosis pairing is valid, COB order is correct, eligibility active, and the claim has not been submitted yet. The clean claim is ready to go with no defects to correct.\", \"action\": \"submit_clean\"}", "usage": {"prompt_tokens": 1303, "completion_tokens": 106}}

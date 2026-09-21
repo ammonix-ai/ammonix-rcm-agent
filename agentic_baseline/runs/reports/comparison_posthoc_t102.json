@@ -1,0 +1,131 @@
+{
+  "analysis": "post-hoc imitation / behavior-cloning baseline vs the sealed tranche-98 arms",
+  "_provenance": {
+    "note": "NOT pre-registered. The four reference arms are copied verbatim from runs/reports/comparison_v4_tranche98.json for context; only imitation_bc is new. The sealed report and preregistration/ are untouched.",
+    "tranche": 102,
+    "n_episodes": 300,
+    "source": "runs/reports/comparison_v4_tranche98.json"
+  },
+  "personas": {
+    "episodes": 300,
+    "success_rate_v2": 0.37,
+    "mean_score": 0.406,
+    "payer_collected_total": 49407.97,
+    "payer_collected_capped": 49407.97,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 18694.2,
+    "mean_touches": 2.45,
+    "episodes_with_mistakes": 66,
+    "escalated_touches": 0,
+    "resolutions": {
+      "paid": 28,
+      "written_off": 93,
+      "patient_billed": 157,
+      "paid_on_appeal": 2,
+      "paid_with_secondary": 17,
+      "written_off_at_cap": 3
+    },
+    "wall_seconds": 0.1
+  },
+  "agentic": {
+    "episodes": 300,
+    "success_rate_v2": 0.3933,
+    "mean_score": 0.4203,
+    "payer_collected_total": 52637.11,
+    "payer_collected_capped": 52637.11,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 17014.24,
+    "mean_touches": 2.68,
+    "episodes_with_mistakes": 55,
+    "escalated_touches": 233,
+    "resolutions": {
+      "written_off": 95,
+      "paid": 29,
+      "patient_billed": 143,
+      "paid_with_secondary": 31,
+      "paid_on_appeal": 1,
+      "written_off_at_cap": 1
+    },
+    "wall_seconds": 9438.3,
+    "policy": {
+      "decisions": 803,
+      "retries": 159,
+      "escalations_explicit": 164,
+      "escalations_forced": 69,
+      "decision_errors": 0
+    },
+    "llm": {
+      "model_id": "/models/Qwen3.6-27B-AWQ-INT4",
+      "calls_to_provider": 890,
+      "cache_hits": 72,
+      "prompt_tokens": 751922,
+      "completion_tokens": 211024
+    }
+  },
+  "ammonix_v6": {
+    "episodes": 300,
+    "success_rate_v2": 0.5333,
+    "mean_score": 0.5662,
+    "payer_collected_total": 63854.81,
+    "payer_collected_capped": 63854.81,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 27512.53,
+    "mean_touches": 2.587,
+    "episodes_with_mistakes": 7,
+    "escalated_touches": 92,
+    "resolutions": {
+      "paid": 27,
+      "paid_with_secondary": 69,
+      "patient_billed": 193,
+      "paid_on_appeal": 1,
+      "written_off_at_cap": 6,
+      "written_off": 4
+    },
+    "wall_seconds": 4.3,
+    "factory_root": "<REPO>",
+    "decision_field": "kernel"
+  },
+  "oracle_greedy": {
+    "episodes": 300,
+    "success_rate_v2": 0.5967,
+    "mean_score": 0.6243,
+    "payer_collected_total": 72707.45,
+    "payer_collected_capped": 72707.45,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 16140.12,
+    "mean_touches": 2.21,
+    "episodes_with_mistakes": 1,
+    "escalated_touches": 0,
+    "resolutions": {
+      "paid": 29,
+      "written_off": 69,
+      "paid_on_appeal": 1,
+      "paid_with_secondary": 74,
+      "patient_billed": 127
+    },
+    "wall_seconds": 0.1,
+    "note": "EVALUATION-ONLY upper-bound ESTIMATE: greedy per-touch on the engine's true resolution probabilities (action_resolution_prob + deterministic adjudication cascade), not a full sequential planner; see scripts/run_oracle_arm.py and runs/reports/oracle_v4_tranche98.json"
+  },
+  "imitation_bc": {
+    "episodes": 300,
+    "success_rate_v2": 0.3767,
+    "mean_score": 0.4141,
+    "payer_collected_total": 50974.7,
+    "payer_collected_capped": 50974.7,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 19209.09,
+    "mean_touches": 2.447,
+    "episodes_with_mistakes": 64,
+    "escalated_touches": 0,
+    "resolutions": {
+      "paid": 28,
+      "written_off": 92,
+      "patient_billed": 157,
+      "paid_on_appeal": 2,
+      "paid_with_secondary": 18,
+      "written_off_at_cap": 3
+    },
+    "wall_seconds": 2.1,
+    "_provenance": "post-hoc, NOT pre-registered; behavior-cloning baseline trained on lineage clerk actions (scripts/train_imitation.py, HistGradientBoosting on 11,427 lineage rows, decision-time tabular features only, poison column days_to_payment and all outcome fields excluded); same tranche 98 world+dice and same outcome_v2/summary scoring as the sealed arms"
+  }
+}

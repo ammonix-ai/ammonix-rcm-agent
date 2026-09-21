@@ -1,0 +1,227 @@
+{
+  "version": "cardessa-v1",
+  "actions": [
+    {
+      "action_id": "submit_clean",
+      "name": "submit clean",
+      "description": "Submit the claim as-is, no attachments",
+      "payload_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "episode_id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "action_id": "submit_with_records",
+      "name": "submit with records",
+      "description": "Submit the claim with clinical notes attached",
+      "payload_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "episode_id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "action_id": "request_retro_auth",
+      "name": "request retro auth",
+      "description": "Ask the payer for retroactive authorization",
+      "payload_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "episode_id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "action_id": "correct_and_resubmit",
+      "name": "correct and resubmit",
+      "description": "Fix claim errors (e.g. COB order) and resubmit",
+      "payload_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "episode_id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "action_id": "appeal_with_necessity",
+      "name": "appeal with necessity",
+      "description": "Appeal the denial with a medical-necessity letter",
+      "payload_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "episode_id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "action_id": "request_peer_to_peer",
+      "name": "request peer to peer",
+      "description": "Request a peer-to-peer review with the payer's medical director",
+      "payload_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "episode_id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "action_id": "provide_requested_info",
+      "name": "provide requested info",
+      "description": "Send the information the payer asked for (CO-16)",
+      "payload_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "episode_id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "action_id": "bill_secondary",
+      "name": "bill secondary",
+      "description": "Bill the patient's secondary coverage for the remaining balance",
+      "payload_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "episode_id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "action_id": "bill_patient",
+      "name": "bill patient",
+      "description": "Bill the patient for their share of the balance",
+      "payload_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "episode_id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "action_id": "write_off",
+      "name": "write off",
+      "description": "Write the remaining balance off and close the claim",
+      "payload_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "episode_id"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ],
+  "rules": [
+    {
+      "pattern": "submit_clean",
+      "action_id": "submit_clean",
+      "note": null
+    },
+    {
+      "pattern": "submit_with_records",
+      "action_id": "submit_with_records",
+      "note": null
+    },
+    {
+      "pattern": "request_retro_auth",
+      "action_id": "request_retro_auth",
+      "note": null
+    },
+    {
+      "pattern": "correct_and_resubmit",
+      "action_id": "correct_and_resubmit",
+      "note": null
+    },
+    {
+      "pattern": "appeal_with_necessity",
+      "action_id": "appeal_with_necessity",
+      "note": null
+    },
+    {
+      "pattern": "request_peer_to_peer",
+      "action_id": "request_peer_to_peer",
+      "note": null
+    },
+    {
+      "pattern": "provide_requested_info",
+      "action_id": "provide_requested_info",
+      "note": null
+    },
+    {
+      "pattern": "bill_secondary",
+      "action_id": "bill_secondary",
+      "note": null
+    },
+    {
+      "pattern": "bill_patient",
+      "action_id": "bill_patient",
+      "note": null
+    },
+    {
+      "pattern": "write_off",
+      "action_id": "write_off",
+      "note": null
+    }
+  ]
+}

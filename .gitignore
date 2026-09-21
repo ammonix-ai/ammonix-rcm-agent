@@ -1,0 +1,74 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Data: raw, working and quarantined data never enter git; manifests and hashes do.
+# Exception: the synthetic text cache ships so the replay UI works with no model/key.
+data/*
+!data/text_cache/
+!data/working/
+!data/working/cardessa_sim/
+!data/ui_rollout.json
+!data/ui_rollout_kernel.json
+!data/m1_cache/
+!data/m2_cache/
+!data/opus_decisions/
+!data/ui_llm_lane*.json
+!data/ui_llm_paperwork*.json
+!data/m1_opus5/
+!data/m2_opus5/
+!data/m2_opus5_judge/
+!data/m1_ornith/
+!data/m2_ornith/
+
+# Basis artefacts: the trained runtime (swarm, calibrators, scaler) SHIPS - it is the
+# system under evaluation, content-hashed in runs/manifests. Backups stay local.
+
+
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# local server logs
+ui_server.log
+
+# lineage backups (local only)
+data_v03_backup/
+basis/artefacts_v03_backup/
+
+# local server logs (all variants)
+ui_server*.log
+
+# stale lineage backups
+basis/artefacts.stale_v03_backup/
+
+# per-machine Claude Code settings
+.claude/settings.local.json
+!data/payer_reader/
+!data/m1_ornith_ft/
+!data/m2_ornith_ft/
+!data/m2_ornith_ft_control/
+!data/m2_ornith_ft_score/
+!data/m2_cross_base_ornith/
+!data/m2_cross_qwen/
+!data/sol_decisions/
+!data/sol_decisions_sol/
+!data/sol_decisions_sol_rag/
+!data/sol_decisions_sol_rag_tuned/
+!data/sol_decisions_sol_tuned/
+!data/world/
+!data/raw/
+!data/universe_embed3d.parquet
+!data/ui_curve.json
+!data/ui_curve_kernel.json
+!data/gpt6_decisions_gpt6_tuned/
+!data/gpt6_decisions_gpt6_rag_tuned/
+!data/m1_gpt6/
+!data/gpt6_ui_decisions/
+!data/m1_qwen38/

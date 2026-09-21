@@ -1,0 +1,16 @@
+{
+  "milestone": "W1",
+  "master_seed": 20260709,
+  "world_content_sha256": "3b7c0c62023ec59f086a78896809c3e3c4c047ead414350c90f5b8a0730e351e",
+  "double_generation_equal": true,
+  "n_payers": 12,
+  "n_holdout_payers": 2,
+  "n_clinics": 25,
+  "n_patients": 1000,
+  "n_studies": 1000,
+  "split_counts": {
+    "working": 750,
+    "reserve_b": 100,
+    "quarantine_a": 150
+  }
+}

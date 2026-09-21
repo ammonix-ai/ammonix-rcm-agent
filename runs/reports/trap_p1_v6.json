@@ -1,0 +1,24 @@
+{
+  "analysis": "planted-trap decision rate (P1) recomputed under the v0.6 kernel decision field on the same 103 tranche-96 trap moments as test_report_v4",
+  "decision_field": "kernel",
+  "rate": 0.6893,
+  "hits": 71,
+  "n_moments": 103,
+  "by_payer": {
+    "meridian": {
+      "hit": 55,
+      "miss": 24
+    },
+    "silverbridge": {
+      "hit": 16,
+      "miss": 8
+    }
+  },
+  "v04_reference": {
+    "rate": 0.6311,
+    "hits": 65,
+    "n_moments": 103
+  },
+  "date": "2026-08-18",
+  "script": "p1_v6.py (session scratch), mirrors scripts/final_exam_v4.py P1 block"
+}

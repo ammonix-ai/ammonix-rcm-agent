@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+cache/*
+.pytest_cache/
+
+# the registered Qwen 3.8 rerun ships its decision caches so the head-to-head
+# Qwen rows replay without a model
+!cache/decisions_qwen38_full/
+!cache/decisions_rag_qwen38_full/

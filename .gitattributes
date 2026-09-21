@@ -1,0 +1,8 @@
+# Code hashes are pinned in runs/manifests (DeterminismPin.code_sha256);
+# line endings must be identical in every worktree checkout.
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.toml text eol=lf

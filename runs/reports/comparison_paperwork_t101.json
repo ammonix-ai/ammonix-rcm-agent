@@ -1,0 +1,212 @@
+{
+ "analysis": "every arm writes its paperwork through one shared writer; the payer adjudicates it",
+ "tranche": 101,
+ "n_episodes": 300,
+ "writer": "ornith_ft",
+ "reviewer": "claude-haiku-4-5-20251001",
+ "wall_seconds": 2692.2,
+ "llm": {
+  "writer": {
+   "model_id": "local/Ornith-1.5-9B-rcm-r2",
+   "served_id": "Ornith-1.5-9B-rcm-r2",
+   "thinking": "disabled (template kwarg; <think> stripped)",
+   "calls_to_provider": 233,
+   "cache_hits": 3890,
+   "prompt_tokens": 1545788,
+   "completion_tokens": 217023
+  },
+  "reader_calls": 10,
+  "reader_cache_hits": 343
+ },
+ "policies": {
+  "agentic": {
+   "decisions": 822,
+   "retries": 133,
+   "escalations_explicit": 193,
+   "escalations_forced": 54,
+   "decision_errors": 0
+  },
+  "agentic_rag": {
+   "decisions": 787,
+   "retries": 123,
+   "escalations_explicit": 176,
+   "escalations_forced": 37,
+   "decision_errors": 0
+  },
+  "claude": {
+   "decisions": 859,
+   "retries": 3,
+   "escalations_explicit": 314,
+   "escalations_forced": 0,
+   "decision_errors": 0
+  },
+  "sol_tuned": {
+   "decisions": 759,
+   "retries": 2,
+   "escalations_explicit": 134,
+   "escalations_forced": 0,
+   "decision_errors": 0
+  },
+  "sol_rag_tuned": {
+   "decisions": 787,
+   "retries": 3,
+   "escalations_explicit": 101,
+   "escalations_forced": 0,
+   "decision_errors": 0
+  }
+ },
+ "personas": {
+  "episodes": 300,
+  "success_rate_v2": 0.35,
+  "mean_score": 0.3953,
+  "payer_collected_capped": 50143.87,
+  "patient_collected_total": 16105.25,
+  "mean_touches": 2.597,
+  "episodes_with_mistakes": 80,
+  "touches_written": 0,
+  "touches_handed_off": 0,
+  "paperwork_rejected": 0,
+  "episodes_with_rejection": 0,
+  "balance_rejected": 0,
+  "resolutions": {
+   "paid": 29,
+   "written_off": 105,
+   "patient_billed": 145,
+   "paid_on_appeal": 4,
+   "paid_with_secondary": 12,
+   "written_off_at_cap": 5
+  }
+ },
+ "ammonix": {
+  "episodes": 300,
+  "success_rate_v2": 0.4467,
+  "mean_score": 0.4853,
+  "payer_collected_capped": 58074.98,
+  "patient_collected_total": 23853.76,
+  "mean_touches": 2.557,
+  "episodes_with_mistakes": 35,
+  "touches_written": 497,
+  "touches_handed_off": 269,
+  "paperwork_rejected": 18,
+  "episodes_with_rejection": 18,
+  "balance_rejected": 5086.04,
+  "resolutions": {
+   "paid": 28,
+   "patient_billed": 192,
+   "paid_with_secondary": 52,
+   "paid_on_appeal": 8,
+   "written_off": 19,
+   "written_off_at_cap": 1
+  }
+ },
+ "agentic": {
+  "episodes": 300,
+  "success_rate_v2": 0.38,
+  "mean_score": 0.4027,
+  "payer_collected_capped": 49991.26,
+  "patient_collected_total": 19258.89,
+  "mean_touches": 2.743,
+  "episodes_with_mistakes": 54,
+  "touches_written": 516,
+  "touches_handed_off": 306,
+  "paperwork_rejected": 12,
+  "episodes_with_rejection": 12,
+  "balance_rejected": 3345.79,
+  "resolutions": {
+   "paid": 30,
+   "patient_billed": 132,
+   "written_off": 106,
+   "paid_with_secondary": 27,
+   "paid_on_appeal": 4,
+   "written_off_at_cap": 1
+  }
+ },
+ "agentic_rag": {
+  "episodes": 300,
+  "success_rate_v2": 0.41,
+  "mean_score": 0.4503,
+  "payer_collected_capped": 57331.46,
+  "patient_collected_total": 18173.81,
+  "mean_touches": 2.627,
+  "episodes_with_mistakes": 43,
+  "touches_written": 523,
+  "touches_handed_off": 264,
+  "paperwork_rejected": 11,
+  "episodes_with_rejection": 10,
+  "balance_rejected": 4229.92,
+  "resolutions": {
+   "paid": 30,
+   "written_off": 86,
+   "patient_billed": 143,
+   "paid_on_appeal": 5,
+   "paid_with_secondary": 35,
+   "written_off_at_cap": 1
+  }
+ },
+ "claude": {
+  "episodes": 300,
+  "success_rate_v2": 0.38,
+  "mean_score": 0.4215,
+  "payer_collected_capped": 54963.56,
+  "patient_collected_total": 16314.44,
+  "mean_touches": 2.873,
+  "episodes_with_mistakes": 64,
+  "touches_written": 486,
+  "touches_handed_off": 373,
+  "paperwork_rejected": 13,
+  "episodes_with_rejection": 13,
+  "balance_rejected": 5630.9,
+  "resolutions": {
+   "paid": 30,
+   "written_off": 104,
+   "patient_billed": 133,
+   "paid_with_secondary": 24,
+   "paid_on_appeal": 6,
+   "written_off_at_cap": 3
+  }
+ },
+ "sol_tuned": {
+  "episodes": 300,
+  "success_rate_v2": 0.4167,
+  "mean_score": 0.4549,
+  "payer_collected_capped": 59653.1,
+  "patient_collected_total": 17015.2,
+  "mean_touches": 2.533,
+  "episodes_with_mistakes": 27,
+  "touches_written": 573,
+  "touches_handed_off": 186,
+  "paperwork_rejected": 12,
+  "episodes_with_rejection": 12,
+  "balance_rejected": 5483.42,
+  "resolutions": {
+   "paid": 30,
+   "patient_billed": 133,
+   "paid_on_appeal": 5,
+   "written_off": 90,
+   "paid_with_secondary": 41,
+   "written_off_at_cap": 1
+  }
+ },
+ "sol_rag_tuned": {
+  "episodes": 300,
+  "success_rate_v2": 0.42,
+  "mean_score": 0.454,
+  "payer_collected_capped": 59437.14,
+  "patient_collected_total": 18216.57,
+  "mean_touches": 2.627,
+  "episodes_with_mistakes": 34,
+  "touches_written": 640,
+  "touches_handed_off": 147,
+  "paperwork_rejected": 15,
+  "episodes_with_rejection": 12,
+  "balance_rejected": 5071.87,
+  "resolutions": {
+   "paid": 30,
+   "patient_billed": 136,
+   "paid_on_appeal": 7,
+   "paid_with_secondary": 43,
+   "written_off": 83,
+   "written_off_at_cap": 1
+  }
+ }
+}

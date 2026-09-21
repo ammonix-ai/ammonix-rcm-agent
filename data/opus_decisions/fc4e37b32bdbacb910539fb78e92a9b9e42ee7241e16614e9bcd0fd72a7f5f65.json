@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\":\"Authorization is ON_FILE, diagnosis pairing is valid, eligibility active, assignment on file, and no payer response is pending. The claim is clean with no missing info, so no records are needed. Simply submit the claim as-is to start the collection clock.\",\"action\":\"submit_clean\"}", "usage": {"prompt_tokens": 1316, "completion_tokens": 141}}

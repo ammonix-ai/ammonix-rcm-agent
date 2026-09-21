@@ -1,0 +1,168 @@
+{
+ "registration": "preregistration/comparison_tranches101_102.json",
+ "same_model": {
+  "rival": "agentic",
+  "draws": [
+   99,
+   101,
+   102
+  ],
+  "per_draw": {
+   "tranche_99": {
+    "ammonix_success": 0.5033,
+    "rival_success": 0.36,
+    "margin_pts": 14.3,
+    "verdict": "ammonix wins",
+    "ammonix_capped": 68787.29,
+    "rival_capped": 56437.28,
+    "ammonix_mistakes": 7,
+    "rival_mistakes": 53
+   },
+   "tranche_101": {
+    "ammonix_success": 0.4667,
+    "rival_success": 0.3667,
+    "margin_pts": 10.0,
+    "verdict": "ammonix wins",
+    "ammonix_capped": 62259.94,
+    "rival_capped": 48731.77,
+    "ammonix_mistakes": 6,
+    "rival_mistakes": 38
+   },
+   "tranche_102": {
+    "ammonix_success": 0.5333,
+    "rival_success": 0.3933,
+    "margin_pts": 14.0,
+    "verdict": "ammonix wins",
+    "ammonix_capped": 63854.81,
+    "rival_capped": 52637.11,
+    "ammonix_mistakes": 7,
+    "rival_mistakes": 55
+   }
+  },
+  "mean_margin_pts": 12.8,
+  "se_pts": 1.4,
+  "mean_minus_2se_pts": 10.0,
+  "all_draws_win_or_tie": true
+ },
+ "retrieval": {
+  "rival": "agentic_rag",
+  "draws": [
+   100,
+   101,
+   102
+  ],
+  "per_draw": {
+   "tranche_100": {
+    "ammonix_success": 0.5267,
+    "rival_success": 0.4533,
+    "margin_pts": 7.3,
+    "verdict": "ammonix wins",
+    "ammonix_capped": 63515.38,
+    "rival_capped": 54217.41,
+    "ammonix_mistakes": 5,
+    "rival_mistakes": 24
+   },
+   "tranche_101": {
+    "ammonix_success": 0.4667,
+    "rival_success": 0.4167,
+    "margin_pts": 5.0,
+    "verdict": "ammonix wins (dollars condition)",
+    "ammonix_capped": 62259.94,
+    "rival_capped": 57433.58,
+    "ammonix_mistakes": 6,
+    "rival_mistakes": 24
+   },
+   "tranche_102": {
+    "ammonix_success": 0.5333,
+    "rival_success": 0.44,
+    "margin_pts": 9.3,
+    "verdict": "ammonix wins",
+    "ammonix_capped": 63854.81,
+    "rival_capped": 58072.91,
+    "ammonix_mistakes": 7,
+    "rival_mistakes": 22
+   }
+  },
+  "mean_margin_pts": 7.2,
+  "se_pts": 1.3,
+  "mean_minus_2se_pts": 4.7,
+  "all_draws_win_or_tie": true
+ },
+ "pre_registered_claim": "ammonix_v6 wins or ties every draw against every non-oracle arm, and the three-draw mean success margin over the strongest LLM arm exceeds zero",
+ "other_arms_check": {
+  "t101_personas": "ammonix wins",
+  "t101_imitation_bc": "ammonix wins",
+  "t101_agentic": "ammonix wins",
+  "t101_agentic_rag": "ammonix wins (dollars condition)",
+  "t102_personas": "ammonix wins",
+  "t102_imitation_bc": "ammonix wins",
+  "t102_agentic": "ammonix wins",
+  "t102_agentic_rag": "ammonix wins"
+ },
+ "sol_status": "sol_tuned and sol_rag_tuned complete on tranches 101 and 102 (zero failed calls); tranche-100 registered Sol arms (untuned prompt, k=25) stand",
+ "tuned_sol": {
+  "t101_sol_tuned": {
+   "ammonix_success": 0.4667,
+   "sol_success": 0.4167,
+   "margin_pts": 5.0,
+   "verdict": "tie",
+   "ammonix_capped": 62259.94,
+   "sol_capped": 60637.26,
+   "ammonix_mistakes": 6,
+   "sol_mistakes": 5
+  },
+  "t101_sol_rag_tuned": {
+   "ammonix_success": 0.4667,
+   "sol_success": 0.42,
+   "margin_pts": 4.7,
+   "verdict": "tie",
+   "ammonix_capped": 62259.94,
+   "sol_capped": 59938.89,
+   "ammonix_mistakes": 6,
+   "sol_mistakes": 12
+  },
+  "t102_sol_tuned": {
+   "ammonix_success": 0.5333,
+   "sol_success": 0.4433,
+   "margin_pts": 9.0,
+   "verdict": "ammonix wins",
+   "ammonix_capped": 63854.81,
+   "sol_capped": 59094.85,
+   "ammonix_mistakes": 7,
+   "sol_mistakes": 8
+  },
+  "t102_sol_rag_tuned": {
+   "ammonix_success": 0.5333,
+   "sol_success": 0.4533,
+   "margin_pts": 8.0,
+   "verdict": "ammonix wins",
+   "ammonix_capped": 63854.81,
+   "sol_capped": 61440.38,
+   "ammonix_mistakes": 7,
+   "sol_mistakes": 19
+  }
+ },
+ "strongest_llm_arm_per_draw": {
+  "tranche_100": {
+   "strongest_llm_arm": "agentic_rag",
+   "margin_pts": 7.3,
+   "verdict": "ammonix wins"
+  },
+  "tranche_101": {
+   "strongest_llm_arm": "sol_rag_tuned",
+   "margin_pts": 4.7,
+   "verdict": "tie"
+  },
+  "tranche_102": {
+   "strongest_llm_arm": "sol_rag_tuned",
+   "margin_pts": 8.0,
+   "verdict": "ammonix wins"
+  }
+ },
+ "registered_claim_verdict": {
+  "mean_margin_over_strongest_llm_arm_pts": 6.7,
+  "every_draw_win_or_tie_vs_every_non_oracle_arm": true,
+  "claim": "ammonix_v6 wins or ties every draw against every non-oracle arm, and the three-draw mean success margin over the strongest LLM arm exceeds zero",
+  "confirmed": true
+ }
+}

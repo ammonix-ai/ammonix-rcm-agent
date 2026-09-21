@@ -1,0 +1,40 @@
+{
+  "analysis": "policy_rollout (post-sign-off analysis; no build change)",
+  "n_episodes": 300,
+  "system": {
+    "episodes": 300,
+    "success_rate_v2": 0.4133,
+    "mean_score": 0.467,
+    "payer_collected_total": 95010.43,
+    "patient_collected_total": 18639.06,
+    "mean_touches": 3.57,
+    "episodes_with_mistakes": 52,
+    "resolutions": {
+      "paid": 15,
+      "patient_billed": 120,
+      "written_off": 50,
+      "paid_with_secondary": 65,
+      "paid_on_appeal": 8,
+      "written_off_at_cap": 42
+    }
+  },
+  "personas_baseline": {
+    "episodes": 300,
+    "success_rate_v2": 0.3867,
+    "mean_score": 0.4232,
+    "payer_collected_total": 50578.89,
+    "patient_collected_total": 19203.3,
+    "mean_touches": 2.487,
+    "episodes_with_mistakes": 68,
+    "resolutions": {
+      "paid": 15,
+      "written_off": 106,
+      "patient_billed": 146,
+      "paid_with_secondary": 23,
+      "paid_on_appeal": 7,
+      "written_off_at_cap": 3
+    }
+  },
+  "system_escalated_touches": 230,
+  "note": "identical fresh episodes, identical engine randomness per case; escalated touches fall back to the persona (human) policy"
+}

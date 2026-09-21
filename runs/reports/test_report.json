@@ -1,0 +1,101 @@
+{
+  "test_report": {
+    "report_id": "cardessa-final-v1",
+    "evaluated_at": "2026-07-13T09:51:55.378335Z",
+    "basis_manifest_sha256": "eecb4c95f15c9d7e96178d5be3e07da26ed4a7dcc51422704c3896d6f5f61377",
+    "quarantine_manifest_sha256": "6acf76e7d32b376af05290d4ddab6ed3a6cf60725bf43e20c370bf399eb0705d",
+    "per_action_metrics": {
+      "appeal_with_necessity": {
+        "auroc": 0.6909090909090909,
+        "auprc": 0.5866572422792518,
+        "n_pos": 11,
+        "n_neg": 15
+      },
+      "bill_patient": {
+        "auroc": 0.5759013282732448,
+        "auprc": 0.666077785139026,
+        "n_pos": 51,
+        "n_neg": 31
+      },
+      "correct_and_resubmit": {
+        "auroc": 1.0,
+        "auprc": 1.0,
+        "n_pos": 2,
+        "n_neg": 2
+      },
+      "request_retro_auth": {
+        "auroc": 1.0,
+        "auprc": 1.0,
+        "n_pos": 1,
+        "n_neg": 1
+      },
+      "submit_clean": {
+        "auroc": 0.800509525919362,
+        "auprc": 0.7307392149138761,
+        "n_pos": 61,
+        "n_neg": 74
+      },
+      "submit_with_records": {
+        "auroc": 0.8095238095238094,
+        "auprc": 0.748115042851885,
+        "n_pos": 19,
+        "n_neg": 21
+      }
+    },
+    "calibration_ece": 0.049487323833263354,
+    "recommendation_accuracy": 0.010869565217391304,
+    "harness_stats": {
+      "n_quarantine_states": 354,
+      "status_counts": {
+        "executed": 248,
+        "escalated": 106
+      },
+      "mean_iterations": 1.0056497175141244,
+      "m1_calls": 250
+    },
+    "trap_results": {
+      "P1_success_not_imitation": false,
+      "P2_no_leakage": true,
+      "P3_determinism": true,
+      "P4_calibration": true,
+      "P5_ood_honesty": true,
+      "P6_honest_near_ties": false,
+      "P7_coverage_discipline": true,
+      "P8_form_fidelity": true
+    },
+    "tainted": false
+  },
+  "detail": {
+    "world_content_sha256": "6ddf22a7c431483d36f9ec5d58c333e4f877ac248c910c7c4590cac1754e3139",
+    "corpus_tranche0_sha256": "7e864c8ba0a22d991c4abcf55d5946c231cbab391be061876d4982506016a86b",
+    "P1": {
+      "rate": 0.35714285714285715,
+      "n_states": 14,
+      "imitation_finds_minority": 0.21428571428571427
+    },
+    "P4": {
+      "ece": 0.049487323833263354
+    },
+    "P5": {
+      "holdout_states": 92,
+      "silent_errors": 0,
+      "rate": 0.0
+    },
+    "P6": {
+      "flat_states": 0,
+      "flagged": 0,
+      "agreement": 0.0
+    },
+    "P7": {
+      "violations": []
+    },
+    "P8": {
+      "artifacts_checked": 178,
+      "missing_required": 0,
+      "invented": 0,
+      "prevalidation_failures": 0
+    },
+    "recommendation_accuracy_definition": "share of quarantine denial states (excl. CO-16) where the recommended action equals the oracle-best rework action",
+    "recommendation_accuracy_n": 92
+  }
+}

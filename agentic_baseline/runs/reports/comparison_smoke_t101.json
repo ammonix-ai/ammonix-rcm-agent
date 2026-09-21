@@ -1,0 +1,43 @@
+{
+  "analysis": "agentic baseline vs ammonix system vs personas",
+  "factory_root": "<REPO>",
+  "tranche": 101,
+  "n_episodes": 5,
+  "note": "identical fresh episodes and engine randomness across arms; the 'agentic' arm runs the same pinned 27B as Ammonix M1 (architecture comparison); the 'claude' arm runs the same agent loop on claude-sonnet-5 via API (frontier-model comparison; not sampling-deterministic - the decision cache freezes the run); escalated touches fall back to the persona (human) policy in every arm",
+  "personas": {
+    "episodes": 5,
+    "success_rate_v2": 0.0,
+    "mean_score": 0.2076,
+    "payer_collected_total": 1309.09,
+    "payer_collected_capped": 1309.09,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 0.0,
+    "mean_touches": 3.2,
+    "episodes_with_mistakes": 4,
+    "escalated_touches": 0,
+    "resolutions": {
+      "written_off": 3,
+      "patient_billed": 2
+    },
+    "wall_seconds": 0.0
+  },
+  "ammonix_v6": {
+    "episodes": 5,
+    "success_rate_v2": 0.0,
+    "mean_score": 0.2574,
+    "payer_collected_total": 1413.95,
+    "payer_collected_capped": 1413.95,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 638.96,
+    "mean_touches": 3.0,
+    "episodes_with_mistakes": 0,
+    "escalated_touches": 0,
+    "resolutions": {
+      "patient_billed": 4,
+      "paid_with_secondary": 1
+    },
+    "wall_seconds": 0.2,
+    "factory_root": "<REPO>",
+    "decision_field": "kernel"
+  }
+}

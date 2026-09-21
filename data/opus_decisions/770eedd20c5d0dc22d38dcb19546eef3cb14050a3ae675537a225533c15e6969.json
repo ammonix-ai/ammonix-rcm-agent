@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\": \"This is a fresh claim (touch 0, no prior submission). Authorization is already on file, diagnosis pairing is valid, eligibility active, COB order correct. Nothing is missing, so the clean submission is the correct first touch to minimize extra actions.\", \"action\": \"submit_clean\"}", "usage": {"prompt_tokens": 1315, "completion_tokens": 104}}

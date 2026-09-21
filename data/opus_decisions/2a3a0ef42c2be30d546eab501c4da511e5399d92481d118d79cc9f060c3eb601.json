@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\":\"Prior authorization is required and is on file, diagnosis pairing is valid, eligibility active, COB order correct, and no denial or info request is on the table. This is a clean first submission with no defects to correct.\",\"action\":\"submit_clean\"}", "usage": {"prompt_tokens": 1353, "completion_tokens": 85}}

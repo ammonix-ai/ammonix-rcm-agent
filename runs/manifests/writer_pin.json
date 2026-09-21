@@ -1,0 +1,14 @@
+{
+ "writer_model": "Ornith-1.5-9B-rcm-r2",
+ "base": "ornith-ai/Ornith-1.5-9B @ c927ad73b7eb20f00aafcaa0a11a9d58ed5487bc",
+ "training": "runs/sft/ornith_r2 (rejection-sampling SFT on the payer's verdict; LoRA r=32 merged)",
+ "serving": "vLLM, temperature 0, seed 0, JSON-schema-constrained decoding, thinking disabled",
+ "weights_sha256": "4aa3553e8212fca2417013bff8487a99c40a993e0b46b65c8f0dfdfe93698b7a",
+ "shard_sha256": {
+  "model-00001-of-00004.safetensors": "2cfe7d6cb46969b499e5b21fe26674f3a3b17ce742117076467dc49bf8ed8e54",
+  "model-00002-of-00004.safetensors": "1b4874da6e07271b533681f562f68ae71425920113e33b1be1ed812385980dd7",
+  "model-00003-of-00004.safetensors": "5955af14332c7ca8bec30f91d04b0abeca4b55270180293750f927bba4b41ff7",
+  "model-00004-of-00004.safetensors": "ab8c9df23dade71304f8b2fda9f920aac63c02627b6a951b78198eeadbb2714f",
+  "model-vision.safetensors": "9063c1ef47b49dd9b2b2a564d51dc94ea31580a7084dedc0e3547fea6b8b7398"
+ }
+}

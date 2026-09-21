@@ -1,0 +1,117 @@
+{
+  "analysis": "kernel-Ether rollout (round 2; analysis only)",
+  "n_episodes": 300,
+  "tranche": 92,
+  "kernel_config": {
+    "K": 200,
+    "min_support": 3,
+    "laplace": 2,
+    "query_n": 2000
+  },
+  "system": {
+    "episodes": 300,
+    "success_rate_v2": 0.52,
+    "mean_score": 0.5508,
+    "payer_collected_total": 65659.27,
+    "patient_collected_total": 24959.97,
+    "mean_touches": 2.563,
+    "episodes_with_mistakes": 6,
+    "resolutions": {
+      "paid": 15,
+      "paid_on_appeal": 13,
+      "paid_with_secondary": 78,
+      "patient_billed": 188,
+      "written_off": 3,
+      "written_off_at_cap": 3
+    }
+  },
+  "kernel": {
+    "episodes": 300,
+    "success_rate_v2": 0.53,
+    "mean_score": 0.5602,
+    "payer_collected_total": 66254.1,
+    "patient_collected_total": 26157.3,
+    "mean_touches": 2.607,
+    "episodes_with_mistakes": 3,
+    "resolutions": {
+      "paid": 15,
+      "paid_on_appeal": 13,
+      "paid_with_secondary": 79,
+      "patient_billed": 187,
+      "written_off": 4,
+      "written_off_at_cap": 2
+    }
+  },
+  "personas": {
+    "episodes": 300,
+    "success_rate_v2": 0.36,
+    "mean_score": 0.3925,
+    "payer_collected_total": 48344.4,
+    "patient_collected_total": 18518.26,
+    "mean_touches": 2.54,
+    "episodes_with_mistakes": 64,
+    "resolutions": {
+      "paid": 15,
+      "written_off": 99,
+      "patient_billed": 158,
+      "paid_on_appeal": 3,
+      "paid_with_secondary": 21,
+      "written_off_at_cap": 4
+    }
+  },
+  "dollars": {
+    "system": 90619.24,
+    "kernel": 92411.4,
+    "personas": 66862.66
+  },
+  "escalated_touches": {
+    "system": 98,
+    "kernel": 99
+  },
+  "divergent_episodes": {
+    "n": 83,
+    "ids": [
+      "ep-05161",
+      "ep-05181",
+      "ep-05186",
+      "ep-05216",
+      "ep-05222",
+      "ep-05233",
+      "ep-05255",
+      "ep-05284",
+      "ep-05298",
+      "ep-05081",
+      "ep-05082",
+      "ep-05098",
+      "ep-05105",
+      "ep-05113",
+      "ep-05133",
+      "ep-05138",
+      "ep-05147",
+      "ep-05166",
+      "ep-05168",
+      "ep-05179",
+      "ep-05185",
+      "ep-05187",
+      "ep-05189",
+      "ep-05215",
+      "ep-05225",
+      "ep-05227",
+      "ep-05235",
+      "ep-05239",
+      "ep-05242",
+      "ep-05245",
+      "ep-05248",
+      "ep-05252",
+      "ep-05257",
+      "ep-05263",
+      "ep-05265",
+      "ep-05266",
+      "ep-05274",
+      "ep-05296",
+      "ep-05000",
+      "ep-05003"
+    ]
+  },
+  "note": "identical fresh episodes and engine randomness per arm; escalated touches fall back to the persona policy in every arm; the kernel arm swaps only the episode-success field for neighbour counts"
+}

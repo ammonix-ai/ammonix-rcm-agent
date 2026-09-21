@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\":\"Prior authorization is not required for this CPT, so the missing auth is irrelevant. The diagnosis pairing is valid, eligibility is active, COB order is correct, and no payer response exists yet on touch 0. The cleanest first touch is a standard submission.\",\"action\":\"submit_clean\"}", "usage": {"prompt_tokens": 1334, "completion_tokens": 155}}

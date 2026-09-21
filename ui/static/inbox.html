@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ammonix — Claims</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="masthead">
+  <a class="brand" href="inbox.html"><span class="mark">A</span>
+    <span><h1>Ammonix</h1><p class="tagline">Claims desk — demo</p></span></a>
+  <nav><a href="inbox.html" class="active">Claims</a><a href="universe.html">Universe</a><a href="learning.html">Learning</a></nav>
+</header>
+<main>
+<div id="intro" class="intro" hidden>
+  <p><b>200 simulated insurance claims, each worked three ways:</b> by
+  Ammonix, our harness deciding from past cases with a local Qwen 27B as its
+  only language model; by an LLM agent<span id="intro-model"></span> doing
+  the whole job alone; and by simulated human billers, the baseline of how
+  this work is done today.</p>
+  <p class="intro-actions">
+    <a class="btn primary" id="tour-start" href="#" hidden>Show me one claim, step by step</a>
+    <button type="button" id="intro-hide">Got it</button>
+  </p>
+</div>
+<div id="scoreboard" class="scoreboard"></div>
+<div class="toolbar">
+  <div id="counts"></div>
+  <a id="tour-again" class="hint" href="#" hidden>Take the tour</a>
+</div>
+<table class="grid" id="claims">
+  <thead><tr><th>Claim</th><th>Payer</th><th>Study</th>
+  <th style="text-align:right">Value</th><th>Simulated biller got</th><th id="llm-th">LLM agent got</th><th>Ammonix got</th><th>Verdict</th></tr></thead>
+  <tbody></tbody>
+</table>
+<p class="hint" id="loading">Comparing policies&hellip;</p>
+</main>
+<script src="shared.js"></script>
+<script>
+let all = [], filter = 'all';
+
+if (!localStorage.getItem('ammonix_intro_seen')) {
+  document.getElementById('intro').hidden = false;
+}
+document.getElementById('intro-hide').addEventListener('click', () => {
+  localStorage.setItem('ammonix_intro_seen', '1');
+  document.getElementById('intro').hidden = true;
+});
+
+function laneCell(l) {
+  return `<span${laneOutcomeAttr(l)}>${esc(laneOutcomeLabel(l))}</span> · <span class="mono">${money(l.collected)}</span>` +
+    (l.patient_collected > (l.patient_counted ?? l.patient_collected) + 0.005
+      ? ' <span class="pill red">balance-billed</span>' : '') +
+    (l.payer_collected > (l.payer_counted ?? l.payer_collected) + 0.005
+      ? ' <span class="pill red">double-collected</span>' : '');
+}
+function render() {
+  const rows = all.filter(c =>
+    filter === 'all' ? true
+    : filter === 'llm' ? llmBeatsAmmonix(c)
+    : c.verdict === filter);
+  document.querySelector('#claims tbody').innerHTML = rows.map(c => `
+    <tr data-episode="${esc(c.episode_id)}" data-verdict="${c.verdict}">
+      <td class="mono"><a href="claim.html?id=${encodeURIComponent(c.episode_id)}">${esc(c.episode_id)}</a></td>
+      <td>${esc(c.payer_name)}</td>
+      <td class="mono"${cptAttr(c.cpt)}>${esc(c.cpt)}</td>
+      <td class="num">${money(c.balance)}</td>
+      <td>${laneCell(c.human)}</td>
+      <td>${c.llm ? laneCell(c.llm) : '<span class="hint">computing&hellip;</span>'}</td>
+      <td>${laneCell(c.system)}</td>
+      <td>${verdictPillHtml(c)}</td>
+    </tr>`).join('');
+}
+
+function showProgress() {
+  fetch('/api/progress').then(r => r.json()).then(p => {
+    const el = document.getElementById('loading');
+    if (!el) return;
+    el.textContent = p.done < p.total
+      ? `First run on this data — computing cases ${p.done}/${p.total}…`
+      : 'Cases done — running the Ammonix vs biller comparison…';
+  }).catch(() => {});
+}
+
+function load() {
+  fetch('/api/claims').then(r => {
+    if (r.status === 425) { showProgress(); setTimeout(load, 5000); return null; }
+    return r.json();
+  }).then(data => {
+    if (!data) return;
+    document.getElementById('loading').remove();
+    const s = data.scoreboard;
+    const llmName = s.llm_model_label || 'Qwen 27B';
+    document.getElementById('intro-model').textContent = ' (' + llmName + ')';
+    document.getElementById('llm-th').textContent = llmName + ' got';
+    const fmtInt = n => Number(n || 0).toLocaleString('en-US');
+    const tokSum2 = t => t ? (t.prompt_tokens || 0) + (t.completion_tokens || 0) : 0;
+    const lt = s.llm_tokens;
+    const at = s.system_tokens;
+    const llmTotal = lt ? tokSum2(lt.decide) + tokSum2(lt.write) : 0;
+    const amxTotal = at ? tokSum2(at.write) : 0;
+    const ratio = amxTotal > 0 && llmTotal > 0 ? llmTotal / amxTotal : 0;
+    const tokenStrip = lt ? `
+      <p class="hint" style="margin:-.4rem 0 1rem">
+        The same 200 claims, and what working them cost in tokens:
+        ${esc(llmName)} doing the whole job spent
+        <span class="mono">${fmtInt(llmTotal)}</span> ${esc(llmName)} tokens
+        (${fmtInt(tokSum2(lt.decide))} deciding, ${fmtInt(tokSum2(lt.write))} writing its filings).
+        ${amxTotal ? `The Ammonix harness spent <span class="mono">${fmtInt(amxTotal)}</span> tokens
+        — ${ratio >= 1.5 ? `<b>${ratio.toFixed(1)}× fewer</b>, ` : ''}all of it writing, on a small local model;
+        deciding comes from the calibrated harness and costs no tokens at all.` :
+        `Ammonix's writing runs on a small local model; deciding comes from the
+        calibrated harness and costs no ${esc(llmName)} tokens at all.`}
+        In the pre-registered experiment behind the paper, the agent matched the
+        strongest GPT-6 configuration with 4.7 times fewer GPT-6 tokens.
+        Open any claim to see each move's filed paperwork and its bill.
+      </p>` : '';
+    document.getElementById('scoreboard').innerHTML = `
+      <div class="score-cards">
+        <div class="score-card ammonix"><p class="who">Ammonix</p>
+          <p class="amt">${money(s.system_collected)}</p>
+          <p class="cap">collected</p>
+          ${lt ? `<p class="sub tokline"><span class="mono">${fmtInt(amxTotal)}</span> tokens · local writer${amxTotal ? '' : ' (metering…)'}</p>` : ''}</div>
+        <div class="score-vs">vs</div>
+        <div class="score-card"><p class="who"${s.llm_lane_note ? ` style="cursor:help" title="${esc(s.llm_lane_note)}"` : ''}>LLM agent &middot; ${esc(s.llm_model_label || 'Qwen 27B')}</p>
+          ${s.llm_collected != null
+            ? `<p class="amt">${money(s.llm_collected)}</p>
+               <p class="cap">collected</p>
+               ${lt ? `<p class="sub tokline"><span class="mono">${fmtInt(llmTotal)}</span> tokens · decides and writes</p>` : ''}`
+            : '<p class="sub" style="margin-top:.6rem">computing&hellip;</p>'}</div>
+        <div class="score-vs">vs</div>
+        <div class="score-card"><p class="who">Simulated billers</p>
+          <p class="amt">${money(s.human_collected)}</p>
+          <p class="cap">collected</p></div>
+      </div>
+${tokenStrip}`;
+    all = data.claims;
+    const tourEp = all.find(c => c.episode_id === 'ep-05095')
+      || all.find(c => c.verdict === 'ammonix') || all[0];
+    if (tourEp) {
+      const href = 'case.html?id='
+        + encodeURIComponent(tourEp.episode_id + '-r0') + '&tour=1';
+      for (const aid of ['tour-start', 'tour-again']) {
+        const a = document.getElementById(aid);
+        a.href = href;
+        a.hidden = false;
+      }
+    }
+    document.getElementById('counts').innerHTML = `
+      <button type="button" class="chip on" data-filter="all">All ${all.length}</button>
+      <button type="button" class="chip" data-filter="ammonix"><span class="dot green"></span>${s.ammonix_wins} Ammonix wins</button>
+      <button type="button" class="chip" data-filter="same">${s.same} same</button>
+      <button type="button" class="chip" data-filter="human"><span class="dot red"></span>${s.human_wins} biller wins</button>
+      <button type="button" class="chip" data-filter="llm"><span class="dot amber"></span>${s.ammonix_vs_llm ? s.ammonix_vs_llm.llm : 0} ${esc(llmName)} wins vs Ammonix</button>`;
+    document.getElementById('counts').addEventListener('click', e => {
+      const chip = e.target.closest('.chip');
+      if (!chip) return;
+      filter = chip.dataset.filter;
+      document.querySelectorAll('#counts .chip').forEach(c => c.classList.toggle('on', c === chip));
+      render();
+    });
+    render();
+  });
+}
+load();
+
+document.querySelector('#claims tbody').addEventListener('click', e => {
+  if (e.target.closest('a')) return;
+  const tr = e.target.closest('tr');
+  if (tr) location.href = 'claim.html?id=' + encodeURIComponent(tr.dataset.episode);
+});
+</script>
+</body></html>

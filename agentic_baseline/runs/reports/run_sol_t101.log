@@ -1,0 +1,71 @@
+comparing ['sol_tuned', 'sol_rag_tuned'] on 300 fresh episodes of tranche 101 (indices 5000..5299)
+[sol_tuned] {
+ "episodes": 300,
+ "success_rate_v2": 0.4167,
+ "mean_score": 0.4642,
+ "payer_collected_total": 60637.26,
+ "payer_collected_capped": 60637.26,
+ "payer_over_collection": 0.0,
+ "patient_collected_total": 16514.41,
+ "mean_touches": 2.48,
+ "episodes_with_mistakes": 5,
+ "escalated_touches": 135,
+ "resolutions": {
+  "paid": 30,
+  "patient_billed": 135,
+  "paid_on_appeal": 5,
+  "written_off": 87,
+  "paid_with_secondary": 41,
+  "written_off_at_cap": 2
+ },
+ "wall_seconds": 607.3,
+ "policy": {
+  "decisions": 742,
+  "retries": 0,
+  "escalations_explicit": 135,
+  "escalations_forced": 0,
+  "decision_errors": 0
+ },
+ "llm": {
+  "model_id": "gpt-5.6-sol",
+  "calls_to_provider": 742,
+  "cache_hits": 0,
+  "prompt_tokens": 593086,
+  "completion_tokens": 142545
+ }
+}
+[sol_rag_tuned] {
+ "episodes": 300,
+ "success_rate_v2": 0.42,
+ "mean_score": 0.464,
+ "payer_collected_total": 59938.89,
+ "payer_collected_capped": 59938.89,
+ "payer_over_collection": 0.0,
+ "patient_collected_total": 18110.81,
+ "mean_touches": 2.53,
+ "episodes_with_mistakes": 12,
+ "escalated_touches": 98,
+ "resolutions": {
+  "paid": 30,
+  "patient_billed": 140,
+  "paid_on_appeal": 7,
+  "paid_with_secondary": 43,
+  "written_off": 80
+ },
+ "wall_seconds": 639.9,
+ "policy": {
+  "decisions": 759,
+  "retries": 0,
+  "escalations_explicit": 98,
+  "escalations_forced": 0,
+  "decision_errors": 0
+ },
+ "llm": {
+  "model_id": "gpt-5.6-sol",
+  "calls_to_provider": 759,
+  "cache_hits": 0,
+  "prompt_tokens": 833879,
+  "completion_tokens": 157362
+ }
+}
+report written to <BASELINE>\runs\reports\comparison_tranche101.json

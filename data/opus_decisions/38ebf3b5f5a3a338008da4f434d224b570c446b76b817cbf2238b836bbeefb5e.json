@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\": \"Authorization is already ON_FILE, eligibility active, valid diagnosis pairing, correct COB order, and no denial on the table. The retro-auth request was unnecessary since auth is on file. The claim is clean and ready to submit for the first time.\", \"action\": \"submit_clean\"}", "usage": {"prompt_tokens": 1350, "completion_tokens": 102}}

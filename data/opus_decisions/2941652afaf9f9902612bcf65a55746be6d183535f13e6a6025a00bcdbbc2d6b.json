@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\": \"This is a fresh claim (touch 0, no submission yet). Prior auth is not required for this CPT, so the missing authorization is irrelevant. Diagnosis pairing is valid, COB order is correct, eligibility active. The claim is clean and can be submitted as-is.\", \"action\": \"submit_clean\"}", "usage": {"prompt_tokens": 1334, "completion_tokens": 111}}

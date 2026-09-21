@@ -1,0 +1,207 @@
+{
+ "checker": "Qwen",
+ "n_appeal_states": 68,
+ "writers": {
+  "qwen": {
+   "first_attempt_pass": 64,
+   "of": 68,
+   "missing_drafts": 0,
+   "rejections": {
+    "ep-05001-s1": [
+     "This service addresses the specific clinical need to evaluate the patient's cond"
+    ],
+    "ep-05010-s1": [
+     "This service addresses the specific clinical need to evaluate the patient's cond"
+    ],
+    "ep-05045-s1": [
+     "This service addresses the specific clinical need to evaluate the patient's cond"
+    ],
+    "ep-05070-s2": [
+     "CPT 93271 is distinct from other bundled procedures"
+    ]
+   }
+  },
+  "ornith": {
+   "first_attempt_pass": 52,
+   "of": 68,
+   "missing_drafts": 0,
+   "rejections": {
+    "ep-05001-s2": [
+     "The diagnostic procedure is medically necessary to evaluate the patient's sympto"
+    ],
+    "ep-05004-s1": [
+     "Precertification cannot be obtained in advance because these are intermittent ev",
+     "The service is medically necessary to document the arrhythmia and support the pa"
+    ],
+    "ep-05024-s2": [
+     "Advance approval was clinically warranted"
+    ],
+    "ep-05027-s1": [
+     "The diagnostic monitoring is medically necessary to evaluate the symptomatic epi"
+    ],
+    "ep-05032-s1": [
+     "The appeal requests retroactive authorization for the medically necessary diagno"
+    ],
+    "ep-05045-s1": [
+     "Diagnosis code G42.4 is used."
+    ],
+    "ep-05058-s1": [
+     "The procedure was medically necessary to evaluate the patient's clinical present"
+    ],
+    "ep-05079-s2": [
+     "This service is medically necessary to identify the intermittent dysrhythmias un"
+    ],
+    "ep-05096-s1": [
+     "The service is medically necessary to evaluate the patient's symptomatic present"
+    ],
+    "ep-05100-s1": [
+     "The service is medically necessary to document the frequency and timing of the p"
+    ],
+    "ep-05147-s1": [
+     "The service is medically necessary to evaluate the relationship between the pati"
+    ],
+    "ep-05159-s1": [
+     "Diagnosis code I49.9 reflects the arrhythmia.",
+     "Diagnosis code R00.2 reflects the symptom of irregular heartbeat."
+    ],
+    "ep-05159-s2": [
+     "The service is clinically necessary to document the rhythm disturbances associat"
+    ],
+    "ep-05163-s1": [
+     "The service is medically necessary to evaluate the symptomatic arrhythmia underl"
+    ],
+    "ep-05163-s2": [
+     "The service is medically necessary to evaluate the patient's symptoms of palpita"
+    ],
+    "ep-05197-s1": [
+     "The insufficiency of clinical necessity is documented in the indication note."
+    ]
+   }
+  },
+  "ornith_ft": {
+   "first_attempt_pass": 54,
+   "of": 68,
+   "missing_drafts": 0,
+   "rejections": {
+    "ep-05001-s1": [
+     "The service is medically necessary given the documented paroxysmal atrial fibril"
+    ],
+    "ep-05001-s2": [
+     "The service is medically necessary given the documented paroxysmal atrial fibril"
+    ],
+    "ep-05008-s2": [
+     "The diagnostic procedure is medically necessary to evaluate cardiac conduction a"
+    ],
+    "ep-05021-s1": [
+     "medically necessary to address the documented recurrent palpitations, lightheade"
+    ],
+    "ep-05045-s1": [
+     "The service is medically necessary to evaluate the patient's recurrent dizziness"
+    ],
+    "ep-05084-s4": [
+     "Diagnosis code Z86.73 reflects the patient's history of cerebral infarction.",
+     "Diagnosis code G45.9 reflects transient cerebral ischemia.",
+     "Diagnosis code I48.0 reflects atrial fibrillation."
+    ],
+    "ep-05084-s5": [
+     "Diagnosis code Z86.73 reflects the patient's history of cerebral infarction.",
+     "Diagnosis code G45.9 reflects transient cerebral ischemia.",
+     "Diagnosis code I48.0 reflects atrial fibrillation."
+    ],
+    "ep-05084-s6": [
+     "Diagnosis code Z86.73 documents the patient's history of cerebral infarction.",
+     "Diagnosis code G45.9 documents transient cerebral ischemia.",
+     "Diagnosis code I48.0 documents atrial fibrillation."
+    ],
+    "ep-05089-s2": [
+     "The service is medically necessary to evaluate the patient's symptomatic episode"
+    ],
+    "ep-05096-s1": [
+     "The service is medically necessary to evaluate the patient's concerning symptoms"
+    ],
+    "ep-05122-s1": [
+     "The service meets the clinical criteria for this diagnostic modality"
+    ],
+    "ep-05159-s1": [
+     "The service is medically necessary to evaluate the suspected cardiac arrhythmia "
+    ],
+    "ep-05159-s2": [
+     "The service is medically necessary to evaluate the suspected cardiac arrhythmia "
+    ],
+    "ep-05197-s1": [
+     "The service is medically necessary to establish the requirement for continuous a"
+    ]
+   }
+  },
+  "opus5": {
+   "first_attempt_pass": 49,
+   "of": 68,
+   "missing_drafts": 0,
+   "rejections": {
+    "ep-05001-s1": [
+     "The service description is Mobile Cardiac Telemetry.",
+     "The episode ID is ep-05001."
+    ],
+    "ep-05002-s1": [
+     "CPT 93229 corresponds to mobile cardiac telemetry monitoring."
+    ],
+    "ep-05010-s1": [
+     "CPT 93229 corresponds to Mobile Cardiac Telemetry monitoring."
+    ],
+    "ep-05015-s1": [
+     "The episode ID is ep-05015."
+    ],
+    "ep-05024-s1": [
+     "The service description is Mobile Cardiac Telemetry monitoring.",
+     "The episode ID is ep-05024."
+    ],
+    "ep-05024-s2": [
+     "The episode ID is ep-05024.",
+     "The service was rendered 58 days ago.",
+     "The appeal is submitted within the 122 days remaining to the filing deadline."
+    ],
+    "ep-05038-s2": [
+     "Episode ID is ep-05038"
+    ],
+    "ep-05050-s1": [
+     "The episode identifier is ep-05050."
+    ],
+    "ep-05054-s1": [
+     "The episode ID is ep-05054."
+    ],
+    "ep-05056-s1": [
+     "The episode ID is ep-05056."
+    ],
+    "ep-05058-s1": [
+     "The episode ID is ep-05058."
+    ],
+    "ep-05070-s2": [
+     "CPT 93271 description is Cardiac Event Monitoring"
+    ],
+    "ep-05074-s2": [
+     "CPT 93271 represents cardiac event monitoring.",
+     "The service is distinct and medically necessary rather than a bundled component.",
+     "The episode ID is ep-05074."
+    ],
+    "ep-05080-s1": [
+     "CPT 93271 represents cardiac event monitoring."
+    ],
+    "ep-05084-s4": [
+     "The service billed under CPT 93271 is medically necessary."
+    ],
+    "ep-05110-s2": [
+     "The episode ID is ep-05110."
+    ],
+    "ep-05146-s2": [
+     "The service is Mobile Cardiac Telemetry monitoring."
+    ],
+    "ep-05160-s1": [
+     "CPT 93247 represents long-term continuous electrocardiogram monitoring."
+    ],
+    "ep-05161-s1": [
+     "The episode ID is ep-05161."
+    ]
+   }
+  }
+ }
+}

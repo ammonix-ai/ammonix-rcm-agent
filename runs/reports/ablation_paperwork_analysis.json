@@ -1,0 +1,37 @@
+{
+ "draw": "t99",
+ "full": {
+  "success": 0.4967,
+  "collected_capped": 65123.86,
+  "mistake_episodes": 27,
+  "handed_off_touches": 249,
+  "paperwork_rejected": 19
+ },
+ "ablated": {
+  "success": 0.4733,
+  "collected_capped": 61064.32,
+  "mistake_episodes": 21,
+  "handed_off_touches": 33,
+  "paperwork_rejected": 17
+ },
+ "divergent_episodes": 160,
+ "gates_helped": 10,
+ "gates_hurt": 3,
+ "helped_episodes": [
+  "ep-05206",
+  "ep-05095",
+  "ep-05217",
+  "ep-05258",
+  "ep-05013",
+  "ep-05123",
+  "ep-05125",
+  "ep-05029",
+  "ep-05039",
+  "ep-05275"
+ ],
+ "hurt_episodes": [
+  "ep-05155",
+  "ep-05083",
+  "ep-05055"
+ ]
+}

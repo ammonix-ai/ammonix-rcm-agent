@@ -1,0 +1,21 @@
+{
+  "milestone": "M1",
+  "seed": 42,
+  "n_episodes": 4000,
+  "n_test_states": 1000,
+  "states_per_action": {
+    "act_a": 2670,
+    "act_b": 641,
+    "act_c": 689
+  },
+  "double_generation_equal": true,
+  "corpus_sha256": "c2e95fa78988549fd73be6571dbb504c907042a21e831671c846c4a88bad562c",
+  "dataset_fingerprint": "c82529af412b80d30c10be55976e999b63752bba7ec6efe547a89bddf2f01867",
+  "pooled_oof_auroc": {
+    "act_a": 0.9513445236215413,
+    "act_b": 0.9520315734989648,
+    "act_c": 0.9691680468849535
+  },
+  "mean_oof_auroc": 0.9575147146684865,
+  "recommended_matches_optimal": 0.984
+}

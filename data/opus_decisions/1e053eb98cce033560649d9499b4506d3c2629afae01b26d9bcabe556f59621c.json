@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\": \"Prior auth is not required for this CPT, so the missing authorization is irrelevant to adjudication. The diagnosis pairing is valid, COB order is correct, eligibility active, and no denial exists. The cleanest first touch is to submit the claim as-is.\", \"action\": \"submit_clean\"}", "usage": {"prompt_tokens": 1339, "completion_tokens": 106}}

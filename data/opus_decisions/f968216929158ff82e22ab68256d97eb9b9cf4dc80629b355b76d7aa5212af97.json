@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\": \"Prior auth is not required for this CPT, and the diagnosis pairing is valid. Eligibility is active, AOB on file, and COB order is correct. There is nothing to fix and no denial on the table, so the claim can simply be submitted clean as a first touch.\", \"action\": \"submit_clean\"}", "usage": {"prompt_tokens": 1307, "completion_tokens": 106}}

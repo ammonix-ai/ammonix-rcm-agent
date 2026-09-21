@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\": \"Auth not required for this CPT, diagnosis pairing is valid, eligibility active, COB correct, and no denial is on the table. The claim is clean and has not yet been submitted. Best first action is a clean submission.\", \"action\": \"submit_clean\"}", "usage": {"prompt_tokens": 1307, "completion_tokens": 91}}

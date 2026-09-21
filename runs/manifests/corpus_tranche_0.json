@@ -1,0 +1,10 @@
+[
+  {
+    "path": "data/raw/cardessa_sim/episodes.parquet",
+    "sha256": "3166189b8536d11d80b34729cf40f28b3ce3c1643bab4d4a3b5c77e137790e14"
+  },
+  {
+    "path": "data/raw/cardessa_sim/states.parquet",
+    "sha256": "98e6ce36ee5b8c54533d713850d8ea239507eeed30fac36cb124a91e726ac6ca"
+  }
+]

@@ -1,0 +1,555 @@
+{
+  "metric": "v2-cap-total-4",
+  "points": [
+    {
+      "n": 50,
+      "seed": 0,
+      "n_patients": 9,
+      "claims": 200,
+      "collected": 23755.27,
+      "mistake_claims": 54,
+      "wins": 13,
+      "same": 156,
+      "losses": 31,
+      "escalated_touches": 255,
+      "trained_actions": [
+        "appeal_with_necessity",
+        "bill_patient",
+        "submit_clean"
+      ],
+      "demoted_to_prior": [
+        "correct_and_resubmit",
+        "provide_requested_info",
+        "request_peer_to_peer",
+        "request_retro_auth",
+        "submit_with_records"
+      ],
+      "resolution_actions": [],
+      "train_seconds": 3.4,
+      "play_seconds": 2.4
+    },
+    {
+      "n": 50,
+      "seed": 1,
+      "n_patients": 11,
+      "claims": 200,
+      "collected": 27156.79,
+      "mistake_claims": 50,
+      "wins": 21,
+      "same": 156,
+      "losses": 23,
+      "escalated_touches": 251,
+      "trained_actions": [
+        "bill_patient",
+        "submit_clean",
+        "submit_with_records"
+      ],
+      "demoted_to_prior": [
+        "provide_requested_info",
+        "request_peer_to_peer",
+        "request_retro_auth",
+        "appeal_with_necessity",
+        "correct_and_resubmit"
+      ],
+      "resolution_actions": [],
+      "train_seconds": 2.2,
+      "play_seconds": 2.3
+    },
+    {
+      "n": 50,
+      "seed": 2,
+      "n_patients": 9,
+      "claims": 200,
+      "collected": 29549.13,
+      "mistake_claims": 10,
+      "wins": 31,
+      "same": 141,
+      "losses": 28,
+      "escalated_touches": 91,
+      "trained_actions": [
+        "bill_patient",
+        "submit_clean",
+        "submit_with_records"
+      ],
+      "demoted_to_prior": [
+        "appeal_with_necessity",
+        "correct_and_resubmit",
+        "provide_requested_info",
+        "request_peer_to_peer",
+        "request_retro_auth"
+      ],
+      "resolution_actions": [],
+      "train_seconds": 1.4,
+      "play_seconds": 3.7
+    },
+    {
+      "n": 100,
+      "seed": 0,
+      "n_patients": 18,
+      "claims": 200,
+      "collected": 52262.17,
+      "mistake_claims": 31,
+      "wins": 72,
+      "same": 110,
+      "losses": 18,
+      "escalated_touches": 45,
+      "trained_actions": [
+        "appeal_with_necessity",
+        "bill_patient",
+        "submit_clean",
+        "submit_with_records"
+      ],
+      "demoted_to_prior": [
+        "request_retro_auth",
+        "correct_and_resubmit",
+        "provide_requested_info",
+        "request_peer_to_peer"
+      ],
+      "resolution_actions": [],
+      "train_seconds": 5.7,
+      "play_seconds": 4.7
+    },
+    {
+      "n": 100,
+      "seed": 1,
+      "n_patients": 17,
+      "claims": 200,
+      "collected": 18923.42,
+      "mistake_claims": 47,
+      "wins": 15,
+      "same": 145,
+      "losses": 40,
+      "escalated_touches": 198,
+      "trained_actions": [
+        "bill_patient",
+        "submit_clean",
+        "submit_with_records"
+      ],
+      "demoted_to_prior": [
+        "correct_and_resubmit",
+        "provide_requested_info",
+        "request_peer_to_peer",
+        "request_retro_auth",
+        "appeal_with_necessity"
+      ],
+      "resolution_actions": [],
+      "train_seconds": 1.1,
+      "play_seconds": 2.6
+    },
+    {
+      "n": 100,
+      "seed": 2,
+      "n_patients": 14,
+      "claims": 200,
+      "collected": 28613.81,
+      "mistake_claims": 30,
+      "wins": 49,
+      "same": 117,
+      "losses": 34,
+      "escalated_touches": 52,
+      "trained_actions": [
+        "appeal_with_necessity",
+        "bill_patient",
+        "submit_clean",
+        "submit_with_records"
+      ],
+      "demoted_to_prior": [
+        "correct_and_resubmit",
+        "request_peer_to_peer",
+        "request_retro_auth",
+        "provide_requested_info"
+      ],
+      "resolution_actions": [],
+      "train_seconds": 2.9,
+      "play_seconds": 2.6
+    },
+    {
+      "n": 250,
+      "seed": 0,
+      "n_patients": 37,
+      "claims": 200,
+      "collected": 52324.18,
+      "mistake_claims": 26,
+      "wins": 77,
+      "same": 107,
+      "losses": 16,
+      "escalated_touches": 57,
+      "trained_actions": [
+        "appeal_with_necessity",
+        "bill_patient",
+        "submit_clean",
+        "submit_with_records"
+      ],
+      "demoted_to_prior": [
+        "correct_and_resubmit",
+        "request_retro_auth",
+        "provide_requested_info",
+        "request_peer_to_peer"
+      ],
+      "resolution_actions": [
+        "appeal_with_necessity"
+      ],
+      "train_seconds": 7.1,
+      "play_seconds": 4.5
+    },
+    {
+      "n": 250,
+      "seed": 1,
+      "n_patients": 41,
+      "claims": 200,
+      "collected": 48189.53,
+      "mistake_claims": 18,
+      "wins": 76,
+      "same": 113,
+      "losses": 11,
+      "escalated_touches": 33,
+      "trained_actions": [
+        "appeal_with_necessity",
+        "bill_patient",
+        "request_retro_auth",
+        "submit_clean",
+        "submit_with_records"
+      ],
+      "demoted_to_prior": [
+        "correct_and_resubmit",
+        "provide_requested_info",
+        "request_peer_to_peer"
+      ],
+      "resolution_actions": [
+        "appeal_with_necessity"
+      ],
+      "train_seconds": 4.6,
+      "play_seconds": 5.1
+    },
+    {
+      "n": 250,
+      "seed": 2,
+      "n_patients": 42,
+      "claims": 200,
+      "collected": 52047.18,
+      "mistake_claims": 5,
+      "wins": 79,
+      "same": 113,
+      "losses": 8,
+      "escalated_touches": 25,
+      "trained_actions": [
+        "appeal_with_necessity",
+        "bill_patient",
+        "correct_and_resubmit",
+        "provide_requested_info",
+        "request_retro_auth",
+        "submit_clean",
+        "submit_with_records"
+      ],
+      "demoted_to_prior": [
+        "request_peer_to_peer"
+      ],
+      "resolution_actions": [
+        "appeal_with_necessity"
+      ],
+      "train_seconds": 9.0,
+      "play_seconds": 4.3
+    },
+    {
+      "n": 500,
+      "seed": 0,
+      "n_patients": 77,
+      "claims": 200,
+      "collected": 50258.37,
+      "mistake_claims": 11,
+      "wins": 76,
+      "same": 111,
+      "losses": 13,
+      "escalated_touches": 62,
+      "trained_actions": [
+        "appeal_with_necessity",
+        "bill_patient",
+        "correct_and_resubmit",
+        "provide_requested_info",
+        "request_peer_to_peer",
+        "request_retro_auth",
+        "submit_clean",
+        "submit_with_records"
+      ],
+      "demoted_to_prior": [],
+      "resolution_actions": [
+        "appeal_with_necessity"
+      ],
+      "train_seconds": 8.3,
+      "play_seconds": 3.5
+    },
+    {
+      "n": 500,
+      "seed": 1,
+      "n_patients": 71,
+      "claims": 200,
+      "collected": 51426.23,
+      "mistake_claims": 10,
+      "wins": 79,
+      "same": 111,
+      "losses": 10,
+      "escalated_touches": 58,
+      "trained_actions": [
+        "appeal_with_necessity",
+        "bill_patient",
+        "correct_and_resubmit",
+        "provide_requested_info",
+        "request_peer_to_peer",
+        "request_retro_auth",
+        "submit_clean",
+        "submit_with_records"
+      ],
+      "demoted_to_prior": [],
+      "resolution_actions": [
+        "appeal_with_necessity"
+      ],
+      "train_seconds": 7.3,
+      "play_seconds": 3.9
+    },
+    {
+      "n": 500,
+      "seed": 2,
+      "n_patients": 76,
+      "claims": 200,
+      "collected": 48800.78,
+      "mistake_claims": 21,
+      "wins": 77,
+      "same": 105,
+      "losses": 18,
+      "escalated_touches": 43,
+      "trained_actions": [
+        "appeal_with_necessity",
+        "bill_patient",
+        "correct_and_resubmit",
+        "provide_requested_info",
+        "request_peer_to_peer",
+        "request_retro_auth",
+        "submit_clean",
+        "submit_with_records"
+      ],
+      "demoted_to_prior": [],
+      "resolution_actions": [
+        "appeal_with_necessity"
+      ],
+      "train_seconds": 7.0,
+      "play_seconds": 2.7
+    },
+    {
+      "n": 1000,
+      "seed": 0,
+      "n_patients": 150,
+      "claims": 200,
+      "collected": 52368.91,
+      "mistake_claims": 12,
+      "wins": 79,
+      "same": 106,
+      "losses": 15,
+      "escalated_touches": 58,
+      "trained_actions": [
+        "appeal_with_necessity",
+        "bill_patient",
+        "correct_and_resubmit",
+        "provide_requested_info",
+        "request_peer_to_peer",
+        "request_retro_auth",
+        "submit_clean",
+        "submit_with_records"
+      ],
+      "demoted_to_prior": [],
+      "resolution_actions": [
+        "appeal_with_necessity",
+        "request_peer_to_peer",
+        "request_retro_auth"
+      ],
+      "train_seconds": 11.0,
+      "play_seconds": 3.9
+    },
+    {
+      "n": 1000,
+      "seed": 1,
+      "n_patients": 169,
+      "claims": 200,
+      "collected": 48477.52,
+      "mistake_claims": 14,
+      "wins": 72,
+      "same": 113,
+      "losses": 15,
+      "escalated_touches": 59,
+      "trained_actions": [
+        "appeal_with_necessity",
+        "bill_patient",
+        "correct_and_resubmit",
+        "provide_requested_info",
+        "request_peer_to_peer",
+        "request_retro_auth",
+        "submit_clean",
+        "submit_with_records"
+      ],
+      "demoted_to_prior": [],
+      "resolution_actions": [
+        "appeal_with_necessity",
+        "request_retro_auth"
+      ],
+      "train_seconds": 10.3,
+      "play_seconds": 2.9
+    },
+    {
+      "n": 1000,
+      "seed": 2,
+      "n_patients": 167,
+      "claims": 200,
+      "collected": 54491.38,
+      "mistake_claims": 5,
+      "wins": 82,
+      "same": 111,
+      "losses": 7,
+      "escalated_touches": 59,
+      "trained_actions": [
+        "appeal_with_necessity",
+        "bill_patient",
+        "correct_and_resubmit",
+        "provide_requested_info",
+        "request_peer_to_peer",
+        "request_retro_auth",
+        "submit_clean",
+        "submit_with_records"
+      ],
+      "demoted_to_prior": [],
+      "resolution_actions": [
+        "appeal_with_necessity",
+        "request_peer_to_peer",
+        "request_retro_auth"
+      ],
+      "train_seconds": 11.0,
+      "play_seconds": 3.7
+    },
+    {
+      "n": 2500,
+      "seed": 0,
+      "n_patients": 384,
+      "claims": 200,
+      "collected": 53385.7,
+      "mistake_claims": 11,
+      "wins": 78,
+      "same": 114,
+      "losses": 8,
+      "escalated_touches": 56,
+      "trained_actions": [
+        "appeal_with_necessity",
+        "bill_patient",
+        "correct_and_resubmit",
+        "provide_requested_info",
+        "request_peer_to_peer",
+        "request_retro_auth",
+        "submit_clean",
+        "submit_with_records"
+      ],
+      "demoted_to_prior": [],
+      "resolution_actions": [
+        "appeal_with_necessity",
+        "provide_requested_info",
+        "request_peer_to_peer",
+        "request_retro_auth"
+      ],
+      "train_seconds": 19.7,
+      "play_seconds": 3.3
+    },
+    {
+      "n": 2500,
+      "seed": 1,
+      "n_patients": 382,
+      "claims": 200,
+      "collected": 53250.96,
+      "mistake_claims": 10,
+      "wins": 78,
+      "same": 112,
+      "losses": 10,
+      "escalated_touches": 57,
+      "trained_actions": [
+        "appeal_with_necessity",
+        "bill_patient",
+        "correct_and_resubmit",
+        "provide_requested_info",
+        "request_peer_to_peer",
+        "request_retro_auth",
+        "submit_clean",
+        "submit_with_records"
+      ],
+      "demoted_to_prior": [],
+      "resolution_actions": [
+        "appeal_with_necessity",
+        "provide_requested_info",
+        "request_peer_to_peer",
+        "request_retro_auth"
+      ],
+      "train_seconds": 21.2,
+      "play_seconds": 2.8
+    },
+    {
+      "n": 2500,
+      "seed": 2,
+      "n_patients": 399,
+      "claims": 200,
+      "collected": 49174.34,
+      "mistake_claims": 14,
+      "wins": 75,
+      "same": 112,
+      "losses": 13,
+      "escalated_touches": 54,
+      "trained_actions": [
+        "appeal_with_necessity",
+        "bill_patient",
+        "correct_and_resubmit",
+        "provide_requested_info",
+        "request_peer_to_peer",
+        "request_retro_auth",
+        "submit_clean",
+        "submit_with_records"
+      ],
+      "demoted_to_prior": [],
+      "resolution_actions": [
+        "appeal_with_necessity",
+        "provide_requested_info",
+        "request_peer_to_peer",
+        "request_retro_auth"
+      ],
+      "train_seconds": 21.4,
+      "play_seconds": 3.4
+    },
+    {
+      "n": 4750,
+      "seed": 0,
+      "n_patients": 750,
+      "claims": 200,
+      "collected": 52099.49,
+      "mistake_claims": 7,
+      "wins": 79,
+      "same": 114,
+      "losses": 7,
+      "escalated_touches": 63,
+      "trained_actions": [
+        "appeal_with_necessity",
+        "bill_patient",
+        "correct_and_resubmit",
+        "provide_requested_info",
+        "request_peer_to_peer",
+        "request_retro_auth",
+        "submit_clean",
+        "submit_with_records"
+      ],
+      "demoted_to_prior": [],
+      "resolution_actions": [
+        "appeal_with_necessity",
+        "provide_requested_info",
+        "request_peer_to_peer",
+        "request_retro_auth"
+      ],
+      "train_seconds": 29.2,
+      "play_seconds": 3.0,
+      "anchor_match": true,
+      "anchor_delta": 0.0
+    }
+  ],
+  "human_collected": 36186.66,
+  "human_mistake_claims": 53
+}

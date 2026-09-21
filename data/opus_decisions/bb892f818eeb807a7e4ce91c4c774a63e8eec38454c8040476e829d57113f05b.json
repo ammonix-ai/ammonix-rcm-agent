@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\":\"Prior authorization is REQUIRED but currently MISSING. Submitting now would draw an auth denial. The retroactive authorization window is OPEN (30 days after service, day 29). I must secure retro-auth before submitting to avoid a denial.\",\"action\":\"request_retro_auth\"}", "usage": {"prompt_tokens": 1312, "completion_tokens": 103}}

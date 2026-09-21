@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\": \"Authorization is ON_FILE, diagnosis pairing is valid, eligibility active, COB order correct, and no denial exists. The claim has never been submitted (days since first submission: 0). This is a clean claim ready for first submission.\", \"action\": \"submit_clean\"}", "usage": {"prompt_tokens": 1323, "completion_tokens": 97}}

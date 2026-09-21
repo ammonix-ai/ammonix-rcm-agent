@@ -1,0 +1,58 @@
+{
+  "audits": "cardessa/harness.py expected_values() hardcoded constants",
+  "method": "deterministic replay of every recorded raw-tranche episode (same master seed, recorded action sequences), observing each bill_patient / bill_secondary event; replay validated per episode against recorded paid_amount_final and resolution",
+  "sources": [
+    "data/raw/cardessa_sim",
+    "data/raw/cardessa_sim/tranche_1",
+    "data/raw/cardessa_sim/tranche_2",
+    "data/raw/cardessa_sim/tranche_3",
+    "data/raw/cardessa_sim/tranche_4",
+    "data/raw/cardessa_sim/tranche_5",
+    "data/raw/cardessa_sim/tranche_6",
+    "data/raw/cardessa_sim/tranche_7",
+    "data/raw/cardessa_sim/tranche_8"
+  ],
+  "n_episodes_replayed": 5000,
+  "replay_mismatches": [],
+  "replay_validated": true,
+  "estimates": [
+    {
+      "constant": "P(patient pays | billed, amount <= 300)",
+      "hardcoded_in_harness": 0.7,
+      "n_billed": 2131,
+      "n_paid": 1480,
+      "p_hat": 0.6945,
+      "wilson95": [
+        0.6746,
+        0.7137
+      ],
+      "hardcoded_inside_ci": true
+    },
+    {
+      "constant": "P(patient pays | billed, amount > 300)",
+      "hardcoded_in_harness": 0.4,
+      "n_billed": 552,
+      "n_paid": 213,
+      "p_hat": 0.3859,
+      "wilson95": [
+        0.3462,
+        0.4271
+      ],
+      "hardcoded_inside_ci": true
+    },
+    {
+      "constant": "P(secondary accepts | billed secondary)",
+      "hardcoded_in_harness": 0.9955,
+      "n_billed": 228,
+      "n_paid": 228,
+      "p_hat": 1.0,
+      "wilson95": [
+        0.9834,
+        1.0
+      ],
+      "hardcoded_inside_ci": true
+    }
+  ],
+  "verdict": "data_recoverable",
+  "note": "the simulator's generative values are 0.7/0.4 (corpus.py bill_patient) and exactly 1.0 for bill_secondary (corpus.py pays the pending share unconditionally); the harness's 0.9955 matches no simulator constant"
+}

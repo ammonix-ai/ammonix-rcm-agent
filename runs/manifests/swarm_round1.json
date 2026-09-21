@@ -1,0 +1,54 @@
+{
+  "milestone": "P6",
+  "round": 1,
+  "classifier_spec": {
+    "model": "gbdt",
+    "hyperparams": {},
+    "feature_subset": null
+  },
+  "label_policy": {
+    "scope": "own_action_states",
+    "label": "outcome_success",
+    "outcome_weighting": false,
+    "class_weight": "balanced"
+  },
+  "trained_actions": [
+    "appeal_with_necessity",
+    "bill_patient",
+    "correct_and_resubmit",
+    "provide_requested_info",
+    "request_peer_to_peer",
+    "request_retro_auth",
+    "submit_clean",
+    "submit_with_records"
+  ],
+  "constant_prior": {
+    "bill_secondary": {
+      "prior": 0.9955156950672646,
+      "reason": "fold 1 training partition single-class"
+    },
+    "write_off": {
+      "prior": 0.0,
+      "reason": "single outcome class"
+    }
+  },
+  "dropped": [],
+  "pooled_auroc": {
+    "appeal_with_necessity": 0.7894,
+    "bill_patient": 0.8065,
+    "correct_and_resubmit": 0.847,
+    "provide_requested_info": 0.8454,
+    "request_peer_to_peer": 0.864,
+    "request_retro_auth": 0.7166,
+    "submit_clean": 0.8844,
+    "submit_with_records": 0.9014
+  },
+  "seed": 20260709,
+  "tokenizer_code_sha256": "0869c1328576153f999612ef0da4d0c800c232d39d5bf60bfc163607110e8767",
+  "pins": [
+    {
+      "path": "data/working/cardessa_sim/oof_own_action_round1.parquet",
+      "sha256": "bc64efef741ea82f895c492bd0a99cfc8313db16f06647a2b6280774f306472b"
+    }
+  ]
+}

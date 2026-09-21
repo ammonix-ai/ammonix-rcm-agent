@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\":\"The COB order is wrong - another payer is primary for this claim. Submitting to bluesummit as primary now would be incorrect. The claim should be corrected to reflect the proper billing order and submitted to the actual primary payer first.\",\"action\":\"correct_and_resubmit\"}", "usage": {"prompt_tokens": 1349, "completion_tokens": 97}}

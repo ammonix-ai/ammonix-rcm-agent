@@ -1,0 +1,74 @@
+{
+  "analysis": "kernel-Ether estimator probe (round 1, leave-episode-out)",
+  "n_states": 11427,
+  "min_support": 3,
+  "laplace": 2,
+  "results": {
+    "kfeat_15": {
+      "coverage": 0.8511,
+      "auroc": 0.7951,
+      "ece": 0.0331,
+      "auroc_on_same_states_model": 0.8751
+    },
+    "kfeat_25": {
+      "coverage": 0.8511,
+      "auroc": 0.7952,
+      "ece": 0.0393,
+      "auroc_on_same_states_model": 0.8751
+    },
+    "kfeat_50": {
+      "coverage": 0.8511,
+      "auroc": 0.7883,
+      "ece": 0.0471,
+      "auroc_on_same_states_model": 0.8751
+    },
+    "kfeat_100": {
+      "coverage": 0.8511,
+      "auroc": 0.7785,
+      "ece": 0.0637,
+      "auroc_on_same_states_model": 0.8751
+    },
+    "kfeat_200": {
+      "coverage": 0.8511,
+      "auroc": 0.7676,
+      "ece": 0.0737,
+      "auroc_on_same_states_model": 0.8751
+    },
+    "klab_15": {
+      "coverage": 0.8496,
+      "auroc": 0.8639,
+      "ece": 0.0415,
+      "auroc_on_same_states_model": 0.875
+    },
+    "klab_25": {
+      "coverage": 0.8496,
+      "auroc": 0.8684,
+      "ece": 0.027,
+      "auroc_on_same_states_model": 0.875
+    },
+    "klab_50": {
+      "coverage": 0.8496,
+      "auroc": 0.8723,
+      "ece": 0.0199,
+      "auroc_on_same_states_model": 0.875
+    },
+    "klab_100": {
+      "coverage": 0.8496,
+      "auroc": 0.8735,
+      "ece": 0.014,
+      "auroc_on_same_states_model": 0.875
+    },
+    "klab_200": {
+      "coverage": 0.8496,
+      "auroc": 0.8739,
+      "ece": 0.0098,
+      "auroc_on_same_states_model": 0.875
+    },
+    "model": {
+      "coverage": 0.8511,
+      "auroc": 0.8751,
+      "ece": 0.0
+    }
+  },
+  "best_kernel": "klab_200"
+}

@@ -1,0 +1,284 @@
+{
+  "analysis": "agentic baseline vs ammonix system vs personas",
+  "factory_root": "<REPO>",
+  "tranche": 101,
+  "n_episodes": 300,
+  "note": "identical fresh episodes and engine randomness across arms; the 'agentic' arm runs the same pinned 27B as Ammonix M1 (architecture comparison); the 'claude' arm runs the same agent loop on claude-sonnet-5 via API (frontier-model comparison; not sampling-deterministic - the decision cache freezes the run); escalated touches fall back to the persona (human) policy in every arm",
+  "personas": {
+    "episodes": 300,
+    "success_rate_v2": 0.35,
+    "mean_score": 0.3953,
+    "payer_collected_total": 50143.87,
+    "payer_collected_capped": 50143.87,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 16105.25,
+    "mean_touches": 2.597,
+    "episodes_with_mistakes": 80,
+    "escalated_touches": 0,
+    "resolutions": {
+      "paid": 29,
+      "written_off": 105,
+      "patient_billed": 145,
+      "paid_on_appeal": 4,
+      "paid_with_secondary": 12,
+      "written_off_at_cap": 5
+    },
+    "wall_seconds": 0.1
+  },
+  "agentic": {
+    "episodes": 300,
+    "success_rate_v2": 0.3667,
+    "mean_score": 0.3976,
+    "payer_collected_total": 48731.77,
+    "payer_collected_capped": 48731.77,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 18241.36,
+    "mean_touches": 2.79,
+    "episodes_with_mistakes": 38,
+    "escalated_touches": 266,
+    "resolutions": {
+      "paid": 30,
+      "patient_billed": 131,
+      "written_off": 111,
+      "paid_with_secondary": 22,
+      "paid_on_appeal": 4,
+      "written_off_at_cap": 2
+    },
+    "wall_seconds": 6669.7,
+    "policy": {
+      "decisions": 835,
+      "retries": 134,
+      "escalations_explicit": 216,
+      "escalations_forced": 50,
+      "decision_errors": 0
+    },
+    "llm": {
+      "model_id": "/models/Qwen3.6-27B-AWQ-INT4",
+      "calls_to_provider": 969,
+      "cache_hits": 0,
+      "prompt_tokens": 743801,
+      "completion_tokens": 201419
+    }
+  },
+  "agentic_rag": {
+    "episodes": 300,
+    "success_rate_v2": 0.4167,
+    "mean_score": 0.4617,
+    "payer_collected_total": 57433.58,
+    "payer_collected_capped": 57433.58,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 18612.45,
+    "mean_touches": 2.547,
+    "episodes_with_mistakes": 24,
+    "escalated_touches": 213,
+    "resolutions": {
+      "paid": 30,
+      "written_off": 81,
+      "patient_billed": 149,
+      "paid_on_appeal": 5,
+      "paid_with_secondary": 35
+    },
+    "wall_seconds": 6251.2,
+    "policy": {
+      "decisions": 764,
+      "retries": 127,
+      "escalations_explicit": 179,
+      "escalations_forced": 34,
+      "decision_errors": 0
+    },
+    "llm": {
+      "model_id": "/models/Qwen3.6-27B-AWQ-INT4",
+      "calls_to_provider": 891,
+      "cache_hits": 0,
+      "prompt_tokens": 954005,
+      "completion_tokens": 188617
+    }
+  },
+  "aborted_sol_arms_api_failure": {
+    "sol_tuned": {
+      "episodes": 300,
+      "success_rate_v2": 0.35,
+      "mean_score": 0.3953,
+      "payer_collected_total": 50143.87,
+      "payer_collected_capped": 50143.87,
+      "payer_over_collection": 0.0,
+      "patient_collected_total": 16105.25,
+      "mean_touches": 2.597,
+      "episodes_with_mistakes": 80,
+      "escalated_touches": 774,
+      "resolutions": {
+        "paid": 29,
+        "written_off": 105,
+        "patient_billed": 145,
+        "paid_on_appeal": 4,
+        "paid_with_secondary": 12,
+        "written_off_at_cap": 5
+      },
+      "wall_seconds": 72.9,
+      "policy": {
+        "decisions": 774,
+        "retries": 0,
+        "escalations_explicit": 0,
+        "escalations_forced": 0,
+        "decision_errors": 774
+      },
+      "llm": {
+        "model_id": "gpt-5.6-sol",
+        "calls_to_provider": 0,
+        "cache_hits": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "ABORTED": "Every Sol call was rejected by the API before the first decision: 1548 calls failed, 0 decisions cached, every touch fell back to the persona policy (numbers = personas). NOT a Sol run; the arm runs fresh. Registration procedure step 4 ('no reruns') is not triggered: no model decision was ever observed."
+    },
+    "sol_rag_tuned": {
+      "episodes": 300,
+      "success_rate_v2": 0.35,
+      "mean_score": 0.3953,
+      "payer_collected_total": 50143.87,
+      "payer_collected_capped": 50143.87,
+      "payer_over_collection": 0.0,
+      "patient_collected_total": 16105.25,
+      "mean_touches": 2.597,
+      "episodes_with_mistakes": 80,
+      "escalated_touches": 774,
+      "resolutions": {
+        "paid": 29,
+        "written_off": 105,
+        "patient_billed": 145,
+        "paid_on_appeal": 4,
+        "paid_with_secondary": 12,
+        "written_off_at_cap": 5
+      },
+      "wall_seconds": 71.7,
+      "policy": {
+        "decisions": 774,
+        "retries": 0,
+        "escalations_explicit": 0,
+        "escalations_forced": 0,
+        "decision_errors": 774
+      },
+      "llm": {
+        "model_id": "gpt-5.6-sol",
+        "calls_to_provider": 0,
+        "cache_hits": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "ABORTED": "Every Sol call was rejected by the API before the first decision: 1548 calls failed, 0 decisions cached, every touch fell back to the persona policy (numbers = personas). NOT a Sol run; the arm runs fresh. Registration procedure step 4 ('no reruns') is not triggered: no model decision was ever observed."
+    }
+  },
+  "ammonix_v6": {
+    "episodes": 300,
+    "success_rate_v2": 0.4667,
+    "mean_score": 0.5176,
+    "payer_collected_total": 62259.94,
+    "payer_collected_capped": 62259.94,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 25293.15,
+    "mean_touches": 2.607,
+    "episodes_with_mistakes": 6,
+    "escalated_touches": 98,
+    "resolutions": {
+      "paid": 28,
+      "patient_billed": 199,
+      "paid_with_secondary": 55,
+      "paid_on_appeal": 10,
+      "written_off": 3,
+      "written_off_at_cap": 5
+    },
+    "wall_seconds": 4.3,
+    "factory_root": "<REPO>",
+    "decision_field": "kernel"
+  },
+  "oracle_greedy": {
+    "episodes": 300,
+    "success_rate_v2": 0.5167,
+    "mean_score": 0.5696,
+    "payer_collected_total": 70193.15,
+    "payer_collected_capped": 70193.15,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 11976.39,
+    "mean_touches": 2.207,
+    "episodes_with_mistakes": 4,
+    "escalated_touches": 0,
+    "resolutions": {
+      "paid": 30,
+      "written_off": 84,
+      "paid_on_appeal": 10,
+      "paid_with_secondary": 56,
+      "patient_billed": 120
+    },
+    "wall_seconds": 0.1,
+    "note": "EVALUATION-ONLY upper-bound ESTIMATE: greedy per-touch on the engine's true resolution probabilities (action_resolution_prob + deterministic adjudication cascade), not a full sequential planner; see scripts/run_oracle_arm.py and runs/reports/oracle_v4_tranche98.json"
+  },
+  "sol_tuned": {
+    "episodes": 300,
+    "success_rate_v2": 0.4167,
+    "mean_score": 0.4642,
+    "payer_collected_total": 60637.26,
+    "payer_collected_capped": 60637.26,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 16514.41,
+    "mean_touches": 2.48,
+    "episodes_with_mistakes": 5,
+    "escalated_touches": 135,
+    "resolutions": {
+      "paid": 30,
+      "patient_billed": 135,
+      "paid_on_appeal": 5,
+      "written_off": 87,
+      "paid_with_secondary": 41,
+      "written_off_at_cap": 2
+    },
+    "wall_seconds": 607.3,
+    "policy": {
+      "decisions": 742,
+      "retries": 0,
+      "escalations_explicit": 135,
+      "escalations_forced": 0,
+      "decision_errors": 0
+    },
+    "llm": {
+      "model_id": "gpt-5.6-sol",
+      "calls_to_provider": 742,
+      "cache_hits": 0,
+      "prompt_tokens": 593086,
+      "completion_tokens": 142545
+    }
+  },
+  "sol_rag_tuned": {
+    "episodes": 300,
+    "success_rate_v2": 0.42,
+    "mean_score": 0.464,
+    "payer_collected_total": 59938.89,
+    "payer_collected_capped": 59938.89,
+    "payer_over_collection": 0.0,
+    "patient_collected_total": 18110.81,
+    "mean_touches": 2.53,
+    "episodes_with_mistakes": 12,
+    "escalated_touches": 98,
+    "resolutions": {
+      "paid": 30,
+      "patient_billed": 140,
+      "paid_on_appeal": 7,
+      "paid_with_secondary": 43,
+      "written_off": 80
+    },
+    "wall_seconds": 639.9,
+    "policy": {
+      "decisions": 759,
+      "retries": 0,
+      "escalations_explicit": 98,
+      "escalations_forced": 0,
+      "decision_errors": 0
+    },
+    "llm": {
+      "model_id": "gpt-5.6-sol",
+      "calls_to_provider": 759,
+      "cache_hits": 0,
+      "prompt_tokens": 833879,
+      "completion_tokens": 157362
+    }
+  }
+}

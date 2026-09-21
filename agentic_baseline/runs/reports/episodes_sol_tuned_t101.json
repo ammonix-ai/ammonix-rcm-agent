@@ -1,0 +1,4646 @@
+{
+ "ep-05090": {
+  "success": true,
+  "score": 1.0,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 145.03,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 145.03,
+  "actions": [
+   "correct_and_resubmit"
+  ]
+ },
+ "ep-05094": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 714.44,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 793.82,
+  "actions": [
+   "correct_and_resubmit"
+  ]
+ },
+ "ep-05098": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 235.18,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 261.31,
+  "actions": [
+   "submit_clean"
+  ]
+ },
+ "ep-05106": {
+  "success": true,
+  "score": 1.0,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 773.16,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 773.16,
+  "actions": [
+   "submit_clean"
+  ]
+ },
+ "ep-05116": {
+  "success": true,
+  "score": 1.0,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 368.63,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 368.63,
+  "actions": [
+   "submit_clean"
+  ]
+ },
+ "ep-05120": {
+  "success": true,
+  "score": 1.0,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 406.46,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 406.46,
+  "actions": [
+   "correct_and_resubmit"
+  ]
+ },
+ "ep-05135": {
+  "success": true,
+  "score": 1.0,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 261.44,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 261.44,
+  "actions": [
+   "submit_clean"
+  ]
+ },
+ "ep-05145": {
+  "success": true,
+  "score": 1.0,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 180.08,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 180.08,
+  "actions": [
+   "submit_clean"
+  ]
+ },
+ "ep-05156": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 604.81,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 672.01,
+  "actions": [
+   "submit_clean"
+  ]
+ },
+ "ep-05159": {
+  "success": true,
+  "score": 0.9905,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 742.6,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 749.75,
+  "actions": [
+   "submit_clean"
+  ]
+ },
+ "ep-05179": {
+  "success": true,
+  "score": 1.0,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 263.43,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 263.43,
+  "actions": [
+   "submit_clean"
+  ]
+ },
+ "ep-05189": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 309.14,
+  "actions": [
+   "bill_patient"
+  ]
+ },
+ "ep-05191": {
+  "success": true,
+  "score": 0.9797,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 168.5,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 171.99,
+  "actions": [
+   "submit_clean"
+  ]
+ },
+ "ep-05199": {
+  "success": true,
+  "score": 1.0,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 167.77,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 167.77,
+  "actions": [
+   "submit_clean"
+  ]
+ },
+ "ep-05221": {
+  "success": true,
+  "score": 0.9225,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 218.08,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 236.39,
+  "actions": [
+   "submit_clean"
+  ]
+ },
+ "ep-05229": {
+  "success": true,
+  "score": 0.9842,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 226.69,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 230.33,
+  "actions": [
+   "submit_clean"
+  ]
+ },
+ "ep-05246": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 304.76,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 338.62,
+  "actions": [
+   "submit_clean"
+  ]
+ },
+ "ep-05260": {
+  "success": true,
+  "score": 1.0,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 277.64,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 277.64,
+  "actions": [
+   "submit_clean"
+  ]
+ },
+ "ep-05266": {
+  "success": true,
+  "score": 0.9089,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 765.56,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 842.31,
+  "actions": [
+   "submit_clean"
+  ]
+ },
+ "ep-05289": {
+  "success": true,
+  "score": 1.0,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 53.97,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 53.97,
+  "actions": [
+   "submit_clean"
+  ]
+ },
+ "ep-05298": {
+  "success": true,
+  "score": 1.0,
+  "mistakes": 0,
+  "touches": 1,
+  "collected_payer": 53.97,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 53.97,
+  "actions": [
+   "submit_clean"
+  ]
+ },
+ "ep-05005": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 599.19,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 599.19,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean"
+  ]
+ },
+ "ep-05011": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 546.76,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05015": {
+  "success": true,
+  "score": 0.9363,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 654.94,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_on_appeal",
+  "allowed": 664.04,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity"
+  ]
+ },
+ "ep-05018": {
+  "success": true,
+  "score": 0.85,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 658.74,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 731.93,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean"
+  ]
+ },
+ "ep-05034": {
+  "success": true,
+  "score": 0.85,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 658.74,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 731.93,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean"
+  ]
+ },
+ "ep-05037": {
+  "success": true,
+  "score": 0.85,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 604.81,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 672.01,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean"
+  ]
+ },
+ "ep-05046": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 546.76,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 546.76,
+  "actions": [
+   "submit_with_records",
+   "bill_patient"
+  ]
+ },
+ "ep-05062": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 357.79,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 357.79,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05071": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 330.88,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05072": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "written_off",
+  "allowed": 353.8,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05073": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "written_off",
+  "allowed": 352.08,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05076": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 298.19,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "paid_on_appeal",
+  "allowed": 298.19,
+  "actions": [
+   "submit_clean",
+   "request_peer_to_peer"
+  ]
+ },
+ "ep-05079": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "written_off",
+  "allowed": 346.92,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05082": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "written_off",
+  "allowed": 418.71,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05087": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 283.9,
+  "actions": [
+   "submit_clean",
+   "bill_secondary"
+  ]
+ },
+ "ep-05088": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "written_off",
+  "allowed": 380.03,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05092": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 387.73,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 387.73,
+  "actions": [
+   "submit_clean",
+   "bill_secondary"
+  ]
+ },
+ "ep-05093": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 660.21,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 660.21,
+  "actions": [
+   "submit_clean",
+   "bill_secondary"
+  ]
+ },
+ "ep-05095": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 169.95,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05096": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 383.71000000000004,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 383.71,
+  "actions": [
+   "submit_clean",
+   "bill_secondary"
+  ]
+ },
+ "ep-05097": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 408.5,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 408.5,
+  "actions": [
+   "submit_clean",
+   "bill_secondary"
+  ]
+ },
+ "ep-05099": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 292.02,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "paid_with_secondary",
+  "allowed": 292.02,
+  "actions": [
+   "submit_clean",
+   "bill_secondary"
+  ]
+ },
+ "ep-05100": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 367.51,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05101": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 119.68,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05102": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 670.1,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 670.1,
+  "actions": [
+   "submit_clean",
+   "bill_secondary"
+  ]
+ },
+ "ep-05103": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 367.51,
+  "actions": [
+   "submit_clean",
+   "bill_secondary"
+  ]
+ },
+ "ep-05104": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 327.25,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 327.25,
+  "actions": [
+   "correct_and_resubmit",
+   "bill_secondary"
+  ]
+ },
+ "ep-05105": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 213.78,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 213.78,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05109": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 641.39,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 641.39,
+  "actions": [
+   "submit_clean",
+   "bill_secondary"
+  ]
+ },
+ "ep-05111": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 150.92,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 150.92,
+  "actions": [
+   "correct_and_resubmit",
+   "bill_secondary"
+  ]
+ },
+ "ep-05112": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 64.94,
+  "actions": [
+   "submit_clean",
+   "bill_secondary"
+  ]
+ },
+ "ep-05114": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 155.16,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 155.16,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05117": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 59.61,
+  "collected_patient": 36.86,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 96.47,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05118": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 298.64,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 298.64,
+  "actions": [
+   "correct_and_resubmit",
+   "bill_secondary"
+  ]
+ },
+ "ep-05121": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 459.89,
+  "actions": [
+   "correct_and_resubmit",
+   "bill_secondary"
+  ]
+ },
+ "ep-05123": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 434.77,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 434.77,
+  "actions": [
+   "correct_and_resubmit",
+   "bill_secondary"
+  ]
+ },
+ "ep-05125": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 325.16999999999996,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 325.17,
+  "actions": [
+   "correct_and_resubmit",
+   "bill_secondary"
+  ]
+ },
+ "ep-05128": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 120.54,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05130": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 137.62,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05132": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 349.23,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05133": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 92.91,
+  "collected_patient": 243.3,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 336.21,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05137": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 231.49,
+  "collected_patient": 97.75,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 329.24,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05138": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 4.06,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 604.62,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05139": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 152.51,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05140": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 131.58,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 131.58,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05141": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 482.54,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05142": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 161.02,
+  "collected_patient": 68.67,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 229.69,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05143": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 91.69,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05144": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 7.9,
+  "collected_patient": 268.59,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 276.49,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05147": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 201.58,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 201.58,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05148": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 257.29,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05149": {
+  "success": false,
+  "score": 0.8121,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 648.08,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 751.75,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05150": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 460.3,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05151": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 153.01,
+  "collected_patient": 132.77,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 285.78,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05153": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 414.52,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05154": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 12.97,
+  "collected_patient": 191.34,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 204.31,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05155": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 158.02,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05157": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 312.43,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05160": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 513.62,
+  "collected_patient": 129.07,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 642.69,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05161": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 288.26,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05163": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 285.26,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05164": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 423.97,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05166": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 204.52,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05167": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 136.27,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05170": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 62.38,
+  "collected_patient": 15.6,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 77.98,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05171": {
+  "success": false,
+  "score": 0.85,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 178.81,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 198.68,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05175": {
+  "success": false,
+  "score": 0.5005,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 360.24,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 654.39,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05176": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 85.17,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05178": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 275.37,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 275.37,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05180": {
+  "success": false,
+  "score": 0.75,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 402.47,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 503.09,
+  "actions": [
+   "correct_and_resubmit",
+   "bill_patient"
+  ]
+ },
+ "ep-05181": {
+  "success": false,
+  "score": 0.3014,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 123.99,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 352.83,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05182": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 4.06,
+  "collected_patient": 600.56,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 604.62,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05184": {
+  "success": false,
+  "score": 0.6696,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 516.1,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 717.17,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05186": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 58.86,
+  "collected_patient": 237.7,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 296.56,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05187": {
+  "success": false,
+  "score": 0.85,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 278.78,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 309.76,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05188": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 114.95,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05190": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 122.67,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 122.67,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05192": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 21.43,
+  "collected_patient": 152.43,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 173.86,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05194": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 86.59,
+  "collected_patient": 21.65,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 108.24,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05196": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 762.96,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05197": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 1092.3,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 1092.3,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05200": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 143.47,
+  "collected_patient": 35.87,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 179.34,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05201": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 300.32,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05203": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 446.5,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05207": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 227.64,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05208": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 349.77,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05209": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 159.59,
+  "collected_patient": 180.15,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 339.74,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05210": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 140.71,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 140.71,
+  "actions": [
+   "submit_clean",
+   "provide_requested_info"
+  ]
+ },
+ "ep-05211": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 232.87,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 232.87,
+  "actions": [
+   "submit_clean",
+   "bill_secondary"
+  ]
+ },
+ "ep-05212": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 121.65,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05214": {
+  "success": false,
+  "score": 0.6504,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 416.28,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 594.33,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05215": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 216.58,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05216": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 333.7,
+  "collected_patient": 275.19,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 608.89,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05217": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 314.88,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05218": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 31.44,
+  "collected_patient": 133.74,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 165.18,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05219": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 536.3,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 536.3,
+  "actions": [
+   "submit_clean",
+   "provide_requested_info"
+  ]
+ },
+ "ep-05220": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 270.67,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05222": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 275.2,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05223": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 344.94,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05224": {
+  "success": false,
+  "score": 0.75,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 149.7,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 187.12,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05225": {
+  "success": false,
+  "score": 0.4529,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 280.99,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 558.69,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05226": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 96.55,
+  "collected_patient": 10.73,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 107.28,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05227": {
+  "success": false,
+  "score": 0.75,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 468.36,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 585.45,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05228": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 280.17,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05230": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 120.28,
+  "collected_patient": 159.87,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 280.15,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05231": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 252.6,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 252.6,
+  "actions": [
+   "submit_clean",
+   "provide_requested_info"
+  ]
+ },
+ "ep-05232": {
+  "success": false,
+  "score": 0.5779,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 78.85,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 125.57,
+  "actions": [
+   "correct_and_resubmit",
+   "bill_patient"
+  ]
+ },
+ "ep-05233": {
+  "success": false,
+  "score": 0.6082,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 657.36,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 998.65,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05234": {
+  "success": false,
+  "score": 0.5162,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 298.74,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 527.61,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05235": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 230.28,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 230.28,
+  "actions": [
+   "submit_clean",
+   "provide_requested_info"
+  ]
+ },
+ "ep-05236": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 648.13,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_on_appeal",
+  "allowed": 648.13,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity"
+  ]
+ },
+ "ep-05237": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 82.59,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05238": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 98.41,
+  "collected_patient": 151.09,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 249.5,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05239": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 113.99,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05240": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 329.92,
+  "collected_patient": 95.4,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 425.32,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05241": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 240.14,
+  "collected_patient": 60.03,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 300.17,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05242": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 116.52,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 116.52,
+  "actions": [
+   "submit_clean",
+   "bill_secondary"
+  ]
+ },
+ "ep-05243": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 124.67,
+  "collected_patient": 142.35,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 267.02,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05244": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 235.55,
+  "collected_patient": 471.23,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 706.78,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05245": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 461.74,
+  "collected_patient": 529.14,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 990.88,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05247": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 236.02,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 236.02,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05248": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 108.17,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05249": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 528.23,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 528.23,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05250": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 402.3,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05251": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 116.22,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05252": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 150.77,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 150.77,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05253": {
+  "success": false,
+  "score": 0.1992,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 196.02,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 786.47,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05254": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 103.13,
+  "collected_patient": 278.39,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 381.52,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05255": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 155.54,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 155.54,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05256": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 275.85,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05257": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 148.84,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05258": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 374.61,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05259": {
+  "success": false,
+  "score": 0.3105,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 45.4,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 125.92,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05261": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 598.57,
+  "collected_patient": 128.9,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 727.47,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05263": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 487.79,
+  "collected_patient": 147.76,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 635.55,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05264": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 481.35,
+  "collected_patient": 231.74,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 713.09,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05265": {
+  "success": false,
+  "score": 0.625,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 553.69,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 820.29,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05268": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 92.35,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05270": {
+  "success": false,
+  "score": 0.3934,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 247.56,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 558.31,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05271": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 500.79,
+  "actions": [
+   "correct_and_resubmit",
+   "bill_patient"
+  ]
+ },
+ "ep-05272": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 209.95,
+  "collected_patient": 92.37,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 302.32,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05273": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 268.3,
+  "collected_patient": 67.07,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 335.37,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05274": {
+  "success": false,
+  "score": 0.6144,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 100.36,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 151.06,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05275": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 435.13,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05276": {
+  "success": false,
+  "score": 0.807,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 922.25,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 1076.2,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05278": {
+  "success": true,
+  "score": 0.85,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 95.04,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 105.6,
+  "actions": [
+   "submit_clean",
+   "provide_requested_info"
+  ]
+ },
+ "ep-05279": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 374.94,
+  "collected_patient": 48.37,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 423.31,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05280": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 225.14,
+  "collected_patient": 56.28,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 281.42,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05281": {
+  "success": false,
+  "score": 0.1447,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 76.96,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 395.28,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05282": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 88.87,
+  "collected_patient": 120.16,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 209.03,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05283": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 315.22,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05285": {
+  "success": true,
+  "score": 0.8602,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 243.89,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid",
+  "allowed": 267.96,
+  "actions": [
+   "submit_clean",
+   "provide_requested_info"
+  ]
+ },
+ "ep-05286": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 105.88,
+  "collected_patient": 236.88,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 342.76,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05287": {
+  "success": true,
+  "score": 0.95,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 325.98,
+  "collected_patient": 81.49,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 407.47,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05288": {
+  "success": false,
+  "score": 0.75,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 111.96,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 139.95,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05293": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 67.43,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05294": {
+  "success": false,
+  "score": 0.75,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 180.38,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 225.47,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05295": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 412.59,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05297": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 901.26,
+  "actions": [
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05299": {
+  "success": false,
+  "score": 0.7006,
+  "mistakes": 0,
+  "touches": 2,
+  "collected_payer": 298.7,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 397.95,
+  "actions": [
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05000": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 580.14,
+  "collected_patient": 252.69,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 832.83,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05001": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 638.96,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05003": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 728.95,
+  "collected_patient": 137.48,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 866.43,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05004": {
+  "success": false,
+  "score": 0.0492,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 104.86,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 702.81,
+  "actions": [
+   "submit_with_records",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05006": {
+  "success": false,
+  "score": 0.1561,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 164.92,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 644.07,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05007": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 656.37,
+  "collected_patient": 164.09,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 820.46,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05008": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "written_off",
+  "allowed": 601.08,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "write_off"
+  ]
+ },
+ "ep-05009": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 2,
+  "resolution": "written_off",
+  "allowed": 731.82,
+  "actions": [
+   "submit_with_records",
+   "appeal_with_necessity",
+   "write_off"
+  ]
+ },
+ "ep-05010": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 661.9,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05012": {
+  "success": false,
+  "score": 0.8,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 704.59,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 782.88,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05013": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 703.89,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05014": {
+  "success": false,
+  "score": 0.516,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 520.31,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 844.7,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05016": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 550.42,
+  "collected_patient": 61.16,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 611.58,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05017": {
+  "success": false,
+  "score": 0.4854,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 456.72,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 780.21,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05019": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 921.74,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05020": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 941.75,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05022": {
+  "success": false,
+  "score": 0.3415,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 326.17,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 738.83,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05023": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 605.63,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05026": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 913.3800000000001,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 913.38,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "bill_secondary"
+  ]
+ },
+ "ep-05027": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 585.37,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_secondary"
+  ]
+ },
+ "ep-05029": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 557.71,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 557.71,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_secondary"
+  ]
+ },
+ "ep-05030": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 751.68,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_secondary"
+  ]
+ },
+ "ep-05031": {
+  "success": false,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 681.54,
+  "collected_patient": 155.88,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 837.42,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05032": {
+  "success": false,
+  "score": 0.4726,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 443.39,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 774.31,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05033": {
+  "success": false,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 704.59,
+  "collected_patient": 78.29,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 782.88,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05035": {
+  "success": true,
+  "score": 0.8,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 604.81,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_on_appeal",
+  "allowed": 672.01,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "appeal_with_necessity"
+  ]
+ },
+ "ep-05036": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 597.34,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 597.34,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05038": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 731.82,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "write_off"
+  ]
+ },
+ "ep-05039": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 644.07,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05040": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 825.3799999999999,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 825.38,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "bill_secondary"
+  ]
+ },
+ "ep-05041": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 921.74,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05042": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 738.97,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 738.97,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05043": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 638.96,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05044": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "paid_with_secondary",
+  "allowed": 688.6,
+  "actions": [
+   "submit_with_records",
+   "appeal_with_necessity",
+   "bill_secondary"
+  ]
+ },
+ "ep-05047": {
+  "success": false,
+  "score": 0.3415,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 326.17,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 738.83,
+  "actions": [
+   "submit_with_records",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05048": {
+  "success": false,
+  "score": 0.3099,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 364.73,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 889.78,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05049": {
+  "success": false,
+  "score": 0.4726,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 443.39,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 774.31,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05050": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "written_off",
+  "allowed": 563.58,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "write_off"
+  ]
+ },
+ "ep-05052": {
+  "success": false,
+  "score": 0.4854,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 456.72,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 780.21,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05053": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 344.94,
+  "collected_patient": 277.36,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 622.3,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05057": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 571.16,
+  "collected_patient": 143.63,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 714.79,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05058": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 554.84,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 554.84,
+  "actions": [
+   "submit_with_records",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05059": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 739.35,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 739.35,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "bill_secondary"
+  ]
+ },
+ "ep-05063": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 161.66,
+  "collected_patient": 141.22,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 302.88,
+  "actions": [
+   "submit_clean",
+   "request_peer_to_peer",
+   "bill_patient"
+  ]
+ },
+ "ep-05064": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 347.57,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 347.57,
+  "actions": [
+   "submit_clean",
+   "request_peer_to_peer",
+   "bill_secondary"
+  ]
+ },
+ "ep-05065": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 366.42,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 366.42,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_secondary"
+  ]
+ },
+ "ep-05066": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 112.15,
+  "collected_patient": 239.25,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 351.4,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05067": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 7.13,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 350.38,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05075": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 372.98,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 372.98,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_secondary"
+  ]
+ },
+ "ep-05078": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 7.13,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 350.38,
+  "actions": [
+   "submit_clean",
+   "request_peer_to_peer",
+   "bill_patient"
+  ]
+ },
+ "ep-05080": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 347.57,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 347.57,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_secondary"
+  ]
+ },
+ "ep-05083": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 366.42,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 366.42,
+  "actions": [
+   "submit_clean",
+   "request_peer_to_peer",
+   "bill_secondary"
+  ]
+ },
+ "ep-05084": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 347.57,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 347.57,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_secondary"
+  ]
+ },
+ "ep-05089": {
+  "success": false,
+  "score": 0.7087,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 324.41,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 401.16,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05107": {
+  "success": true,
+  "score": 0.8,
+  "mistakes": 1,
+  "touches": 3,
+  "collected_payer": 944.62,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 944.62,
+  "actions": [
+   "correct_and_resubmit",
+   "submit_clean",
+   "bill_secondary"
+  ]
+ },
+ "ep-05110": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 825.61,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 825.61,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_secondary"
+  ]
+ },
+ "ep-05115": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 903.86,
+  "actions": [
+   "correct_and_resubmit",
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05122": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 115.14,
+  "actions": [
+   "correct_and_resubmit",
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05126": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 654.86,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 654.86,
+  "actions": [
+   "request_retro_auth",
+   "correct_and_resubmit",
+   "bill_secondary"
+  ]
+ },
+ "ep-05127": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 82.64,
+  "actions": [
+   "correct_and_resubmit",
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05129": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 370.96,
+  "actions": [
+   "correct_and_resubmit",
+   "appeal_with_necessity",
+   "bill_secondary"
+  ]
+ },
+ "ep-05131": {
+  "success": true,
+  "score": 0.8,
+  "mistakes": 1,
+  "touches": 3,
+  "collected_payer": 39.55,
+  "collected_patient": 70.18,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 109.73,
+  "actions": [
+   "submit_clean",
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05134": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 96.71,
+  "actions": [
+   "submit_clean",
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05136": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 686.72,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05146": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 698.63,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 698.63,
+  "actions": [
+   "submit_with_records",
+   "appeal_with_necessity",
+   "bill_secondary"
+  ]
+ },
+ "ep-05152": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 703.72,
+  "actions": [
+   "correct_and_resubmit",
+   "appeal_with_necessity",
+   "write_off"
+  ]
+ },
+ "ep-05162": {
+  "success": false,
+  "score": 0.2295,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 112.56,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 341.58,
+  "actions": [
+   "submit_clean",
+   "provide_requested_info",
+   "bill_patient"
+  ]
+ },
+ "ep-05168": {
+  "success": true,
+  "score": 0.8,
+  "mistakes": 1,
+  "touches": 3,
+  "collected_payer": 30.02,
+  "collected_patient": 233.35,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 263.37,
+  "actions": [
+   "submit_clean",
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05173": {
+  "success": false,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 452.26,
+  "collected_patient": 199.1,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 651.36,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05174": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 2,
+  "resolution": "written_off",
+  "allowed": 161.94,
+  "actions": [
+   "submit_clean",
+   "correct_and_resubmit",
+   "write_off"
+  ]
+ },
+ "ep-05177": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 836.58,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05183": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 525.21,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 525.21,
+  "actions": [
+   "correct_and_resubmit",
+   "appeal_with_necessity",
+   "bill_secondary"
+  ]
+ },
+ "ep-05185": {
+  "success": true,
+  "score": 0.8051,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 529.84,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_on_appeal",
+  "allowed": 585.37,
+  "actions": [
+   "request_retro_auth",
+   "submit_with_records",
+   "appeal_with_necessity"
+  ]
+ },
+ "ep-05193": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "written_off",
+  "allowed": 717.4,
+  "actions": [
+   "correct_and_resubmit",
+   "appeal_with_necessity",
+   "write_off"
+  ]
+ },
+ "ep-05195": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 82.08,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 82.08,
+  "actions": [
+   "correct_and_resubmit",
+   "correct_and_resubmit",
+   "bill_patient"
+  ]
+ },
+ "ep-05198": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 473.21,
+  "collected_patient": 218.31,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 691.52,
+  "actions": [
+   "submit_clean",
+   "provide_requested_info",
+   "bill_patient"
+  ]
+ },
+ "ep-05202": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 340.79,
+  "actions": [
+   "submit_clean",
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05204": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 137.26,
+  "escalated_touches": 2,
+  "resolution": "patient_billed",
+  "allowed": 137.26,
+  "actions": [
+   "submit_clean",
+   "correct_and_resubmit",
+   "bill_patient"
+  ]
+ },
+ "ep-05206": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 2,
+  "resolution": "written_off",
+  "allowed": 226.18,
+  "actions": [
+   "submit_clean",
+   "correct_and_resubmit",
+   "write_off"
+  ]
+ },
+ "ep-05213": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 824.33,
+  "actions": [
+   "submit_with_records",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05262": {
+  "success": false,
+  "score": 0.6056,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 526.46,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 746.09,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05267": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 91.13,
+  "collected_patient": 169.91,
+  "escalated_touches": 1,
+  "resolution": "patient_billed",
+  "allowed": 261.04,
+  "actions": [
+   "submit_clean",
+   "correct_and_resubmit",
+   "bill_patient"
+  ]
+ },
+ "ep-05269": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 396.81,
+  "collected_patient": 168.37,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 565.18,
+  "actions": [
+   "submit_clean",
+   "provide_requested_info",
+   "bill_patient"
+  ]
+ },
+ "ep-05284": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 476.12,
+  "collected_patient": 82.82,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 558.94,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "bill_patient"
+  ]
+ },
+ "ep-05290": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 395.51,
+  "collected_patient": 155.55,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 551.06,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05292": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 284.43,
+  "actions": [
+   "submit_clean",
+   "submit_clean",
+   "write_off"
+  ]
+ },
+ "ep-05296": {
+  "success": true,
+  "score": 0.9,
+  "mistakes": 0,
+  "touches": 3,
+  "collected_payer": 709.25,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "paid_with_secondary",
+  "allowed": 709.25,
+  "actions": [
+   "correct_and_resubmit",
+   "appeal_with_necessity",
+   "bill_secondary"
+  ]
+ },
+ "ep-05002": {
+  "success": true,
+  "score": 0.85,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 611.45,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 611.45,
+  "actions": [
+   "request_retro_auth",
+   "submit_with_records",
+   "appeal_with_necessity",
+   "bill_secondary"
+  ]
+ },
+ "ep-05021": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "written_off",
+  "allowed": 611.58,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "appeal_with_necessity",
+   "write_off"
+  ]
+ },
+ "ep-05025": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "written_off",
+  "allowed": 858.92,
+  "actions": [
+   "request_retro_auth",
+   "correct_and_resubmit",
+   "appeal_with_necessity",
+   "write_off"
+  ]
+ },
+ "ep-05028": {
+  "success": true,
+  "score": 0.85,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 700.86,
+  "collected_patient": 233.36,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 934.22,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "provide_requested_info",
+   "bill_patient"
+  ]
+ },
+ "ep-05045": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "written_off",
+  "allowed": 773.19,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "appeal_with_necessity",
+   "write_off"
+  ]
+ },
+ "ep-05051": {
+  "success": true,
+  "score": 0.85,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 571.16,
+  "collected_patient": 143.63,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 714.79,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05054": {
+  "success": true,
+  "score": 0.85,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 280.99,
+  "collected_patient": 277.7,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 558.69,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05055": {
+  "success": true,
+  "score": 0.85,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 512.22,
+  "collected_patient": 163.19,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 675.41,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_patient"
+  ]
+ },
+ "ep-05056": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 558.13,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "appeal_with_necessity",
+   "write_off"
+  ]
+ },
+ "ep-05060": {
+  "success": true,
+  "score": 0.85,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 104.17,
+  "collected_patient": 182.17,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 286.34,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "request_peer_to_peer",
+   "bill_patient"
+  ]
+ },
+ "ep-05061": {
+  "success": true,
+  "score": 0.85,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 318.69,
+  "collected_patient": 88.6,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 407.29,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "request_peer_to_peer",
+   "bill_patient"
+  ]
+ },
+ "ep-05068": {
+  "success": false,
+  "score": 0.65,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 180.66,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 225.82,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "request_peer_to_peer",
+   "bill_patient"
+  ]
+ },
+ "ep-05069": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "written_off",
+  "allowed": 347.21,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "request_peer_to_peer",
+   "write_off"
+  ]
+ },
+ "ep-05070": {
+  "success": false,
+  "score": 0.019,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 50.25,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 297.4,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "request_peer_to_peer",
+   "bill_patient"
+  ]
+ },
+ "ep-05074": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "written_off",
+  "allowed": 249.27,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "request_peer_to_peer",
+   "write_off"
+  ]
+ },
+ "ep-05077": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "written_off",
+  "allowed": 379.82,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "request_peer_to_peer",
+   "write_off"
+  ]
+ },
+ "ep-05085": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "written_off",
+  "allowed": 279.99,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "request_peer_to_peer",
+   "write_off"
+  ]
+ },
+ "ep-05086": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "written_off",
+  "allowed": 380.03,
+  "actions": [
+   "submit_clean",
+   "appeal_with_necessity",
+   "request_peer_to_peer",
+   "write_off"
+  ]
+ },
+ "ep-05091": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 267.4,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "appeal_with_necessity",
+   "bill_secondary"
+  ]
+ },
+ "ep-05108": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 1,
+  "touches": 4,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 3,
+  "resolution": "written_off",
+  "allowed": 343.06,
+  "actions": [
+   "submit_clean",
+   "submit_clean",
+   "correct_and_resubmit",
+   "write_off"
+  ]
+ },
+ "ep-05119": {
+  "success": true,
+  "score": 0.85,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 739.35,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "paid_with_secondary",
+  "allowed": 739.35,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "provide_requested_info",
+   "bill_secondary"
+  ]
+ },
+ "ep-05158": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 2,
+  "resolution": "written_off",
+  "allowed": 490.19,
+  "actions": [
+   "submit_clean",
+   "correct_and_resubmit",
+   "appeal_with_necessity",
+   "write_off"
+  ]
+ },
+ "ep-05165": {
+  "success": true,
+  "score": 0.85,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 563.23,
+  "collected_patient": 268.59,
+  "escalated_touches": 0,
+  "resolution": "patient_billed",
+  "allowed": 831.82,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "provide_requested_info",
+   "bill_patient"
+  ]
+ },
+ "ep-05205": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "written_off",
+  "allowed": 782.74,
+  "actions": [
+   "request_retro_auth",
+   "submit_clean",
+   "appeal_with_necessity",
+   "write_off"
+  ]
+ },
+ "ep-05291": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 4,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 400.03,
+  "actions": [
+   "submit_clean",
+   "provide_requested_info",
+   "submit_with_records",
+   "write_off"
+  ]
+ },
+ "ep-05024": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 5,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 0,
+  "resolution": "written_off",
+  "allowed": 917.4,
+  "actions": [
+   "request_retro_auth",
+   "request_retro_auth",
+   "submit_clean",
+   "appeal_with_necessity",
+   "write_off"
+  ]
+ },
+ "ep-05081": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 5,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 2,
+  "resolution": "written_off",
+  "allowed": 405.15,
+  "actions": [
+   "submit_clean",
+   "correct_and_resubmit",
+   "request_peer_to_peer",
+   "appeal_with_necessity",
+   "write_off"
+  ]
+ },
+ "ep-05169": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 5,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 738.11,
+  "actions": [
+   "correct_and_resubmit",
+   "correct_and_resubmit",
+   "correct_and_resubmit",
+   "correct_and_resubmit",
+   "write_off"
+  ]
+ },
+ "ep-05172": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 5,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 1,
+  "resolution": "written_off",
+  "allowed": 878.33,
+  "actions": [
+   "correct_and_resubmit",
+   "provide_requested_info",
+   "correct_and_resubmit",
+   "provide_requested_info",
+   "write_off"
+  ]
+ },
+ "ep-05277": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 1,
+  "touches": 6,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 2,
+  "resolution": "written_off",
+  "allowed": 349.77,
+  "actions": [
+   "submit_clean",
+   "provide_requested_info",
+   "provide_requested_info",
+   "submit_clean",
+   "submit_with_records",
+   "write_off"
+  ]
+ },
+ "ep-05113": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 8,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 4,
+  "resolution": "written_off_at_cap",
+  "allowed": 557.71,
+  "actions": [
+   "submit_clean",
+   "provide_requested_info",
+   "provide_requested_info",
+   "provide_requested_info",
+   "provide_requested_info",
+   "provide_requested_info",
+   "provide_requested_info",
+   "write_off"
+  ]
+ },
+ "ep-05124": {
+  "success": false,
+  "score": 0.0,
+  "mistakes": 0,
+  "touches": 8,
+  "collected_payer": 0.0,
+  "collected_patient": 0.0,
+  "escalated_touches": 3,
+  "resolution": "written_off_at_cap",
+  "allowed": 129.07,
+  "actions": [
+   "correct_and_resubmit",
+   "submit_clean",
+   "provide_requested_info",
+   "provide_requested_info",
+   "provide_requested_info",
+   "provide_requested_info",
+   "provide_requested_info",
+   "write_off"
+  ]
+ }
+}

@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\":\"Auth is not required for this CPT, diagnosis pairing is valid, COB order is correct, eligibility is active, and no payer response is pending. The claim is clean and ready for first submission. Submitting as-is progresses collection with a single touch.\",\"action\":\"submit_clean\"}", "usage": {"prompt_tokens": 1343, "completion_tokens": 99}}

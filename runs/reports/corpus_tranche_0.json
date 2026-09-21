@@ -1,0 +1,58 @@
+{
+  "milestone": "W2",
+  "tranche": 0,
+  "n_episodes": 1000,
+  "n_states": 2330,
+  "tranche_content_sha256": "787bb03db65d49ed2c76363e8ea80594f8df143fd170c4bfcd1b6a3c6680f0fb",
+  "double_generation_equal": true,
+  "llm_calls": 2330,
+  "llm_model": "/models/Qwen3.6-27B-AWQ-INT4",
+  "audits": {
+    "shape": {
+      "passed": true,
+      "episodes": 1000,
+      "states": 2330,
+      "mean_states_per_episode": 2.33,
+      "max_states": 7
+    },
+    "families": {
+      "passed": true,
+      "retro_auth": {
+        "target": 80,
+        "actual": 80
+      },
+      "p2p": {
+        "target": 60,
+        "actual": 60
+      },
+      "cob": {
+        "target": 60,
+        "actual": 60
+      },
+      "medicaid_enrollment": {
+        "target": 50,
+        "actual": 50
+      },
+      "timely_filing": {
+        "target": 50,
+        "actual": 50
+      }
+    },
+    "p1_structure": {
+      "passed": true,
+      "co197_family_states": 99,
+      "majority_share_appeal_or_writeoff": 0.747,
+      "meridian_retro_auth_states": 18,
+      "action_counts": {
+        "write_off": 32,
+        "bill_patient": 2,
+        "appeal_with_necessity": 42,
+        "submit_clean": 23
+      }
+    },
+    "poisoned_column": {
+      "passed": true,
+      "column": "days_to_payment"
+    }
+  }
+}

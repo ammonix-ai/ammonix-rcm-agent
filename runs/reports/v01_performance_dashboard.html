@@ -1,0 +1,89 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Cardessa Ammonix v0.1 — Performance</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:60rem;margin:2rem auto;padding:0 1rem;color:#1a1a1a}
+h1{font-size:1.5rem}h2{font-size:1.15rem;margin-top:2rem;border-bottom:1px solid #ddd;padding-bottom:.3rem}
+.bar-row{display:grid;grid-template-columns:14rem 1fr 1fr;gap:.6rem;align-items:center;margin:.45rem 0;font-size:.9rem}
+.bar-head{display:grid;grid-template-columns:14rem 1fr 1fr;gap:.6rem;font-weight:600;font-size:.85rem;color:#555;margin-bottom:.4rem}
+.track{background:#eee;border-radius:.3rem;height:1.35rem;position:relative}
+.fill{height:100%;border-radius:.3rem;display:flex;align-items:center;padding-left:.4rem;color:#fff;font-size:.78rem;white-space:nowrap}
+.oof{background:#1565c0}.quar{background:#2e7d32}.small{background:#9e9e9e}
+.chance{position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:#c62828;opacity:.6}
+.note{color:#666;font-size:.85rem}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin-top:.6rem}
+td,th{border:1px solid #ccc;padding:.35rem .6rem;text-align:left}
+.pass{color:#2e7d32;font-weight:700}.fail{color:#c62828;font-weight:700}
+.kpi{display:inline-block;border:1px solid #ccc;border-radius:.5rem;padding:.6rem 1rem;margin:.3rem .4rem .3rem 0;text-align:center}
+.kpi b{display:block;font-size:1.4rem}
+</style></head><body>
+<h1>Cardessa Ammonix v0.1 — the performance picture</h1>
+<p class="note">All numbers reproduce from the committed reports: training = out-of-fold on the working set
+(<code>runs/reports/swarm_round1.json</code>); sealed = quarantine A, evaluated exactly once
+(<code>runs/reports/test_report.json</code>). The red line in the bars is 0.5 = coin flip.</p>
+
+<span class="kpi"><b>0.749</b>mean OOF AUROC<br>(training folds)</span>
+<span class="kpi"><b>0.0495</b>calibration ECE<br>(sealed, bar ≤ 0.05)</span>
+<span class="kpi"><b>96.6%</b>agent pass rate<br>(dev slice)</span>
+<span class="kpi"><b>0 / 92</b>silent errors on<br>never-seen payers</span>
+<span class="kpi"><b>6 / 8</b>traps passed<br>(sealed)</span>
+
+<h2>Can it rank success? — AUROC per action</h2>
+<div class="bar-head"><span></span><span>Training (out-of-fold)</span><span>Sealed quarantine set</span></div>
+<div class="bar-row"><span>request_peer_to_peer</span>
+ <div class="track"><div class="chance"></div><div class="fill oof" style="width:90.2%">0.902</div></div>
+ <div class="track"><div class="chance"></div><div class="fill small" style="width:30%">n too small</div></div></div>
+<div class="bar-row"><span>submit_clean</span>
+ <div class="track"><div class="chance"></div><div class="fill oof" style="width:83.4%">0.834</div></div>
+ <div class="track"><div class="chance"></div><div class="fill quar" style="width:80.1%">0.801&nbsp;(n=135)</div></div></div>
+<div class="bar-row"><span>correct_and_resubmit</span>
+ <div class="track"><div class="chance"></div><div class="fill oof" style="width:83.2%">0.832</div></div>
+ <div class="track"><div class="chance"></div><div class="fill small" style="width:30%">n=4: not readable</div></div></div>
+<div class="bar-row"><span>submit_with_records</span>
+ <div class="track"><div class="chance"></div><div class="fill oof" style="width:82.6%">0.826</div></div>
+ <div class="track"><div class="chance"></div><div class="fill quar" style="width:81.0%">0.810&nbsp;(n=40)</div></div></div>
+<div class="bar-row"><span>appeal_with_necessity</span>
+ <div class="track"><div class="chance"></div><div class="fill oof" style="width:69.5%">0.695</div></div>
+ <div class="track"><div class="chance"></div><div class="fill quar" style="width:69.1%">0.691&nbsp;(n=26)</div></div></div>
+<div class="bar-row"><span>bill_patient</span>
+ <div class="track"><div class="chance"></div><div class="fill oof" style="width:60.9%">0.609</div></div>
+ <div class="track"><div class="chance"></div><div class="fill quar" style="width:57.6%">0.576&nbsp;(n=82)</div></div></div>
+<div class="bar-row"><span>request_retro_auth</span>
+ <div class="track"><div class="chance"></div><div class="fill oof" style="width:54.8%">0.548</div></div>
+ <div class="track"><div class="chance"></div><div class="fill small" style="width:30%">n=2: not readable</div></div></div>
+<p class="note">Read: training vs sealed within a few points everywhere measurable — the models generalise;
+nothing was memorised. The weak spots are honest: <b>bill_patient</b> (patient behaviour is inherently noisy)
+and <b>request_retro_auth</b> (only 113 training examples — the root cause of the P1 failure below).
+write_off / bill_secondary have constant priors (no classifier); provide_requested_info was dropped below the 100-example floor and always escalates.</p>
+
+<h2>Do the probabilities mean anything? — calibration</h2>
+<p>When the system says 70%, it happens ~70% of the time. Expected calibration error:
+<b>0.035</b> on training folds (cross-fitted), <b>0.0495 on the sealed set</b> — under the 0.05 bar, barely.
+This is the number that makes the UI's confidence displays trustworthy.</p>
+
+<h2>The agent loop</h2>
+<table>
+<tr><th></th><th>Dev slice (500 states)</th><th>Sealed quarantine (354 states)</th></tr>
+<tr><td>Executed cleanly</td><td>96.6%</td><td>248 (rest escalated by policy)</td></tr>
+<tr><td>Mean LLM attempts per case</td><td>1.04</td><td>1.006</td></tr>
+<tr><td>Forms with invented values</td><td>0 of 257</td><td>0 of 178</td></tr>
+</table>
+
+<h2>The eight sealed-set traps</h2>
+<table>
+<tr><th>Trap</th><th>Question it asks</th><th>Result</th></tr>
+<tr><td>P1 success-not-imitation</td><td>Does it pick the payer-conditional best rework action?</td>
+<td class="fail">FAIL — 35.7% vs 85% bar (beats imitation's 21.4%)</td></tr>
+<tr><td>P2 no-leakage</td><td>Did the poisoned column stay out of the features?</td><td class="pass">PASS</td></tr>
+<tr><td>P3 determinism</td><td>Does everything regenerate hash-identically?</td><td class="pass">PASS</td></tr>
+<tr><td>P4 calibration</td><td>ECE ≤ 0.05 on sealed data?</td><td class="pass">PASS (0.0495)</td></tr>
+<tr><td>P5 OOD honesty</td><td>Does it escalate on payers it never saw?</td><td class="pass">PASS (92/92, zero silent errors)</td></tr>
+<tr><td>P6 honest near-ties</td><td>Are genuine ties flagged ambiguous?</td>
+<td class="fail">UNMEASURABLE — the near-tie family was never planted in the world</td></tr>
+<tr><td>P7 coverage discipline</td><td>Out-of-scope actions never executed?</td><td class="pass">PASS</td></tr>
+<tr><td>P8 form fidelity</td><td>Zero hallucinated form fields?</td><td class="pass">PASS (178 artifacts)</td></tr>
+</table>
+<p class="note">The P1 number is the system's real capability limit and the headline item for v0.2:
+the recommendation maximises episode success, and under that objective "bill the patient after one denial"
+often genuinely wins — an objective-design question, not a bug. Signed off as v0.1 with these on record
+(runs/APPROVALS.md); reserve B held for the v0.2 draw.</p>
+</body></html>

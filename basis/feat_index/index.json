@@ -1,0 +1,8 @@
+{
+ "kind": "feature_space_neighbour_index",
+ "n": 11427,
+ "d": 83,
+ "content_sha256": "0afcb16c2f9a540cc51e080991b3e00a5a0564873b000f7ff8f3e8b16d8fe148",
+ "matrix_dtype": "float32",
+ "standardized": true
+}

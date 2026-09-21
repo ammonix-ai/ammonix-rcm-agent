@@ -1,0 +1,1 @@
+{"content": "{\n  \"episode_id\": \"ep-05111\",\n  \"cpt\": \"93247\",\n  \"dx_codes\": [\n    \"I48.0\",\n    \"G45.9\"\n  ],\n  \"correction\": \"cob_order\",\n  \"addresses_carc\": \"CO-22\"\n}", "usage": {"prompt_tokens": 441, "completion_tokens": 83}}

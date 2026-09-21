@@ -1,0 +1,3 @@
+This notice confirms that Meridian Health has denied the claim for Cardiac Event Monitoring (CPT 93271). The denial is based on Reason Code CO-18, indicating that this submission is an exact duplicate of a previously processed claim. Duplicate billing is not covered under the member’s benefit plan, and no payment will be issued for this service.
+
+If you disagree with this determination, you have the right to file an appeal. Please submit a written request for review, including any supporting clinical documentation that demonstrates the service was distinct from the prior claim, within the timeframe specified in your provider agreement. Failure to submit an appeal within the designated period may result in the loss of appeal rights.

@@ -1,0 +1,10 @@
+[
+  {
+    "path": "data/toy/states.parquet",
+    "sha256": "ed73076492d6b9e28f561825bddc20cd30e446491e4a2463a132a4aaeeb491d3"
+  },
+  {
+    "path": "data/toy/episodes.parquet",
+    "sha256": "bce6944ca30271ccacb031282d1294d20e0c16b813353e74ae066cdc572f7bf1"
+  }
+]

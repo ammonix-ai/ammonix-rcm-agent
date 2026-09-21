@@ -1,0 +1,1089 @@
+{
+  "tokenizer_id": "cardessa_qpsi",
+  "version": "round3",
+  "kind": "composite",
+  "features": [
+    {
+      "name": "retro_window_days",
+      "dtype": "float",
+      "unit": "days",
+      "description": "Payer's published retro-authorization window",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "constant",
+      "history": null
+    },
+    {
+      "name": "timely_filing_days",
+      "dtype": "float",
+      "unit": "days",
+      "description": "Payer's published timely-filing limit",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "constant",
+      "history": null
+    },
+    {
+      "name": "days_since_service",
+      "dtype": "float",
+      "unit": "days",
+      "description": "Elapsed time from date of service to this touch",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "constant",
+      "history": null
+    },
+    {
+      "name": "days_to_filing_deadline",
+      "dtype": "float",
+      "unit": "days",
+      "description": "Time left before the payer's filing deadline",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "constant",
+      "history": null
+    },
+    {
+      "name": "balance",
+      "dtype": "float",
+      "unit": "USD",
+      "description": "Outstanding billed balance on the claim",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "constant",
+      "history": null
+    },
+    {
+      "name": "allowed_amount",
+      "dtype": "float",
+      "unit": "USD",
+      "description": "Payer's allowed amount if adjudicated, else -1",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "constant",
+      "history": null
+    },
+    {
+      "name": "deductible_remaining",
+      "dtype": "float",
+      "unit": "USD",
+      "description": "Patient deductible remaining, -1 if unknown",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "constant",
+      "history": null
+    },
+    {
+      "name": "coinsurance_pct",
+      "dtype": "float",
+      "unit": "fraction",
+      "description": "Patient coinsurance share under the plan",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "constant",
+      "history": null
+    },
+    {
+      "name": "touches_so_far",
+      "dtype": "float",
+      "unit": "count",
+      "description": "How many touches this claim has already taken",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "constant",
+      "history": null
+    },
+    {
+      "name": "clinic_doc_quality",
+      "dtype": "float",
+      "unit": "score 0-1",
+      "description": "Ordering clinic's documentation-quality trait",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "constant",
+      "history": null
+    },
+    {
+      "name": "auth_required",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Payer publishes prior authorization as required for this CPT",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "p2p_available",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Payer publishes a peer-to-peer review pathway",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "pairing_valid",
+      "dtype": "bool",
+      "unit": null,
+      "description": "CPT x ICD pairing is valid per the payer's public criteria",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "aob_on_file",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Assignment of benefits is on file for the patient",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "cob_position_ok",
+      "dtype": "bool",
+      "unit": null,
+      "description": "This payer is being billed in correct COB position",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "has_secondary",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Patient carries secondary coverage",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "cpt=93226",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Study CPT code being billed: one-hot for 93226",
+      "categories": [
+        "93226",
+        "93229",
+        "93247",
+        "93271"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "cpt=93229",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Study CPT code being billed: one-hot for 93229",
+      "categories": [
+        "93226",
+        "93229",
+        "93247",
+        "93271"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "cpt=93247",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Study CPT code being billed: one-hot for 93247",
+      "categories": [
+        "93226",
+        "93229",
+        "93247",
+        "93271"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "cpt=93271",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Study CPT code being billed: one-hot for 93271",
+      "categories": [
+        "93226",
+        "93229",
+        "93247",
+        "93271"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "carc=CO-16",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Current CARC denial code on the claim, 'none' before any denial: one-hot for CO-16",
+      "categories": [
+        "CO-16",
+        "CO-197",
+        "CO-22",
+        "CO-29",
+        "CO-50",
+        "CO-97",
+        "PR-204",
+        "none"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "carc=CO-18",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Current CARC denial code one-hot: CO-18",
+      "categories": [
+        "CO-16",
+        "CO-197",
+        "CO-22",
+        "CO-29",
+        "CO-50",
+        "CO-97",
+        "PR-204",
+        "none"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "carc=CO-197",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Current CARC denial code on the claim, 'none' before any denial: one-hot for CO-197",
+      "categories": [
+        "CO-16",
+        "CO-197",
+        "CO-22",
+        "CO-29",
+        "CO-50",
+        "CO-97",
+        "PR-204",
+        "none"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "carc=CO-22",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Current CARC denial code on the claim, 'none' before any denial: one-hot for CO-22",
+      "categories": [
+        "CO-16",
+        "CO-197",
+        "CO-22",
+        "CO-29",
+        "CO-50",
+        "CO-97",
+        "PR-204",
+        "none"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "carc=CO-29",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Current CARC denial code on the claim, 'none' before any denial: one-hot for CO-29",
+      "categories": [
+        "CO-16",
+        "CO-197",
+        "CO-22",
+        "CO-29",
+        "CO-50",
+        "CO-97",
+        "PR-204",
+        "none"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "carc=CO-50",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Current CARC denial code on the claim, 'none' before any denial: one-hot for CO-50",
+      "categories": [
+        "CO-16",
+        "CO-197",
+        "CO-22",
+        "CO-29",
+        "CO-50",
+        "CO-97",
+        "PR-204",
+        "none"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "carc=CO-97",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Current CARC denial code on the claim, 'none' before any denial: one-hot for CO-97",
+      "categories": [
+        "CO-16",
+        "CO-197",
+        "CO-22",
+        "CO-29",
+        "CO-50",
+        "CO-97",
+        "PR-204",
+        "none"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "carc=PR-204",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Current CARC denial code on the claim, 'none' before any denial: one-hot for PR-204",
+      "categories": [
+        "CO-16",
+        "CO-197",
+        "CO-22",
+        "CO-29",
+        "CO-50",
+        "CO-97",
+        "PR-204",
+        "none"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "carc=none",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Current CARC denial code on the claim, 'none' before any denial: one-hot for none",
+      "categories": [
+        "CO-16",
+        "CO-197",
+        "CO-22",
+        "CO-29",
+        "CO-50",
+        "CO-97",
+        "PR-204",
+        "none"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "payer_archetype=medicaid_mco",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Payer's behavioural archetype (public reputation class): one-hot for medicaid_mco",
+      "categories": [
+        "medicaid_mco",
+        "medicare",
+        "medicare_advantage",
+        "national_commercial",
+        "regional_blues",
+        "self_funded_tpa"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "payer_archetype=medicare",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Payer's behavioural archetype (public reputation class): one-hot for medicare",
+      "categories": [
+        "medicaid_mco",
+        "medicare",
+        "medicare_advantage",
+        "national_commercial",
+        "regional_blues",
+        "self_funded_tpa"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "payer_archetype=medicare_advantage",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Payer's behavioural archetype (public reputation class): one-hot for medicare_advantage",
+      "categories": [
+        "medicaid_mco",
+        "medicare",
+        "medicare_advantage",
+        "national_commercial",
+        "regional_blues",
+        "self_funded_tpa"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "payer_archetype=national_commercial",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Payer's behavioural archetype (public reputation class): one-hot for national_commercial",
+      "categories": [
+        "medicaid_mco",
+        "medicare",
+        "medicare_advantage",
+        "national_commercial",
+        "regional_blues",
+        "self_funded_tpa"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "payer_archetype=regional_blues",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Payer's behavioural archetype (public reputation class): one-hot for regional_blues",
+      "categories": [
+        "medicaid_mco",
+        "medicare",
+        "medicare_advantage",
+        "national_commercial",
+        "regional_blues",
+        "self_funded_tpa"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "payer_archetype=self_funded_tpa",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Payer's behavioural archetype (public reputation class): one-hot for self_funded_tpa",
+      "categories": [
+        "medicaid_mco",
+        "medicare",
+        "medicare_advantage",
+        "national_commercial",
+        "regional_blues",
+        "self_funded_tpa"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "auth_status=missing",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Authorization status of the claim at this touch: one-hot for missing",
+      "categories": [
+        "missing",
+        "on_file"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "auth_status=on_file",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Authorization status of the claim at this touch: one-hot for on_file",
+      "categories": [
+        "missing",
+        "on_file"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "eligibility_status=active",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Patient eligibility status with the payer: one-hot for active",
+      "categories": [
+        "active",
+        "lapsed"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "eligibility_status=lapsed",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Patient eligibility status with the payer: one-hot for lapsed",
+      "categories": [
+        "active",
+        "lapsed"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "subscriber_relationship=child",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Patient's relationship to the plan subscriber: one-hot for child",
+      "categories": [
+        "child",
+        "self",
+        "spouse"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "subscriber_relationship=self",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Patient's relationship to the plan subscriber: one-hot for self",
+      "categories": [
+        "child",
+        "self",
+        "spouse"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "subscriber_relationship=spouse",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Patient's relationship to the plan subscriber: one-hot for spouse",
+      "categories": [
+        "child",
+        "self",
+        "spouse"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "persona_id=conservative",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Admin persona working the claim (temperaments are stable): one-hot for conservative",
+      "categories": [
+        "conservative",
+        "diligent",
+        "hasty"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "persona_id=diligent",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Admin persona working the claim (temperaments are stable): one-hot for diligent",
+      "categories": [
+        "conservative",
+        "diligent",
+        "hasty"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "persona_id=hasty",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Admin persona working the claim (temperaments are stable): one-hot for hasty",
+      "categories": [
+        "conservative",
+        "diligent",
+        "hasty"
+      ],
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "n_dx_codes",
+      "dtype": "int",
+      "unit": "count",
+      "description": "Number of diagnosis codes attached to the claim",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "dx_has_I48_0",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Claim carries diagnosis I48.0 from the study dx pool",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "dx_has_I48_91",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Claim carries diagnosis I48.91 from the study dx pool",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "dx_has_I47_1",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Claim carries diagnosis I47.1 from the study dx pool",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "dx_has_I49_5",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Claim carries diagnosis I49.5 from the study dx pool",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "dx_has_I49_9",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Claim carries diagnosis I49.9 from the study dx pool",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "dx_has_R00_2",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Claim carries diagnosis R00.2 from the study dx pool",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "dx_has_R55",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Claim carries diagnosis R55 from the study dx pool",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "dx_has_R42",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Claim carries diagnosis R42 from the study dx pool",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "dx_has_G45_9",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Claim carries diagnosis G45.9 from the study dx pool",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "dx_has_I25_10",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Claim carries diagnosis I25.10 from the study dx pool",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "dx_has_I34_0",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Claim carries diagnosis I34.0 from the study dx pool",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "dx_has_Z86_73",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Claim carries diagnosis Z86.73 from the study dx pool",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "prior_action_count_submit_clean",
+      "dtype": "int",
+      "unit": "count",
+      "description": "How often submit_clean was already tried on this claim",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "count"
+      }
+    },
+    {
+      "name": "prior_action_count_submit_with_records",
+      "dtype": "int",
+      "unit": "count",
+      "description": "How often submit_with_records was already tried on this claim",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "count"
+      }
+    },
+    {
+      "name": "prior_action_count_request_retro_auth",
+      "dtype": "int",
+      "unit": "count",
+      "description": "How often request_retro_auth was already tried on this claim",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "count"
+      }
+    },
+    {
+      "name": "prior_action_count_correct_and_resubmit",
+      "dtype": "int",
+      "unit": "count",
+      "description": "How often correct_and_resubmit was already tried on this claim",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "count"
+      }
+    },
+    {
+      "name": "prior_action_count_appeal_with_necessity",
+      "dtype": "int",
+      "unit": "count",
+      "description": "How often appeal_with_necessity was already tried on this claim",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "count"
+      }
+    },
+    {
+      "name": "prior_action_count_request_peer_to_peer",
+      "dtype": "int",
+      "unit": "count",
+      "description": "How often request_peer_to_peer was already tried on this claim",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "count"
+      }
+    },
+    {
+      "name": "prior_action_count_provide_requested_info",
+      "dtype": "int",
+      "unit": "count",
+      "description": "How often provide_requested_info was already tried on this claim",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "count"
+      }
+    },
+    {
+      "name": "prior_action_count_bill_secondary",
+      "dtype": "int",
+      "unit": "count",
+      "description": "How often bill_secondary was already tried on this claim",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "count"
+      }
+    },
+    {
+      "name": "prior_action_count_bill_patient",
+      "dtype": "int",
+      "unit": "count",
+      "description": "How often bill_patient was already tried on this claim",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "count"
+      }
+    },
+    {
+      "name": "prior_action_count_write_off",
+      "dtype": "int",
+      "unit": "count",
+      "description": "How often write_off was already tried on this claim",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "count"
+      }
+    },
+    {
+      "name": "prior_carc_seen_CO_16",
+      "dtype": "bool",
+      "unit": null,
+      "description": "A CO-16 denial was already seen earlier in this episode",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "max"
+      }
+    },
+    {
+      "name": "prior_carc_seen_CO_18",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Seen this CARC before on this claim (v0.4 CO-18)",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "max"
+      }
+    },
+    {
+      "name": "prior_carc_seen_CO_197",
+      "dtype": "bool",
+      "unit": null,
+      "description": "A CO-197 denial was already seen earlier in this episode",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "max"
+      }
+    },
+    {
+      "name": "prior_carc_seen_CO_22",
+      "dtype": "bool",
+      "unit": null,
+      "description": "A CO-22 denial was already seen earlier in this episode",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "max"
+      }
+    },
+    {
+      "name": "prior_carc_seen_CO_29",
+      "dtype": "bool",
+      "unit": null,
+      "description": "A CO-29 denial was already seen earlier in this episode",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "max"
+      }
+    },
+    {
+      "name": "prior_carc_seen_CO_50",
+      "dtype": "bool",
+      "unit": null,
+      "description": "A CO-50 denial was already seen earlier in this episode",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "max"
+      }
+    },
+    {
+      "name": "prior_carc_seen_CO_97",
+      "dtype": "bool",
+      "unit": null,
+      "description": "A CO-97 denial was already seen earlier in this episode",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "max"
+      }
+    },
+    {
+      "name": "prior_carc_seen_PR_204",
+      "dtype": "bool",
+      "unit": null,
+      "description": "A PR-204 denial was already seen earlier in this episode",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "max"
+      }
+    },
+    {
+      "name": "cumulative_delay_days",
+      "dtype": "int",
+      "unit": "days",
+      "description": "Delay accumulated across all prior touches of this episode",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "custom"
+      }
+    },
+    {
+      "name": "filing_window_burned",
+      "dtype": "float",
+      "unit": "fraction",
+      "description": "Share of the payer's timely-filing window already elapsed",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "retro_window_remaining",
+      "dtype": "float",
+      "unit": "days",
+      "description": "Days left in the payer's retro-auth window (negative = closed)",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "retro_still_possible",
+      "dtype": "bool",
+      "unit": null,
+      "description": "Auth is required and the payer's retro window is still open",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "balance_to_allowed",
+      "dtype": "float",
+      "unit": "ratio",
+      "description": "Billed balance over the payer's allowed amount, -1 if unknown",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "expected_patient_share",
+      "dtype": "float",
+      "unit": "USD",
+      "description": "Deductible remaining plus coinsurance share of the balance",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": null
+    },
+    {
+      "name": "delay_per_touch",
+      "dtype": "float",
+      "unit": "days",
+      "description": "Cumulative delay divided by touches taken so far",
+      "categories": null,
+      "valid_range": null,
+      "missing_policy": "error",
+      "history": {
+        "lookback_states": 99,
+        "aggregation": "custom"
+      }
+    }
+  ],
+  "pin": {
+    "code_sha256": "ea4bb52eee72596d2a94501a76c09735787864ad0d31c0fbd5083db72b493f4e",
+    "seeds": {
+      "master": 20260709
+    },
+    "llm": null,
+    "code_sha256_amended": {
+      "date": "2026-07-22",
+      "previous": "0869c1328576153f999612ef0da4d0c800c232d39d5bf60bfc163607110e8767",
+      "reason": "allowed_amount FeatureSpec description corrected (audit): old text claimed \"if adjudicated, else -1\" but the value is present from touch 0; description-only change, feature values and tokenisation unchanged"
+    }
+  },
+  "n_features": 83
+}

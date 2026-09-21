@@ -1,0 +1,101 @@
+{
+  "milestone": "P7",
+  "n_states": 11427,
+  "trained_actions": [
+    "appeal_with_necessity",
+    "bill_patient",
+    "correct_and_resubmit",
+    "provide_requested_info",
+    "request_peer_to_peer",
+    "request_retro_auth",
+    "submit_clean",
+    "submit_with_records"
+  ],
+  "constant_priors": {
+    "bill_secondary": 0.9955156950672646,
+    "write_off": 0.0
+  },
+  "leak_screen_flagged": {},
+  "ece_per_action": {
+    "appeal_with_necessity": 0.031369547806576935,
+    "bill_patient": 0.009648273054123122,
+    "correct_and_resubmit": 0.10621323923803799,
+    "provide_requested_info": 0.1514222640976767,
+    "request_peer_to_peer": 0.07098324489656356,
+    "request_retro_auth": 0.12236565202068925,
+    "submit_clean": 0.013722137975243333,
+    "submit_with_records": 0.024298402964492295
+  },
+  "ece_overall": 0.023738816017427628,
+  "n_tribes": 58,
+  "n_ambiguous_tribes": 9,
+  "ambiguous_tribes": [
+    {
+      "tribe_id": "appeal_with_necessity::t3",
+      "action_id": "appeal_with_necessity",
+      "top2_margin": 0.01899110373767563,
+      "rival_action_id": "appeal_with_necessity",
+      "n_states": 88
+    },
+    {
+      "tribe_id": "bill_patient::t2",
+      "action_id": "bill_patient",
+      "top2_margin": 0.046667250982629443,
+      "rival_action_id": "submit_with_records",
+      "n_states": 49
+    },
+    {
+      "tribe_id": "bill_patient::t3",
+      "action_id": "bill_patient",
+      "top2_margin": 0.04968718906126671,
+      "rival_action_id": "correct_and_resubmit",
+      "n_states": 25
+    },
+    {
+      "tribe_id": "bill_patient::t5",
+      "action_id": "bill_patient",
+      "top2_margin": 0.039053229706008497,
+      "rival_action_id": "request_retro_auth",
+      "n_states": 16
+    },
+    {
+      "tribe_id": "bill_patient::t7",
+      "action_id": "bill_patient",
+      "top2_margin": 0.015537550368029724,
+      "rival_action_id": "appeal_with_necessity",
+      "n_states": 42
+    },
+    {
+      "tribe_id": "submit_clean::t5",
+      "action_id": "submit_clean",
+      "top2_margin": 0.002979821189839571,
+      "rival_action_id": "request_peer_to_peer",
+      "n_states": 40
+    },
+    {
+      "tribe_id": "submit_clean::t6",
+      "action_id": "submit_clean",
+      "top2_margin": 0.019071978459447445,
+      "rival_action_id": "appeal_with_necessity",
+      "n_states": 36
+    },
+    {
+      "tribe_id": "submit_clean::t22",
+      "action_id": "submit_clean",
+      "top2_margin": 0.04453713577436084,
+      "rival_action_id": "request_retro_auth",
+      "n_states": 33
+    },
+    {
+      "tribe_id": "submit_with_records::t5",
+      "action_id": "submit_with_records",
+      "top2_margin": 0.018051809517623592,
+      "rival_action_id": "request_peer_to_peer",
+      "n_states": 61
+    }
+  ],
+  "states_in_tribes": 5224,
+  "noise_states": 6203,
+  "dataset_fingerprint": "085268960030fa70fbb5ae8a9bceab317e8b1903e4e8c9724c6eefaf90a55df7",
+  "swarm_config_sha256": "af606576611d057090a12c8d544c16409034e0c51a79636a49d576eb514dca8e"
+}

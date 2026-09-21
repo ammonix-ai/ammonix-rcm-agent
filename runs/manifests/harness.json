@@ -1,0 +1,338 @@
+{
+  "harness_id": "cardessa-harness-v1",
+  "llm": {
+    "name": "Qwen3.6-27B-AWQ-INT4",
+    "weights_sha256": "ac76c685b4e1cb50c61dec89b95a42886745fd4065f25d35435788b437f55b9e",
+    "quantisation": "AWQ-INT4",
+    "temperature": 0.0,
+    "constrained_decoding": true
+  },
+  "m1_prompts": {
+    "skill-submit_clean": {
+      "template_id": "m1_submit_clean",
+      "version": "088af28a768d",
+      "text": "You are the billing agent of a simulated claims system. No real patient exists.\nAction to execute: {action_id}\n\nTask: Submit the claim as-is. dx_codes must be exactly the case's diagnosis codes as a JSON array (split the comma-separated list; keep each code verbatim).\n\nCase facts (use ONLY these; never invent a value):\n- episode_id: {episode_id}\n- CPT: {cpt}\n- diagnosis codes (comma-separated): {dx_codes}\n- payer: {payer_id}\n- current denial code: {carc}\n- outstanding balance: {balance}\n- days since service: {days_since_service}\n- days to filing deadline: {days_to_filing_deadline}\n- payer retro-auth window (days): {retro_window_days}\n- auth status: {auth_status}\n\nLatest payer letter (may be empty):\n{correspondence}\n\nClinical indication note:\n{indication}\n\n{feedback}\nAnswer with ONLY the JSON payload.",
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string",
+            "maxLength": 12
+          },
+          "cpt": {
+            "type": "string",
+            "pattern": "^[0-9]{5}$"
+          },
+          "dx_codes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Z][0-9]{2}(\\.[0-9A-Z]{1,4})?$",
+              "maxLength": 8
+            },
+            "maxItems": 8
+          }
+        },
+        "required": [
+          "episode_id",
+          "cpt",
+          "dx_codes"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "skill-submit_with_records": {
+      "template_id": "m1_submit_with_records",
+      "version": "6514d528c9cb",
+      "text": "You are the billing agent of a simulated claims system. No real patient exists.\nAction to execute: {action_id}\n\nTask: Submit the claim with clinical notes attached. dx_codes must be exactly the case's diagnosis codes as a JSON array. attachments must be [\"clinical_notes\"].\n\nCase facts (use ONLY these; never invent a value):\n- episode_id: {episode_id}\n- CPT: {cpt}\n- diagnosis codes (comma-separated): {dx_codes}\n- payer: {payer_id}\n- current denial code: {carc}\n- outstanding balance: {balance}\n- days since service: {days_since_service}\n- days to filing deadline: {days_to_filing_deadline}\n- payer retro-auth window (days): {retro_window_days}\n- auth status: {auth_status}\n\nLatest payer letter (may be empty):\n{correspondence}\n\nClinical indication note:\n{indication}\n\n{feedback}\nAnswer with ONLY the JSON payload.",
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string",
+            "maxLength": 12
+          },
+          "cpt": {
+            "type": "string",
+            "pattern": "^[0-9]{5}$"
+          },
+          "dx_codes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Z][0-9]{2}(\\.[0-9A-Z]{1,4})?$",
+              "maxLength": 8
+            },
+            "maxItems": 8
+          },
+          "attachments": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "clinical_notes"
+              ]
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "episode_id",
+          "cpt",
+          "dx_codes",
+          "attachments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "skill-request_retro_auth": {
+      "template_id": "m1_request_retro_auth",
+      "version": "ddb52112f93b",
+      "text": "You are the billing agent of a simulated claims system. No real patient exists.\nAction to execute: {action_id}\n\nTask: Request retroactive authorization. justification_code: pick \"auth_not_obtained_before_service\" when the study ran without an auth on file; \"urgent_service_no_time_for_auth\" only if the facts say the service was urgent; \"payer_error_auth_on_file\" only if the auth status shows one on file.\n\nCase facts (use ONLY these; never invent a value):\n- episode_id: {episode_id}\n- CPT: {cpt}\n- diagnosis codes (comma-separated): {dx_codes}\n- payer: {payer_id}\n- current denial code: {carc}\n- outstanding balance: {balance}\n- days since service: {days_since_service}\n- days to filing deadline: {days_to_filing_deadline}\n- payer retro-auth window (days): {retro_window_days}\n- auth status: {auth_status}\n\nLatest payer letter (may be empty):\n{correspondence}\n\nClinical indication note:\n{indication}\n\n{feedback}\nAnswer with ONLY the JSON payload.",
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string",
+            "maxLength": 12
+          },
+          "cpt": {
+            "type": "string",
+            "pattern": "^[0-9]{5}$"
+          },
+          "justification_code": {
+            "enum": [
+              "auth_not_obtained_before_service",
+              "urgent_service_no_time_for_auth",
+              "payer_error_auth_on_file"
+            ]
+          }
+        },
+        "required": [
+          "episode_id",
+          "cpt",
+          "justification_code"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "skill-correct_and_resubmit": {
+      "template_id": "m1_correct_and_resubmit",
+      "version": "8ad72d4cefcd",
+      "text": "You are the billing agent of a simulated claims system. No real patient exists.\nAction to execute: {action_id}\n\nTask: Fix the claim and resubmit. dx_codes must be exactly the case's diagnosis codes as a JSON array. correction is \"cob_order\" if the denial concerns coordination of benefits (CO-22), otherwise \"claim_fields\". addresses_carc must be exactly the current denial code shown in the case facts.\n\nCase facts (use ONLY these; never invent a value):\n- episode_id: {episode_id}\n- CPT: {cpt}\n- diagnosis codes (comma-separated): {dx_codes}\n- payer: {payer_id}\n- current denial code: {carc}\n- outstanding balance: {balance}\n- days since service: {days_since_service}\n- days to filing deadline: {days_to_filing_deadline}\n- payer retro-auth window (days): {retro_window_days}\n- auth status: {auth_status}\n\nLatest payer letter (may be empty):\n{correspondence}\n\nClinical indication note:\n{indication}\n\n{feedback}\nAnswer with ONLY the JSON payload.",
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string",
+            "maxLength": 12
+          },
+          "cpt": {
+            "type": "string",
+            "pattern": "^[0-9]{5}$"
+          },
+          "dx_codes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Z][0-9]{2}(\\.[0-9A-Z]{1,4})?$",
+              "maxLength": 8
+            },
+            "maxItems": 8
+          },
+          "correction": {
+            "enum": [
+              "cob_order",
+              "claim_fields"
+            ]
+          },
+          "addresses_carc": {
+            "type": "string",
+            "pattern": "^(CO|PR)-[0-9]{1,3}$",
+            "maxLength": 6
+          }
+        },
+        "required": [
+          "episode_id",
+          "cpt",
+          "dx_codes",
+          "correction",
+          "addresses_carc"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "skill-appeal_with_necessity": {
+      "template_id": "m1_appeal_with_necessity",
+      "version": "dc7a594367c4",
+      "text": "You are the billing agent of a simulated claims system. No real patient exists.\nAction to execute: {action_id}\n\nTask: Appeal the denial on medical necessity. denial_carc must be exactly the current denial code. necessity_paragraph: 2-4 sentences (at least 80 characters) stating the clinical facts from the clinical indication note and the case facts above; it must mention the CPT code or at least one diagnosis code verbatim. The payer's reviewer holds the submitted records and will check every statement against them: a letter with any statement the records do not support is returned unprocessed. Never invent symptoms, dates, documents or findings, and add no general medical claims the indication note does not make.\n\nCase facts (use ONLY these; never invent a value):\n- episode_id: {episode_id}\n- CPT: {cpt}\n- diagnosis codes (comma-separated): {dx_codes}\n- payer: {payer_id}\n- current denial code: {carc}\n- outstanding balance: {balance}\n- days since service: {days_since_service}\n- days to filing deadline: {days_to_filing_deadline}\n- payer retro-auth window (days): {retro_window_days}\n- auth status: {auth_status}\n\nLatest payer letter (may be empty):\n{correspondence}\n\nClinical indication note:\n{indication}\n\n{feedback}\nAnswer with ONLY the JSON payload.",
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string",
+            "maxLength": 12
+          },
+          "cpt": {
+            "type": "string",
+            "pattern": "^[0-9]{5}$"
+          },
+          "denial_carc": {
+            "type": "string",
+            "pattern": "^(CO|PR)-[0-9]{1,3}$",
+            "maxLength": 6
+          },
+          "necessity_paragraph": {
+            "type": "string",
+            "minLength": 80,
+            "maxLength": 1200
+          }
+        },
+        "required": [
+          "episode_id",
+          "cpt",
+          "denial_carc",
+          "necessity_paragraph"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "skill-request_peer_to_peer": {
+      "template_id": "m1_request_peer_to_peer",
+      "version": "3f296b785bb8",
+      "text": "You are the billing agent of a simulated claims system. No real patient exists.\nAction to execute: {action_id}\n\nTask: Request a peer-to-peer review. denial_carc must be exactly the current denial code.\n\nCase facts (use ONLY these; never invent a value):\n- episode_id: {episode_id}\n- CPT: {cpt}\n- diagnosis codes (comma-separated): {dx_codes}\n- payer: {payer_id}\n- current denial code: {carc}\n- outstanding balance: {balance}\n- days since service: {days_since_service}\n- days to filing deadline: {days_to_filing_deadline}\n- payer retro-auth window (days): {retro_window_days}\n- auth status: {auth_status}\n\nLatest payer letter (may be empty):\n{correspondence}\n\nClinical indication note:\n{indication}\n\n{feedback}\nAnswer with ONLY the JSON payload.",
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string",
+            "maxLength": 12
+          },
+          "cpt": {
+            "type": "string",
+            "pattern": "^[0-9]{5}$"
+          },
+          "denial_carc": {
+            "type": "string",
+            "pattern": "^(CO|PR)-[0-9]{1,3}$",
+            "maxLength": 6
+          }
+        },
+        "required": [
+          "episode_id",
+          "cpt",
+          "denial_carc"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "skill-provide_requested_info": {
+      "template_id": "m1_provide_requested_info",
+      "version": "96a409c06140",
+      "text": "You are the billing agent of a simulated claims system. No real patient exists.\nAction to execute: {action_id}\n\nTask: Send the payer the information its letter asked for. requested_item must name what the record can actually provide (the ordering clinician's notes are the only attachable document); if the letter demands something the record does not contain, that cannot be satisfied here.\n\nCase facts (use ONLY these; never invent a value):\n- episode_id: {episode_id}\n- CPT: {cpt}\n- diagnosis codes (comma-separated): {dx_codes}\n- payer: {payer_id}\n- current denial code: {carc}\n- outstanding balance: {balance}\n- days since service: {days_since_service}\n- days to filing deadline: {days_to_filing_deadline}\n- payer retro-auth window (days): {retro_window_days}\n- auth status: {auth_status}\n\nLatest payer letter (may be empty):\n{correspondence}\n\nClinical indication note:\n{indication}\n\n{feedback}\nAnswer with ONLY the JSON payload.",
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string",
+            "maxLength": 12
+          },
+          "cpt": {
+            "type": "string",
+            "pattern": "^[0-9]{5}$"
+          },
+          "requested_item": {
+            "type": "string",
+            "maxLength": 80
+          }
+        },
+        "required": [
+          "episode_id",
+          "cpt",
+          "requested_item"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "skill-bill_secondary": {
+      "template_id": "m1_bill_secondary",
+      "version": "7c82920d17df",
+      "text": "You are the billing agent of a simulated claims system. No real patient exists.\nAction to execute: {action_id}\n\nTask: Bill the patient's secondary coverage for the pending share.\n\nCase facts (use ONLY these; never invent a value):\n- episode_id: {episode_id}\n- CPT: {cpt}\n- diagnosis codes (comma-separated): {dx_codes}\n- payer: {payer_id}\n- current denial code: {carc}\n- outstanding balance: {balance}\n- days since service: {days_since_service}\n- days to filing deadline: {days_to_filing_deadline}\n- payer retro-auth window (days): {retro_window_days}\n- auth status: {auth_status}\n\nLatest payer letter (may be empty):\n{correspondence}\n\nClinical indication note:\n{indication}\n\n{feedback}\nAnswer with ONLY the JSON payload.",
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string",
+            "maxLength": 12
+          },
+          "cpt": {
+            "type": "string",
+            "pattern": "^[0-9]{5}$"
+          }
+        },
+        "required": [
+          "episode_id",
+          "cpt"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "skill-bill_patient": {
+      "template_id": "m1_bill_patient",
+      "version": "f34f40d93121",
+      "text": "You are the billing agent of a simulated claims system. No real patient exists.\nAction to execute: {action_id}\n\nTask: Bill the patient. amount must be the case's outstanding balance, as a number, never more.\n\nCase facts (use ONLY these; never invent a value):\n- episode_id: {episode_id}\n- CPT: {cpt}\n- diagnosis codes (comma-separated): {dx_codes}\n- payer: {payer_id}\n- current denial code: {carc}\n- outstanding balance: {balance}\n- days since service: {days_since_service}\n- days to filing deadline: {days_to_filing_deadline}\n- payer retro-auth window (days): {retro_window_days}\n- auth status: {auth_status}\n\nLatest payer letter (may be empty):\n{correspondence}\n\nClinical indication note:\n{indication}\n\n{feedback}\nAnswer with ONLY the JSON payload.",
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string",
+            "maxLength": 12
+          },
+          "cpt": {
+            "type": "string",
+            "pattern": "^[0-9]{5}$"
+          },
+          "amount": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "episode_id",
+          "cpt",
+          "amount"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "skill-write_off": {
+      "template_id": "m1_write_off",
+      "version": "03f58613aa70",
+      "text": "You are the billing agent of a simulated claims system. No real patient exists.\nAction to execute: {action_id}\n\nTask: Write the remaining balance off and close the claim.\n\nCase facts (use ONLY these; never invent a value):\n- episode_id: {episode_id}\n- CPT: {cpt}\n- diagnosis codes (comma-separated): {dx_codes}\n- payer: {payer_id}\n- current denial code: {carc}\n- outstanding balance: {balance}\n- days since service: {days_since_service}\n- days to filing deadline: {days_to_filing_deadline}\n- payer retro-auth window (days): {retro_window_days}\n- auth status: {auth_status}\n\nLatest payer letter (may be empty):\n{correspondence}\n\nClinical indication note:\n{indication}\n\n{feedback}\nAnswer with ONLY the JSON payload.",
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string",
+            "maxLength": 12
+          },
+          "cpt": {
+            "type": "string",
+            "pattern": "^[0-9]{5}$"
+          }
+        },
+        "required": [
+          "episode_id",
+          "cpt"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "m2_prompt": {
+    "template_id": "m2_feedback",
+    "version": "fe2abaa67d1f",
+    "text": "Your previous payload failed these checks: {failures}. Fix exactly these issues using only the case facts above and answer with the corrected JSON payload.",
+    "output_schema": null
+  },
+  "optimisation_log_uri": "runs/state/harness_rounds.json"
+}

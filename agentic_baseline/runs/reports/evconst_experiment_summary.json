@@ -1,0 +1,230 @@
+{
+ "tranche_99": {
+  "headline_shipped": {
+   "success_rate_v2": 0.5033,
+   "payer_collected_capped": 68787.29,
+   "mean_score": 0.5563,
+   "episodes_with_mistakes": 7,
+   "mean_touches": 2.52
+  },
+  "headline_estimated": {
+   "success_rate_v2": 0.5033,
+   "payer_collected_capped": 68787.29,
+   "mean_score": 0.5563,
+   "episodes_with_mistakes": 7,
+   "mean_touches": 2.52
+  },
+  "headline_delta": {
+   "success_rate_v2": 0.0,
+   "payer_collected_capped": 0.0,
+   "mean_score": 0.0,
+   "episodes_with_mistakes": 0,
+   "mean_touches": 0.0
+  },
+  "episodes_where_any_decision_changed": 0,
+  "flips": [],
+  "env_drift_stored_vs_todays_shipped_episodes": 9,
+  "stored_headline_for_reference": {
+   "success_rate_v2": 0.5033,
+   "payer_collected_capped": 68787.29,
+   "mean_score": 0.556,
+   "episodes_with_mistakes": 7,
+   "mean_touches": 2.527
+  }
+ },
+ "tranche_100": {
+  "headline_shipped": {
+   "success_rate_v2": 0.5267,
+   "payer_collected_capped": 63515.38,
+   "mean_score": 0.5545,
+   "episodes_with_mistakes": 5,
+   "mean_touches": 2.66
+  },
+  "headline_estimated": {
+   "success_rate_v2": 0.5267,
+   "payer_collected_capped": 63515.38,
+   "mean_score": 0.5545,
+   "episodes_with_mistakes": 5,
+   "mean_touches": 2.663
+  },
+  "headline_delta": {
+   "success_rate_v2": 0.0,
+   "payer_collected_capped": 0.0,
+   "mean_score": 0.0,
+   "episodes_with_mistakes": 0,
+   "mean_touches": 0.003
+  },
+  "episodes_where_any_decision_changed": 6,
+  "flips": [
+   {
+    "episode": "ep-05114",
+    "actions": [
+     [
+      "submit_with_records",
+      "bill_secondary"
+     ],
+     [
+      "submit_clean",
+      "bill_secondary"
+     ]
+    ],
+    "resolution": [
+     "paid_with_secondary",
+     "paid_with_secondary"
+    ],
+    "success": [
+     true,
+     true
+    ],
+    "collected": [
+     430.52,
+     430.52
+    ]
+   },
+   {
+    "episode": "ep-05149",
+    "actions": [
+     [
+      "submit_with_records",
+      "bill_patient"
+     ],
+     [
+      "submit_clean",
+      "bill_patient"
+     ]
+    ],
+    "resolution": [
+     "patient_billed",
+     "patient_billed"
+    ],
+    "success": [
+     false,
+     false
+    ],
+    "collected": [
+     121.54,
+     121.54
+    ]
+   },
+   {
+    "episode": "ep-05219",
+    "actions": [
+     [
+      "submit_with_records",
+      "bill_patient"
+     ],
+     [
+      "submit_clean",
+      "bill_patient"
+     ]
+    ],
+    "resolution": [
+     "patient_billed",
+     "patient_billed"
+    ],
+    "success": [
+     false,
+     false
+    ],
+    "collected": [
+     130.36,
+     130.36
+    ]
+   },
+   {
+    "episode": "ep-05010",
+    "actions": [
+     [
+      "submit_with_records",
+      "appeal_with_necessity",
+      "bill_patient"
+     ],
+     [
+      "submit_clean",
+      "submit_with_records",
+      "appeal_with_necessity",
+      "bill_patient"
+     ]
+    ],
+    "resolution": [
+     "patient_billed",
+     "patient_billed"
+    ],
+    "success": [
+     false,
+     false
+    ],
+    "collected": [
+     0.0,
+     803.54
+    ]
+   },
+   {
+    "episode": "ep-05011",
+    "actions": [
+     [
+      "request_retro_auth",
+      "submit_with_records",
+      "bill_patient"
+     ],
+     [
+      "request_retro_auth",
+      "submit_clean",
+      "bill_patient"
+     ]
+    ],
+    "resolution": [
+     "patient_billed",
+     "patient_billed"
+    ],
+    "success": [
+     true,
+     true
+    ],
+    "collected": [
+     727.31,
+     727.31
+    ]
+   },
+   {
+    "episode": "ep-05234",
+    "actions": [
+     [
+      "submit_clean",
+      "submit_clean",
+      "submit_with_records",
+      "submit_with_records",
+      "bill_patient"
+     ],
+     [
+      "submit_clean",
+      "submit_clean",
+      "submit_clean",
+      "submit_with_records",
+      "bill_patient"
+     ]
+    ],
+    "resolution": [
+     "patient_billed",
+     "patient_billed"
+    ],
+    "success": [
+     false,
+     false
+    ],
+    "collected": [
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "env_drift_stored_vs_todays_shipped_episodes": 0,
+  "stored_headline_for_reference": {
+   "success_rate_v2": 0.5267,
+   "payer_collected_capped": 63515.38,
+   "mean_score": 0.5545,
+   "episodes_with_mistakes": 5,
+   "mean_touches": 2.66
+  }
+ }
+}

@@ -1,0 +1,56 @@
+{
+ "analysis": "every arm writes its paperwork through one shared writer; the payer adjudicates it",
+ "tranche": 103,
+ "n_episodes": 300,
+ "writer": "gpt6",
+ "reviewer": "claude-haiku-4-5-20251001",
+ "wall_seconds": 1829.1,
+ "llm": {
+  "writer": {
+   "model_id": "gpt-6-astra",
+   "calls_to_provider": 305,
+   "cache_hits": 445,
+   "prompt_tokens": 286199,
+   "completion_tokens": 34222
+  },
+  "reader_calls": 33,
+  "reader_cache_hits": 33
+ },
+ "policies": {
+  "gpt6_rag_tuned": {
+   "decisions": 734,
+   "retries": 0,
+   "escalations_explicit": 50,
+   "escalations_forced": 0,
+   "decision_errors": 0,
+   "llm": {
+    "model_id": "gpt-6-astra",
+    "calls_to_provider": 734,
+    "cache_hits": 0,
+    "prompt_tokens": 807492,
+    "completion_tokens": 95653
+   }
+  }
+ },
+ "gpt6_rag_tuned": {
+  "episodes": 300,
+  "success_rate_v2": 0.4467,
+  "mean_score": 0.4824,
+  "payer_collected_capped": 57645.58,
+  "patient_collected_total": 18116.15,
+  "mean_touches": 2.447,
+  "episodes_with_mistakes": 30,
+  "touches_written": 651,
+  "touches_handed_off": 83,
+  "paperwork_rejected": 19,
+  "episodes_with_rejection": 16,
+  "balance_rejected": 6452.08,
+  "resolutions": {
+   "patient_billed": 157,
+   "paid_with_secondary": 62,
+   "paid": 29,
+   "written_off": 47,
+   "paid_on_appeal": 5
+  }
+ }
+}

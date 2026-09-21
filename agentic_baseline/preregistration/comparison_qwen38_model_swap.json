@@ -1,0 +1,15 @@
+{
+ "preregistration": "comparison_qwen38_model_swap",
+ "registered": "2026-09-15",
+ "ordering_proof": "this file is committed and pushed to the factory's public GitHub repository (wavemedix/Ammonix_insurance_claims) before any Qwen3.8 decision, writer call or episode result exists anywhere; the pushed commit is the public timestamp",
+ "question": "The paper's Qwen-seat model moves from Qwen3.6-27B-AWQ-INT4 to Qwen3.8-27B-AWQ-INT4. This registration re-runs, on the SAME sealed draws already recorded (no new draws, identical world randomness, identical scoring), every arm whose numbers depend on the Qwen model: (a) the agentic-LLM baseline (plain) on the head-to-head draws it appears in, (b) the agentic-LLM baseline with retrieval on the draws it appears in, and (c) the L-swap plain-Qwen writer arm on the 200 demonstration claims (525 decision points). The shipped-agent arm, the simulated-biller arm, the Sol and Claude arms, the imitation and oracle arms, the Ornith writer arms, the payer reader (pinned Haiku), the world corpus and all engine randomness are untouched and their published numbers do not change.",
+ "model_pin": {
+  "replaces": "Qwen3.6-27B-AWQ-INT4 (local vLLM, temperature 0, seed 0, JSON-schema-constrained decoding, thinking disabled)",
+  "model": "cyankiwi/Qwen3.8-27B-AWQ-INT4",
+  "revision": "6e134bae811fb5adac50ee042ae5f029ac6779aa",
+  "serving": "local vLLM, same flags as the 3.6 pin: temperature 0, seed 0, JSON-schema-constrained decoding, thinking disabled via the chat template, max-model-len 4096, one model on the GPU at a time",
+  "fresh_caches": "the 3.8 arms use fresh, separate cache directories; no 3.6 decision or draft is reused"
+ },
+ "decision_rule": "All re-run numbers are reported as measured, replacing the corresponding Qwen-3.6 cells and derived prose (margins, standard errors, claim-level win counts, retrieval lift) in the paper; nothing is selected, dropped or re-drawn. If the 3.8 baselines beat the shipped agent on any draw, that is reported. Tie bands and scoring are exactly those of the original registrations (comparison_v6_tranche99, comparison_rag_tranche100, comparison_tranches101_102, and the l_swap protocol).",
+ "provenance": "Requested by the release owner on 2026-09-15 so the paper's model references match the Qwen generation served across the public Ammonix products. The change is a model-seat swap only; the experimental design is unchanged from the registrations named above."
+}

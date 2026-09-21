@@ -1,0 +1,14 @@
+[
+ {
+  "path": "basis/feat_index/matrix.npy",
+  "sha256": "07bb14f708a9bd1d1bb1e93a3b6f92db40647674c50053346dec53885193b021"
+ },
+ {
+  "path": "basis/feat_index/meta.json",
+  "sha256": "7231bb8dce75c2fb242275191f8cf444d034adf26ff6490b8b48fa42e8b0d6be"
+ },
+ {
+  "path": "basis/feat_index/index.json",
+  "sha256": "3d5dfd050141fc72bd4cb82753a1b60d09533b9e416fc979ccfb4c99e786cbe0"
+ }
+]

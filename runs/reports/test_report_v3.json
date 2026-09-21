@@ -1,0 +1,105 @@
+{
+  "report_id": "cardessa-final-v3-preregistered",
+  "evaluated_at": "2026-07-14T19:10:49.229389+00:00",
+  "kept_tokenizer_round": 3,
+  "exam_states_hash": "8152122395340224068",
+  "trap_results": {
+    "P1_success_not_imitation": false,
+    "P2_no_leakage": true,
+    "P3_determinism": true,
+    "P4_calibration": true,
+    "P5_ood_honesty": true,
+    "P6_honest_near_ties": false,
+    "P7_coverage_discipline": true,
+    "P8_form_fidelity": true,
+    "NEW_no_self_mistakes": false,
+    "ROLLOUT_collections_vs_personas": true,
+    "ROLLOUT_mistakes_not_worse": true,
+    "ROLLOUT_system_oracle_regret": false,
+    "ROLLOUT_doomed_flagged_100pct": true
+  },
+  "detail": {
+    "P1": {
+      "rate": 0.5483870967741935,
+      "n_moments": 124,
+      "hits": 68
+    },
+    "P4": {
+      "ece": 0.0468319257004398,
+      "n_own_states": 1064
+    },
+    "P5": {
+      "holdout": 12,
+      "silent": 0
+    },
+    "P6": {
+      "flat_states": 95,
+      "flagged": 9,
+      "agreement": 0.09473684210526316
+    },
+    "P7": {
+      "violations": []
+    },
+    "P8": {
+      "checked": 841,
+      "failures": 0
+    },
+    "self_mistakes": [
+      "ep-05016-s0: submit into open retro window",
+      "ep-05018-s0: submit into open retro window",
+      "ep-05044-s0: submit into open retro window",
+      "ep-05049-s0: submit into open retro window",
+      "ep-05051-s0: submit into open retro window",
+      "ep-05055-s0: submit into open retro window",
+      "ep-05066-s0: submit into open retro window",
+      "ep-05067-s0: submit into open retro window",
+      "ep-05079-s1: submit into open retro window",
+      "ep-05084-s0: submit into open retro window"
+    ],
+    "system_oracle_regret": 0.3813888888888889,
+    "doom": {
+      "n_doomed_episodes": 152,
+      "flag_rate": 1.0
+    },
+    "rollout": {
+      "system": {
+        "episodes": 500,
+        "success_rate_v2": 0.45,
+        "mean_score": 0.5046,
+        "payer_collected_total": 142146.94,
+        "patient_collected_total": 24564.0,
+        "mean_touches": 3.444,
+        "episodes_with_mistakes": 32,
+        "resolutions": {
+          "paid": 40,
+          "paid_with_secondary": 95,
+          "paid_on_appeal": 6,
+          "patient_billed": 208,
+          "written_off": 83,
+          "written_off_at_cap": 68
+        }
+      },
+      "personas": {
+        "episodes": 500,
+        "success_rate_v2": 0.396,
+        "mean_score": 0.4314,
+        "payer_collected_total": 78739.44,
+        "patient_collected_total": 30686.09,
+        "mean_touches": 2.32,
+        "episodes_with_mistakes": 84,
+        "resolutions": {
+          "paid": 41,
+          "written_off": 138,
+          "patient_billed": 292,
+          "paid_on_appeal": 5,
+          "paid_with_secondary": 20,
+          "written_off_at_cap": 4
+        }
+      },
+      "dollars": {
+        "system": 166710.94,
+        "personas": 109425.53
+      }
+    }
+  }
+}

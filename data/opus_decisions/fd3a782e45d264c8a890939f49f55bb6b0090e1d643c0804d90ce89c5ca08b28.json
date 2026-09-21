@@ -1,0 +1,1 @@
+{"content": "{\"reasoning\": \"Diagnosis pairing is valid, eligibility is active, AOB on file, and prior auth is not required for this CPT (the missing auth is irrelevant). No payer response is on the table, so the claim just needs its first clean submission. Nothing needs correction.\", \"action\": \"submit_clean\"}", "usage": {"prompt_tokens": 1302, "completion_tokens": 105}}

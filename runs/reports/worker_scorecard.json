@@ -1,0 +1,18 @@
+{
+  "personas": {
+    "hasty": {
+      "mean_calibrated_regret": 0.1726,
+      "n_decisions": 345
+    },
+    "conservative": {
+      "mean_calibrated_regret": 0.2681,
+      "n_decisions": 177
+    },
+    "diligent": {
+      "mean_calibrated_regret": 0.1329,
+      "n_decisions": 329
+    }
+  },
+  "system_oracle_regret": 0.3813888888888889,
+  "note": "doomed-at-intake episodes excluded"
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "round": 1,
+    "hyperparams": {},
+    "mean_oof_auroc": 0.8318315673702649,
+    "previous_auroc": 0.5,
+    "gain": 0.33183156737026487,
+    "kept": true
+  },
+  {
+    "round": 2,
+    "hyperparams": {
+      "max_leaf_nodes": 15,
+      "learning_rate": 0.05,
+      "max_iter": 300,
+      "min_samples_leaf": 25,
+      "l2_regularization": 1.0
+    },
+    "mean_oof_auroc": 0.8355254026653453,
+    "previous_auroc": 0.8318315673702649,
+    "gain": 0.0036938352950803832,
+    "kept": false
+  },
+  {
+    "round": 3,
+    "hyperparams": {
+      "max_depth": 3,
+      "learning_rate": 0.1,
+      "max_iter": 150,
+      "min_samples_leaf": 40
+    },
+    "mean_oof_auroc": 0.8351612176645051,
+    "previous_auroc": 0.8318315673702649,
+    "gain": 0.0033296502942402606,
+    "kept": false
+  },
+  {
+    "round": 4,
+    "hyperparams": {
+      "l2_regularization": 5.0,
+      "min_samples_leaf": 60,
+      "learning_rate": 0.03,
+      "max_iter": 400
+    },
+    "mean_oof_auroc": 0.7797485249308838,
+    "previous_auroc": 0.8318315673702649,
+    "gain": -0.05208304243938111,
+    "kept": false
+  }
+]
