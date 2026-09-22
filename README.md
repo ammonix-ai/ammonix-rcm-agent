@@ -9,6 +9,8 @@ against.
 
 ![The per-claim audit view](paper/figures/ui_replay.jpg)
 
+**Community:** questions and discussion on the [Ammonix Discord](https://discord.gg/gXbBFNttTq). Security issues: contact@ammonix.ai.
+
 ## The Ammonix family
 
 This is one of the companion releases of the Ammonix research program:
