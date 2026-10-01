@@ -121,19 +121,19 @@ function load() {
       <div class="score-cards">
         <div class="score-card ammonix"><p class="who">Ammonix</p>
           <p class="amt">${money(s.system_collected)}</p>
-          <p class="cap">collected${s.resolved ? ` · ${(100 * s.resolved.system).toFixed(1)}% of claims resolved` : ''}</p>
+          <p class="cap">collected${s.resolved ? ` in total over ${fmtInt(s.claims)} claims<br>${(100 * s.resolved.system).toFixed(1)}% of claims resolved` : ''}</p>
           <p class="sub tokline"><span class="mono">0</span> GPT-6 tokens · local writer</p></div>
         <div class="score-vs">vs</div>
         <div class="score-card"><p class="who"${s.llm_lane_note ? ` style="cursor:help" title="${esc(s.llm_lane_note)}"` : ''}>${esc(llmName)} on its own</p>
           ${s.llm_collected != null
             ? `<p class="amt">${money(s.llm_collected)}</p>
-               <p class="cap">collected${s.resolved ? ` · ${(100 * s.resolved.llm).toFixed(1)}% of claims resolved` : ''}</p>
+               <p class="cap">collected${s.resolved ? ` in total over ${fmtInt(s.claims)} claims<br>${(100 * s.resolved.llm).toFixed(1)}% of claims resolved` : ''}</p>
                ${lt ? `<p class="sub tokline"><span class="mono">${fmtInt(llmTotal)}</span> tokens · decides and writes</p>` : ''}`
             : '<p class="sub" style="margin-top:.6rem">computing&hellip;</p>'}</div>
         <div class="score-vs">vs</div>
         <div class="score-card"><p class="who">Simulated billers</p>
           <p class="amt">${money(s.human_collected)}</p>
-          <p class="cap">collected${s.resolved ? ` · ${(100 * s.resolved.human).toFixed(1)}% of claims resolved` : ''}</p></div>
+          <p class="cap">collected${s.resolved ? ` in total over ${fmtInt(s.claims)} claims<br>${(100 * s.resolved.human).toFixed(1)}% of claims resolved` : ''}</p></div>
       </div>
 ${tokenStrip}`;
     all = data.claims;
