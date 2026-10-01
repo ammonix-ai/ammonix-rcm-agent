@@ -1,8 +1,8 @@
 {
   "milestone": "P9-ui-v2",
   "checks": {
-    "six_story_steps": true,
-    "story_all_end_states_reached": true,
+    "public_test_900_claims": true,
+    "public_test_official_totals": true,
     "landing_redirects_to_claims": true,
     "scoreboard_compares_policies": true,
     "claims_populated": true,
@@ -43,48 +43,7 @@
     "universe_spotlight_sticky": true,
     "universe_spotlight_clears": true,
     "universe_view_filter": true,
-    "curve_full_anchor_matches_inbox": true,
-    "curve_covers_sizes": true,
-    "learning_charts_render": true,
-    "learning_shows_flat_references": true,
-    "learning_linked_from_nav": true
+    "learning_not_linked_in_public_test": true
   },
-  "story": [
-    {
-      "step": 1,
-      "expected": "executed",
-      "actual": "executed",
-      "reached": true
-    },
-    {
-      "step": 2,
-      "expected": "recommend:request_retro_auth",
-      "actual": "recommend:request_retro_auth",
-      "reached": true
-    },
-    {
-      "step": 3,
-      "expected": "recommend:not_retro",
-      "actual": "recommend:not_retro",
-      "reached": true
-    },
-    {
-      "step": 4,
-      "expected": "ask",
-      "actual": "ask",
-      "reached": true
-    },
-    {
-      "step": 5,
-      "expected": "escalated",
-      "actual": "escalated",
-      "reached": true
-    },
-    {
-      "step": 6,
-      "expected": "escalated",
-      "actual": "escalated",
-      "reached": true
-    }
-  ]
+  "story": []
 }

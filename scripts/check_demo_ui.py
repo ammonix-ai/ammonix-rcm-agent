@@ -18,6 +18,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PORT = 8765
 BASE = f"http://127.0.0.1:{PORT}"
+# the one public test's money (NUMBERS.json / the paper's tab:tokens)
+PUBLIC_TOTALS = {"system": 216223.58, "llm": 200452.92, "human": 179406.40}
 
 
 def wait_for_server(process, timeout_s: int = 5400) -> None:
@@ -92,18 +94,29 @@ def main() -> int:
             browser = pw.chromium.launch()
             page = browser.new_page()
 
-            # --- the six scripted story cases (API level; the tour UI was
-            # retired in favour of the claims comparison as landing page) --
-            steps = api("/api/story")
-            checks["six_story_steps"] = len(steps) == 6
-            checks["story_all_end_states_reached"] = all(
-                s["reached"] for s in steps
-            )
-            story_detail = [
-                {"step": s["step"], "expected": s["expected"],
-                 "actual": s["actual"], "reached": s["reached"]}
-                for s in steps
-            ]
+            first = api("/api/claims")["scoreboard"]
+            public = first.get("claims") == 900 and "resolved" in first
+            story_detail = []
+            if public:
+                # the one public test: 900 claims, the official money totals
+                checks["public_test_900_claims"] = first["claims"] == 900
+                checks["public_test_official_totals"] = all(
+                    abs(first[f"{lane}_collected"] - want) < 0.005
+                    for lane, want in PUBLIC_TOTALS.items()
+                )
+            else:
+                # --- the six scripted story cases (API level; the tour UI was
+                # retired in favour of the claims comparison as landing page) --
+                steps = api("/api/story")
+                checks["six_story_steps"] = len(steps) == 6
+                checks["story_all_end_states_reached"] = all(
+                    s["reached"] for s in steps
+                )
+                story_detail = [
+                    {"step": s["step"], "expected": s["expected"],
+                     "actual": s["actual"], "reached": s["reached"]}
+                    for s in steps
+                ]
             page.goto(f"{BASE}/")
             page.wait_for_selector("#claims")
             checks["landing_redirects_to_claims"] = True
@@ -402,11 +415,20 @@ def main() -> int:
                 if c["triage"] == "red" and c["escalation_reason"]
             )
             page.goto(f"{BASE}/case.html?id={red_id}")
-            page.wait_for_selector("#recommendation")
-            checks["escalation_shows_reason"] = page.eval_on_selector(
-                "#recommendation",
-                "e => e.textContent.includes('handed to a human')",
-            )
+            if public:
+                # in the public test every case is one of Ammonix's own moves:
+                # a hand-off reads "Ammonix deferred" with the person's move
+                page.wait_for_selector(".panel .reco .pill.red")
+                checks["escalation_shows_reason"] = page.eval_on_selector(
+                    ".panel .reco .pill.red",
+                    "e => e.textContent.includes('Ammonix deferred')",
+                )
+            else:
+                page.wait_for_selector("#recommendation")
+                checks["escalation_shows_reason"] = page.eval_on_selector(
+                    "#recommendation",
+                    "e => e.textContent.includes('handed to a human')",
+                )
 
             # --- ambiguous case: question shown, decided in the live run -
             amber_id = next(
@@ -485,31 +507,39 @@ def main() -> int:
             page.click('#filters .chip[data-show="both"]')
 
             # --- learning page: sample-efficiency curve -------------------
-            curve = api("/api/curve")
-            full_points = [p for p in curve["points"] if p["n"] == 4750]
-            checks["curve_full_anchor_matches_inbox"] = bool(full_points) and all(
-                p.get("anchor_match") for p in full_points
-            )
-            checks["curve_covers_sizes"] = (
-                len({p["n"] for p in curve["points"]}) >= 6
-                and len(curve["points"]) >= 15
-            )
-            page.goto(f"{BASE}/learning.html")
-            page.wait_for_selector("#money svg circle", timeout=20000)
-            checks["learning_charts_render"] = page.eval_on_selector_all(
-                "#money svg circle", "els => els.length") >= 7
-            # two labelled flat reference lines: the simulated billers and the
-            # LLM agent (labelled with its model name, e.g. "Qwen 27B $41k")
-            checks["learning_shows_flat_references"] = page.eval_on_selector(
-                "#money", "el => el.textContent.toLowerCase().includes('billers')"
-            ) and page.eval_on_selector(
-                "#money",
-                r"el => (el.textContent.match(/[A-Za-z]\s?\$\d+k/g) || []).length >= 2",
-            )
-            page.goto(f"{BASE}/inbox.html")
-            checks["learning_linked_from_nav"] = page.eval_on_selector(
-                ".masthead nav", "el => el.textContent.includes('Learning')"
-            )
+            if public:
+                # a study on the earlier demonstration claims: not shown
+                # with the public test, and not linked
+                page.goto(f"{BASE}/inbox.html")
+                checks["learning_not_linked_in_public_test"] = page.eval_on_selector(
+                    ".masthead nav", "el => !el.textContent.includes('Learning')"
+                )
+            else:
+                curve = api("/api/curve")
+                full_points = [p for p in curve["points"] if p["n"] == 4750]
+                checks["curve_full_anchor_matches_inbox"] = bool(full_points) and all(
+                    p.get("anchor_match") for p in full_points
+                )
+                checks["curve_covers_sizes"] = (
+                    len({p["n"] for p in curve["points"]}) >= 6
+                    and len(curve["points"]) >= 15
+                )
+                page.goto(f"{BASE}/learning.html")
+                page.wait_for_selector("#money svg circle", timeout=20000)
+                checks["learning_charts_render"] = page.eval_on_selector_all(
+                    "#money svg circle", "els => els.length") >= 7
+                # two labelled flat reference lines: the simulated billers and the
+                # LLM agent (labelled with its model name, e.g. "Qwen 27B $41k")
+                checks["learning_shows_flat_references"] = page.eval_on_selector(
+                    "#money", "el => el.textContent.toLowerCase().includes('billers')"
+                ) and page.eval_on_selector(
+                    "#money",
+                    r"el => (el.textContent.match(/[A-Za-z]\s?\$\d+k/g) || []).length >= 2",
+                )
+                page.goto(f"{BASE}/inbox.html")
+                checks["learning_linked_from_nav"] = page.eval_on_selector(
+                    ".masthead nav", "el => el.textContent.includes('Learning')"
+                )
 
             browser.close()
     finally:

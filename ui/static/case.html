@@ -2,12 +2,15 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ammonix — Case</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
 <link rel="stylesheet" href="style.css"></head>
 <body>
 <header class="masthead">
   <a class="brand" href="inbox.html"><span class="mark">A</span>
     <span><h1>Ammonix</h1><p class="tagline">Claims desk — demo</p></span></a>
-  <nav><a href="inbox.html">Claims</a><a href="universe.html">Universe</a><a href="learning.html">Learning</a></nav>
+  <nav><a href="inbox.html">Claims</a><a href="universe.html">Universe</a></nav>
 </header>
 <main>
 <div class="case-head">
@@ -243,7 +246,7 @@ fetch('/api/case/' + encodeURIComponent(id)).then(r => r.json()).then(c => {
     }
     if (!headline) { q.hidden = true; } else
     q.innerHTML = `<p>${headline} ${followup}</p>
-      ${c.episode_id && c.episode_id.startsWith('ep-')
+      ${c.on_claim_page
         ? `<a href="claim.html?id=${encodeURIComponent(c.episode_id)}">decide it in the live run &rarr;</a>` : ''}`;
   }
 
@@ -310,7 +313,7 @@ fetch('/api/case/' + encodeURIComponent(id)).then(r => r.json()).then(c => {
            <p>${last.failures.map(esc).join('; ')}</p></details></div>`;
   }
 
-  if (c.episode_id && c.episode_id.startsWith('ep-')) {
+  if (c.on_claim_page) {
     const pl = document.getElementById('play-link');
     pl.hidden = false;
     pl.href = 'claim.html?id=' + encodeURIComponent(c.episode_id);

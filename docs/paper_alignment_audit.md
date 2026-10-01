@@ -26,6 +26,21 @@ re-derived and all pass with zero mismatches:
 Keyless replay, no model server and no API key: the Qwen 3.8 writer lane and head-to-head
 draw 99 reproduce the recorded reports exactly (timings aside).
 
+Extended 2026-10-01 for the paper's next version, whose GPT-6 comparison is now the one
+public test: billers, GPT-6 on its own (gpt6_tuned) and the shipped agent on 900 fresh
+claims in three registered draws (103, 104, 105; registrations
+`comparison_gpt6_tranche103.json` and `comparison_gpt6_tranches104_106.json`). Money is
+insurer + patient, the patient counted up to the contractual share, the insurer up to
+allowed minus that. The earlier tab:tokens (four policies on draw 103, the 4.7x / 3.6x
+token ratios and the per-claim token prose above) moved to an appendix of the paper and
+is no longer a headline; its rows above stay as the record of that audit.
+
+| Paper element (next version) | Artifact source | Result |
+|---|---|---|
+| tab:tokens: resolved 48.8 / 41.3 / 36.7% (per draw 46.3, 48.3, 51.7 / 40.7, 38.7, 44.7 / 36.3, 35.3, 38.3); collected $216,224 / $200,453 / $179,406; insurer only $179,220 / $167,831 / $144,174; GPT-6 tokens 0 / 2,845,149 / none; local tokens 773,492 | `rollout_{gpt6_tuned,ammonix_ornith}_t10{3,4,5}.json`, per-episode `episodes_*_t10{3,4,5}.json`; money by keyless replay with the contractual share | pass |
+| Prose: +7.9% (+$15,771, paired bootstrap 95% interval $5,559 to $26,034, 10,000 resamples, seed 20260709); +20.5% over the billers; +7.4 points resolved against a 3.3-point band at 900 claims | same | pass |
+| The demo's default data (`data/ui_public_test.json`, `scripts/build_public_test.py`) | built by keyless replay of the same caches, gated on every claim's moves and money matching the per-episode reports and on the pooled money | pass |
+
 ## Digit checks — all pass, zero mismatches
 
 | Paper element | Artifact source | Checks |

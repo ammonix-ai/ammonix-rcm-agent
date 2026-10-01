@@ -2,11 +2,14 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ammonix — Knowledge universe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
 <link rel="stylesheet" href="style.css">
 <style>
 .uni-wrap{max-width:84rem;margin:1.2rem auto;padding:0 1.2rem}
 .uni-head{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin:.6rem 0 .9rem}
-.uni-head h2{font-family:var(--serif);font-size:1.5rem;margin:0}
+.uni-head h2{font-family:var(--head);font-size:1.5rem;margin:0}
 .uni-head .glossary>summary{display:inline-block;cursor:pointer;font-size:1rem;
   font-weight:600;color:var(--brand);background:var(--brand-soft);
   border:1px solid var(--brand);border-radius:2rem;padding:.4rem 1.1rem;
@@ -25,7 +28,7 @@ select.chip{appearance:none;background:var(--surface);border:1px solid var(--lin
   border-radius:2rem;padding:.32rem .85rem;font:inherit;font-size:.85rem;
   font-weight:600;color:var(--ink-soft);cursor:pointer}
 select.chip:not([value="all"]){border-color:var(--brand)}
-.uni-stage{position:relative;background:radial-gradient(ellipse at 50% 40%,#FFFFFF 0%,#F6F8FA 100%);
+.uni-stage{position:relative;background:radial-gradient(ellipse at 50% 40%,#FFFFFF 0%,#f5f8fc 100%);
   border:1px solid var(--line);border-radius:.7rem;overflow:hidden}
 #map{display:block;width:100%;height:76vh;min-height:28rem;cursor:grab}
 .uni-loading{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;background:rgba(255,255,255,.72);color:var(--ink-soft);font-size:.95rem;text-align:center;padding:1rem}
@@ -35,7 +38,7 @@ select.chip:not([value="all"]){border-color:var(--brand)}
   gap:.3rem;z-index:4}
 .uni-zoom button{width:2rem;height:2rem;border-radius:.45rem;border:1px solid var(--line);
   background:var(--surface);font-size:1rem;line-height:1;cursor:pointer;color:var(--ink);
-  box-shadow:0 1px 3px rgba(28,43,58,.08)}
+  box-shadow:0 1px 3px rgba(19,28,48,.08)}
 .uni-zoom button:hover{background:var(--brand-soft);border-color:var(--brand);color:var(--brand)}
 .uni-legend{display:flex;gap:1.2rem;flex-wrap:wrap;align-items:center;
   padding:.55rem .9rem;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-soft);
@@ -66,7 +69,7 @@ select.chip:not([value="all"]){border-color:var(--brand)}
 <header class="masthead">
   <a class="brand" href="inbox.html"><span class="mark">A</span>
     <span><h1>Ammonix</h1><p class="tagline">Claims desk — demo</p></span></a>
-  <nav><a href="inbox.html">Claims</a><a href="universe.html" class="active">Universe</a><a href="learning.html">Learning</a></nav>
+  <nav><a href="inbox.html">Claims</a><a href="universe.html" class="active">Universe</a></nav>
 </header>
 <main class="uni-wrap">
 <div class="uni-head">
@@ -74,7 +77,7 @@ select.chip:not([value="all"]){border-color:var(--brand)}
   <details class="glossary"><summary>What am I looking at?</summary>
     <dl>
       <dt>One dot</dt><dd>One past case: a move on a claim, and how it ended. <span id="dot-count"></span></dd>
-      <dt>Train and test</dt><dd>The galaxy is the training cases, the claims the system learned from. The rimmed dots are moves on the 200 test claims it was scored on, which it had never seen. The training cases are never thrown away: they stay, as the memory every new decision consults.</dd>
+      <dt>Train and test</dt><dd>The galaxy is the training cases, the claims the system learned from. The rimmed dots are Ammonix's moves on the 900 test claims it was scored on, which it had never seen. The training cases are never thrown away: they stay, as the memory every new decision consults.</dd>
       <dt>Color</dt><dd>The kind of move. Bright means the claim ended paid, faint means it did not.</dd>
       <dt>Position</dt><dd>Similar cases sit close together.</dd>
       <dt>Labels</dt><dd>A neighborhood's shared move, and how often it worked there. The same move succeeds in one neighborhood and fails in another; that difference is what the system learns.</dd>
@@ -395,7 +398,7 @@ function draw() {
         // a claim's connecting line draws only when that claim is followed:
         // 200 permanent threads read as noise on first open
         if (prev && state.selected) {
-          ctx.strokeStyle = 'rgba(28,43,58,.8)';
+          ctx.strokeStyle = 'rgba(19,28,48,.8)';
           ctx.lineWidth = 1.8;
           ctx.beginPath(); ctx.moveTo(prev.x, prev.y);
           ctx.lineTo(cur.x, cur.y); ctx.stroke();
@@ -406,7 +409,7 @@ function draw() {
     for (const c of U.liveProj) {
       if (c.x < -10 || c.x > W + 10 || c.y < -10 || c.y > H + 10) continue;
       // FILLED marker (matches the point language) with a white rim
-      ctx.fillStyle = FAMILY_COLOR[U.families[c.action]] || '#1C2B3A';
+      ctx.fillStyle = FAMILY_COLOR[U.families[c.action]] || '#131c30';
       ctx.strokeStyle = 'rgba(255,255,255,.95)';
       ctx.lineWidth = 2;
       ctx.beginPath(); ctx.arc(c.x, c.y, zoomr, 0, 7);
@@ -414,12 +417,12 @@ function draw() {
       // when a claim is spotlighted, number its moves so overlapping
       // markers stay distinguishable at any zoom
       if (state.selected) {
-        ctx.font = '700 10px Consolas,monospace';
+        ctx.font = '700 10px "IBM Plex Mono",Consolas,monospace';
         ctx.textAlign = 'left';
         ctx.strokeStyle = 'rgba(255,255,255,.9)';
         ctx.lineWidth = 3;
         ctx.strokeText(String(c.move), c.x + zoomr + 3, c.y + 3.5);
-        ctx.fillStyle = '#1C2B3A';
+        ctx.fillStyle = '#131c30';
         ctx.fillText(String(c.move), c.x + zoomr + 3, c.y + 3.5);
       }
     }
@@ -427,11 +430,11 @@ function draw() {
 
   if (state.epi) {
     const pts = state.epi.idxs.map(j => ({x: proj.sx[j], y: proj.sy[j], j}));
-    ctx.strokeStyle = 'rgba(28,43,58,.8)'; ctx.lineWidth = 1.8;
+    ctx.strokeStyle = 'rgba(19,28,48,.8)'; ctx.lineWidth = 1.8;
     ctx.beginPath();
     pts.forEach((p, k) => k ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y));
     ctx.stroke();
-    ctx.font = '700 10px Consolas,monospace';
+    ctx.font = '700 10px "IBM Plex Mono",Consolas,monospace';
     ctx.textAlign = 'left';
     pts.forEach((p, k) => {
       ctx.fillStyle = FAMILY_COLOR[familyOf(p.j)];
@@ -439,7 +442,7 @@ function draw() {
       ctx.beginPath(); ctx.arc(p.x, p.y, 6, 0, 7); ctx.fill(); ctx.stroke();
       ctx.strokeStyle = 'rgba(255,255,255,.9)'; ctx.lineWidth = 3;
       ctx.strokeText(String(k + 1), p.x + 9, p.y + 3.5);
-      ctx.fillStyle = '#1C2B3A';
+      ctx.fillStyle = '#131c30';
       ctx.fillText(String(k + 1), p.x + 9, p.y + 3.5);
     });
   }
@@ -449,7 +452,7 @@ function draw() {
   // describe is hidden), none while a claim or case is spotlighted
   labelBoxes = [];
   if (state.tribes && state.show !== 'live' && !state.selected && !state.epi) {
-    ctx.font = '600 11px system-ui,sans-serif';
+    ctx.font = '600 11px "Hanken Grotesk",system-ui,sans-serif';
     ctx.textAlign = 'center';
     const taken = [];
     // largest neighborhoods first, and only the largest get labels at all:
@@ -473,16 +476,16 @@ function draw() {
       ctx.globalAlpha = hl && !hovered ? 0.15 : 1;
       ctx.lineWidth = 3.5; ctx.strokeStyle = 'rgba(255,255,255,.9)';
       ctx.strokeText(label, tmp.x, tmp.y - 8);
-      ctx.fillStyle = hovered ? '#1C2B3A' : '#51606F';
+      ctx.fillStyle = hovered ? '#131c30' : '#5f7391';
       ctx.fillText(label, tmp.x, tmp.y - 8);
-      ctx.fillStyle = '#1C2B3A';
+      ctx.fillStyle = '#131c30';
       ctx.beginPath(); ctx.arc(tmp.x, tmp.y, 2.5, 0, 7); ctx.fill();
       ctx.globalAlpha = 1;
     }
   }
 
   if (hover) {
-    ctx.strokeStyle = '#1C2B3A'; ctx.lineWidth = 1.5;
+    ctx.strokeStyle = '#131c30'; ctx.lineWidth = 1.5;
     ctx.beginPath(); ctx.arc(hover.x, hover.y, 8, 0, 7); ctx.stroke();
   }
 }

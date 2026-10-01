@@ -26,10 +26,15 @@ INCLUDE_DIRS = [
     # runs AMMONIX_LLM_LANE=gpt6 and must replay (and re-meter) keylessly
     "data/gpt6_ui_decisions",
     "data/m1_gpt6",
+    # the registered GPT-6-on-its-own decisions of the public test, so the
+    # build (scripts/build_public_test.py) replays keylessly from the bundle
+    "data/gpt6_decisions_gpt6_tuned",
     "data/working",
     "basis/artefacts",
 ]
 INCLUDE_FILES = [
+    # the one public test (900 claims, three lanes), served by default
+    "data/ui_public_test.json",
     "data/universe_embed3d.parquet",
     "data/ui_rollout_kernel.json",
     "data/ui_curve_kernel.json",

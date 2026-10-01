@@ -2,24 +2,27 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ammonix — Episodic memory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
 <link rel="stylesheet" href="style.css">
 <style>
 .lc-wrap{max-width:56rem;margin:1.6rem auto;padding:0 1.2rem}
 .lc-head{margin:0 0 1.2rem}
-.lc-head h2{font-family:var(--serif);font-size:1.6rem;margin:0}
+.lc-head h2{font-family:var(--head);font-size:1.6rem;margin:0}
 .lc-head p{color:var(--ink-soft);font-size:.95rem;margin:.35rem 0 0}
 .lc-story{display:flex;gap:.6rem;align-items:stretch;flex-wrap:wrap;margin:0 0 1.4rem}
 .lc-step{background:var(--surface);border:1px solid var(--line);border-radius:.7rem;
   box-shadow:var(--shadow);padding:.75rem 1.1rem;flex:1;min-width:12rem}
 .lc-step .n{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft);margin:0}
-.lc-step .amt{font-family:var(--serif);font-size:1.45rem;margin:.05rem 0 .1rem}
+.lc-step .amt{font-family:var(--mono);font-weight:700;font-size:1.45rem;margin:.05rem 0 .1rem}
 .lc-step .say{font-size:.82rem;margin:0;color:var(--ink-soft)}
 .lc-step.win{border-color:var(--green);background:var(--green-soft)}
 .lc-step.win .say{color:var(--green);font-weight:600}
 .lc-arrow{align-self:center;color:var(--ink-soft);font-size:1.2rem}
 .chart-box{background:var(--surface);border:1px solid var(--line);border-radius:.7rem;
   box-shadow:var(--shadow);padding:1.1rem 1.4rem 1rem;margin-bottom:1.1rem;position:relative}
-.chart-box h3{font-family:var(--serif);font-size:1.06rem;margin:0 0 .1rem}
+.chart-box h3{font-family:var(--head);font-size:1.06rem;margin:0 0 .1rem}
 .chart-box .sub{color:var(--ink-soft);font-size:.84rem;margin:0 0 .8rem}
 .chart-box svg{width:100%;height:auto;display:block}
 .lc-tip{position:absolute;pointer-events:none;background:var(--ink);color:#fff;
@@ -67,7 +70,7 @@ table.lc-table{border-collapse:collapse;font-size:.82rem;margin-top:.5rem}
 </main>
 <script src="shared.js"></script>
 <script>
-const BRAND = '#14506E', GRAY = '#51606F', AMBER = '#B45309', GREEN = '#2E7D32';
+const BRAND = '#2743b8', GRAY = '#51606F', AMBER = '#B45309', GREEN = '#2E7D32';
 const W = 720, H = 330, M = {l: 58, r: 130, t: 16, b: 34};
 
 function agg(points) {

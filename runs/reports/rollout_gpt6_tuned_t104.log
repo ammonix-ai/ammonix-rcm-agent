@@ -1,0 +1,16 @@
+['gpt6_tuned'] on 300 fresh episodes of tranche 104; writer gpt6
+  [server] qwen up after 80s
+step 1: 300 live claims
+step 2: 269 live claims
+step 3: 99 live claims
+['gpt6_tuned'] on 300 fresh episodes of tranche 104; writer gpt6
+  [server] qwen up after 110s
+step 1: 300 live claims
+step 2: 269 live claims
+step 3: 99 live claims
+step 4: 19 live claims
+step 5: 2 live claims
+step 6: 1 live claims
+step 7: 1 live claims
+[gpt6_tuned] {"episodes": 300, "success_rate_v2": 0.3867, "mean_score": 0.4211, "payer_collected_capped": 56769.52, "patient_collected_total": 21891.57, "mean_touches": 2.307, "episodes_with_mistakes": 23, "touches_written": 565, "touches_handed_off": 126, "paperwork_rejected": 5, "episodes_with_rejection": 5, "balance_rejected": 1412.52, "resolutions": {"patient_billed": 144, "paid": 20, "paid_with_secondary": 56, "written_off": 79, "written_off_at_cap": 1}}
+written: runs\reports\rollout_gpt6_tuned_t104.json

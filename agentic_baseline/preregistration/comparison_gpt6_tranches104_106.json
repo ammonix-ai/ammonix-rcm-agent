@@ -1,0 +1,101 @@
+{
+ "preregistration": "comparison_gpt6_tranches104_106",
+ "registered": "2026-09-29",
+ "ordering_proof": "this file is committed and pushed to the factory's GitHub repository (wavemedix/Ammonix_insurance_claims, private since the two-repo release model) before any tranche-104, -105 or -106 episode, study row, GPT-6 decision, paperwork or payer reading exists anywhere; the pushed commit and GitHub's push record are the timestamp",
+ "question": "The public material (demo, website, video) compares three ways of working the same denied claims: the simulated billers, GPT-6 on its own (the registered gpt6_tuned configuration: GPT-6 decides every touch through the agent loop and writes its own paperwork; tuned prompt P2, no retrieval), and the shipped Ammonix agent (the decision path decides, the fine-tuned Ornith 9B writes the paperwork). This registration (1) replicates that three-way comparison on fresh draws and (2) searches those draws for one illustrative claim on which the three collect three different amounts and Ammonix collects the most.",
+ "background": "On tranche 103 (comparison_gpt6_tranche103), counting money as the demo counts it (insurer plus patient; patient capped at the contractual share, insurer capped at allowed minus that): billers $59,163.46, gpt6_tuned $64,673.59, ammonix with the shipped writer $72,204.11 (keyless replay of the shipped caches, zero mismatches against the stored reports). Every claim ends at one of three amounts: nothing, the insurer's part only, or the full allowed amount. A three-amount claim with Ammonix highest therefore needs one lane at $0, the other at the insurer's part only and Ammonix at the full amount. Tranche 103 has none (0 of 300); its only three-amount claim (ep-05029) has the billers highest.",
+ "world": {
+  "factory_root": "Cardessa_Admin_factory at main (v0.7 payer-adjudicated paperwork rollout as shipped) - READ ONLY for this evaluation",
+  "world_version": "identical to comparison_gpt6_tranche103: v0.4 world; v0.6 runtime (kernel decision field, shipped EV constants); v0.7 paperwork loop (scrubber cap 2, hand-off to the simulated biller) and payer reader as shipped",
+  "text_channel_change": "the world's state texts are written by the pinned local Qwen3.8-27B-AWQ-INT4 (cardessa/textgen.py has pinned 3.8 since Qwen3.6 was retired on 2026-09-16, see comparison_qwen38_full_swap); tranche 103 used Qwen3.6-27B-AWQ-INT4. This is world machinery, identical across the three arms, and it is disclosed with every number from these draws. The runs go through scripts/rollout_paperwork_qwen38.py, whose only effect on these arms is serving the text channel from the 3.8 container (ammonix-m1-38b); the 3.6 container no longer exists.",
+  "master_seed": 20260709,
+  "training_lineage_episodes": 5000,
+  "tranches": [
+   104,
+   105,
+   106
+  ],
+  "start_index": 5000,
+  "n_episodes_per_tranche": 300,
+  "allocation": {
+   "retro_auth": 60,
+   "p2p": 30,
+   "cob": 40,
+   "None": 170
+  },
+  "allocation_provenance": "identical to tranches 98 through 103",
+  "generation_path": "cardessa.expansion.expansion_studies(world_ext, MASTER_SEED, <tranche>, allocation, 5000) after cardessa.livecases.training_world replay; episodes played by the v0.7 paperwork rollout (scripts/rollout_paperwork.py); no sealed or quarantined data touched",
+  "why_these_tranches": "90 (demo/tuning), 92 and 96 to 103 are spent; no arm, run or development step has drawn 104, 105 or 106 (repository searched on 2026-09-29: no report, cache, log or script refers to them)"
+ },
+ "arms": {
+  "personas": "scripted simulated-biller baseline (makes no LLM calls)",
+  "gpt6_tuned": "GPT-6 (gpt-6-astra) on the agent loop with the tuned prompt P2 and no retrieval block; GPT-6 also writes its own paperwork (writer gpt6). Identical to the tranche-103 arm",
+  "ammonix": "the shipped Ammonix v0.6 decision path with the shipped writer (writer ornith_ft = local/Ornith-1.5-9B-rcm-r2, pinned in runs/manifests/writer_pin.json). Identical to the tranche-103 run rollout_ammonix_ornith_t103"
+ },
+ "not_fielded": "gpt6_rag_tuned and ammonix with the GPT-6 writer are not run: the public comparison shows GPT-6 on its own and the shipped Ammonix. The paper's tranche-103 comparison stays as published.",
+ "tuning_disclosure": "no tuning of any kind is run for any arm. Prompt P2 is carried over verbatim from comparison_tranches101_102 as in tranche 103.",
+ "model_pins": {
+  "gpt6": {
+   "model_id": "gpt-6-astra",
+   "endpoint": "https://api.openai.com/v1 (chat completions)",
+   "response_format": "json_schema strict",
+   "max_completion_tokens": 8000,
+   "reasoning_effort": "default",
+   "availability_check": "2026-09-29, before registration: the OpenAI model listing returns gpt-6-astra for the factory key"
+  },
+  "writer_ornith_ft": "runs/manifests/writer_pin.json (weights unchanged on disk since 2026-08-23, before tranche 103)",
+  "payer_reviewer": "claude-haiku-4-5-20251001 (cardessa.payer_reader), pinned; the Anthropic model listing returns it for the factory key (2026-09-29)",
+  "state_texts": "local Qwen3.8-27B-AWQ-INT4 (cyankiwi/Qwen3.8-27B-AWQ-INT4, revision 6e134bae811fb5adac50ee042ae5f029ac6779aa, as registered in comparison_qwen38_full_swap), temperature 0",
+  "max_attempts_per_touch": 2
+ },
+ "cost_accounting": "as tranche 103: GPT-6 tokens per arm (decisions plus writer) from the client counters that survive the caches, also in list-price dollars at $10 / $50 per million prompt / completion tokens; the Qwen text channel and the Haiku payer reviewer are world machinery, reported once per run",
+ "metrics": {
+  "primary": "money collected per arm, insurer plus patient (patient capped at the contractual share, insurer capped at allowed minus that; the demo's count), per tranche and pooled",
+  "secondary": [
+   "success_rate_v2",
+   "payer_collected_capped (the paper's insurer-only count)",
+   "GPT-6 tokens and list-price dollars per arm",
+   "episodes_with_mistakes",
+   "paperwork_rejected and episodes_with_rejection",
+   "touches_written and touches_handed_off",
+   "mean_touches"
+  ]
+ },
+ "noise_model": "binomial 95% CI half-width 0.0564 at p~0.46, n=300: the registered per-draw band of the tranche-99 rule; for pooled draws the same binomial half-width at the pooled n",
+ "decision_rule": {
+  "replication": "the registered tranche-103 rule for this pairing, applied per tranche and to the pooled draws: ammonix wins or ties gpt6_tuned on success_rate_v2 under the band, AND spends fewer GPT-6 tokens (zero by construction). Money: the paired difference ammonix minus gpt6_tuned, with a paired bootstrap 95% interval over claims (10,000 resamples, seed 20260709). All reported as measured; a loss on any of them is a loss and is published as one",
+  "public_numbers": "the public three-way comparison (demo, website, video, and the paper's next version subject to the authors' approval) reports tranche 103 pooled with every tranche run under this registration, with per-tranche numbers alongside; no tranche that was run is left out",
+  "showcase_claim": "a claim qualifies when the three arms' money (primary metric) is pairwise different by at least $0.01 and ammonix's is the highest. Every qualifying claim is listed in the report; the one shown in public material is chosen among them for clarity and is labelled as one real example"
+ },
+ "stopping_rule": "tranches run in the order 104, 105, 106. Every tranche that is started is run to completion (both invocations) and reported. When a tranche completes: if the tranches run so far contain at least one qualifying claim, no further tranche is started; otherwise the next one is, up to 106. The rule reads only the showcase criterion, never the aggregate results. If no tranche has a qualifying claim, public material uses a tranche-103 claim with two amounts.",
+ "procedure": [
+  "1. (this commit) registration pushed before any tranche-104 data exists",
+  "2. mechanics: free endpoint checks only (model listings for gpt-6-astra and claude-haiku-4-5-20251001, both answered 2026-09-29); no smoke spend: the code paths are the tranche-103 ones, and the 3.8 text channel is the one the registered Qwen 3.8 rerun exercised",
+  "3. per tranche T, one invocation per LLM arm so the token counters attribute cleanly: (a) python scripts/rollout_paperwork_qwen38.py --tranche T --arms gpt6_tuned --writer gpt6 --report rollout_gpt6_tuned_tT.json; (b) python scripts/rollout_paperwork_qwen38.py --tranche T --arms personas,ammonix --writer ornith_ft --report rollout_ammonix_ornith_tT.json",
+  "4. one run per arm and tranche; no reruns with fresh model calls, no episode exclusions; an infrastructure crash is resumed from the prompt-hash caches and recorded as an amendment",
+  "5. after each tranche: keyless replay from the caches with the money recount per claim and arm (verified against the stored reports), the showcase check, then the stopping rule"
+ ],
+ "registered_before_any_tranche104_generation": true,
+ "amendments": [
+  {
+   "date": "2026-09-29",
+   "what": "procedure step 3a on tranche 104 (--arms gpt6_tuned --writer gpt6) was stopped by hand at about 16:50 during step 3 of the episode loop, because the laptop running it had to be moved, and was restarted at 18:01 with the identical command. Every completed model call was already in the prompt-hash caches (569 GPT-6 decisions, 558 GPT-6 paperwork calls, 544 state texts, 39 payer readings; every file checked complete before the restart); the restart replays them from the caches, so no completed model output, decision or token count differs from an uninterrupted run. Requests in flight at the stop (at most the 6 concurrent workers) were abandoned before any result was recorded and were made once after the restart; any tokens the provider billed for the abandoned requests are not in the counters. No episode was excluded, no arm was rerun with fresh model calls."
+  },
+  {
+   "date": "2026-09-29",
+   "what": "procedure step 3a on tranche 104 completed at 18:16 (exit 0, report rollout_gpt6_tuned_t104.json). Step 3b (--arms personas,ammonix --writer ornith_ft) started at 18:16 and was stopped by hand at 18:30 during step 2 of the episode loop, because the GPU was needed for another experiment; it was restarted at 20:54 with the identical command, after that experiment had finished and released the GPU. Every completed model call was already in the prompt-hash caches (among them 390 calls of the fine-tuned Ornith writer; every cache file written since this registration was checked complete before the restart); the restart replays them, so no completed model output or decision differs from an uninterrupted run. Requests in flight at the stop were abandoned before any result was recorded and were made once after the restart. No episode was excluded, no arm was rerun with fresh model calls."
+  },
+  {
+   "date": "2026-09-30",
+   "what": "tranche 104 completed on 2026-09-29 at 21:39 with no qualifying claim (reports f35c3864), so the stopping rule calls for tranche 105. It was started on 2026-09-30 at 14:13 rather than straight after 104, because the GPU was used in between by another experiment the owner ran first. The gap changes nothing that is run: the rule reads only the showcase criterion, and no tranche-105 data existed before the start."
+  },
+  {
+   "date": "2026-09-30",
+   "what": "procedure step 3a on tranche 105 (--arms gpt6_tuned --writer gpt6) was killed at 14:42 during step 1 by the time limit of the tool session that had launched the runner (not a crash of the run), and was restarted at 14:43 with the identical command as a standalone process. No GPT-6 decision, GPT-6 paperwork or payer reading had completed yet; the 282 state texts already written (every file checked complete) replay from the cache. No episode was excluded, no arm was rerun with fresh model calls."
+  },
+  {
+   "date": "2026-09-30",
+   "what": "procedure step 3a on tranche 105 stopped itself at 15:19 during step 2: the OpenAI account ran out of credits (HTTP 429 credit_balance_exhausted), 89 decision calls failed after 3 attempts each, and the script refused to continue because a failed call would hand the touch to the simulated biller and contaminate the arm. No result was recorded for the failed calls. Credits were added and the invocation was restarted at 17:59 with the identical command; the 481 completed GPT-6 decisions and 321 completed GPT-6 paperwork calls replay from the prompt-hash caches. No episode was excluded, no arm was rerun with fresh model calls."
+  }
+ ]
+}

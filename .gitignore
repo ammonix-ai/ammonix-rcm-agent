@@ -72,3 +72,5 @@ basis/artefacts.stale_v03_backup/
 !data/m1_gpt6/
 !data/gpt6_ui_decisions/
 !data/m1_qwen38/
+# the one public test, served by the demo by default (scripts/build_public_test.py)
+!data/ui_public_test.json

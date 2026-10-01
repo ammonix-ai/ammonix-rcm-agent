@@ -1,0 +1,28 @@
+['personas', 'ammonix'] on 300 fresh episodes of tranche 104; writer ornith_ft
+step 1: 600 live claims
+  [server] ornith_ft up after 180s
+step 2: 569 live claims
+  [server] qwen up after 70s
+  [server] ornith_ft up after 160s
+['personas', 'ammonix'] on 300 fresh episodes of tranche 104; writer ornith_ft
+  [server] qwen up after 70s
+step 1: 600 live claims
+  [server] ornith_ft up after 160s
+step 2: 569 live claims
+  [server] qwen up after 60s
+  [server] ornith_ft up after 160s
+step 3: 240 live claims
+  [server] qwen up after 50s
+  [server] ornith_ft up after 150s
+step 4: 91 live claims
+  [server] qwen up after 50s
+  [server] ornith_ft up after 160s
+step 5: 15 live claims
+  [server] qwen up after 50s
+  [server] ornith_ft up after 160s
+step 6: 3 live claims
+  [server] qwen up after 50s
+step 7: 3 live claims
+[personas] {"episodes": 300, "success_rate_v2": 0.3533, "mean_score": 0.3838, "payer_collected_capped": 48636.6, "patient_collected_total": 20428.17, "mean_touches": 2.533, "episodes_with_mistakes": 72, "touches_written": 0, "touches_handed_off": 0, "paperwork_rejected": 0, "episodes_with_rejection": 0, "balance_rejected": 0, "resolutions": {"paid": 20, "written_off": 93, "patient_billed": 168, "paid_on_appeal": 3, "paid_with_secondary": 13, "written_off_at_cap": 3}}
+[ammonix] {"episodes": 300, "success_rate_v2": 0.4833, "mean_score": 0.5154, "payer_collected_capped": 61890.86, "patient_collected_total": 26898.39, "mean_touches": 2.547, "episodes_with_mistakes": 27, "touches_written": 511, "touches_handed_off": 253, "paperwork_rejected": 19, "episodes_with_rejection": 19, "balance_rejected": 5994.46, "resolutions": {"paid": 21, "written_off": 17, "patient_billed": 188, "paid_with_secondary": 68, "paid_on_appeal": 6}}
+written: runs\reports\rollout_ammonix_ornith_t104.json

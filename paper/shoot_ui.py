@@ -6,9 +6,11 @@ import asyncio, sys
 from playwright.async_api import async_playwright
 
 SHOTS = {
-    "ui_audit_trail.jpg": "http://127.0.0.1:8001/case.html?id=ep-05095-r0",
-    "ui_replay.jpg":      "http://127.0.0.1:8001/claim.html?id=ep-05103",
-    "ui_universe.jpg":    "http://127.0.0.1:8001/universe.html",
+    # the one public test (AMMONIX_DEMO_SET=public): the guided tour's stop,
+    # the example claim of the paper and video, and the universe
+    "ui_audit_trail.jpg": "http://127.0.0.1:8765/case.html?id=2-05083-r0",
+    "ui_replay.jpg":      "http://127.0.0.1:8765/claim.html?id=3-05067",
+    "ui_universe.jpg":    "http://127.0.0.1:8765/universe.html",
 }
 OUT = str(FIG)
 

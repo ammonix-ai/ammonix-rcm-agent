@@ -2,12 +2,15 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ammonix — Claim story</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
 <link rel="stylesheet" href="style.css"></head>
 <body>
 <header class="masthead">
   <a class="brand" href="inbox.html"><span class="mark">A</span>
     <span><h1>Ammonix</h1><p class="tagline">Claims desk — demo</p></span></a>
-  <nav><a href="inbox.html" class="active">Claims</a><a href="universe.html">Universe</a><a href="learning.html">Learning</a></nav>
+  <nav><a href="inbox.html" class="active">Claims</a><a href="universe.html">Universe</a></nav>
 </header>
 <main>
 <div class="case-head">
@@ -17,12 +20,12 @@
 </div>
 <div class="cols three">
   <section class="panel lane" id="human-lane">
-    <h2>Simulated biller</h2>
+    <h2>Simulated billers</h2>
     <div id="human-outcome"></div>
     <div id="human-steps"></div>
   </section>
   <section class="panel lane" id="llm-lane" hidden>
-    <h2 id="llm-lane-title">LLM agent</h2>
+    <h2 id="llm-lane-title">GPT-6 on its own</h2>
     <div id="llm-outcome"></div>
     <div id="llm-steps"></div>
   </section>
@@ -63,7 +66,7 @@ document.getElementById('cid').textContent = id;
 document.title = 'Ammonix — Claim ' + id;
 
 const GOOD_NOTE = /^(payer paid|patient paid|authorization granted|denial cleared|paid)/;
-const BAD_NOTE = /^(denied|authorization denied|appeal denied|denial upheld|info still missing|written off|patient didn't pay)/;
+const BAD_NOTE = /^(denied|authorization denied|appeal denied|denial upheld|info still missing|written off|patient didn't pay|paperwork rejected)/;
 const noteClass = n => GOOD_NOTE.test(n) ? 'green' : BAD_NOTE.test(n) ? 'red' : 'plain';
 
 function laneStep(st, link, extra) {
@@ -71,8 +74,11 @@ function laneStep(st, link, extra) {
   const name = human
     ? `<span class="pill amber">biller chose:</span> <b style="color:var(--amber)"${actionAttr(st.action)}>${esc(actionLabel(st.action))}</b>`
     : `<b${actionAttr(st.action)}>${esc(actionLabel(st.action))}</b>`;
-  const inner = `<div class="sent">Move ${st.touch + 1} — ${name}</div>
-    <p class="verdict-line"><span class="pill ${noteClass(st.note)}"${carcAttr(st.note)}>${esc(st.note)}</span></p>`;
+  const cap = st.by === 'rule: step cap'
+    ? ' <span class="pill plain" title="claims still open after eight moves are written off, for every lane">step limit</span>' : '';
+  const why = st.rejection ? `<p class="hint" style="margin:.2rem 0">the payer's reason: ${esc(st.rejection)}</p>` : '';
+  const inner = `<div class="sent">Move ${st.touch + 1} — ${name}${cap}</div>
+    <p class="verdict-line"><span class="pill ${noteClass(st.note)}"${carcAttr(st.note)}>${esc(st.note)}</span></p>${why}`;
   return `<div class="exchange">${link
     ? `<a class="steplink" href="${link}">${inner}</a>` : inner}${extra || ''}</div>`;
 }
@@ -98,7 +104,7 @@ function whyThisMove(st) {
   const decide = [
     factLine ? `<p class="hint" style="margin:.3rem 0">${factLine}</p>` : '',
     d && d.forced ? '<p class="hint">forced by a rule, not scored</p>' : '',
-    st.by === 'handed to human' ? '<p class="hint">not confident enough — the biller made this move</p>' : '',
+    st.by === 'handed to human' ? `<p class="hint">${esc(st.handoff_reason || 'not confident enough')}: a person (here a simulated biller) made this move</p>` : '',
     bars ? `<div class="scorebars" style="margin-top:.3rem">${bars}</div>` : '',
   ].join('');
   const write = paperworkBlock(st);
@@ -183,7 +189,7 @@ function llmWhy(st, label) {
   if (!st.reasoning && !st.tokens && !st.paperwork && !st.filed_payload && !st.checks) return '';
   const decide = [
     st.by === 'handed to human'
-      ? `<p class="hint" style="margin:.3rem 0">${esc(label)} escalated; the biller made this move</p>` : '',
+      ? `<p class="hint" style="margin:.3rem 0">${esc(st.handoff_reason === 'paperwork failed its checks' ? 'its paperwork failed the checks' : label + ' escalated')}; a person (here a simulated biller) made this move</p>` : '',
     st.reasoning ? `<p class="hint" style="margin:.3rem 0 .1rem">${esc(label)} wrote:</p>
       <blockquote class="letter">${esc(st.reasoning)}</blockquote>` : '',
     tokenLine(st.tokens, 'deciding'),
@@ -201,7 +207,8 @@ fetch('/api/claim/' + encodeURIComponent(id)).then(r => r.json()).then(c => {
     `<span class="meta-chip payer">${esc(c.payer_name)}</span>
      <span class="meta-chip mono money">${money(c.balance)}</span>
      <span class="meta-chip worker" style="cursor:help"
-       title="${esc(personaNote(c.persona))}">biller: ${esc(c.persona)}</span>`;
+       title="${esc(personaNote(c.persona))}">biller: ${esc(c.persona)}</span>
+     ${c.episode_id === '3-05067' ? '<span class="meta-chip">the claim from our video and paper</span>' : ''}`;
   // the token contrast only renders when the LLM lane actually metered its
   // moves - a lone number with nothing to compare against says nothing
   const metered = c.llm_detail && c.llm_detail.tokens;
@@ -219,7 +226,7 @@ fetch('/api/claim/' + encodeURIComponent(id)).then(r => r.json()).then(c => {
       : '');
   if (c.llm_detail) {
     document.getElementById('llm-lane').hidden = false;
-    document.getElementById('llm-lane-title').textContent = label + ' agent';
+    document.getElementById('llm-lane-title').textContent = label + ' on its own';
     document.getElementById('llm-outcome').innerHTML = outcomeCard(
       c.llm_detail, '', laneTokensLine(c.llm_detail.tokens, {model: label}));
   }

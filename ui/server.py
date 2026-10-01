@@ -115,6 +115,17 @@ DIALOG_KEY = os.getenv("DEMO_DIALOG_KEY", "")
 # the local server's (e.g. OpenRouter: reasoning off + provider pin). JSON.
 DIALOG_EXTRA = json.loads(os.getenv("DEMO_DIALOG_EXTRA", "{}"))
 
+# Which claims the demo shows. "public" (default) is the one public test: 900
+# fresh claims in three registered draws, worked by the simulated billers,
+# GPT-6 on its own and Ammonix, each lane replayed move by move from
+# data/ui_public_test.json (scripts/build_public_test.py, keyless, gated on
+# the stored run reports). "demo200" keeps the earlier 200 demonstration
+# claims with lanes computed at startup.
+DEMO_SET = os.getenv("AMMONIX_DEMO_SET", "public").lower()
+PUBLIC_DRAWS = {1: 103, 2: 104, 3: 105}  # public draw number -> registered draw
+PUBLIC_ALLOCATION = {"retro_auth": 60, "p2p": 30, "cob": 40, None: 170}
+SHOWCASE_CLAIM = "3-05067"  # the example claim of the paper, video and website
+
 
 class _TrainedWriter:
     """The shipped writer: the trained 9B, served on :8002, cached by the
@@ -168,6 +179,9 @@ class _TrainedWriter:
 
 @app.on_event("startup")
 def load() -> None:
+    if DEMO_SET == "public":
+        _load_public()
+        return
     rt = BasisRuntime.load(ROOT)
     harness = HarnessArtefacts.model_validate_json(
         (ROOT / "runs" / "manifests" / "harness.json").read_text(encoding="utf-8")
@@ -326,6 +340,190 @@ def load() -> None:
             STATE["replay_error"] = repr(exc)
 
     threading.Thread(target=compute_all, daemon=True).start()
+
+
+def _claim_world(episode_id: str):
+    """(world, index) of a claim. Public claims are '<draw>-<index>': the same
+    index exists in every draw, each draw is its own world."""
+    if STATE.get("public"):
+        draw, index = episode_id.split("-", 1)
+        return STATE["worlds"][int(draw)], int(index)
+    return STATE["world"], int(episode_id.removeprefix("ep-"))
+
+
+def _load_public() -> None:
+    """Startup for the one public test: lanes and scoreboard come from the
+    built file; Ammonix's decision moments are rebuilt in the background so
+    every one of its moves opens on the case page."""
+    from cardessa.expansion import expansion_studies, extend_world
+    from cardessa.livecases import training_world
+
+    rt = BasisRuntime.load(ROOT)
+    harness = HarnessArtefacts.model_validate_json(
+        (ROOT / "runs" / "manifests" / "harness.json").read_text(encoding="utf-8")
+    )
+    skills = [
+        Skill.model_validate(s)
+        for s in json.loads(
+            (ROOT / "runs" / "manifests" / "skills.json").read_text(encoding="utf-8")
+        )["skills"]
+    ]
+    provider = _TrainedWriter(cache_dir=ROOT / "data" / "m1_ornith_ft")
+    try:
+        text_provider = VllmProvider()
+    except OSError:
+        text_provider = _OfflineTextProvider()
+    import run_harness_eval as _rhe
+
+    _rhe._EVALUATOR = _rhe.make_rule_evaluator()
+    text = CachedTextGenerator(
+        provider=text_provider, cache_dir=ROOT / "data" / "text_cache"
+    )
+    data = json.loads(
+        (ROOT / "data" / "ui_public_test.json").read_text(encoding="utf-8")
+    )
+    world_ext, engine = training_world(ROOT, MASTER_SEED)
+    start = world_ext.studies.height
+    worlds = {
+        draw: extend_world(world_ext, expansion_studies(
+            world_ext, MASTER_SEED, tranche, PUBLIC_ALLOCATION, start))
+        for draw, tranche in PUBLIC_DRAWS.items()
+    }
+    working = pl.read_parquet(
+        ROOT / "data" / "working" / "cardessa_sim" / "states.parquet"
+    )
+    working_index = {
+        r["state_id"]: {
+            "payer_id": r["payer_id"], "carc": r["carc"] or None, "cpt": r["cpt"],
+            "balance": r["balance"], "touch": r["touch_seq"],
+            "days_since_service": r["days_since_service"],
+        }
+        for r in working.select(
+            "state_id", "payer_id", "carc", "cpt", "balance", "touch_seq",
+            "days_since_service",
+        ).to_dicts()
+    }
+    universe = pl.read_parquet(ROOT / "basis" / "universe.parquet")
+    claims = data["claims"]
+    llm_note = ("GPT-6 doing the whole job on its own: it reads each claim, decides "
+                "every move and writes its own paperwork.")
+    STATE.update(
+        public=True, rt=rt, harness=harness, skills=skills, engine=engine,
+        world=worlds[1], worlds=worlds, rows={}, feats={}, traces={},
+        artifacts={}, bundles={}, tribes={t.tribe_id: t for t in rt.tribes},
+        universe=universe, adjudications={}, human_queue={},
+        working_index=working_index, working_columns=working.columns,
+        working_schema=working.schema, textgen=text, episode_of={},
+        provider=provider, claims=claims,
+        llm_model_label="GPT-6", llm_lane_note=llm_note, llm_done=True,
+        scoreboard={**data["scoreboard"], "llm_model_label": "GPT-6",
+                    "llm_lane_note": llm_note, "showcase": SHOWCASE_CLAIM,
+                    "tour_state": _pick_tour_state(claims)},
+        universe_map=build_universe_map(rt, universe, working_index, [], {}),
+    )
+    threading.Thread(
+        target=compute_public_moments, args=(engine, rt, working), daemon=True
+    ).start()
+
+
+def _pick_tour_state(claims: dict) -> str | None:
+    """The guided tour's stop: a first move Ammonix made itself and filed a
+    printed form for, confidently (its chosen move scored at least 70%), on a
+    claim it won outright - the clearest picture of one decision.
+    Deterministic: the largest win over GPT-6, then by id."""
+    best = None
+    for pid, c in claims.items():
+        steps = c["system"]["steps"]
+        if not steps or steps[0].get("by") != "system" or not steps[0].get("paperwork"):
+            continue
+        # a confident decision: the chosen move scored at least 70%
+        score = ((steps[0].get("detail") or {}).get("scores") or {}).get(steps[0]["action"], 0)
+        if score < 0.7:
+            continue
+        if c.get("vs_llm") != "ammonix" or c.get("verdict") != "ammonix":
+            continue
+        key = (c.get("delta_llm", 0), pid)
+        if best is None or key > best[0]:
+            best = (key, f"{pid}-r{steps[0]['touch']}")
+    return best[1] if best else None
+
+
+def compute_public_moments(engine, rt, working) -> None:
+    """Every Ammonix move of the public test, opened like a live case: the
+    exact situation it saw (recorded by the builder), its retrieval, scores,
+    neighbours, the writer's paperwork and checks. Features are built per
+    draw with the run's own claim ids, so the writer's prompts are the ones
+    the run cached."""
+    from concurrent.futures import ThreadPoolExecutor
+
+    from cardessa.features_kept import build_kept_features
+
+    claims = STATE["claims"]
+    by_draw: dict[int, list[dict]] = {}
+    for pid in sorted(claims):
+        draw = int(pid.split("-", 1)[0])
+        steps = {str(st["touch"]): st for st in claims[pid]["system"]["steps"]}
+        for t, row in (claims[pid].get("system_rows") or {}).items():
+            st = steps.get(t) or {}
+            by_draw.setdefault(draw, []).append({
+                **row, "_pid": pid, "_touch": int(t),
+                "_action": st.get("action", ""), "_by": st.get("by"),
+            })
+    total = sum(len(v) for v in by_draw.values())
+    STATE["replay_progress"] = {"done": 0, "total": total}
+    names = rt.feature_names
+    cols = STATE["working_columns"]
+    for draw, rows in sorted(by_draw.items()):
+        snaps = pl.DataFrame(
+            [{c: r.get(c) for c in cols} for r in rows],
+            schema_overrides=STATE["working_schema"],
+        )
+        frame, _n, _, _ = build_kept_features(
+            ROOT, pl.concat([working, snaps], how="vertical_relaxed")
+        )
+        feats_of = {
+            r["state_id"]: {n: r[n] for n in names}
+            for r in frame.filter(
+                pl.col("state_id").is_in(snaps["state_id"].to_list())
+            ).to_dicts()
+        }
+        world = STATE["worlds"][draw]
+
+        def one(row: dict, world=world, feats_of=feats_of) -> None:
+            sid = f"{row['_pid']}-r{row['_touch']}"
+            try:
+                f = feats_of[row["state_id"]]
+                scaled = rt.scaler.transform(np.array([[f[n] for n in names]]))[0]
+                run_row = {k: v for k, v in row.items() if not k.startswith("_")}
+                STATE["provider"].begin_call_capture()
+                trace = resolve_and_run(
+                    rt, STATE["skills"], STATE["harness"], STATE["provider"],
+                    run_row, f, scaled,
+                )
+                STATE["provider"].take_call_capture()
+                study = world.studies.row(
+                    int(run_row["episode_id"].removeprefix("ep-")), named=True)
+                episode_row = {"patient_id": study["patient_id"],
+                               "clinic_id": study["clinic_id"],
+                               "payer_id": run_row["payer_id"]}
+                bundle = bundle_for_state(world, engine, run_row, episode_row)
+                if (trace.status == "executed" and trace.final
+                        and trace.final.action_id in TOOLS):
+                    STATE["artifacts"][sid] = TOOLS[trace.final.action_id](
+                        trace.final.payload, bundle)
+                STATE["bundles"][sid] = bundle
+                STATE["rows"][sid] = {
+                    **run_row, "episode_id": row["_pid"], "state_id": sid,
+                    "action_raw": row["_action"], "_by": row["_by"], "_replay": True,
+                }
+                STATE["feats"][sid] = f
+                STATE["traces"][sid] = trace
+            except Exception as exc:  # noqa: BLE001 - keep going, page per page
+                STATE.setdefault("failed", {})[sid] = repr(exc)
+            STATE["replay_progress"]["done"] += 1
+
+        with ThreadPoolExecutor(max_workers=6) as pool:
+            list(pool.map(one, rows))
 
 
 def _before_facts(case) -> dict:
@@ -1396,6 +1594,8 @@ def case_summary(state_id: str) -> dict:
 
 @app.get("/api/cases")
 def cases() -> list[dict]:
+    if STATE.get("public"):  # the public test's cases are Ammonix's own moves
+        return [case_summary(s) for s in sorted(STATE["traces"])]
     # only computed, recorded cases; Ammonix replay moments are reached
     # from their claim story, not this list
     return [
@@ -1532,6 +1732,9 @@ def universe_map() -> dict:
 def curve() -> dict:
     """The learning-curve points (scripts/learning_curve.py output) plus the
     LLM flat line from the live scoreboard when that lane has finished."""
+    if STATE.get("public"):
+        raise HTTPException(404, "the learning curve is a study on the earlier "
+                                 "demonstration claims; it is reported in the paper")
     # v0.6: like the scoreboard, the curve depends on the decision field; the
     # kernel field keeps its own file so the v0.4 curve is never mistaken for it.
     field_tag = getattr(STATE.get("rt"), "decision_field", "model")
@@ -1675,6 +1878,11 @@ def ablation() -> dict:
 
 @app.get("/api/progress")
 def progress() -> dict:
+    if STATE.get("public"):
+        rp_ = STATE.get("replay_progress") or {"done": 0, "total": 0}
+        return {"done": rp_["done"], "total": rp_["total"],
+                "failed": STATE.get("failed", {}), "rollout_done": True,
+                "replay": rp_, "llm_done": True}
     # recorded cases only: replay states are reported separately below
     return {
         "done": sum(
@@ -1697,6 +1905,23 @@ def progress() -> dict:
 
 def claim_summary(episode_id: str) -> dict:
     c = STATE["claims"][episode_id]
+    meta = c.get("meta")
+    if meta:  # the public test: recorded with the claim
+        lane = {
+            p: {k: c[p].get(k) for k in (
+                "resolution", "collected", "touches", "mistakes", "success",
+                "patient_collected", "patient_counted", "autonomous",
+                "payer_collected", "payer_counted", "tokens",
+            )}
+            for p in ("human", "system", "llm")
+        }
+        return {
+            "episode_id": episode_id, "draw": meta["draw"],
+            "payer_id": meta["payer_id"], "payer_name": meta["payer_name"],
+            "cpt": meta["cpt"], "balance": meta["allowed"], "persona": meta["persona"],
+            **lane, "verdict": c["verdict"], "delta": c["delta"],
+            "vs_llm": c.get("vs_llm"), "delta_llm": c.get("delta_llm"),
+        }
     s0 = STATE["rows"].get(f"{episode_id}-s0") or next(
         r for r in STATE["rows"].values()
         if r["episode_id"] == episode_id and not r.get("_replay")
@@ -1730,7 +1955,7 @@ def claims_list() -> dict:
     return {
         "scoreboard": STATE["scoreboard"],
         "claims": [claim_summary(e) for e in sorted(STATE["claims"])],
-        "specials": [
+        "specials": [] if STATE.get("public") else [
             case_summary(s) for s in sorted(STATE["rows"])
             if not STATE["rows"][s]["episode_id"].startswith("ep-")
             and s in STATE["traces"]
@@ -1778,7 +2003,8 @@ def claim_detail(episode_id: str) -> dict:
                 ]
             if art is None and trace.status == "executed" and trace.final:
                 extra["filed_payload"] = trace.final.payload
-        system_steps.append({**st, **extra})
+        # the public test's steps already carry what the run filed: keep it
+        system_steps.append({**extra, **st} if STATE.get("public") else {**st, **extra})
     return {
         **claim_summary(episode_id),
         "human_steps": c["human"]["steps"],
@@ -1951,8 +2177,9 @@ def play_start(episode_id: str) -> dict:
 
     if "claims" not in STATE or episode_id not in STATE["claims"]:
         raise HTTPException(404)
-    env = CardessaEnvironment(STATE["world"], STATE["engine"], MASTER_SEED)
-    case = env.reset(int(episode_id.removeprefix("ep-")))
+    world, index = _claim_world(episode_id)
+    env = CardessaEnvironment(world, STATE["engine"], MASTER_SEED)
+    case = env.reset(index)
     sess = {"env": env, "case": case, "pending": [], "steps": [], "done": False}
     STATE.setdefault("play", {})[episode_id] = sess
     return {"steps": [], "done": False, **_play_situation(sess)}
@@ -2133,6 +2360,7 @@ def case_detail(state_id: str) -> dict:
     return {
         **case_summary(state_id),
         "episode_states": episode_states,
+        "on_claim_page": row["episode_id"] in (STATE.get("claims") or {}),
         "recorded_action": row.get("action_raw"),
         "taken_by": row.get("_by"),
         "skill": {

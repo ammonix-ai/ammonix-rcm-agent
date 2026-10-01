@@ -2,20 +2,27 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ammonix — Claims</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
 <link rel="stylesheet" href="style.css"></head>
 <body>
 <header class="masthead">
   <a class="brand" href="inbox.html"><span class="mark">A</span>
     <span><h1>Ammonix</h1><p class="tagline">Claims desk — demo</p></span></a>
-  <nav><a href="inbox.html" class="active">Claims</a><a href="universe.html">Universe</a><a href="learning.html">Learning</a></nav>
+  <nav><a href="inbox.html" class="active">Claims</a><a href="universe.html">Universe</a></nav>
 </header>
 <main>
 <div id="intro" class="intro" hidden>
-  <p><b>200 simulated insurance claims, each worked three ways:</b> by
-  Ammonix, our harness deciding from past cases with a local Qwen 27B as its
-  only language model; by an LLM agent<span id="intro-model"></span> doing
-  the whole job alone; and by simulated human billers, the baseline of how
-  this work is done today.</p>
+  <p><b>900 denied insurance claims, each worked three ways:</b> by
+  Ammonix, which decides from how similar past claims ended and lets a small
+  local model write only the paperwork; by GPT-6 on its own, which decides
+  every move and writes its own paperwork; and by simulated human billers,
+  the baseline of how this work is done today. The claims are simulated and
+  new to all three. The money counts what the insurer paid plus what the
+  patient paid, the patient only up to their share.</p>
+  <p id="showcase-line" hidden>The claim from our video and paper:
+    <a id="showcase-link" href="#">see it worked three ways</a>.</p>
   <p class="intro-actions">
     <a class="btn primary" id="tour-start" href="#" hidden>Show me one claim, step by step</a>
     <button type="button" id="intro-hide">Got it</button>
@@ -28,7 +35,7 @@
 </div>
 <table class="grid" id="claims">
   <thead><tr><th>Claim</th><th>Payer</th><th>Study</th>
-  <th style="text-align:right">Value</th><th>Simulated biller got</th><th id="llm-th">LLM agent got</th><th>Ammonix got</th><th>Verdict</th></tr></thead>
+  <th style="text-align:right">Value</th><th>Simulated billers got</th><th id="llm-th">GPT-6 on its own got</th><th>Ammonix got</th><th>Verdict</th></tr></thead>
   <tbody></tbody>
 </table>
 <p class="hint" id="loading">Comparing policies&hellip;</p>
@@ -88,9 +95,11 @@ function load() {
     if (!data) return;
     document.getElementById('loading').remove();
     const s = data.scoreboard;
-    const llmName = s.llm_model_label || 'Qwen 27B';
-    document.getElementById('intro-model').textContent = ' (' + llmName + ')';
-    document.getElementById('llm-th').textContent = llmName + ' got';
+    const llmName = s.llm_model_label || 'GPT-6';
+    if (s.showcase) {
+      document.getElementById('showcase-link').href = 'claim.html?id=' + encodeURIComponent(s.showcase);
+      document.getElementById('showcase-line').hidden = false;
+    }
     const fmtInt = n => Number(n || 0).toLocaleString('en-US');
     const tokSum2 = t => t ? (t.prompt_tokens || 0) + (t.completion_tokens || 0) : 0;
     const lt = s.llm_tokens;
@@ -100,44 +109,38 @@ function load() {
     const ratio = amxTotal > 0 && llmTotal > 0 ? llmTotal / amxTotal : 0;
     const tokenStrip = lt ? `
       <p class="hint" style="margin:-.4rem 0 1rem">
-        The same 200 claims, and what working them cost in tokens:
-        ${esc(llmName)} doing the whole job spent
-        <span class="mono">${fmtInt(llmTotal)}</span> ${esc(llmName)} tokens
+        On these 900 claims, GPT-6 on its own spent
+        <span class="mono">${fmtInt(llmTotal)}</span> GPT-6 tokens
         (${fmtInt(tokSum2(lt.decide))} deciding, ${fmtInt(tokSum2(lt.write))} writing its filings).
-        ${amxTotal ? `The Ammonix harness spent <span class="mono">${fmtInt(amxTotal)}</span> tokens
-        — ${ratio >= 1.5 ? `<b>${ratio.toFixed(1)}× fewer</b>, ` : ''}all of it writing, on a small local model;
-        deciding comes from the calibrated harness and costs no tokens at all.` :
-        `Ammonix's writing runs on a small local model; deciding comes from the
-        calibrated harness and costs no ${esc(llmName)} tokens at all.`}
-        In the pre-registered experiment behind the paper, the agent matched the
-        strongest GPT-6 configuration with 4.7 times fewer GPT-6 tokens.
-        Open any claim to see each move's filed paperwork and its bill.
+        Ammonix sent no tokens to GPT-6: deciding comes from past outcomes and costs
+        no tokens, and its paperwork is written by a small local model
+        (<span class="mono">${fmtInt(amxTotal)}</span> local tokens).
+        Open any claim to see each move, its filed paperwork and its bill.
       </p>` : '';
     document.getElementById('scoreboard').innerHTML = `
       <div class="score-cards">
         <div class="score-card ammonix"><p class="who">Ammonix</p>
           <p class="amt">${money(s.system_collected)}</p>
-          <p class="cap">collected</p>
-          ${lt ? `<p class="sub tokline"><span class="mono">${fmtInt(amxTotal)}</span> tokens · local writer${amxTotal ? '' : ' (metering…)'}</p>` : ''}</div>
+          <p class="cap">collected${s.resolved ? ` · ${(100 * s.resolved.system).toFixed(1)}% of claims resolved` : ''}</p>
+          <p class="sub tokline"><span class="mono">0</span> GPT-6 tokens · local writer</p></div>
         <div class="score-vs">vs</div>
-        <div class="score-card"><p class="who"${s.llm_lane_note ? ` style="cursor:help" title="${esc(s.llm_lane_note)}"` : ''}>LLM agent &middot; ${esc(s.llm_model_label || 'Qwen 27B')}</p>
+        <div class="score-card"><p class="who"${s.llm_lane_note ? ` style="cursor:help" title="${esc(s.llm_lane_note)}"` : ''}>${esc(llmName)} on its own</p>
           ${s.llm_collected != null
             ? `<p class="amt">${money(s.llm_collected)}</p>
-               <p class="cap">collected</p>
+               <p class="cap">collected${s.resolved ? ` · ${(100 * s.resolved.llm).toFixed(1)}% of claims resolved` : ''}</p>
                ${lt ? `<p class="sub tokline"><span class="mono">${fmtInt(llmTotal)}</span> tokens · decides and writes</p>` : ''}`
             : '<p class="sub" style="margin-top:.6rem">computing&hellip;</p>'}</div>
         <div class="score-vs">vs</div>
         <div class="score-card"><p class="who">Simulated billers</p>
           <p class="amt">${money(s.human_collected)}</p>
-          <p class="cap">collected</p></div>
+          <p class="cap">collected${s.resolved ? ` · ${(100 * s.resolved.human).toFixed(1)}% of claims resolved` : ''}</p></div>
       </div>
 ${tokenStrip}`;
     all = data.claims;
-    const tourEp = all.find(c => c.episode_id === 'ep-05095')
-      || all.find(c => c.verdict === 'ammonix') || all[0];
-    if (tourEp) {
-      const href = 'case.html?id='
-        + encodeURIComponent(tourEp.episode_id + '-r0') + '&tour=1';
+    const tourEp = all.find(c => c.verdict === 'ammonix') || all[0];
+    const tourState = s.tour_state || (tourEp && tourEp.episode_id + '-r0');
+    if (tourState) {
+      const href = 'case.html?id=' + encodeURIComponent(tourState) + '&tour=1';
       for (const aid of ['tour-start', 'tour-again']) {
         const a = document.getElementById(aid);
         a.href = href;
